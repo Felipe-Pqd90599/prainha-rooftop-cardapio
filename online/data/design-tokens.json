@@ -1,0 +1,50 @@
+{
+  "source": "assets/referencias/cardapio-2025-atualizado.pdf",
+  "note": "Paleta amostrada das páginas do PDF oficial (screenshots em assets/referencias/pages/). Estética praia/rooftop: branco, bege areia nos títulos, azul turquesa do mar.",
+  "extraction": {
+    "method": "screenshot-pdf-pages.js via Chrome",
+    "referenceFiles": [
+      "cardapio-2025-atualizado.pdf",
+      "assets/referencias/pages/pdf-page-2.png"
+    ]
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "backgroundHero": "#7EC8E3",
+    "surface": "#FFFFFF",
+    "categoryHeaderBg": "#B8956B",
+    "categoryHeaderText": "#FFFFFF",
+    "primary": "#B8956B",
+    "primaryDark": "#8B7049",
+    "accentSky": "#5BB5C9",
+    "accentSea": "#3A9BB5",
+    "text": "#2C2C2C",
+    "textOnDark": "#FFFFFF",
+    "textMuted": "#5A5A5A",
+    "price": "#8B7049",
+    "border": "#E8E0D4",
+    "footerBg": "#F5F0E8"
+  },
+  "typography": {
+    "fontDisplay": "\"Segoe UI\", system-ui, -apple-system, sans-serif",
+    "fontBody": "\"Segoe UI\", system-ui, -apple-system, sans-serif",
+    "categoryStyle": "uppercase, letter-spacing 0.14em, bold",
+    "scale": {
+      "hero": "1.65rem",
+      "category": "0.8rem",
+      "itemName": "1rem",
+      "description": "0.85rem",
+      "price": "0.95rem"
+    }
+  },
+  "spacing": {
+    "pagePadding": "1rem",
+    "sectionGap": "1.25rem",
+    "itemGap": "0.6rem"
+  },
+  "layout": {
+    "mobileFirst": true,
+    "categoryNav": "sticky horizontal scroll",
+    "photoStyle": "fotos reais do cardápio em assets/fotos/ quando disponíveis"
+  }
+}

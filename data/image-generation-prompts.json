@@ -1,0 +1,652 @@
+[
+  {
+    "id": "camarao-entrada",
+    "filename": "camarao-entrada.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Camarão. Category: Caldos"
+  },
+  {
+    "id": "peixe-entrada",
+    "filename": "peixe-entrada.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Peixe. Category: Caldos"
+  },
+  {
+    "id": "caldeirinho-mar",
+    "filename": "caldeirinho-mar.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Caldeirinho do Mar. Camarão, peixes e legumes. Category: Caldos"
+  },
+  {
+    "id": "arretado",
+    "filename": "arretado.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Arretado. Category: Caldos"
+  },
+  {
+    "id": "do-sertao",
+    "filename": "do-sertao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Do Sertão. Category: Caldos"
+  },
+  {
+    "id": "caldo-feijao",
+    "filename": "caldo-feijao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Caldo de Feijão. Category: Caldos"
+  },
+  {
+    "id": "sopa",
+    "filename": "sopa.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Sopa. Consultar sabor do dia. Category: Caldos"
+  },
+  {
+    "id": "salada-coalho",
+    "filename": "salada-coalho.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Salada com Coalho. Category: Saladas e Vegetarianos"
+  },
+  {
+    "id": "salada-frango",
+    "filename": "salada-frango.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Salada com Frango. Category: Saladas e Vegetarianos"
+  },
+  {
+    "id": "arroz-tropical",
+    "filename": "arroz-tropical.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Arroz Tropical. Arroz refogado e açafrão, brócolis, tomate, cubinhos de coalho e ervilha. Category: Saladas e Vegetarianos"
+  },
+  {
+    "id": "penne-pomodoro",
+    "filename": "penne-pomodoro.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Penne ao Molho Pomodoro. Category: Saladas e Vegetarianos"
+  },
+  {
+    "id": "omelete-kids",
+    "filename": "omelete-kids.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Omelete. Category: Infantis"
+  },
+  {
+    "id": "file-carne-kids",
+    "filename": "file-carne-kids.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Filezinho de Carne ao Molho Kids. Category: Infantis"
+  },
+  {
+    "id": "file-frango-kids",
+    "filename": "file-frango-kids.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Filezinho de Frango ao Molho Kids. Category: Infantis"
+  },
+  {
+    "id": "file-camarao-kids",
+    "filename": "file-camarao-kids.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Filé de Camarão ao Molho Kids. Category: Infantis"
+  },
+  {
+    "id": "queijo-coalho-melaco",
+    "filename": "queijo-coalho-melaco.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Queijo Coalho com Melaço. Category: Entradas"
+  },
+  {
+    "id": "dadinho-queijo",
+    "filename": "dadinho-queijo.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Dadinho de Queijo Empanado. Com molhos da casa. Category: Entradas"
+  },
+  {
+    "id": "pastel-diversos",
+    "filename": "pastel-diversos.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Pastel Frito Diversos. Carne, frango, queijo, calabresa | 4 unid. Category: Entradas"
+  },
+  {
+    "id": "pastel-camarao",
+    "filename": "pastel-camarao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Pastel Frito de Camarão. Camarão com catupiry | 4 unid. Category: Entradas"
+  },
+  {
+    "id": "bruschetta-sertao",
+    "filename": "bruschetta-sertao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Bruschetta do Sertão. Carne de sol ao creme de queijo com coalho, manjericão e manteiga do sertão | 4 unid. Category: Entradas"
+  },
+  {
+    "id": "bruschetta-tradicional",
+    "filename": "bruschetta-tradicional.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Bruschetta Tradicional. Tomate, queijo, manjericão e azeite | 4 unid. Category: Entradas"
+  },
+  {
+    "id": "bruschetta-terra",
+    "filename": "bruschetta-terra.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Bruschetta da Terra. Banana fatiada, queijo muçarela, manjericão e melaço | 4 unid. Category: Entradas"
+  },
+  {
+    "id": "ceviche-camarao",
+    "filename": "ceviche-camarao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Ceviche de Camarão. Category: Entradas"
+  },
+  {
+    "id": "escondidinho-carne-sol",
+    "filename": "escondidinho-carne-sol.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Escondidinho de Carne de Sol. Category: Entradas"
+  },
+  {
+    "id": "escondidinho-camarao",
+    "filename": "escondidinho-camarao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Escondidinho de Camarão. Category: Entradas"
+  },
+  {
+    "id": "camarao-grega",
+    "filename": "camarao-grega.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Camarão à Grega. Arroz à grega, camarão empanado, queijo muçarela e batata palha. Category: Camarões, Peixes e Frutos do Mar"
+  },
+  {
+    "id": "camarao-caicoense",
+    "filename": "camarao-caicoense.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Camarão Caicoense. Camarão, feijão preto, arroz, salada e farofa da casa. Category: Camarões, Peixes e Frutos do Mar"
+  },
+  {
+    "id": "penne-camarao",
+    "filename": "penne-camarao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Penne com Camarão. Espaguete ao molho de tomate, filé de camarão empanado e coberto com queijo muçarela. Category: Camarões, Peixes e Frutos do Mar"
+  },
+  {
+    "id": "brasileirinho-peixe",
+    "filename": "brasileirinho-peixe.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Brasileirinho de Peixe. Peixe em posta, feijão preto, arroz, salada e farofa da casa. Category: Camarões, Peixes e Frutos do Mar"
+  },
+  {
+    "id": "fettuccine-camarao",
+    "filename": "fettuccine-camarao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Fettuccine de Camarão. Ao molho de camarão, salsinha e filé de camarão envolto. Category: Camarões, Peixes e Frutos do Mar"
+  },
+  {
+    "id": "parmegiana-camarao",
+    "filename": "parmegiana-camarao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Parmegiana de Camarão. Ao molho bechamel com queijo muçarela e filé de camarão envolto. Category: Camarões, Peixes e Frutos do Mar"
+  },
+  {
+    "id": "brasileirinho-camarao",
+    "filename": "brasileirinho-camarao.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Brasileirinho de Camarão. Queijo, vinagrete e orégano. Category: Camarões, Peixes e Frutos do Mar"
+  },
+  {
+    "id": "sertanejo-prainha",
+    "filename": "sertanejo-prainha.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Sertanejo do Prainha. Feijão verde, arroz refogado, carne de sol, queijo coalho, salada e fritas. Category: Carnes"
+  },
+  {
+    "id": "brasileirinho-carne",
+    "filename": "brasileirinho-carne.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Brasileirinho de Carne. Filé de carne acebolada, feijão preto, arroz, salada e farofa da casa. Category: Carnes"
+  },
+  {
+    "id": "brasileirinho-frango",
+    "filename": "brasileirinho-frango.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Brasileirinho de Frango. Frango em cubos, feijão preto, arroz, salada e farofa da casa. Category: Carnes"
+  },
+  {
+    "id": "brasileirinho-calabresa",
+    "filename": "brasileirinho-calabresa.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Brasileirinho de Calabresa. Calabresa acebolada, feijão preto, arroz, salada e farofa da casa. Category: Carnes"
+  },
+  {
+    "id": "penne-carne",
+    "filename": "penne-carne.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Penne com Carne. Ao molho de queijo, salsinha e filé de carne. Category: Carnes"
+  },
+  {
+    "id": "fettuccine-carne",
+    "filename": "fettuccine-carne.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Fettuccine de Carne ao Molho. Espaguete ao molho de tomate, filé de carne empanada e coberto com queijo muçarela. Category: Carnes"
+  },
+  {
+    "id": "chicken-burger",
+    "filename": "chicken-burger.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Chicken Burger. Category: Burgers"
+  },
+  {
+    "id": "blend-tradicional",
+    "filename": "blend-tradicional.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Blend Tradicional. Pão, 1 smash de carne bovina, queijo muçarela, anéis de cebola empanada, alface e molho da casa. Category: Burgers"
+  },
+  {
+    "id": "american-smash-duplo",
+    "filename": "american-smash-duplo.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: American Smash Duplo. Pão, 2 smash de carne bovina, bacon, cheddar, alface e molho da casa. Category: Burgers"
+  },
+  {
+    "id": "nordestino-na-area",
+    "filename": "nordestino-na-area.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Nordestino na Área. Pão, carne desfiada, coalho, ovo, alface e molho da casa. Category: Burgers"
+  },
+  {
+    "id": "cheeseburger",
+    "filename": "cheeseburger.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Cheeseburger. Pão, queijo muçarela empanado, ovo, cebola caramelizada, salada e molho da casa. Category: Burgers"
+  },
+  {
+    "id": "mista-familia",
+    "filename": "mista-familia.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Mistão Família (4 pessoas). Category: Petiscos"
+  },
+  {
+    "id": "mista-prainha",
+    "filename": "mista-prainha.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Mistão do Prainha. Carne, calabresa, camarão e batata frita. Category: Petiscos"
+  },
+  {
+    "id": "empanados-mar",
+    "filename": "empanados-mar.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Empanados do Mar. Peixe em cubos, filé de camarão, salada e batata. Category: Petiscos"
+  },
+  {
+    "id": "camarao-alho-oleo",
+    "filename": "camarao-alho-oleo.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Camarão Alho e Óleo. 1kg de camarão com fritas. Category: Petiscos"
+  },
+  {
+    "id": "carne-sol-fritas",
+    "filename": "carne-sol-fritas.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Carne de Sol com Fritas. Category: Petiscos"
+  },
+  {
+    "id": "carne-ao-molho",
+    "filename": "carne-ao-molho.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Carne ao Molho. Madeira e barbecue com fritas. Category: Petiscos"
+  },
+  {
+    "id": "fritas-tradicional",
+    "filename": "fritas-tradicional.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Fritas Tradicional. Category: Petiscos"
+  },
+  {
+    "id": "fritas-nordestina",
+    "filename": "fritas-nordestina.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Fritas Nordestina. Carne de sol desfiada ao creme de queijo. Category: Petiscos"
+  },
+  {
+    "id": "fritas-sertaneja",
+    "filename": "fritas-sertaneja.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Fritas Sertaneja. Carne, calabresa e camarão. Category: Petiscos"
+  },
+  {
+    "id": "crepioca-queijo",
+    "filename": "crepioca-queijo.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Crepioca de Queijo. Category: Cuscuz, Tapiocas e Lanches"
+  },
+  {
+    "id": "torrada-queijo",
+    "filename": "torrada-queijo.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Torrada de Queijo. Muçarela e pão de forma. Category: Cuscuz, Tapiocas e Lanches"
+  },
+  {
+    "id": "misto",
+    "filename": "misto.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Misto. Pão de forma, presunto e queijo. Category: Cuscuz, Tapiocas e Lanches"
+  },
+  {
+    "id": "filezinhos-carne-molho",
+    "filename": "filezinhos-carne-molho.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Filezinhos de Carne ao Molho. Category: Cuscuz, Tapiocas e Lanches"
+  },
+  {
+    "id": "creme-frango-cubos",
+    "filename": "creme-frango-cubos.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Creme de Frango em Cubos. Category: Cuscuz, Tapiocas e Lanches"
+  },
+  {
+    "id": "calabresa-mucarela",
+    "filename": "calabresa-mucarela.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Calabresa Fatiada com Muçarela. Category: Cuscuz, Tapiocas e Lanches"
+  },
+  {
+    "id": "ovos-mucarela",
+    "filename": "ovos-mucarela.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Ovos e Muçarela. Category: Cuscuz, Tapiocas e Lanches"
+  },
+  {
+    "id": "coco-leite-coco",
+    "filename": "coco-leite-coco.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Coco Ralado e Leite de Coco. Category: Cuscuz, Tapiocas e Lanches"
+  },
+  {
+    "id": "suco-tradicional",
+    "filename": "suco-tradicional.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Suco Tradicional. Category: Sucos e Diversos"
+  },
+  {
+    "id": "suco-especial",
+    "filename": "suco-especial.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Suco Especial. Category: Sucos e Diversos"
+  },
+  {
+    "id": "refri-lata",
+    "filename": "refri-lata.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Refri Lata. Category: Sucos e Diversos"
+  },
+  {
+    "id": "refri-litro",
+    "filename": "refri-litro.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Refri Litro. Category: Sucos e Diversos"
+  },
+  {
+    "id": "cajuina-litro",
+    "filename": "cajuina-litro.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Cajuína Litro. Category: Sucos e Diversos"
+  },
+  {
+    "id": "agua-sem-gas",
+    "filename": "agua-sem-gas.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Água sem Gás. Category: Sucos e Diversos"
+  },
+  {
+    "id": "agua-com-gas",
+    "filename": "agua-com-gas.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Água com Gás. Category: Sucos e Diversos"
+  },
+  {
+    "id": "agua-coco",
+    "filename": "agua-coco.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Água de Coco. Category: Sucos e Diversos"
+  },
+  {
+    "id": "agua-tonica",
+    "filename": "agua-tonica.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Água Tônica. Category: Sucos e Diversos"
+  },
+  {
+    "id": "energetico",
+    "filename": "energetico.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Energético. Category: Sucos e Diversos"
+  },
+  {
+    "id": "soda-italiana",
+    "filename": "soda-italiana.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Soda Italiana. Category: Sucos e Diversos"
+  },
+  {
+    "id": "h2o",
+    "filename": "h2o.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: H2O. Category: Sucos e Diversos"
+  },
+  {
+    "id": "combo-fritas-refri",
+    "filename": "combo-fritas-refri.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Transformar em Combo. Batata frita + refri lata. Category: Sucos e Diversos"
+  },
+  {
+    "id": "acai-tradicional",
+    "filename": "acai-tradicional.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Açaí Tradicional 350ml. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "petit-brownie",
+    "filename": "petit-brownie.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Petit Brownie. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "cartola",
+    "filename": "cartola.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Cartola. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "ice-cream-frutas",
+    "filename": "ice-cream-frutas.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Ice Cream com Frutas na Taça. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "beijinho",
+    "filename": "beijinho.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Beijinho. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "romeu-julieta",
+    "filename": "romeu-julieta.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Romeu e Julieta. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "frutas-chocolate",
+    "filename": "frutas-chocolate.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Frutas com Chocolate. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "cafe-coado-m",
+    "filename": "cafe-coado-m.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Café Coado M. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "cafe-leite-m",
+    "filename": "cafe-leite-m.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Café com Leite M. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "cappuccino-chantilly-m",
+    "filename": "cappuccino-chantilly-m.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Cappuccino com Chantilly M. Category: Sobremesas e Cafés"
+  },
+  {
+    "id": "prainha-blue",
+    "filename": "prainha-blue.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Prainha Blue. Vodka, curaçau blue, limão, refri de limão e gelo. Category: Drinks Autorais"
+  },
+  {
+    "id": "coffee-drink",
+    "filename": "coffee-drink.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Coffee Drink. Vodka, leite condensado, café, leite de coco, abacaxi, chantilly e gelo. Category: Drinks Autorais"
+  },
+  {
+    "id": "whisky-tropical",
+    "filename": "whisky-tropical.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Whisky Tropical. Whisky, suco de limão siciliano, maracujá, tônica, espuma de gengibre e gelo. Category: Drinks Autorais"
+  },
+  {
+    "id": "gim-nevado",
+    "filename": "gim-nevado.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Gim Nevado. Curaçau blue, leite condensado, gim nacional, chantilly e gelo. Category: Drinks Autorais"
+  },
+  {
+    "id": "mojito-abacaxi",
+    "filename": "mojito-abacaxi.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Mojito de Abacaxi. Rum, abacaxi, hortelã, refri de limão, açúcar e gelo. Category: Drinks Autorais"
+  },
+  {
+    "id": "moscow-mule",
+    "filename": "moscow-mule.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Moscow Mule. Vodka, suco de limão, xarope de açúcar, água com gás, espuma e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "caipirinha",
+    "filename": "caipirinha.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Caipirinha. Cachaça, limão, açúcar e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "caipiroska",
+    "filename": "caipiroska.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Caipiroska. Vodka, limão, açúcar e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "gim-tradicional",
+    "filename": "gim-tradicional.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Gim Tradicional. Gim nacional, limão siciliano, tônica, especiarias e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "gim-frutado",
+    "filename": "gim-frutado.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Gim Frutado. Gim nacional, 1 fruta, tônica, especiarias e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "pina-colada",
+    "filename": "pina-colada.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Piña Colada. Rum, abacaxi, leite condensado, creme de leite, leite de coco e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "espanhola",
+    "filename": "espanhola.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Espanhola. Vinho, vodka, fruta, leite condensado e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "mojito",
+    "filename": "mojito.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Mojito. Rum, limão, hortelã, água com gás, açúcar e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "cozumel",
+    "filename": "cozumel.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Cozumel. Cerveja, suco de limão, limão, sal e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "sex-on-the-beach",
+    "filename": "sex-on-the-beach.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Sex on the Beach. Vodka, grenadine, licor de pêssego, suco de laranja e gelo. Category: Drinks Tradicionais"
+  },
+  {
+    "id": "vinho-consultar",
+    "filename": "vinho-consultar.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: À Consultar. Rolha R$40. Verificar disponibilidade dos países e rótulos.. Category: Vinhos"
+  },
+  {
+    "id": "petra-600",
+    "filename": "petra-600.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Petra 600. Category: Cervejas"
+  },
+  {
+    "id": "original-600",
+    "filename": "original-600.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Original 600. Category: Cervejas"
+  },
+  {
+    "id": "spaten-600",
+    "filename": "spaten-600.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Spaten 600. Category: Cervejas"
+  },
+  {
+    "id": "brahma-duplo-600",
+    "filename": "brahma-duplo-600.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Brahma Duplo 600. Category: Cervejas"
+  },
+  {
+    "id": "devassa-600",
+    "filename": "devassa-600.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Devassa 600. Category: Cervejas"
+  },
+  {
+    "id": "budweiser-long",
+    "filename": "budweiser-long.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Budweiser Long Neck. Category: Cervejas"
+  },
+  {
+    "id": "heineken-long",
+    "filename": "heineken-long.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Heineken Long Neck. Category: Cervejas"
+  },
+  {
+    "id": "zero-alcool-long",
+    "filename": "zero-alcool-long.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Zero Álcool Long Neck. Category: Cervejas"
+  },
+  {
+    "id": "cachaca-branca",
+    "filename": "cachaca-branca.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Cachaça Branca. Category: Doses e Litros"
+  },
+  {
+    "id": "cachaca-ouro",
+    "filename": "cachaca-ouro.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Cachaça Ouro. Category: Doses e Litros"
+  },
+  {
+    "id": "cachaca-matuta",
+    "filename": "cachaca-matuta.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Cachaça Matuta. Category: Doses e Litros"
+  },
+  {
+    "id": "vodka-smirnoff",
+    "filename": "vodka-smirnoff.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Vodka Smirnoff. Category: Doses e Litros"
+  },
+  {
+    "id": "tequila-branca",
+    "filename": "tequila-branca.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Tequila Branca. Category: Doses e Litros"
+  },
+  {
+    "id": "whisky-nacional",
+    "filename": "whisky-nacional.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Whisky Nacional. Category: Doses e Litros"
+  },
+  {
+    "id": "whisky-12-anos",
+    "filename": "whisky-12-anos.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Whisky 12 Anos. Category: Doses e Litros"
+  },
+  {
+    "id": "gim-nacional",
+    "filename": "gim-nacional.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Gim Nacional. Category: Doses e Litros"
+  },
+  {
+    "id": "gim-importado",
+    "filename": "gim-importado.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Gim Importado. Category: Doses e Litros"
+  },
+  {
+    "id": "rum",
+    "filename": "rum.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Rum. Category: Doses e Litros"
+  },
+  {
+    "id": "shot-mar-vermelho",
+    "filename": "shot-mar-vermelho.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Shot Mar Vermelho. Grenadine e vodka. Category: Doses e Litros"
+  },
+  {
+    "id": "shot-marola-verde",
+    "filename": "shot-marola-verde.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Shot Marola Verde. Whisky, vodka e curaçau blue. Category: Doses e Litros"
+  },
+  {
+    "id": "shot-blue",
+    "filename": "shot-blue.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Shot Blue. Curaçau blue e vodka. Category: Doses e Litros"
+  },
+  {
+    "id": "feijao-ind",
+    "filename": "feijao-ind.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Feijão Porção Ind. Category: Adicionais"
+  },
+  {
+    "id": "arroz-ind",
+    "filename": "arroz-ind.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Arroz Porção Ind. Category: Adicionais"
+  },
+  {
+    "id": "ovo-unid",
+    "filename": "ovo-unid.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Ovo Unid. Category: Adicionais"
+  },
+  {
+    "id": "leite",
+    "filename": "leite.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Leite. Category: Adicionais"
+  },
+  {
+    "id": "carne-130g",
+    "filename": "carne-130g.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Carne 130g. Category: Adicionais"
+  },
+  {
+    "id": "frango-130g",
+    "filename": "frango-130g.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Frango 130g. Category: Adicionais"
+  },
+  {
+    "id": "calabresa-130g",
+    "filename": "calabresa-130g.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Calabresa 130g. Category: Adicionais"
+  },
+  {
+    "id": "peixe-posta",
+    "filename": "peixe-posta.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Peixe Posta Unid. Category: Adicionais"
+  },
+  {
+    "id": "camarao-130g",
+    "filename": "camarao-130g.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Camarão 130g. Category: Adicionais"
+  },
+  {
+    "id": "embalagem",
+    "filename": "embalagem.jpg",
+    "prompt": "Professional gourmet food photography for Prainha Rooftop premium beach rooftop restaurant in Natal Brazil. Bright natural sunlight, turquoise coastal ambiance, blue or white ceramic plates, wooden deck blurred background, realistic photograph NOT illustration, appetizing, no text, no watermark, no logo. Dish/drink: Embalagem Unid. Category: Adicionais"
+  }
+]

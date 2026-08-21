@@ -1,0 +1,234 @@
+:root {
+  --bg: #ffffff;
+  --hero: #7ec8e3;
+  --category-bg: #b8956b;
+  --category-text: #ffffff;
+  --text: #2c2c2c;
+  --text-muted: #5a5a5a;
+  --price: #8b7049;
+  --border: #e8e0d4;
+  --footer-bg: #f5f0e8;
+  --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.45;
+}
+
+.hero {
+  position: relative;
+  color: #fff;
+  padding: 2.5rem 1.25rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #7ec8e3 0%, #5bb5c9 55%, #3a9bb5 100%);
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.hero__bg.has-photo {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)),
+    url('assets/fotos/capa-prainha-rooftop.jpg');
+}
+
+.hero__overlay {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__brand {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+
+.hero__sub {
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  margin: 0.15rem 0 0.75rem;
+  opacity: 0.95;
+}
+
+.hero__tagline {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  opacity: 0.92;
+}
+
+.hero__contact {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.hero__contact a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.category-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding: 0.65rem 0.75rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.category-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.category-nav a {
+  flex-shrink: 0;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.category-nav a.is-active {
+  background: var(--category-bg);
+  color: var(--category-text);
+  border-color: var(--category-bg);
+}
+
+.menu {
+  padding: 0 0 2rem;
+}
+
+.section {
+  margin-bottom: 0.25rem;
+}
+
+.section__header {
+  background: var(--category-bg);
+  color: var(--category-text);
+  padding: 0.55rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+
+.item__photo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: var(--footer-bg);
+  border: 1px solid var(--border);
+}
+
+.item__photo.is-hidden {
+  display: none;
+}
+
+.item--no-photo {
+  grid-template-columns: 1fr;
+}
+
+.item__body {
+  min-width: 0;
+}
+
+.item__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.item__name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.item__price {
+  font-weight: 700;
+  color: var(--price);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.item__desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.footer {
+  background: var(--footer-bg);
+  padding: 1.25rem 1rem 2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.footer p {
+  margin: 0.35rem 0;
+}
+
+@media (min-width: 600px) {
+  .hero__brand {
+    font-size: 2.4rem;
+  }
+
+  .menu {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .category-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}

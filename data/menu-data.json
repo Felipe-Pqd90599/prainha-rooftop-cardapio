@@ -1,0 +1,1103 @@
+{
+  "meta": {
+    "version": "1.0.0-g1",
+    "source": "cardapio-2025-atualizado.pdf",
+    "currency": "BRL",
+    "priceSecondaryLabelDefault": "2 pessoas"
+  },
+  "categories": [
+    {
+      "id": "caldos",
+      "name": "Caldos",
+      "order": 1,
+      "items": [
+        {
+          "id": "camarao-entrada",
+          "name": "Camarão",
+          "price": 26,
+          "image": "camarao-entrada.jpg"
+        },
+        {
+          "id": "peixe-entrada",
+          "name": "Peixe",
+          "price": 24,
+          "image": "peixe-entrada.jpg"
+        },
+        {
+          "id": "caldeirinho-mar",
+          "name": "Caldeirinho do Mar",
+          "price": 28,
+          "description": "Camarão, peixes e legumes",
+          "image": "caldeirinho-mar.jpg"
+        },
+        {
+          "id": "arretado",
+          "name": "Arretado",
+          "price": 25,
+          "image": "arretado.jpg"
+        },
+        {
+          "id": "do-sertao",
+          "name": "Do Sertão",
+          "price": 22,
+          "image": "do-sertao.jpg"
+        },
+        {
+          "id": "caldo-feijao",
+          "name": "Caldo de Feijão",
+          "price": 13,
+          "image": "caldo-feijao.jpg"
+        },
+        {
+          "id": "sopa",
+          "name": "Sopa",
+          "price": 13,
+          "description": "Consultar sabor do dia",
+          "image": "sopa.jpg"
+        }
+      ]
+    },
+    {
+      "id": "saladas-vegetarianos",
+      "name": "Saladas e Vegetarianos",
+      "order": 2,
+      "items": [
+        {
+          "id": "salada-coalho",
+          "name": "Salada com Coalho",
+          "price": 29,
+          "image": "salada-coalho.jpg"
+        },
+        {
+          "id": "salada-frango",
+          "name": "Salada com Frango",
+          "price": 32,
+          "image": "salada-frango.jpg"
+        },
+        {
+          "id": "salada-camarao",
+          "name": "Salada com Filé de Camarão",
+          "price": 35,
+          "image": "salada-camarao.jpg"
+        },
+        {
+          "id": "arroz-tropical",
+          "name": "Arroz Tropical",
+          "price": 36,
+          "description": "Arroz refogado e açafrão, brócolis, tomate, cubinhos de coalho e ervilha",
+          "image": "arroz-tropical.jpg"
+        },
+        {
+          "id": "penne-pomodoro",
+          "name": "Penne ao Molho Pomodoro",
+          "price": 34,
+          "image": "penne-pomodoro.jpg"
+        }
+      ]
+    },
+    {
+      "id": "infantis",
+      "name": "Infantis",
+      "order": 3,
+      "items": [
+        {
+          "id": "omelete-kids",
+          "name": "Omelete",
+          "price": 25,
+          "image": "omelete-kids.jpg"
+        },
+        {
+          "id": "file-carne-kids",
+          "name": "Filezinho de Carne ao Molho Kids",
+          "price": 26,
+          "image": "file-carne-kids.jpg"
+        },
+        {
+          "id": "file-frango-kids",
+          "name": "Filezinho de Frango ao Molho Kids",
+          "price": 24,
+          "image": "file-frango-kids.jpg"
+        },
+        {
+          "id": "file-camarao-kids",
+          "name": "Filé de Camarão ao Molho Kids",
+          "price": 29,
+          "image": "file-camarao-kids.jpg"
+        }
+      ]
+    },
+    {
+      "id": "entradas",
+      "name": "Entradas",
+      "order": 4,
+      "items": [
+        {
+          "id": "queijo-coalho-melaco",
+          "name": "Queijo Coalho com Melaço",
+          "price": 29,
+          "image": "queijo-coalho-melaco.jpg"
+        },
+        {
+          "id": "dadinho-queijo",
+          "name": "Dadinho de Queijo Empanado",
+          "price": 31,
+          "description": "Com molhos da casa",
+          "image": "dadinho-queijo.jpg"
+        },
+        {
+          "id": "ginga-tapioca",
+          "name": "Ginga com Tapioca",
+          "price": 26,
+          "image": "ginga-tapioca.jpg"
+        },
+        {
+          "id": "pastel-diversos",
+          "name": "Pastel Frito Diversos",
+          "price": 36,
+          "description": "Carne, frango, queijo, calabresa | 4 unid",
+          "image": "pastel-diversos.jpg"
+        },
+        {
+          "id": "pastel-camarao",
+          "name": "Pastel Frito de Camarão",
+          "price": 41,
+          "description": "Camarão com catupiry | 4 unid",
+          "image": "pastel-camarao.jpg"
+        },
+        {
+          "id": "bruschetta-sertao",
+          "name": "Bruschetta do Sertão",
+          "price": 32,
+          "description": "Carne de sol ao creme de queijo com coalho, manjericão e manteiga do sertão | 4 unid",
+          "image": "bruschetta-sertao.jpg"
+        },
+        {
+          "id": "bruschetta-tradicional",
+          "name": "Bruschetta Tradicional",
+          "price": 30,
+          "description": "Tomate, queijo, manjericão e azeite | 4 unid",
+          "image": "bruschetta-tradicional.jpg"
+        },
+        {
+          "id": "bruschetta-terra",
+          "name": "Bruschetta da Terra",
+          "price": 32,
+          "description": "Banana fatiada, queijo muçarela, manjericão e melaço | 4 unid",
+          "image": "bruschetta-terra.jpg"
+        },
+        {
+          "id": "taca-camarao-empanado",
+          "name": "Taça de Camarão Empanado",
+          "price": 51,
+          "image": "taca-camarao-empanado.jpg"
+        },
+        {
+          "id": "ceviche-camarao",
+          "name": "Ceviche de Camarão",
+          "price": 42,
+          "image": "ceviche-camarao.jpg"
+        },
+        {
+          "id": "escondidinho-carne-sol",
+          "name": "Escondidinho de Carne de Sol",
+          "price": 29,
+          "image": "escondidinho-carne-sol.jpg"
+        },
+        {
+          "id": "escondidinho-camarao",
+          "name": "Escondidinho de Camarão",
+          "price": 32,
+          "image": "escondidinho-camarao.jpg"
+        }
+      ]
+    },
+    {
+      "id": "frutos-do-mar",
+      "name": "Camarões, Peixes e Frutos do Mar",
+      "order": 5,
+      "items": [
+        {
+          "id": "camarao-grega",
+          "name": "Camarão à Grega",
+          "price": 44,
+          "priceSecondary": 84,
+          "description": "Arroz à grega, camarão empanado, queijo muçarela e batata palha",
+          "image": "camarao-grega.jpg"
+        },
+        {
+          "id": "ensopado-peixe",
+          "name": "Ensopado de Peixe",
+          "price": 44,
+          "priceSecondary": 84,
+          "description": "Peixe ao creme com legumes, pirão e arroz refogado",
+          "image": "ensopado-peixe.jpg"
+        },
+        {
+          "id": "camarao-caicoense",
+          "name": "Camarão Caicoense",
+          "price": 44,
+          "priceSecondary": 84,
+          "description": "Arroz cremoso com carne de sol desfiada, filé de camarão e batata palha",
+          "image": "camarao-caicoense.jpg"
+        },
+        {
+          "id": "penne-camarao",
+          "name": "Penne com Camarão",
+          "price": 46,
+          "priceSecondary": 89,
+          "description": "Espaguete ao molho de tomate, filé de camarão empanado e coberto com queijo muçarela",
+          "image": "penne-camarao.jpg"
+        },
+        {
+          "id": "camarao-prainha",
+          "name": "Camarão do Prainha",
+          "price": 42,
+          "priceSecondary": 82,
+          "description": "Arroz cremoso com cubinhos de coalho, queijo muçarela maçaricado e filé de camarão empanado e manjericão",
+          "image": "camarao-prainha.jpg"
+        },
+        {
+          "id": "brasileirinho-peixe",
+          "name": "Brasileirinho de Peixe",
+          "price": 33,
+          "priceSecondary": 64,
+          "description": "Peixe em posta, feijão preto, arroz, salada e farofa da casa",
+          "image": "brasileirinho-peixe.jpg"
+        },
+        {
+          "id": "fettuccine-camarao",
+          "name": "Fettuccine de Camarão",
+          "price": 46,
+          "priceSecondary": 89,
+          "description": "Ao molho de camarão, salsinha e filé de camarão envolto",
+          "image": "fettuccine-camarao.jpg"
+        },
+        {
+          "id": "parmegiana-camarao",
+          "name": "Parmegiana de Camarão",
+          "price": 41,
+          "priceSecondary": 79,
+          "description": "Ao molho bechamel com queijo muçarela e filé de camarão envolto",
+          "image": "parmegiana-camarao.jpg"
+        },
+        {
+          "id": "brasileirinho-camarao",
+          "name": "Brasileirinho de Camarão",
+          "price": 37,
+          "priceSecondary": 71,
+          "description": "Queijo, vinagrete e orégano",
+          "image": "brasileirinho-camarao.jpg"
+        }
+      ]
+    },
+    {
+      "id": "carnes",
+      "name": "Carnes",
+      "order": 6,
+      "items": [
+        {
+          "id": "parmegiana-carne",
+          "name": "Parmegiana de Carne",
+          "price": 38,
+          "priceSecondary": 72,
+          "description": "Ao molho bechamel com queijo muçarela e filé de carne ao molho madeira com barbecue",
+          "image": "parmegiana-carne.jpg"
+        },
+        {
+          "id": "sertanejo-prainha",
+          "name": "Sertanejo do Prainha",
+          "price": 41,
+          "priceSecondary": 79,
+          "description": "Feijão verde, arroz refogado, carne de sol, queijo coalho, salada e fritas",
+          "image": "sertanejo-prainha.jpg"
+        },
+        {
+          "id": "parmegiana-frango",
+          "name": "Parmegiana de Frango",
+          "price": 34,
+          "priceSecondary": 66,
+          "description": "Ao molho bechamel com queijo muçarela",
+          "image": "parmegiana-frango.jpg"
+        },
+        {
+          "id": "brasileirinho-carne",
+          "name": "Brasileirinho de Carne",
+          "price": 29,
+          "priceSecondary": 58,
+          "description": "Filé de carne acebolada, feijão preto, arroz, salada e farofa da casa",
+          "image": "brasileirinho-carne.jpg"
+        },
+        {
+          "id": "brasileirinho-frango",
+          "name": "Brasileirinho de Frango",
+          "price": 22,
+          "priceSecondary": 44,
+          "description": "Frango em cubos, feijão preto, arroz, salada e farofa da casa",
+          "image": "brasileirinho-frango.jpg"
+        },
+        {
+          "id": "brasileirinho-calabresa",
+          "name": "Brasileirinho de Calabresa",
+          "price": 22,
+          "priceSecondary": 44,
+          "description": "Calabresa acebolada, feijão preto, arroz, salada e farofa da casa",
+          "image": "brasileirinho-calabresa.jpg"
+        },
+        {
+          "id": "penne-carne",
+          "name": "Penne com Carne",
+          "price": 41,
+          "priceSecondary": 79,
+          "description": "Ao molho de queijo, salsinha e filé de carne",
+          "image": "penne-carne.jpg"
+        },
+        {
+          "id": "fettuccine-carne",
+          "name": "Fettuccine de Carne ao Molho",
+          "price": 41,
+          "priceSecondary": 79,
+          "description": "Fettuccine ao molho de tomate com filé de carne em cubos e salsinha",
+          "image": "fettuccine-carne.jpg"
+        },
+        {
+          "id": "baiao-dois",
+          "name": "Baião de Dois",
+          "price": 42,
+          "priceSecondary": 79,
+          "description": "Feijão verde ou branco (consultar) com arroz, bacon, carne de sol desfiada e queijo coalho",
+          "image": "baiao-dois.jpg"
+        }
+      ]
+    },
+    {
+      "id": "burgers",
+      "name": "Burgers",
+      "order": 7,
+      "items": [
+        {
+          "id": "chicken-burger",
+          "name": "Chicken Burger",
+          "price": 25,
+          "image": "chicken-burger.jpg"
+        },
+        {
+          "id": "blend-tradicional",
+          "name": "Blend Tradicional",
+          "price": 28,
+          "description": "Pão, 1 smash de carne bovina, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
+          "image": "blend-tradicional.jpg"
+        },
+        {
+          "id": "american-smash-duplo",
+          "name": "American Smash Duplo",
+          "price": 36,
+          "description": "Pão, 2 smash de carne bovina, bacon, cheddar, alface e molho da casa",
+          "image": "american-smash-duplo.jpg"
+        },
+        {
+          "id": "burger-potiguar",
+          "name": "Burger Potiguar",
+          "price": 32,
+          "description": "Pão, filé de camarão, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
+          "image": "burger-potiguar.jpg"
+        },
+        {
+          "id": "nordestino-na-area",
+          "name": "Nordestino na Área",
+          "price": 26,
+          "description": "Pão, carne desfiada, coalho, ovo, alface e molho da casa",
+          "image": "nordestino-na-area.jpg"
+        },
+        {
+          "id": "cheeseburger",
+          "name": "Cheeseburger",
+          "price": 25,
+          "description": "Pão, queijo muçarela empanado, ovo, cebola caramelizada, salada e molho da casa",
+          "image": "cheeseburger.jpg"
+        }
+      ]
+    },
+    {
+      "id": "petiscos",
+      "name": "Petiscos",
+      "order": 8,
+      "items": [
+        {
+          "id": "mista-familia",
+          "name": "Mistão Família (4 pessoas)",
+          "price": 139,
+          "image": "mista-familia.jpg"
+        },
+        {
+          "id": "mista-prainha",
+          "name": "Mistão do Prainha",
+          "price": 169,
+          "description": "Carne, calabresa, camarão e batata frita",
+          "image": "mista-prainha.jpg"
+        },
+        {
+          "id": "empanados-mar",
+          "name": "Empanados do Mar",
+          "price": 139,
+          "description": "Peixe em cubos, filé de camarão, salada e batata",
+          "image": "empanados-mar.jpg"
+        },
+        {
+          "id": "camarao-alho-oleo",
+          "name": "Camarão Alho e Óleo",
+          "price": 129,
+          "description": "1kg de camarão com fritas",
+          "image": "camarao-alho-oleo.jpg"
+        },
+        {
+          "id": "linguica-prainha",
+          "name": "Linguiça do Prainha",
+          "price": 59,
+          "description": "Linguiça defumada, vinagrete e farofa",
+          "image": "linguica-prainha.jpg"
+        },
+        {
+          "id": "mix-sertanejo",
+          "name": "Mix Sertanejo",
+          "price": 99,
+          "description": "Carne de sol, queijo coalho e fritas",
+          "image": "mix-sertanejo.jpg"
+        },
+        {
+          "id": "carne-sol-fritas",
+          "name": "Carne de Sol com Fritas",
+          "price": 82,
+          "image": "carne-sol-fritas.jpg"
+        },
+        {
+          "id": "carne-ao-molho",
+          "name": "Carne ao Molho",
+          "price": 82,
+          "description": "Madeira e barbecue com fritas",
+          "image": "carne-ao-molho.jpg"
+        },
+        {
+          "id": "fritas-tradicional",
+          "name": "Fritas Tradicional",
+          "price": 25,
+          "image": "fritas-tradicional.jpg"
+        },
+        {
+          "id": "fritas-nordestina",
+          "name": "Fritas Nordestina",
+          "price": 44,
+          "description": "Carne de sol desfiada ao creme de queijo",
+          "image": "fritas-nordestina.jpg"
+        },
+        {
+          "id": "fritas-sertaneja",
+          "name": "Fritas Sertaneja",
+          "price": 37,
+          "description": "Carne, calabresa e camarão",
+          "image": "fritas-sertaneja.jpg"
+        }
+      ]
+    },
+    {
+      "id": "cuscuz-tapiocas-lanches",
+      "name": "Cuscuz, Tapiocas e Lanches",
+      "order": 9,
+      "items": [
+        {
+          "id": "crepioca-queijo",
+          "name": "Crepioca de Queijo",
+          "price": 18,
+          "image": "crepioca-queijo.jpg"
+        },
+        {
+          "id": "torrada-queijo",
+          "name": "Torrada de Queijo",
+          "price": 9,
+          "description": "Muçarela e pão de forma",
+          "image": "torrada-queijo.jpg"
+        },
+        {
+          "id": "misto",
+          "name": "Misto",
+          "price": 11,
+          "description": "Pão de forma, presunto e queijo",
+          "image": "misto.jpg"
+        },
+        {
+          "id": "carne-sol-coalho",
+          "name": "Carne de Sol Desfiada com Coalho",
+          "price": 26,
+          "image": "carne-sol-coalho.jpg"
+        },
+        {
+          "id": "filezinhos-carne-molho",
+          "name": "Filezinhos de Carne ao Molho",
+          "price": 26,
+          "image": "filezinhos-carne-molho.jpg"
+        },
+        {
+          "id": "creme-frango-cubos",
+          "name": "Creme de Frango em Cubos",
+          "price": 24,
+          "image": "creme-frango-cubos.jpg"
+        },
+        {
+          "id": "calabresa-mucarela",
+          "name": "Calabresa Fatiada com Muçarela",
+          "price": 24,
+          "image": "calabresa-mucarela.jpg"
+        },
+        {
+          "id": "files-camarao-queijo",
+          "name": "Filés de Camarão com Molho de Queijo",
+          "price": 28,
+          "image": "files-camarao-queijo.jpg"
+        },
+        {
+          "id": "ovos-mucarela",
+          "name": "Ovos e Muçarela",
+          "price": 22,
+          "image": "ovos-mucarela.jpg"
+        },
+        {
+          "id": "coco-leite-coco",
+          "name": "Coco Ralado e Leite de Coco",
+          "price": 22,
+          "image": "coco-leite-coco.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sucos-diversos",
+      "name": "Sucos e Diversos",
+      "order": 10,
+      "items": [
+        {
+          "id": "suco-tradicional",
+          "name": "Suco Tradicional",
+          "price": 12,
+          "priceSecondary": 24,
+          "image": "suco-tradicional.jpg"
+        },
+        {
+          "id": "suco-especial",
+          "name": "Suco Especial",
+          "price": 14,
+          "priceSecondary": 28,
+          "image": "suco-especial.jpg"
+        },
+        {
+          "id": "refri-lata",
+          "name": "Refri Lata",
+          "price": 8,
+          "image": "refri-lata.jpg"
+        },
+        {
+          "id": "refri-litro",
+          "name": "Refri Litro",
+          "price": 14,
+          "image": "refri-litro.jpg"
+        },
+        {
+          "id": "cajuina-litro",
+          "name": "Cajuína Litro",
+          "price": 15,
+          "image": "cajuina-litro.jpg"
+        },
+        {
+          "id": "agua-sem-gas",
+          "name": "Água sem Gás",
+          "price": 5,
+          "image": "agua-sem-gas.jpg"
+        },
+        {
+          "id": "agua-com-gas",
+          "name": "Água com Gás",
+          "price": 7,
+          "image": "agua-com-gas.jpg"
+        },
+        {
+          "id": "agua-coco",
+          "name": "Água de Coco",
+          "price": 8,
+          "image": "agua-coco.jpg"
+        },
+        {
+          "id": "agua-tonica",
+          "name": "Água Tônica",
+          "price": 8,
+          "image": "agua-tonica.jpg"
+        },
+        {
+          "id": "energetico",
+          "name": "Energético",
+          "price": 17,
+          "image": "energetico.jpg"
+        },
+        {
+          "id": "soda-italiana",
+          "name": "Soda Italiana",
+          "price": 14,
+          "image": "soda-italiana.jpg"
+        },
+        {
+          "id": "h2o",
+          "name": "H2O",
+          "price": 9,
+          "image": "h2o.jpg"
+        },
+        {
+          "id": "combo-fritas-refri",
+          "name": "Transformar em Combo",
+          "price": 9.9,
+          "description": "Batata frita + refri lata",
+          "image": "combo-fritas-refri.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sobremesas-cafes",
+      "name": "Sobremesas e Cafés",
+      "order": 11,
+      "items": [
+        {
+          "id": "acai-tradicional",
+          "name": "Açaí Tradicional 350ml",
+          "price": 22,
+          "image": "acai-tradicional.jpg"
+        },
+        {
+          "id": "petit-brownie",
+          "name": "Petit Brownie",
+          "price": 29,
+          "image": "petit-brownie.jpg"
+        },
+        {
+          "id": "cartola",
+          "name": "Cartola",
+          "price": 24,
+          "image": "cartola.jpg"
+        },
+        {
+          "id": "ice-cream-frutas",
+          "name": "Ice Cream com Frutas na Taça",
+          "price": 26,
+          "image": "ice-cream-frutas.jpg"
+        },
+        {
+          "id": "beijinho",
+          "name": "Beijinho",
+          "price": 24,
+          "image": "beijinho.jpg"
+        },
+        {
+          "id": "romeu-julieta",
+          "name": "Romeu e Julieta",
+          "price": 26,
+          "image": "romeu-julieta.jpg"
+        },
+        {
+          "id": "frutas-chocolate",
+          "name": "Frutas com Chocolate",
+          "price": 26,
+          "image": "frutas-chocolate.jpg"
+        },
+        {
+          "id": "cafe-coado-m",
+          "name": "Café Coado M",
+          "price": 5,
+          "image": "cafe-coado-m.jpg"
+        },
+        {
+          "id": "cafe-leite-m",
+          "name": "Café com Leite M",
+          "price": 7,
+          "image": "cafe-leite-m.jpg"
+        },
+        {
+          "id": "cappuccino-chantilly-m",
+          "name": "Cappuccino com Chantilly M",
+          "price": 12,
+          "image": "cappuccino-chantilly-m.jpg"
+        }
+      ]
+    },
+    {
+      "id": "drinks-autorais",
+      "name": "Drinks Autorais",
+      "order": 12,
+      "items": [
+        {
+          "id": "prainha-blue",
+          "name": "Prainha Blue",
+          "price": 32,
+          "description": "Vodka, curaçau blue, limão, refri de limão e gelo",
+          "image": "prainha-blue.jpg"
+        },
+        {
+          "id": "coffee-drink",
+          "name": "Coffee Drink",
+          "price": 30,
+          "description": "Vodka, leite condensado, café, leite de coco, abacaxi, chantilly e gelo",
+          "image": "coffee-drink.jpg"
+        },
+        {
+          "id": "whisky-tropical",
+          "name": "Whisky Tropical",
+          "price": 32,
+          "description": "Whisky, suco de limão siciliano, maracujá, tônica, espuma de gengibre e gelo",
+          "image": "whisky-tropical.jpg"
+        },
+        {
+          "id": "gim-nevado",
+          "name": "Gim Nevado",
+          "price": 30,
+          "description": "Curaçau blue, leite condensado, gim nacional, chantilly e gelo",
+          "image": "gim-nevado.jpg"
+        },
+        {
+          "id": "caipi-prainha",
+          "name": "Caipi do Prainha",
+          "price": 29,
+          "description": "Vodka ou cachaça, morango, kiwi, abacaxi, açúcar e gelo",
+          "image": "caipi-prainha.jpg"
+        },
+        {
+          "id": "mojito-abacaxi",
+          "name": "Mojito de Abacaxi",
+          "price": 28,
+          "description": "Rum, abacaxi, hortelã, refri de limão, açúcar e gelo",
+          "image": "mojito-abacaxi.jpg"
+        }
+      ]
+    },
+    {
+      "id": "drinks-tradicionais",
+      "name": "Drinks Tradicionais",
+      "order": 13,
+      "items": [
+        {
+          "id": "moscow-mule",
+          "name": "Moscow Mule",
+          "price": 26,
+          "description": "Vodka, suco de limão, xarope de açúcar, água com gás, espuma e gelo",
+          "image": "moscow-mule.jpg"
+        },
+        {
+          "id": "caipirinha",
+          "name": "Caipirinha",
+          "price": 12,
+          "description": "Cachaça, limão, açúcar e gelo",
+          "image": "caipirinha.jpg"
+        },
+        {
+          "id": "caipiroska",
+          "name": "Caipiroska",
+          "price": 15,
+          "description": "Vodka, limão, açúcar e gelo",
+          "image": "caipiroska.jpg"
+        },
+        {
+          "id": "caipifruta",
+          "name": "Caipifruta",
+          "price": 20,
+          "description": "Vodka ou cachaça, 1 fruta, açúcar e gelo",
+          "image": "caipifruta.jpg"
+        },
+        {
+          "id": "gim-tradicional",
+          "name": "Gim Tradicional",
+          "price": 26,
+          "description": "Gim nacional, limão siciliano, tônica, especiarias e gelo",
+          "image": "gim-tradicional.jpg"
+        },
+        {
+          "id": "gim-frutado",
+          "name": "Gim Frutado",
+          "price": 30,
+          "description": "Gim nacional, 1 fruta, tônica, especiarias e gelo",
+          "image": "gim-frutado.jpg"
+        },
+        {
+          "id": "pina-colada",
+          "name": "Piña Colada",
+          "price": 29,
+          "description": "Rum, abacaxi, leite condensado, creme de leite, leite de coco e gelo",
+          "image": "pina-colada.jpg"
+        },
+        {
+          "id": "espanhola",
+          "name": "Espanhola",
+          "price": 30,
+          "description": "Vinho, vodka, fruta, leite condensado e gelo",
+          "image": "espanhola.jpg"
+        },
+        {
+          "id": "mojito",
+          "name": "Mojito",
+          "price": 26,
+          "description": "Rum, limão, hortelã, água com gás, açúcar e gelo",
+          "image": "mojito.jpg"
+        },
+        {
+          "id": "cozumel",
+          "name": "Cozumel",
+          "price": 20,
+          "description": "Cerveja, suco de limão, limão, sal e gelo",
+          "image": "cozumel.jpg"
+        },
+        {
+          "id": "sex-on-the-beach",
+          "name": "Sex on the Beach",
+          "price": 30,
+          "description": "Vodka, grenadine, licor de pêssego, suco de laranja e gelo",
+          "image": "sex-on-the-beach.jpg"
+        }
+      ]
+    },
+    {
+      "id": "vinhos",
+      "name": "Vinhos",
+      "order": 14,
+      "items": [
+        {
+          "id": "vinho-consultar",
+          "name": "À Consultar",
+          "price": 89,
+          "description": "Rolha R$40. Verificar disponibilidade dos países e rótulos.",
+          "image": "vinho-consultar.jpg"
+        }
+      ]
+    },
+    {
+      "id": "cervejas",
+      "name": "Cervejas",
+      "order": 15,
+      "items": [
+        {
+          "id": "petra-600",
+          "name": "Petra 600",
+          "price": 13,
+          "image": "petra-600.jpg"
+        },
+        {
+          "id": "original-600",
+          "name": "Original 600",
+          "price": 18,
+          "image": "original-600.jpg"
+        },
+        {
+          "id": "spaten-600",
+          "name": "Spaten 600",
+          "price": 18,
+          "image": "spaten-600.jpg"
+        },
+        {
+          "id": "brahma-duplo-600",
+          "name": "Brahma Duplo 600",
+          "price": 15,
+          "image": "brahma-duplo-600.jpg"
+        },
+        {
+          "id": "devassa-600",
+          "name": "Devassa 600",
+          "price": 13,
+          "image": "devassa-600.jpg"
+        },
+        {
+          "id": "budweiser-long",
+          "name": "Budweiser Long Neck",
+          "price": 11,
+          "image": "budweiser-long.jpg"
+        },
+        {
+          "id": "heineken-long",
+          "name": "Heineken Long Neck",
+          "price": 13,
+          "image": "heineken-long.jpg"
+        },
+        {
+          "id": "zero-alcool-long",
+          "name": "Zero Álcool Long Neck",
+          "price": 13,
+          "image": "zero-alcool-long.jpg"
+        }
+      ]
+    },
+    {
+      "id": "doses-litros",
+      "name": "Doses e Litros",
+      "order": 16,
+      "items": [
+        {
+          "id": "cachaca-branca",
+          "name": "Cachaça Branca",
+          "price": 5,
+          "priceSecondary": 49,
+          "priceSecondaryLabel": "litro",
+          "image": "cachaca-branca.jpg"
+        },
+        {
+          "id": "cachaca-ouro",
+          "name": "Cachaça Ouro",
+          "price": 7,
+          "priceSecondary": 69,
+          "priceSecondaryLabel": "litro",
+          "image": "cachaca-ouro.jpg"
+        },
+        {
+          "id": "cachaca-matuta",
+          "name": "Cachaça Matuta",
+          "price": 7,
+          "priceSecondary": 69,
+          "priceSecondaryLabel": "litro",
+          "image": "cachaca-matuta.jpg"
+        },
+        {
+          "id": "vodka-smirnoff",
+          "name": "Vodka Smirnoff",
+          "price": 9,
+          "priceSecondary": 110,
+          "priceSecondaryLabel": "litro",
+          "image": "vodka-smirnoff.jpg"
+        },
+        {
+          "id": "tequila-branca",
+          "name": "Tequila Branca",
+          "price": 13,
+          "priceSecondary": 130,
+          "priceSecondaryLabel": "litro",
+          "image": "tequila-branca.jpg"
+        },
+        {
+          "id": "whisky-nacional",
+          "name": "Whisky Nacional",
+          "price": 10,
+          "priceSecondary": 120,
+          "priceSecondaryLabel": "litro",
+          "image": "whisky-nacional.jpg"
+        },
+        {
+          "id": "whisky-12-anos",
+          "name": "Whisky 12 Anos",
+          "price": 15,
+          "priceSecondary": 250,
+          "priceSecondaryLabel": "litro",
+          "image": "whisky-12-anos.jpg"
+        },
+        {
+          "id": "gim-nacional",
+          "name": "Gim Nacional",
+          "price": 10,
+          "priceSecondary": 120,
+          "priceSecondaryLabel": "litro",
+          "image": "gim-nacional.jpg"
+        },
+        {
+          "id": "gim-importado",
+          "name": "Gim Importado",
+          "price": 15,
+          "priceSecondary": 250,
+          "priceSecondaryLabel": "litro",
+          "image": "gim-importado.jpg"
+        },
+        {
+          "id": "rum",
+          "name": "Rum",
+          "price": 9,
+          "priceSecondary": 110,
+          "priceSecondaryLabel": "litro",
+          "image": "rum.jpg"
+        },
+        {
+          "id": "shot-mar-vermelho",
+          "name": "Shot Mar Vermelho",
+          "price": 10,
+          "description": "Grenadine e vodka",
+          "image": "shot-mar-vermelho.jpg"
+        },
+        {
+          "id": "shot-marola-verde",
+          "name": "Shot Marola Verde",
+          "price": 10,
+          "description": "Whisky, vodka e curaçau blue",
+          "image": "shot-marola-verde.jpg"
+        },
+        {
+          "id": "shot-blue",
+          "name": "Shot Blue",
+          "price": 10,
+          "description": "Curaçau blue e vodka",
+          "image": "shot-blue.jpg"
+        }
+      ]
+    },
+    {
+      "id": "adicionais",
+      "name": "Adicionais",
+      "order": 17,
+      "items": [
+        {
+          "id": "feijao-ind",
+          "name": "Feijão Porção Ind",
+          "price": 10,
+          "image": "feijao-ind.jpg"
+        },
+        {
+          "id": "arroz-ind",
+          "name": "Arroz Porção Ind",
+          "price": 8,
+          "image": "arroz-ind.jpg"
+        },
+        {
+          "id": "ovo-unid",
+          "name": "Ovo Unid",
+          "price": 3,
+          "image": "ovo-unid.jpg"
+        },
+        {
+          "id": "leite",
+          "name": "Leite",
+          "price": 4,
+          "image": "leite.jpg"
+        },
+        {
+          "id": "carne-130g",
+          "name": "Carne 130g",
+          "price": 15,
+          "image": "carne-130g.jpg"
+        },
+        {
+          "id": "frango-130g",
+          "name": "Frango 130g",
+          "price": 12,
+          "image": "frango-130g.jpg"
+        },
+        {
+          "id": "calabresa-130g",
+          "name": "Calabresa 130g",
+          "price": 12,
+          "image": "calabresa-130g.jpg"
+        },
+        {
+          "id": "peixe-posta",
+          "name": "Peixe Posta Unid",
+          "price": 15,
+          "image": "peixe-posta.jpg"
+        },
+        {
+          "id": "camarao-130g",
+          "name": "Camarão 130g",
+          "price": 22,
+          "image": "camarao-130g.jpg"
+        },
+        {
+          "id": "embalagem",
+          "name": "Embalagem Unid",
+          "price": 3,
+          "image": "embalagem.jpg"
+        }
+      ]
+    }
+  ]
+}
