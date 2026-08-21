@@ -1,3 +1,4 @@
 node_modules/
 assets/referencias/extracted-jpegs/
 assets/referencias/pages/
+output/*.pdf

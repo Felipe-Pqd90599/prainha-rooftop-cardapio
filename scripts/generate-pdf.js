@@ -22,13 +22,33 @@ async function main() {
     executablePath,
     headless: 'new',
     args: ['--allow-file-access-from-files'],
+    protocolTimeout: 600000,
   });
   const page = await browser.newPage();
+  await page.setDefaultNavigationTimeout(120000);
   await page.goto(`file:///${htmlPath.replace(/\\/g, '/')}`, {
-    waitUntil: 'networkidle0',
+    waitUntil: 'domcontentloaded',
     timeout: 120000,
   });
-  await page.waitForTimeout(2000);
+
+  await page.waitForFunction(() => document.querySelectorAll('#menu .item').length >= 140, {
+    timeout: 90000,
+  });
+
+  // Fotos carregam em paralelo no browser — aguarda sem evaluate longo
+  console.log('Aguardando carregamento das fotos (45s)...');
+  await new Promise((r) => setTimeout(r, 45000));
+
+  const loaded = await page.evaluate(() => ({
+    items: document.querySelectorAll('#menu .item').length,
+    photos: document.querySelectorAll('.item__photo').length,
+    loaded: Array.from(document.querySelectorAll('.item__photo')).filter(
+      (img) => img.complete && img.naturalWidth > 0,
+    ).length,
+  }));
+  console.log('Itens no PDF:', loaded);
+
+  page.setDefaultTimeout(600000);
   await page.pdf({
     path: outPdf,
     format: 'A4',
@@ -36,6 +56,10 @@ async function main() {
     margin: { top: '12mm', bottom: '12mm', left: '10mm', right: '10mm' },
   });
   await browser.close();
+
+  const onlinePdf = path.join(path.resolve(__dirname, '../online'), 'cardapio-prainha-rooftop.pdf');
+  fs.copyFileSync(outPdf, onlinePdf);
+  console.log('PDF copiado para site:', onlinePdf);
   console.log('PDF gerado:', outPdf);
 }
 
