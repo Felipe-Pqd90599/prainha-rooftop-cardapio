@@ -23,7 +23,7 @@ async function initPrint() {
           const prices = formatPrices(item, menu.meta);
           return `
             <article class="item">
-              <img class="item__photo" src="assets/fotos/${file}" alt="" loading="lazy"
+              <img class="item__photo" src="assets/fotos-pdf/${file}" alt="" loading="eager"
                 onerror="this.closest('.item').classList.add('item--no-photo'); this.remove();" />
               <div class="item__body">
                 <div class="item__row">
