@@ -1,0 +1,25 @@
+{
+  "name": "Prainha Rooftop",
+  "tagline": "Rooftop bar premium em Natal-RN",
+  "description": "Vista para o pôr do sol, o oceano e o Morro do Careca. Drinks, gastronomia e experiência de rooftop na Prainha.",
+  "location": {
+    "city": "Natal",
+    "state": "RN",
+    "neighborhood": "Ponta Negra / Prainha"
+  },
+  "contact": {
+    "phone": "(84) 2131-3667",
+    "whatsapp": "558421313667",
+    "instagram": "@prainharooftop"
+  },
+  "policies": {
+    "serviceChargeSuggestion": "10% (gorjeta sugerida, conforme norma coletiva)",
+    "couvertArtistico": "Cobramos couvert artístico em dias de música ao vivo (Lei complementar nº 186/2019 Natal RN)",
+    "adicionaisNote": "Adicionais só são permitidos para quem pede refeição"
+  },
+  "meta": {
+    "source": "cardapio-2025-atualizado.pdf",
+    "lastUpdated": "2025",
+    "version": "1.0.0-draft"
+  }
+}

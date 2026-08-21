@@ -1,0 +1,68 @@
+{
+  "convention": "assets/fotos/{item.id}.jpg — substituir arquivo mantém id",
+  "fromPdf": {
+    "ginga-tapioca": {
+      "source": "embedded-02.jpg",
+      "note": "Peixe frito com tapioca"
+    },
+    "salada-camarao": {
+      "source": "embedded-03.jpg",
+      "note": "Camarão grelhado com brócolis"
+    },
+    "camarao-prainha": {
+      "source": "embedded-04.jpg",
+      "note": "Arroz cremoso com camarão empanado"
+    },
+    "linguica-prainha": {
+      "source": "embedded-05.jpg",
+      "note": "Foto composta; prato principal = linguiça"
+    },
+    "caipifruta": {
+      "source": "embedded-06.jpg",
+      "note": "Drink maracujá"
+    },
+    "files-camarao-queijo": {
+      "source": "embedded-07.jpg",
+      "note": "Tapioca/recheio de camarão"
+    },
+    "carne-sol-coalho": {
+      "source": "embedded-08.jpg",
+      "note": "Tapioca carne de sol e coalho"
+    },
+    "baiao-dois": {
+      "source": "embedded-09.jpg",
+      "note": "Cuscuz/baião visual similar"
+    },
+    "parmegiana-carne": {
+      "source": "embedded-10.jpg",
+      "note": "Parmegiana com espaguete"
+    },
+    "taca-camarao-empanado": {
+      "source": "embedded-11.jpg",
+      "note": "Taça camarão empanado"
+    },
+    "mix-sertanejo": {
+      "source": "embedded-12.jpg",
+      "note": "Carne, coalho e fritas"
+    },
+    "parmegiana-frango": {
+      "source": "embedded-13.jpg",
+      "note": "Parmegiana bandeja"
+    },
+    "ensopado-peixe": {
+      "source": "embedded-14.jpg",
+      "note": "Peixe ao molho com arroz"
+    },
+    "caipi-prainha": {
+      "source": "embedded-15.jpg",
+      "note": "Drink autoral frutas"
+    },
+    "burger-potiguar": {
+      "source": "embedded-16.jpg",
+      "note": "Burger com camarão"
+    }
+  },
+  "missingCount": 0,
+  "missing": [],
+  "lastUpdated": "2026-08-21"
+}
