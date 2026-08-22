@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', initPrint);
 
 async function initPrint() {
+  const photoDir = window.PRINT_PHOTO_DIR || 'assets/fotos-pdf';
   const [menu, info] = await Promise.all([
     fetch('data/menu-data.json').then((r) => r.json()),
     fetch('data/restaurant-info.json').then((r) => r.json()),
@@ -23,7 +24,7 @@ async function initPrint() {
           const prices = formatPrices(item, menu.meta);
           return `
             <article class="item">
-              <img class="item__photo" src="assets/fotos-pdf/${file}" alt="" loading="eager"
+              <img class="item__photo" src="${photoDir}/${file}" alt="" loading="eager"
                 onerror="this.closest('.item').classList.add('item--no-photo'); this.remove();" />
               <div class="item__body">
                 <div class="item__row">
