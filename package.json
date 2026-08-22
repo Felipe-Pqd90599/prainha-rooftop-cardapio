@@ -6,9 +6,12 @@
   "scripts": {
     "sync-online": "node scripts/sync-online-data.js",
     "install-assets": "node scripts/install-cursor-assets.js",
+    "prepare-pdf-images": "node scripts/prepare-pdf-images.js",
     "update-images-meta": "node scripts/update-images-meta.js",
     "screenshot-pdf": "node scripts/screenshot-pdf-pages.js",
-    "generate-pdf": "node scripts/prepare-pdf-images.js && node scripts/sync-online-data.js && node scripts/generate-pdf.js"
+    "generate-pdf": "node scripts/prepare-pdf-images.js && node scripts/sync-online-data.js && node scripts/generate-pdf.js",
+    "generate-pdf-full": "node scripts/sync-online-data.js && node scripts/generate-pdf-full.js",
+    "qa-check": "node scripts/qa-check.js"
   },
   "keywords": [],
   "author": "",

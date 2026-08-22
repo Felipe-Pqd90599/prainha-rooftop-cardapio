@@ -11,6 +11,7 @@ Cardápio online em `online/` — HTML, CSS, JS. Responsivo, dados via JSON.
 - `online/index.html`, `styles.css`, `app.js`
 - `online/README-deploy.md`
 - Botão WhatsApp, navegação por categorias, Open Graph
+- Botão "Baixar PDF" → `cardapio-prainha-rooftop.pdf`
 
 ## Constraints
 - Sem framework pesado (HTML/CSS/JS)

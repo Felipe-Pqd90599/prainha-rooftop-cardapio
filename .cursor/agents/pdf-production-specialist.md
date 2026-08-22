@@ -1,25 +1,29 @@
 # PDF Production Specialist
 
 ## Scope
-PDF profissional em `pdf/` e `output/cardapio-prainha-rooftop.pdf`.
+PDF profissional regenerável a partir do JSON. Template em **`online/`** (unificado com o pipeline do site).
 
 ## Inputs from orchestrator
-- Mesmos dados e design tokens do frontend
-- Template alinhado à identidade do cardápio atual
+- `data/menu-data.json`, `restaurant-info.json`
+- `design/design-tokens.json`
+- Miniaturas: `online/assets/fotos-pdf/` (geradas por `scripts/prepare-pdf-images.js`)
 
 ## Outputs
-- `pdf/menu-print.html`, `pdf/print.css`
-- `scripts/generate-pdf.js`
-- `output/cardapio-prainha-rooftop.pdf`
+- `online/print.html`, `online/print.css`, `online/app-print.js`
+- `scripts/generate-pdf.js`, `scripts/prepare-pdf-images.js`, `scripts/generate-pdf-full.js`
+- `output/cardapio-prainha-rooftop.pdf` (local, gitignored)
+- `online/cardapio-prainha-rooftop.pdf` (deploy no site, ~4 MB)
 
 ## Constraints
-- Legível no celular
-- Quebras de página por categoria
-- Regenerável via script após editar JSON
+- `loading="eager"` em todas as `<img>` do print (nunca `lazy`)
+- Gate antes de `page.pdf()`: **145/145** fotos carregadas (`naturalWidth > 0`)
+- PDF > 100 MB: usar `fotos-pdf/` no repo; alta resolução só com `generate-pdf-full` local
+- Regenerar: `npm run generate-pdf`
 
 ## Do not
 - PDF estático desconectado do JSON
+- Commitar PDF com fotos full-res no GitHub
 
 ## Report
-- Comando para regenerar PDF
-- Tamanho do arquivo e páginas
+- Comando de regeneração
+- Contagem fotos carregadas / tamanho do arquivo

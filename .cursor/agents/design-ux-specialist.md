@@ -11,14 +11,24 @@ Identidade visual e UX mobile do cardápio. `design/design-tokens.json`, `design
 - `design/design-tokens.json`
 - `design/layout-spec.md` (hierarquia, capa, categorias, navegação mobile)
 
+## Paleta real (PDF oficial — não inventar)
+
+- Fundo claro / branco
+- Títulos e faixas MENU: bege areia **`#B8956B`**
+- Hero / mar / destaques: azul turquesa (amostrar do PDF)
+- Texto: escuro sobre fundo claro
+
+**Não usar** paleta “preto + dourado ChatGPT” — sempre amostrar do PDF via `scripts/screenshot-pdf-pages.js`.
+
 ## Constraints
 - Mobile-first (WhatsApp = celular)
-- Paleta: fundo escuro, dourado, branco (cardápio atual)
-- Consistência entre PDF e online
+- Consistência entre PDF impresso e site online
+- Spec de fotos: site = alta resolução; PDF compartilhável = miniaturas `fotos-pdf/`
 
 ## Do not
 - Introduzir paleta nova sem aprovação (Gate G3)
+- Usar imagens de referência fora do PDF oficial
 
 ## Report
-- Tokens definidos
+- Tokens definidos com hex e fonte (página do PDF)
 - Wireframe textual das seções

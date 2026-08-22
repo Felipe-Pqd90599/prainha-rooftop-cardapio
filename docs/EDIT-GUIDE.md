@@ -34,5 +34,16 @@ Mapa PDF → itens: `docs/IMAGES-MAP.md`
 npm run setup-images      # reextrai fotos do PDF (não sobrescreve se já existir)
 npm run install-cursor-assets  # copia imagens geradas no workspace
 npm run sync-online         # atualiza site
-npm run generate-pdf        # gera output/cardapio-prainha-rooftop.pdf
+npm run generate-pdf        # PDF leve + copia para online/
+npm run generate-pdf-full   # PDF alta resolução na Desktop (local)
+npm run qa-check            # valida JSON + fotos antes do push
 ```
+
+## PDF: duas versões
+
+| Versão | Comando | Uso |
+|--------|---------|-----|
+| Compartilhar (~4 MB) | `npm run generate-pdf` | Site, WhatsApp, GitHub |
+| Alta resolução (~400 MB) | `npm run generate-pdf-full` | Só no seu PC (Desktop) |
+
+O PDF leve usa miniaturas em `online/assets/fotos-pdf/` (geradas automaticamente). O site usa fotos em alta em `online/assets/fotos/`.

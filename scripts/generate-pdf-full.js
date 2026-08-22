@@ -1,3 +1,7 @@
+/**
+ * Gera PDF em alta resolução (fotos originais) — arquivo grande (~400MB).
+ * Uso local apenas; não commitar no GitHub.
+ */
 const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer-core');
@@ -13,10 +17,13 @@ async function main() {
   const executablePath = edgePaths.find((p) => fs.existsSync(p));
   if (!executablePath) throw new Error('Chrome/Edge não encontrado');
 
-  const htmlPath = path.resolve(__dirname, '../online/print.html');
-  const outDir = path.resolve(__dirname, '../output');
+  const desktop = path.join(process.env.USERPROFILE || '', 'Desktop');
+  const outDir = path.join(desktop, 'Prainha-Rooftop-Cardapio-PDF');
   fs.mkdirSync(outDir, { recursive: true });
-  const outPdf = path.join(outDir, 'cardapio-prainha-rooftop.pdf');
+  const outPdf = path.join(outDir, 'cardapio-prainha-rooftop-alta-resolucao.pdf');
+
+  const htmlPath = path.resolve(__dirname, '../online/print.html');
+  const coverFull = path.resolve(__dirname, '../online/assets/fotos/capa-prainha-rooftop.jpg');
 
   const browser = await puppeteer.launch({
     executablePath,
@@ -25,19 +32,29 @@ async function main() {
     protocolTimeout: 600000,
   });
   const page = await browser.newPage();
-  await page.setDefaultNavigationTimeout(120000);
+  page.setDefaultNavigationTimeout(120000);
+  page.setDefaultTimeout(600000);
+
+  await page.evaluateOnNewDocument(() => {
+    window.PRINT_PHOTO_DIR = 'assets/fotos';
+  });
+
   await page.goto(`file:///${htmlPath.replace(/\\/g, '/')}`, {
     waitUntil: 'domcontentloaded',
     timeout: 120000,
   });
 
+  await page.evaluate((coverSrc) => {
+    const cover = document.querySelector('.print-cover__img');
+    if (cover) cover.src = coverSrc;
+  }, `file:///${coverFull.replace(/\\/g, '/')}`);
+
   await page.waitForFunction(() => document.querySelectorAll('#menu .item').length >= 140, {
     timeout: 90000,
   });
 
-  // Fotos carregam em paralelo no browser — aguarda sem evaluate longo
-  console.log('Aguardando carregamento das fotos (45s)...');
-  await new Promise((r) => setTimeout(r, 45000));
+  console.log('Aguardando carregamento das fotos em alta resolução (60s)...');
+  await new Promise((r) => setTimeout(r, 60000));
 
   const loaded = await page.evaluate(() => ({
     items: document.querySelectorAll('#menu .item').length,
@@ -48,14 +65,6 @@ async function main() {
   }));
   console.log('Itens no PDF:', loaded);
 
-  const expected = loaded.items;
-  if (loaded.loaded < expected) {
-    throw new Error(
-      `Gate PDF: apenas ${loaded.loaded}/${expected} fotos carregadas. Aumente a espera ou rode npm run prepare-pdf-images.`,
-    );
-  }
-
-  page.setDefaultTimeout(600000);
   await page.pdf({
     path: outPdf,
     format: 'A4',
@@ -64,10 +73,8 @@ async function main() {
   });
   await browser.close();
 
-  const onlinePdf = path.join(path.resolve(__dirname, '../online'), 'cardapio-prainha-rooftop.pdf');
-  fs.copyFileSync(outPdf, onlinePdf);
-  console.log('PDF copiado para site:', onlinePdf);
-  console.log('PDF gerado:', outPdf);
+  const mb = (fs.statSync(outPdf).size / (1024 * 1024)).toFixed(2);
+  console.log(`PDF alta resolução (${mb} MB):`, outPdf);
 }
 
 main().catch((e) => {
