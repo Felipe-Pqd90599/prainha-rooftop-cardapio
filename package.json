@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "sync-online": "node scripts/sync-online-data.js",
+    "update-readme": "node scripts/update-readme.js",
     "install-assets": "node scripts/install-cursor-assets.js",
     "prepare-pdf-images": "node scripts/prepare-pdf-images.js",
     "update-images-meta": "node scripts/update-images-meta.js",

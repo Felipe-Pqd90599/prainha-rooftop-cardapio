@@ -25,3 +25,5 @@ for (const [src, dest] of files) {
 }
 
 copyDir(path.join(root, 'assets/fotos'), path.join(root, 'online/assets/fotos'));
+
+require('./update-readme.js');

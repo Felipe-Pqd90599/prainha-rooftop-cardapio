@@ -21,3 +21,5 @@ fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2) + '\n');
 console.log('total items', allIds.length);
 console.log('with image', allIds.length - missing.length);
 console.log('missing', missing.length);
+
+require('./update-readme.js');

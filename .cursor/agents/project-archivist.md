@@ -22,6 +22,7 @@ Documentação, worklog, handoff e organização Google Drive.
 ## Constraints
 - EDIT-GUIDE deve permitir mudar preço sem recomeçar projeto
 - Handoff deve incluir URL do site e comandos npm
+- `README.md` é atualizado automaticamente por `npm run sync-online` (não editar métricas manualmente)
 - Drive: 01 Entrega Final, 02 Edição Futura, 03 Online, 04 Docs, 05 Referências
 
 ## Do not
