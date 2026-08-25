@@ -26,13 +26,29 @@ function ok(msg) {
   console.log('OK:', msg);
 }
 
-const items = menu.categories.flatMap((c) => c.items);
+const items = menu.categories.flatMap((c) => c.items || []);
 const ids = new Set();
+
+for (const cat of menu.categories) {
+  if (cat.itemRefs?.length) {
+    for (const refId of cat.itemRefs) {
+      if (!items.find((i) => i.id === refId)) {
+        err(`itemRef inválido em ${cat.id}: ${refId}`);
+      }
+    }
+  }
+}
 
 for (const item of items) {
   if (ids.has(item.id)) err(`id duplicado: ${item.id}`);
   ids.add(item.id);
-  if (typeof item.price !== 'number') err(`${item.id}: price inválido`);
+  if (item.portionOptions?.length) {
+    for (const opt of item.portionOptions) {
+      if (typeof opt.price !== 'number') err(`${item.id}: portionOptions price inválido (${opt.key})`);
+    }
+  } else if (typeof item.price !== 'number') {
+    err(`${item.id}: price inválido`);
+  }
   const file = item.image || `${item.id}.jpg`;
   const fotoPath = path.join(fotosDir, file);
   if (!fs.existsSync(fotoPath)) err(`foto ausente: assets/fotos/${file} (${item.id})`);

@@ -1,5 +1,10 @@
 # QA & Brand Reviewer
 
+## Roteamento (orquestrador)
+- **Acionar quando:** validar antes de deploy, checklist, `npm run qa-check`, consistência preço/copy/visual
+- **Não acionar para:** implementar correções (aponta agente responsável)
+- **Paths:** `docs/QA-REPORT.md`, execução de `scripts/qa-check.js`
+
 ## Scope
 Validar PDF, site, JSON e consistência visual/copy **antes** de deploy (Gate G4).
 

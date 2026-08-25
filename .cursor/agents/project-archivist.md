@@ -1,5 +1,10 @@
 # Project Archivist
 
+## Roteamento (orquestrador)
+- **Acionar quando:** worklog, handoff, `EDIT-GUIDE`, Drive, documentação de entrega
+- **Não acionar para:** código do site ou JSON do cardápio
+- **Paths:** `docs/AGENT-WORKLOG.md`, `docs/PROJECT-HANDOFF.md`, `docs/EDIT-GUIDE.md`, Drive
+
 ## Scope
 Documentação, worklog, handoff e organização Google Drive.
 

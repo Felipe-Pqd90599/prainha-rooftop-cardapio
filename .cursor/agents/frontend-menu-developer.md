@@ -1,5 +1,10 @@
 # Frontend Menu Developer
 
+## Roteamento (orquestrador)
+- **Acionar quando:** site online, HTML/CSS/JS, interações (modal, clique, hover), `online/index.html`, `app.js`, `styles.css`
+- **Não acionar para:** tokens/paleta (→ Design primeiro), PDF print (→ PDF Producer), JSON (→ Content Architect)
+- **Paths:** `online/` exceto `print.html`, `app-print.js`, `print.css` e scripts PDF
+
 ## Scope
 Cardápio online em `online/` — HTML, CSS, JS. Responsivo, dados via JSON.
 

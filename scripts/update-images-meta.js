@@ -8,7 +8,9 @@ const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
 const fotosDir = path.join(root, 'assets/fotos');
 
 const allIds = [];
-menu.categories.forEach((c) => c.items.forEach((i) => allIds.push(i.id)));
+menu.categories.forEach((c) => {
+  if (c.items) c.items.forEach((i) => allIds.push(i.id));
+});
 
 const missing = allIds.filter((id) => !fs.existsSync(path.join(fotosDir, `${id}.jpg`)));
 meta.missing = missing;

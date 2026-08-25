@@ -1,5 +1,10 @@
 # Brand Copywriter
 
+## Roteamento (orquestrador)
+- **Acionar quando:** descrições, tom de voz, textos comerciais, `COPY-GUIDE.md`
+- **Não acionar para:** preços/estrutura JSON (→ Content Architect), CSS (→ Frontend/Design)
+- **Paths:** descrições em `data/menu-data.json`, `docs/COPY-GUIDE.md`
+
 ## Scope
 Textos comerciais: descrições de pratos, chamadas, rodapé, tom de voz Prainha Rooftop (rooftop, praia, experiência).
 

@@ -1,50 +1,45 @@
 {
-  "source": "assets/referencias/cardapio-2025-atualizado.pdf",
-  "note": "Paleta amostrada das páginas do PDF oficial (screenshots em assets/referencias/pages/). Estética praia/rooftop: branco, bege areia nos títulos, azul turquesa do mar.",
-  "extraction": {
-    "method": "screenshot-pdf-pages.js via Chrome",
-    "referenceFiles": [
-      "cardapio-2025-atualizado.pdf",
-      "assets/referencias/pages/pdf-page-2.png"
-    ]
-  },
+  "source": "Layout inspirado em cardápios premium + identidade Prainha (PDF oficial)",
+  "note": "Tema escuro moderno. Cores oficiais: bege #B8956B, turquesa #7EC8E3, branco.",
   "colors": {
-    "background": "#FFFFFF",
-    "backgroundHero": "#7EC8E3",
-    "surface": "#FFFFFF",
-    "categoryHeaderBg": "#B8956B",
-    "categoryHeaderText": "#FFFFFF",
+    "background": "#141414",
+    "backgroundHero": "#0f1418",
+    "surface": "#1c1c1c",
+    "surfaceElevated": "#252525",
+    "categoryHeaderBg": "#1c1c1c",
+    "categoryHeaderText": "#ffffff",
     "primary": "#B8956B",
     "primaryDark": "#8B7049",
+    "accent": "#B8956B",
     "accentSky": "#5BB5C9",
-    "accentSea": "#3A9BB5",
-    "text": "#2C2C2C",
-    "textOnDark": "#FFFFFF",
-    "textMuted": "#5A5A5A",
-    "price": "#8B7049",
-    "border": "#E8E0D4",
-    "footerBg": "#F5F0E8"
+    "accentSea": "#7EC8E3",
+    "text": "#f5f5f5",
+    "textOnDark": "#ffffff",
+    "textMuted": "#a8a8a8",
+    "price": "#E8C98A",
+    "border": "#2e2e2e",
+    "footerBg": "#0a0a0a"
   },
   "typography": {
-    "fontDisplay": "\"Segoe UI\", system-ui, -apple-system, sans-serif",
-    "fontBody": "\"Segoe UI\", system-ui, -apple-system, sans-serif",
-    "categoryStyle": "uppercase, letter-spacing 0.14em, bold",
+    "fontDisplay": "\"Oswald\", \"Segoe UI\", system-ui, sans-serif",
+    "fontBody": "\"Source Sans 3\", \"Segoe UI\", system-ui, sans-serif",
+    "categoryStyle": "uppercase, letter-spacing 0.12em, bold",
     "scale": {
-      "hero": "1.65rem",
-      "category": "0.8rem",
-      "itemName": "1rem",
-      "description": "0.85rem",
-      "price": "0.95rem"
+      "hero": "2rem",
+      "category": "0.75rem",
+      "itemName": "1.05rem",
+      "description": "0.875rem",
+      "price": "1rem"
     }
   },
   "spacing": {
     "pagePadding": "1rem",
-    "sectionGap": "1.25rem",
-    "itemGap": "0.6rem"
+    "sectionGap": "1.5rem",
+    "itemGap": "0.75rem"
   },
   "layout": {
     "mobileFirst": true,
     "categoryNav": "sticky horizontal scroll",
-    "photoStyle": "fotos reais do cardápio em assets/fotos/ quando disponíveis"
+    "itemLayout": "cards with image overlay price + modal porção"
   }
 }

@@ -33,7 +33,10 @@ Este projeto usou definições em `.cursor/agents/*.md` e a skill `.cursor/skill
 
 | Área | Antes | Depois (melhorias aplicadas) |
 |------|--------|------------------------------|
-| **QA** | Ad hoc na conversa | `npm run qa-check` + `QA-REPORT.md` obrigatório antes do push |
+| **Delegação** | Composer fazia tudo | **Orquestrador** roteia → agente especializado executa |
+| **Regra Cursor** | — | `.cursor/rules/agent-orchestration.mdc` |
+| **Roteamento** | — | `docs/AGENT-ROUTING.md` |
+| QA | Ad hoc | `npm run qa-check` + `QA-REPORT.md` |
 | **PDF** | `lazy` load, sem gate | `eager`, `fotos-pdf/`, gate 145/145 fotos, `generate-pdf-full` local |
 | **Design agent** | Prompt “dark + gold” | Alinhado ao PDF: bege `#B8956B`, azul turquesa, branco |
 | **PDF agent** | Pasta `pdf/` | Documentado: template em `online/print.html` |

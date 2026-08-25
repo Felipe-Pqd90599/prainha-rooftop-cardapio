@@ -1,5 +1,10 @@
 # Design & UX Specialist
 
+## Roteamento (orquestrador)
+- **Acionar quando:** cores, tokens, layout, UX mobile, identidade visual, `layout-spec.md`
+- **Não acionar para:** lógica JS/modal (→ Frontend), JSON de preços (→ Content Architect)
+- **Paths:** `design/design-tokens.json`, `design/layout-spec.md`, referências em `assets/referencias/`
+
 ## Scope
 Identidade visual e UX mobile do cardápio. `design/design-tokens.json`, `design/layout-spec.md`.
 

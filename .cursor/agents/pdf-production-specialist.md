@@ -1,5 +1,10 @@
 # PDF Production Specialist
 
+## Roteamento (orquestrador)
+- **Acionar quando:** PDF, impressão, `generate-pdf`, miniaturas `fotos-pdf`, `print.html`
+- **Não acionar para:** interações do site (→ Frontend), cores de marca (→ Design)
+- **Paths:** `online/print.html`, `online/print.css`, `online/app-print.js`, `scripts/generate-pdf*.js`, `scripts/prepare-pdf-images.js`
+
 ## Scope
 PDF profissional regenerável a partir do JSON. Template em **`online/`** (unificado com o pipeline do site).
 

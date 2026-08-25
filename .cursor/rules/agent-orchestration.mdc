@@ -1,0 +1,34 @@
+---
+description: Orquestrador delega cada comando ao agente especializado; nenhum agente edita fora do seu escopo.
+alwaysApply: true
+---
+
+# Orquestração de agentes — Prainha Rooftop Cardápio
+
+## Princípio (obrigatório)
+
+1. **Orquestrador** classifica o pedido do Felipe e **delega** — não implementa tarefas de especialista sem assumir explicitamente o papel correto.
+2. Antes de editar, **ler** o arquivo do agente em `.cursor/agents/<agente>.md` e seguir **somente** seu escopo, outputs e restrições.
+3. Na resposta, indicar: **qual agente executou** (ex.: "Frontend Menu Developer").
+4. Pedido em **vários domínios** → orquestrador divide em etapas, um agente por etapa, em ordem lógica (ex.: Design → Frontend).
+5. **Não** misturar papéis numa mesma edição sem avisar (ex.: mudar JSON e CSS no mesmo passo sem Content + Frontend).
+
+## Tabela de roteamento
+
+| Tipo de pedido | Agente | Arquivo | Pastas / arquivos |
+|----------------|--------|---------|-------------------|
+| Categorias, preços, ids, JSON | Menu Content Architect | `menu-content-architect.md` | `data/menu-data.json`, `data/restaurant-info.json`, `docs/CHANGELOG-content.md` |
+| Descrições, tom de voz, copy | Brand Copywriter | `brand-copywriter.md` | textos em `menu-data.json`, `docs/COPY-GUIDE.md` |
+| Cores, tokens, layout, UX | Design & UX Specialist | `design-ux-specialist.md` | `design/`, `assets/referencias/` |
+| Site, interações, HTML/CSS/JS | Frontend Menu Developer | `frontend-menu-developer.md` | `online/` (exceto pipeline PDF) |
+| PDF, impressão, scripts PDF | PDF Production Specialist | `pdf-production-specialist.md` | `online/print.html`, `print.css`, `app-print.js`, `scripts/generate-pdf*.js`, `scripts/prepare-pdf-images.js` |
+| Validar antes de deploy | QA & Brand Reviewer | `qa-brand-reviewer.md` | `docs/QA-REPORT.md`, `npm run qa-check` |
+| Docs, handoff, worklog, Drive | Project Archivist | `project-archivist.md` | `docs/`, handoff, Drive |
+| Fotos, lotes IA, `images-meta` | Orquestrador (até agente Image) | skill `prainha-menu-orchestrator` | `assets/fotos/`, scripts de imagem |
+| Plano, gates, git/deploy coordenação | Orquestrador | `.cursor/skills/prainha-menu-orchestrator/SKILL.md` | coordenação apenas |
+
+## Skill do orquestrador
+
+Sempre disponível: `.cursor/skills/prainha-menu-orchestrator/SKILL.md`
+
+Detalhes: `docs/AGENT-ROUTING.md`

@@ -1,7 +1,29 @@
 .print-mode {
   background: #fff;
+  color: #2c2c2c;
 }
 
+.print-mode .section__grid {
+  display: block;
+}
+
+.print-mode .section__header {
+  background: #b8956b;
+  color: #fff;
+  padding: 0.55rem 1rem;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.print-mode .section__title,
+.print-mode .section__count {
+  color: inherit;
+}
+
+.print-mode .section__count {
+  opacity: 0.85;
+  font-size: 0.7rem;
+}
 .print-cover {
   position: relative;
   height: 280px;
