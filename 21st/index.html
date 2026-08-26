@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cardápio — Prainha Rooftop (21st)</title>
+    <meta
+      name="description"
+      content="Cardápio do Prainha Rooftop — gastronomia e drinks com vista para o mar em Natal-RN."
+    />
+    <meta property="og:title" content="Prainha Rooftop — Cardápio" />
+    <meta
+      property="og:description"
+      content="Veja o cardápio completo e peça pelo WhatsApp."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#7EC8E3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=1.1.0-21st-light" />
+  </head>
+  <body>
+    <!-- 21st component: Floating Food Hero (id: 8435, ravikatiyar162) -->
+    <header class="floating-hero" id="topo">
+      <div class="floating-hero__swirls" aria-hidden="true"></div>
+      <div class="floating-hero__images" id="hero-images" aria-hidden="true"></div>
+      <div class="floating-hero__content">
+        <p class="floating-hero__brand">PRAINHA</p>
+        <p class="floating-hero__sub">ROOFTOP</p>
+        <h1 class="floating-hero__title" id="hero-title">Vista, brisa e sabor no rooftop da Prainha</h1>
+        <p class="floating-hero__contact" id="hero-contact"></p>
+        <div class="floating-hero__actions">
+          <a class="btn btn--whatsapp" id="btn-whatsapp" href="#" target="_blank" rel="noopener">
+            Pedir no WhatsApp
+          </a>
+          <a class="btn btn--ghost" href="../cardapio-prainha-rooftop.pdf" target="_blank" rel="noopener">
+            Baixar PDF
+          </a>
+          <a class="btn btn--ghost" href="../" rel="noopener">
+            Versão escura
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu-shell">
+      <!-- 21st component: Animated Navigation Tabs (id: 575, ln-dev7) — metadata only, CSS adaptado -->
+      <nav class="category-tabs" id="category-nav" aria-label="Categorias do cardápio">
+        <div class="category-tabs__track" id="category-tabs-track"></div>
+        <span class="category-tabs__indicator" id="category-tabs-indicator" aria-hidden="true"></span>
+      </nav>
+
+      <main class="menu" id="menu" aria-label="Itens do cardápio"></main>
+    </div>
+
+    <footer class="footer" id="footer"></footer>
+
+    <!-- 21st component: Dialog (id: 378, originui) — metadata only, CSS adaptado -->
+    <div class="item-dialog" id="item-modal" hidden aria-hidden="true">
+      <div class="item-dialog__backdrop" data-modal-close tabindex="-1"></div>
+      <div
+        class="item-dialog__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button type="button" class="item-dialog__close" data-modal-close aria-label="Fechar">
+          ×
+        </button>
+        <div class="item-dialog__media">
+          <img class="item-dialog__img" id="modal-img" alt="" />
+          <div class="item-dialog__price-overlay" id="modal-price-overlay"></div>
+        </div>
+        <div class="item-dialog__body">
+          <h3 class="item-dialog__title" id="modal-title"></h3>
+          <p class="item-dialog__desc" id="modal-desc"></p>
+          <div class="item-dialog__portions" id="modal-portions"></div>
+          <div class="item-dialog__combo" id="modal-combo" hidden></div>
+          <a class="btn btn--whatsapp btn--block" id="modal-wa" href="#" target="_blank" rel="noopener">
+            Pedir no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js?v=1.1.0-21st-light"></script>
+  </body>
+</html>
