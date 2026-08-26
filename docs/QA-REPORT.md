@@ -20,7 +20,7 @@
 | Cores vs PDF oficial | ✅ | Bege `#B8956B`, azul turquesa, branco |
 | GitHub Pages | ✅ | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/ |
 | `docs/QA-REPORT.md` | ✅ | Este arquivo |
-| Google Drive (G5) | ⏳ | Pendente |
+| Google Drive (G5) | ❌ | Cancelado — entrega via GitHub apenas |
 | Endereço / horário completo | ⏳ | `restaurant-info.json` |
 
 ## Issues encontrados (histórico — corrigidos)
@@ -39,9 +39,8 @@
 
 | Severidade | Issue | Responsável |
 |------------|-------|-------------|
-| Baixa | Endereço e horário no cardápio | Felipe → Content Architect |
+| Baixa | Endereço e horário no cardápio | Felipe → Content Architect (opcional) |
 | Baixa | Copy não revisada em todos os drinks | Brand Copywriter (futuro) |
-| Baixa | Google Drive estrutura 01–05 | Project Archivist (G5) |
 
 ## Comando de verificação
 
@@ -54,4 +53,4 @@ Rodar **antes** de `git push` ou publicar PDF.
 ## Aprovação Gate G4
 
 - **Site e PDF leve:** aprovado para uso e compartilhamento.
-- **Gate G5:** aguarda Drive + dados de localização.
+- **G5 Drive:** cancelado pelo Felipe (2026-08-26).

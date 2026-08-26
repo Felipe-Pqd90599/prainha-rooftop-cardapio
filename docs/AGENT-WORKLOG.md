@@ -9,7 +9,7 @@
 
 ## Orquestrador
 
-**Fases:** 0 → G4 (G5 pendente)  
+**Fases:** 0 → G4 entregue (G5 Drive cancelado)  
 **Status:** ✅ Entrega principal concluída
 
 ### Produzi
@@ -79,10 +79,10 @@
 
 ---
 
-## Project Archivist — ⚠️ Parcial
+## Project Archivist — ✅ Feito
 
 - `docs/EDIT-GUIDE.md`, `docs/IMAGES-MAP.md`, `docs/PROJECT-HANDOFF.md`
-- Pendente: Google Drive (G5), endereço/horário
+- G5 Drive cancelado (2026-08-26); pendência opcional: endereço/horário
 
 ---
 

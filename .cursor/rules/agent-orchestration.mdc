@@ -23,7 +23,7 @@ alwaysApply: true
 | Site, interações, HTML/CSS/JS | Frontend Menu Developer | `frontend-menu-developer.md` | `online/` (exceto pipeline PDF) |
 | PDF, impressão, scripts PDF | PDF Production Specialist | `pdf-production-specialist.md` | `online/print.html`, `print.css`, `app-print.js`, `scripts/generate-pdf*.js`, `scripts/prepare-pdf-images.js` |
 | Validar antes de deploy | QA & Brand Reviewer | `qa-brand-reviewer.md` | `docs/QA-REPORT.md`, `npm run qa-check` |
-| Docs, handoff, worklog, Drive | Project Archivist | `project-archivist.md` | `docs/`, handoff, Drive |
+| Docs, handoff, worklog | Project Archivist | `project-archivist.md` | `docs/`, handoff |
 | Fotos, lotes IA, `images-meta` | Orquestrador (até agente Image) | skill `prainha-menu-orchestrator` | `assets/fotos/`, scripts de imagem |
 | Plano, gates, git/deploy coordenação | Orquestrador | `.cursor/skills/prainha-menu-orchestrator/SKILL.md` | coordenação apenas |
 

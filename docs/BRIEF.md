@@ -1,7 +1,7 @@
 # Brief — Prainha Rooftop Cardápio
 
-**Status:** G4 aprovado — G5 pendente (Drive)  
-**Data:** 2026-08-22  
+**Status:** G4 aprovado — projeto entregue (GitHub/Pages)  
+**Data:** 2026-08-26  
 **Orquestrador:** Cursor Agent + skill `prainha-menu-orchestrator`
 
 ## Materiais recebidos
@@ -16,7 +16,7 @@
 2. **Fonte de dados:** `data/menu-data.json`
 3. **Repositório:** https://github.com/Felipe-Pqd90599/prainha-rooftop-cardapio
 4. **Hospedagem:** GitHub Pages ✅
-5. **Google Drive:** pendente (G5)
+5. **Google Drive:** cancelado — entrega via GitHub apenas
 
 ## Links
 
@@ -24,13 +24,13 @@
 - Handoff: `docs/PROJECT-HANDOFF.md`
 - Agentes: `docs/AGENTS-INDEX.md`
 
-## Pendências para o Felipe
+## Pendências opcionais para o Felipe
 
 - [x] Confirmar `menu-data.json` (Gate G1)
-- [x] Fotos dos pratos (`assets/fotos/`) — 145/145
+- [x] Fotos dos pratos — 153/153
 - [x] Hospedagem online
 - [ ] Endereço completo e horário
-- [ ] Google Drive
+- [x] ~~Google Drive~~ (cancelado)
 - [ ] Logo PNG/SVG (opcional)
 
 ## Gates
@@ -42,4 +42,4 @@
 | G2 — Copy | ✅ parcial |
 | G3 — Visual | ✅ |
 | G4 — PDF + online + QA | ✅ |
-| G5 — Drive | ⏳ |
+| G5 — Drive | ❌ Cancelado |

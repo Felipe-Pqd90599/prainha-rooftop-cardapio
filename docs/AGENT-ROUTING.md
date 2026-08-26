@@ -66,7 +66,7 @@ Você pode evoluir cada agente com MCPs, scripts ou skills extras. Sugestão de 
 | Frontend | browser preview, Live Server |
 | PDF Producer | Puppeteer, `generate-pdf` |
 | QA | `npm run qa-check` |
-| Archivist | Drive, `gh` |
+| Archivist | `gh`, handoff docs |
 | Orquestrador | git, deploy, Task/subagentes |
 
 Documente novas ferramentas no arquivo do agente correspondente.

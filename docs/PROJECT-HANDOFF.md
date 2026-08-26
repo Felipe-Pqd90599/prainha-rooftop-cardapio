@@ -1,7 +1,7 @@
 # Project Handoff — Prainha Rooftop Cardápio
 
-**Versão:** 1.0.0  
-**Data:** 2026-08-22  
+**Versão:** 1.1.0-online  
+**Data:** 2026-08-26  
 **Cliente / dono:** Felipe  
 **Repositório:** https://github.com/Felipe-Pqd90599/prainha-rooftop-cardapio
 
@@ -20,7 +20,7 @@
 
 ## Fonte única de dados
 
-- **Menu:** `data/menu-data.json` (145 itens, 17 categorias)
+- **Menu:** `data/menu-data.json` (153 itens, 18 categorias)
 - **Restaurante:** `data/restaurant-info.json`
 - **Fotos:** `assets/fotos/{item.id}.jpg`
 - **Status fotos:** `data/images-meta.json`
@@ -30,11 +30,10 @@
 ## Comandos essenciais
 
 ```bash
-npm run sync-online          # JSON + fotos → online/
+npm run sync-online          # JSON + fotos → online/ + README
 npm run generate-pdf         # PDF leve (~4 MB) + copia para site
 npm run generate-pdf-full    # PDF alta resolução na Desktop
 npm run qa-check             # checklist antes de publicar
-npm run install-assets       # copia imagens geradas no Cursor
 npm run update-images-meta   # atualiza missingCount
 ```
 
@@ -44,9 +43,9 @@ npm run update-images-meta   # atualiza missingCount
 
 1. Editar `data/menu-data.json` ou trocar JPG em `assets/fotos/`
 2. `npm run sync-online`
-3. `npm run generate-pdf`
+3. `npm run generate-pdf` (opcional)
 4. `npm run qa-check`
-5. `git commit` + `git push` (deploy automático via GitHub Actions → `gh-pages`)
+5. `git commit` + `git push origin main` (deploy automático → `gh-pages`)
 
 Detalhes: `docs/EDIT-GUIDE.md`
 
@@ -54,7 +53,7 @@ Detalhes: `docs/EDIT-GUIDE.md`
 
 ## Estrutura do PDF (nota)
 
-O template de impressão está em **`online/print.html`** (não em `pdf/`), por decisão de unificar site e PDF no mesmo `online/`. Miniaturas para PDF: `online/assets/fotos-pdf/` (geradas automaticamente).
+O template de impressão está em **`online/print.html`**. Miniaturas: `online/assets/fotos-pdf/` (geradas por `prepare-pdf-images`).
 
 ---
 
@@ -67,14 +66,13 @@ O template de impressão está em **`online/print.html`** (não em `pdf/`), por 
 | G2 Copy | ✅ parcial |
 | G3 Visual | ✅ |
 | G4 Site + PDF + QA | ✅ |
-| G5 Drive + handoff Drive | ⏳ |
+| G5 Drive | ❌ Cancelado (Felipe — entrega via GitHub apenas) |
 
 ---
 
-## Pendências para Felipe
+## Pendências opcionais para Felipe
 
 - [ ] Endereço completo e horário em `restaurant-info.json`
-- [ ] Google Drive (pastas 01–05) — ver `project-archivist.md`
 - [ ] Revisar copy de bebidas/drinks se desejar tom mais comercial
 
 ---
@@ -82,8 +80,8 @@ O template de impressão está em **`online/print.html`** (não em `pdf/`), por 
 ## Manutenção futura
 
 - **Não** editar produtos direto no HTML — sempre JSON.
-- **Não** commitar PDF > 100 MB — usar `generate-pdf` (leve) no repo; `generate-pdf-full` só local.
-- Após mudar fotos no PDF oficial de referência, revisar `docs/IMAGES-MAP.md`.
+- **Não** commitar PDF > 100 MB — usar `generate-pdf` no repo; `generate-pdf-full` só local.
+- Branch de trabalho mergeada em `main`; deploy via `gh-pages` (root).
 
 ---
 

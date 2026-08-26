@@ -17,7 +17,7 @@ Este projeto usou definições em `.cursor/agents/*.md` e a skill `.cursor/skill
 | 4 | **Frontend Menu Developer** | Site online responsivo, WhatsApp, nav categorias | `online/index.html`, `styles.css`, `app.js`, `sync-online-data.js` | ✅ Feito |
 | 5 | **PDF Production Specialist** | PDF regenerável alinhado ao JSON | `print.html`, `generate-pdf.js`, `prepare-pdf-images.js`, PDF no site | ✅ Feito (paths em `online/`) |
 | 6 | **QA & Brand Reviewer** | Checklist preço/copy/mobile/PDF antes do deploy | `QA-REPORT.md`, `scripts/qa-check.js` | ✅ Feito (post-entrega) |
-| 7 | **Project Archivist** | Worklog, handoff, guias, Drive | `AGENT-WORKLOG.md`, `PROJECT-HANDOFF.md`, `EDIT-GUIDE.md`, `IMAGES-MAP.md` | ⚠️ Drive pendente (G5) |
+| 7 | **Project Archivist** | Worklog, handoff, guias | `AGENT-WORKLOG.md`, `PROJECT-HANDOFF.md`, `EDIT-GUIDE.md`, `IMAGES-MAP.md` | ✅ Feito (G5 Drive cancelado) |
 
 ---
 
@@ -41,8 +41,8 @@ Este projeto usou definições em `.cursor/agents/*.md` e a skill `.cursor/skill
 | **Design agent** | Prompt “dark + gold” | Alinhado ao PDF: bege `#B8956B`, azul turquesa, branco |
 | **PDF agent** | Pasta `pdf/` | Documentado: template em `online/print.html` |
 | **Orquestrador** | Lotes grandes de imagem | Máx. 4–8 imagens por rodada; gate `missingCount === 0` antes do PDF |
-| **Archivist** | Worklog parcial | `PROJECT-HANDOFF.md` + links públicos |
-| **G5** | Não feito | Drive ainda manual; estrutura documentada no handoff |
+| **Archivist** | Worklog parcial | `PROJECT-HANDOFF.md` + README automático |
+| **G5 Drive** | Pendente | **Cancelado** — entrega via GitHub/Pages apenas |
 
 ### Novos agentes?
 

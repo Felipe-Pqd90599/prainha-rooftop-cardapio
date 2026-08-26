@@ -27,7 +27,7 @@ description: Orquestra o cardápio Prainha — classifica cada comando do Felipe
 | Site `online/` (UI, JS) | Frontend Menu Developer | `frontend-menu-developer.md` |
 | PDF e scripts de PDF | PDF Production Specialist | `pdf-production-specialist.md` |
 | QA pré-deploy | QA & Brand Reviewer | `qa-brand-reviewer.md` |
-| Docs, handoff, Drive | Project Archivist | `project-archivist.md` |
+| Docs, handoff | Project Archivist | `project-archivist.md` |
 | Fotos IA, gates, deploy | Orquestrador | este skill |
 
 ## Multi-domínio
@@ -47,7 +47,9 @@ Um agente por etapa; orquestrador anuncia cada passo.
 3. **G2** — Brand Copywriter
 4. **G3** — Design & UX
 5. **G4** — Frontend + PDF + QA (`npm run qa-check`)
-6. **G5** — Archivist (Drive + handoff)
+6. **G4** — Frontend + PDF + QA (`npm run qa-check`) — **entrega final**
+
+(G5 Google Drive cancelado — entrega via GitHub/Pages.)
 
 ## Regras operacionais (orquestrador)
 
