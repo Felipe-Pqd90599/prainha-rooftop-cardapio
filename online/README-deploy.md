@@ -1,8 +1,13 @@
 # Deploy — Cardápio online
 
-## URL publicada
+## Links publicados
 
-https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/
+| Versão | URL |
+|--------|-----|
+| **Cardápio principal** (tema escuro) | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/ |
+| **Cardápio 21st** (tema claro) | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/21st/ |
+
+Ambos usam os mesmos dados em `online/data/` e fotos em `online/assets/fotos/`.
 
 ## Como o deploy funciona
 

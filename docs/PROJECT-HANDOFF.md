@@ -11,7 +11,8 @@
 
 | Entrega | URL / caminho |
 |---------|----------------|
-| **Cardápio online** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/ |
+| **Cardápio online (escuro)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/ |
+| **Cardápio online (21st / claro)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/21st/ |
 | **PDF (compartilhar)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/cardapio-prainha-rooftop.pdf |
 | **PDF alta resolução** | `%USERPROFILE%\Desktop\Prainha-Rooftop-Cardapio-PDF\` (local, `npm run generate-pdf-full`) |
 | **Código** | `C:\Users\Felipe\pagina-pessoal\prainha-rooftop-cardapio\` |

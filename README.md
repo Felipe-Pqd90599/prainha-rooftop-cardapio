@@ -6,13 +6,14 @@ Cardápio online + PDF com **fonte única de dados** em `data/menu-data.json`.
 
 | | |
 |---|---|
-| **Site (GitHub Pages)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/ |
+| **Site principal (escuro)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/ |
+| **Site 21st (claro)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/21st/ |
 | **Repositório** | https://github.com/Felipe-Pqd90599/prainha-rooftop-cardapio |
 | **Instagram** | [@prainharooftop](https://instagram.com/prainharooftop) |
 
 ## Status do cardápio
 
-_Métricas atualizadas automaticamente em 2026-08-26 02:55._
+_Métricas atualizadas automaticamente em 2026-08-26 20:43._
 
 - **153** itens em **18** categorias
 - **153** fotos em `assets/fotos/` (completo)

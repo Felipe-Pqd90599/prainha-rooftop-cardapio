@@ -35,7 +35,8 @@ Cardápio online + PDF com **fonte única de dados** em \`data/menu-data.json\`.
 
 | | |
 |---|---|
-| **Site (GitHub Pages)** | ${ctx.siteUrl} |
+| **Site principal (escuro)** | ${ctx.siteUrl} |
+| **Site 21st (claro)** | ${ctx.siteUrl21st} |
 | **Repositório** | ${ctx.repoUrl} |
 | **Instagram** | [${ctx.instagram}](https://instagram.com/${ctx.instagramHandle}) |
 
@@ -90,6 +91,9 @@ function main() {
 
   const site = info.site || {};
   const siteUrl = site.githubPages || 'https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/';
+  const siteUrl21st =
+    site.githubPages21st ||
+    siteUrl.replace(/\/?$/, '/21st/');
   const repoUrl =
     site.repo || 'https://github.com/Felipe-Pqd90599/prainha-rooftop-cardapio';
   const instagram = info.contact?.instagram || '@prainharooftop';
@@ -100,6 +104,7 @@ function main() {
 
   const ctx = {
     siteUrl,
+    siteUrl21st,
     repoUrl,
     instagram,
     instagramHandle,
