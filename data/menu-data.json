@@ -3,133 +3,31 @@
     "version": "1.0.0-g1",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
-    "priceSecondaryLabelDefault": "2 pessoas"
+    "priceSecondaryLabelDefault": "2 pessoas",
+    "burgerCombo": {
+      "price": 11.99,
+      "label": "Transformar em Combo",
+      "description": "Refrigerante lata + 150g de batata frita"
+    }
   },
   "categories": [
     {
-      "id": "caldos",
-      "name": "Caldos",
+      "id": "mais-vendidos",
+      "name": "Mais Vendidos",
       "order": 1,
-      "items": [
-        {
-          "id": "camarao-entrada",
-          "name": "Camarão",
-          "price": 26,
-          "image": "camarao-entrada.jpg"
-        },
-        {
-          "id": "peixe-entrada",
-          "name": "Peixe",
-          "price": 24,
-          "image": "peixe-entrada.jpg"
-        },
-        {
-          "id": "caldeirinho-mar",
-          "name": "Caldeirinho do Mar",
-          "price": 28,
-          "description": "Camarão, peixes e legumes",
-          "image": "caldeirinho-mar.jpg"
-        },
-        {
-          "id": "arretado",
-          "name": "Arretado",
-          "price": 25,
-          "image": "arretado.jpg"
-        },
-        {
-          "id": "do-sertao",
-          "name": "Do Sertão",
-          "price": 22,
-          "image": "do-sertao.jpg"
-        },
-        {
-          "id": "caldo-feijao",
-          "name": "Caldo de Feijão",
-          "price": 13,
-          "image": "caldo-feijao.jpg"
-        },
-        {
-          "id": "sopa",
-          "name": "Sopa",
-          "price": 13,
-          "description": "Consultar sabor do dia",
-          "image": "sopa.jpg"
-        }
-      ]
-    },
-    {
-      "id": "saladas-vegetarianos",
-      "name": "Saladas e Vegetarianos",
-      "order": 2,
-      "items": [
-        {
-          "id": "salada-coalho",
-          "name": "Salada com Coalho",
-          "price": 29,
-          "image": "salada-coalho.jpg"
-        },
-        {
-          "id": "salada-frango",
-          "name": "Salada com Frango",
-          "price": 32,
-          "image": "salada-frango.jpg"
-        },
-        {
-          "id": "salada-camarao",
-          "name": "Salada com Filé de Camarão",
-          "price": 35,
-          "image": "salada-camarao.jpg"
-        },
-        {
-          "id": "arroz-tropical",
-          "name": "Arroz Tropical",
-          "price": 36,
-          "description": "Arroz refogado e açafrão, brócolis, tomate, cubinhos de coalho e ervilha",
-          "image": "arroz-tropical.jpg"
-        },
-        {
-          "id": "penne-pomodoro",
-          "name": "Penne ao Molho Pomodoro",
-          "price": 34,
-          "image": "penne-pomodoro.jpg"
-        }
-      ]
-    },
-    {
-      "id": "infantis",
-      "name": "Infantis",
-      "order": 3,
-      "items": [
-        {
-          "id": "omelete-kids",
-          "name": "Omelete",
-          "price": 25,
-          "image": "omelete-kids.jpg"
-        },
-        {
-          "id": "file-carne-kids",
-          "name": "Filezinho de Carne ao Molho Kids",
-          "price": 26,
-          "image": "file-carne-kids.jpg"
-        },
-        {
-          "id": "file-frango-kids",
-          "name": "Filezinho de Frango ao Molho Kids",
-          "price": 24,
-          "image": "file-frango-kids.jpg"
-        },
-        {
-          "id": "file-camarao-kids",
-          "name": "Filé de Camarão ao Molho Kids",
-          "price": 29,
-          "image": "file-camarao-kids.jpg"
-        }
+      "itemRefs": [
+        "camarao-prainha",
+        "nordestino-na-area",
+        "burger-potiguar",
+        "mista-familia",
+        "taca-camarao-empanado",
+        "parmegiana-carne"
       ]
     },
     {
       "id": "entradas",
       "name": "Entradas",
-      "order": 4,
+      "order": 2,
       "items": [
         {
           "id": "queijo-coalho-melaco",
@@ -214,7 +112,7 @@
     {
       "id": "frutos-do-mar",
       "name": "Camarões, Peixes e Frutos do Mar",
-      "order": 5,
+      "order": 3,
       "items": [
         {
           "id": "camarao-grega",
@@ -293,8 +191,15 @@
     {
       "id": "carnes",
       "name": "Carnes",
-      "order": 6,
+      "order": 4,
       "items": [
+        {
+          "id": "mista-familia",
+          "name": "Mistão Família (4 pessoas)",
+          "price": 159,
+          "image": "mista-familia.jpg",
+          "description": "Acompanha arroz, feijão e farofa da casa"
+        },
         {
           "id": "parmegiana-carne",
           "name": "Parmegiana de Carne",
@@ -372,7 +277,7 @@
     {
       "id": "burgers",
       "name": "Burgers",
-      "order": 7,
+      "order": 5,
       "items": [
         {
           "id": "chicken-burger",
@@ -414,24 +319,26 @@
           "price": 25,
           "description": "Pão, queijo muçarela empanado, ovo, cebola caramelizada, salada e molho da casa",
           "image": "cheeseburger.jpg"
+        },
+        {
+          "id": "combo-fritas-refri",
+          "name": "Transformar em Combo",
+          "price": 11.99,
+          "description": "150g de batata frita + refrigerante lata — adicione a qualquer burger",
+          "image": "combo-fritas-refri.jpg"
         }
-      ]
+      ],
+      "comboUpgrade": true
     },
     {
       "id": "petiscos",
       "name": "Petiscos",
-      "order": 8,
+      "order": 6,
       "items": [
-        {
-          "id": "mista-familia",
-          "name": "Mistão Família (4 pessoas)",
-          "price": 139,
-          "image": "mista-familia.jpg"
-        },
         {
           "id": "mista-prainha",
           "name": "Mistão do Prainha",
-          "price": 169,
+          "price": 139,
           "description": "Carne, calabresa, camarão e batata frita",
           "image": "mista-prainha.jpg"
         },
@@ -445,9 +352,26 @@
         {
           "id": "camarao-alho-oleo",
           "name": "Camarão Alho e Óleo",
-          "price": 129,
-          "description": "1kg de camarão com fritas",
-          "image": "camarao-alho-oleo.jpg"
+          "description": "Camarão salteado com fritas — escolha o tamanho",
+          "image": "camarao-alho-oleo.jpg",
+          "portionOptions": [
+            {
+              "key": "300g",
+              "label": "300g",
+              "price": 48
+            },
+            {
+              "key": "500g",
+              "label": "500g",
+              "price": 72
+            },
+            {
+              "key": "1kg",
+              "label": "1kg",
+              "price": 129,
+              "badge": "Melhor valor"
+            }
+          ]
         },
         {
           "id": "linguica-prainha",
@@ -501,7 +425,7 @@
     {
       "id": "cuscuz-tapiocas-lanches",
       "name": "Cuscuz, Tapiocas e Lanches",
-      "order": 9,
+      "order": 7,
       "items": [
         {
           "id": "crepioca-queijo",
@@ -525,52 +449,214 @@
         },
         {
           "id": "carne-sol-coalho",
-          "name": "Carne de Sol Desfiada com Coalho",
+          "name": "Tapioca de Carne de Sol com Coalho",
           "price": 26,
           "image": "carne-sol-coalho.jpg"
         },
         {
+          "id": "cuscuz-carne-sol-coalho",
+          "name": "Cuscuz de Carne de Sol com Coalho",
+          "price": 26,
+          "image": "cuscuz-carne-sol-coalho.jpg"
+        },
+        {
           "id": "filezinhos-carne-molho",
-          "name": "Filezinhos de Carne ao Molho",
+          "name": "Tapioca de Filezinhos de Carne ao Molho",
           "price": 26,
           "image": "filezinhos-carne-molho.jpg"
         },
         {
+          "id": "cuscuz-filezinhos-carne-molho",
+          "name": "Cuscuz de Filezinhos de Carne ao Molho",
+          "price": 26,
+          "image": "cuscuz-filezinhos-carne-molho.jpg"
+        },
+        {
           "id": "creme-frango-cubos",
-          "name": "Creme de Frango em Cubos",
+          "name": "Tapioca de Creme de Frango em Cubos",
           "price": 24,
           "image": "creme-frango-cubos.jpg"
         },
         {
+          "id": "cuscuz-creme-frango-cubos",
+          "name": "Cuscuz de Creme de Frango em Cubos",
+          "price": 24,
+          "image": "cuscuz-creme-frango-cubos.jpg"
+        },
+        {
           "id": "calabresa-mucarela",
-          "name": "Calabresa Fatiada com Muçarela",
+          "name": "Tapioca de Calabresa com Muçarela",
           "price": 24,
           "image": "calabresa-mucarela.jpg"
         },
         {
+          "id": "cuscuz-calabresa-mucarela",
+          "name": "Cuscuz de Calabresa com Muçarela",
+          "price": 24,
+          "image": "cuscuz-calabresa-mucarela.jpg"
+        },
+        {
           "id": "files-camarao-queijo",
-          "name": "Filés de Camarão com Molho de Queijo",
+          "name": "Tapioca de Filés de Camarão com Queijo",
           "price": 28,
           "image": "files-camarao-queijo.jpg"
         },
         {
+          "id": "cuscuz-files-camarao-queijo",
+          "name": "Cuscuz de Filés de Camarão com Queijo",
+          "price": 28,
+          "image": "cuscuz-files-camarao-queijo.jpg"
+        },
+        {
           "id": "ovos-mucarela",
-          "name": "Ovos e Muçarela",
+          "name": "Tapioca de Ovos e Muçarela",
           "price": 22,
           "image": "ovos-mucarela.jpg"
         },
         {
+          "id": "cuscuz-ovos-mucarela",
+          "name": "Cuscuz de Ovos e Muçarela",
+          "price": 22,
+          "image": "cuscuz-ovos-mucarela.jpg"
+        },
+        {
           "id": "coco-leite-coco",
-          "name": "Coco Ralado e Leite de Coco",
+          "name": "Tapioca de Coco Ralado e Leite de Coco",
           "price": 22,
           "image": "coco-leite-coco.jpg"
+        },
+        {
+          "id": "cuscuz-coco-leite-coco",
+          "name": "Cuscuz de Coco Ralado e Leite de Coco",
+          "price": 22,
+          "image": "cuscuz-coco-leite-coco.jpg"
+        }
+      ]
+    },
+    {
+      "id": "caldos",
+      "name": "Caldos",
+      "order": 8,
+      "items": [
+        {
+          "id": "camarao-entrada",
+          "name": "Camarão",
+          "price": 26,
+          "image": "camarao-entrada.jpg"
+        },
+        {
+          "id": "peixe-entrada",
+          "name": "Peixe",
+          "price": 24,
+          "image": "peixe-entrada.jpg"
+        },
+        {
+          "id": "caldeirinho-mar",
+          "name": "Caldeirinho do Mar",
+          "price": 28,
+          "description": "Camarão, peixes e legumes",
+          "image": "caldeirinho-mar.jpg"
+        },
+        {
+          "id": "arretado",
+          "name": "Arretado",
+          "price": 25,
+          "image": "arretado.jpg"
+        },
+        {
+          "id": "do-sertao",
+          "name": "Do Sertão",
+          "price": 22,
+          "image": "do-sertao.jpg"
+        },
+        {
+          "id": "caldo-feijao",
+          "name": "Caldo de Feijão",
+          "price": 13,
+          "image": "caldo-feijao.jpg"
+        },
+        {
+          "id": "sopa",
+          "name": "Sopa",
+          "price": 13,
+          "description": "Consultar sabor do dia",
+          "image": "sopa.jpg"
+        }
+      ]
+    },
+    {
+      "id": "saladas-vegetarianos",
+      "name": "Saladas e Vegetarianos",
+      "order": 9,
+      "items": [
+        {
+          "id": "salada-coalho",
+          "name": "Salada com Coalho",
+          "price": 29,
+          "image": "salada-coalho.jpg"
+        },
+        {
+          "id": "salada-frango",
+          "name": "Salada com Frango",
+          "price": 32,
+          "image": "salada-frango.jpg"
+        },
+        {
+          "id": "salada-camarao",
+          "name": "Salada com Filé de Camarão",
+          "price": 35,
+          "image": "salada-camarao.jpg"
+        },
+        {
+          "id": "arroz-tropical",
+          "name": "Arroz Tropical",
+          "price": 36,
+          "description": "Arroz refogado e açafrão, brócolis, tomate, cubinhos de coalho e ervilha",
+          "image": "arroz-tropical.jpg"
+        },
+        {
+          "id": "penne-pomodoro",
+          "name": "Penne ao Molho Pomodoro",
+          "price": 34,
+          "image": "penne-pomodoro.jpg"
+        }
+      ]
+    },
+    {
+      "id": "infantis",
+      "name": "Infantis",
+      "order": 10,
+      "items": [
+        {
+          "id": "omelete-kids",
+          "name": "Omelete",
+          "price": 25,
+          "image": "omelete-kids.jpg"
+        },
+        {
+          "id": "file-carne-kids",
+          "name": "Filezinho de Carne ao Molho Kids",
+          "price": 26,
+          "image": "file-carne-kids.jpg"
+        },
+        {
+          "id": "file-frango-kids",
+          "name": "Filezinho de Frango ao Molho Kids",
+          "price": 24,
+          "image": "file-frango-kids.jpg"
+        },
+        {
+          "id": "file-camarao-kids",
+          "name": "Filé de Camarão ao Molho Kids",
+          "price": 29,
+          "image": "file-camarao-kids.jpg"
         }
       ]
     },
     {
       "id": "sucos-diversos",
       "name": "Sucos e Diversos",
-      "order": 10,
+      "order": 11,
       "items": [
         {
           "id": "suco-tradicional",
@@ -645,21 +731,32 @@
           "name": "H2O",
           "price": 9,
           "image": "h2o.jpg"
-        },
-        {
-          "id": "combo-fritas-refri",
-          "name": "Transformar em Combo",
-          "price": 9.9,
-          "description": "Batata frita + refri lata",
-          "image": "combo-fritas-refri.jpg"
         }
       ]
     },
     {
       "id": "sobremesas-cafes",
-      "name": "Sobremesas e Cafés",
-      "order": 11,
+      "name": "Cafés e Sobremesas",
+      "order": 12,
       "items": [
+        {
+          "id": "cafe-coado-m",
+          "name": "Café Coado M",
+          "price": 5,
+          "image": "cafe-coado-m.jpg"
+        },
+        {
+          "id": "cafe-leite-m",
+          "name": "Café com Leite M",
+          "price": 7,
+          "image": "cafe-leite-m.jpg"
+        },
+        {
+          "id": "cappuccino-chantilly-m",
+          "name": "Cappuccino com Chantilly M",
+          "price": 12,
+          "image": "cappuccino-chantilly-m.jpg"
+        },
         {
           "id": "acai-tradicional",
           "name": "Açaí Tradicional 350ml",
@@ -701,31 +798,13 @@
           "name": "Frutas com Chocolate",
           "price": 26,
           "image": "frutas-chocolate.jpg"
-        },
-        {
-          "id": "cafe-coado-m",
-          "name": "Café Coado M",
-          "price": 5,
-          "image": "cafe-coado-m.jpg"
-        },
-        {
-          "id": "cafe-leite-m",
-          "name": "Café com Leite M",
-          "price": 7,
-          "image": "cafe-leite-m.jpg"
-        },
-        {
-          "id": "cappuccino-chantilly-m",
-          "name": "Cappuccino com Chantilly M",
-          "price": 12,
-          "image": "cappuccino-chantilly-m.jpg"
         }
       ]
     },
     {
       "id": "drinks-autorais",
       "name": "Drinks Autorais",
-      "order": 12,
+      "order": 13,
       "items": [
         {
           "id": "prainha-blue",
@@ -774,7 +853,7 @@
     {
       "id": "drinks-tradicionais",
       "name": "Drinks Tradicionais",
-      "order": 13,
+      "order": 14,
       "items": [
         {
           "id": "moscow-mule",
@@ -858,7 +937,7 @@
     {
       "id": "vinhos",
       "name": "Vinhos",
-      "order": 14,
+      "order": 15,
       "items": [
         {
           "id": "vinho-consultar",
@@ -872,7 +951,7 @@
     {
       "id": "cervejas",
       "name": "Cervejas",
-      "order": 15,
+      "order": 16,
       "items": [
         {
           "id": "petra-600",
@@ -927,7 +1006,7 @@
     {
       "id": "doses-litros",
       "name": "Doses e Litros",
-      "order": 16,
+      "order": 17,
       "items": [
         {
           "id": "cachaca-branca",
@@ -1029,13 +1108,24 @@
           "price": 10,
           "description": "Curaçau blue e vodka",
           "image": "shot-blue.jpg"
+        },
+        {
+          "id": "trilogia-marolinha",
+          "name": "Trilogia Marolinha",
+          "price": 28,
+          "description": "Shot Mar Vermelho + Shot Marola Verde + Shot Blue — os três clássicos da casa",
+          "image": "trilogia-marolinha.jpg"
         }
-      ]
+      ],
+      "portionLabels": {
+        "primary": "Dose",
+        "secondary": "Litro"
+      }
     },
     {
       "id": "adicionais",
       "name": "Adicionais",
-      "order": 17,
+      "order": 18,
       "items": [
         {
           "id": "feijao-ind",

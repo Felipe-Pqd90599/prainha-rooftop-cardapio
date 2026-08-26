@@ -14,7 +14,13 @@
       content="Veja o cardápio completo e peça pelo WhatsApp."
     />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#B8956B" />
+    <meta name="theme-color" content="#121212" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -25,20 +31,54 @@
         <p class="hero__sub">ROOFTOP</p>
         <p class="hero__tagline">Vista, brisa e sabor no rooftop da Prainha</p>
         <div class="hero__contact" id="hero-contact"></div>
-        <a class="btn-whatsapp" id="btn-whatsapp" href="#" target="_blank" rel="noopener">
-          Pedir no WhatsApp
-        </a>
-        <a class="btn-pdf" href="cardapio-prainha-rooftop.pdf" target="_blank" rel="noopener">
-          Baixar PDF
-        </a>
+        <div class="hero__actions">
+          <a class="btn btn--whatsapp" id="btn-whatsapp" href="#" target="_blank" rel="noopener">
+            Pedir no WhatsApp
+          </a>
+          <a class="btn btn--ghost" href="cardapio-prainha-rooftop.pdf" target="_blank" rel="noopener">
+            Baixar PDF
+          </a>
+        </div>
       </div>
     </header>
 
-    <nav class="category-nav" id="category-nav" aria-label="Categorias"></nav>
-
-    <main class="menu" id="menu"></main>
+    <div class="menu-shell">
+      <aside class="menu-sidebar" id="menu-sidebar" aria-label="Categorias laterais"></aside>
+      <div class="menu-shell__main">
+        <p class="menu__label">Cardápio</p>
+        <nav class="category-nav" id="category-nav" aria-label="Categorias"></nav>
+        <main class="menu" id="menu"></main>
+      </div>
+    </div>
 
     <footer class="footer" id="footer"></footer>
+
+    <div class="item-modal" id="item-modal" hidden aria-hidden="true">
+      <div class="item-modal__backdrop" data-modal-close tabindex="-1"></div>
+      <div
+        class="item-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button type="button" class="item-modal__close" data-modal-close aria-label="Fechar">
+          ×
+        </button>
+        <div class="item-modal__media">
+          <img class="item-modal__img" id="modal-img" alt="" />
+          <div class="item-modal__price-overlay" id="modal-price-overlay"></div>
+        </div>
+        <div class="item-modal__content">
+          <h3 class="item-modal__title" id="modal-title"></h3>
+          <p class="item-modal__desc" id="modal-desc"></p>
+          <div class="item-modal__portions" id="modal-portions"></div>
+          <div class="item-modal__combo" id="modal-combo" hidden></div>
+          <a class="btn btn--whatsapp btn--block" id="modal-wa" href="#" target="_blank" rel="noopener">
+            Pedir no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
 
     <script src="app.js"></script>
   </body>
