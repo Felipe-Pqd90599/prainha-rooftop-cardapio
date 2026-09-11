@@ -142,10 +142,10 @@
         },
         {
           "id": "penne-camarao",
-          "name": "Penne com Camarão",
+          "name": "Penne ou Fettuccine de Camarão",
           "price": 46,
           "priceSecondary": 89,
-          "description": "Espaguete ao molho de tomate, filé de camarão empanado e coberto com queijo muçarela",
+          "description": "Massa ao molho branco, salsinha e filé de camarão",
           "image": "penne-camarao.jpg"
         },
         {
@@ -161,16 +161,8 @@
           "name": "Brasileirinho de Peixe",
           "price": 33,
           "priceSecondary": 64,
-          "description": "Peixe em posta, feijão preto, arroz, salada e farofa da casa",
+          "description": "Peixe em posta ou filé de peixe frito, feijão preto, arroz, salada e farofa da casa",
           "image": "brasileirinho-peixe.jpg"
-        },
-        {
-          "id": "fettuccine-camarao",
-          "name": "Fettuccine de Camarão",
-          "price": 46,
-          "priceSecondary": 89,
-          "description": "Ao molho de camarão, salsinha e filé de camarão envolto",
-          "image": "fettuccine-camarao.jpg"
         },
         {
           "id": "parmegiana-camarao",
