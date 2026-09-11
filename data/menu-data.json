@@ -176,7 +176,7 @@
           "name": "Parmegiana de Camarão",
           "price": 41,
           "priceSecondary": 79,
-          "description": "Ao molho bechamel com queijo muçarela e filé de camarão envolto",
+          "description": "Filés de camarão empanados e fritos, envolvidos em molho de tomate fresco e finalizados com muito queijo derretido e gratinado. Para acompanhar, escolha entre macarrão ao molho de tomate, arroz ao molho de tomate ou arroz branco",
           "image": "parmegiana-camarao.jpg"
         },
         {
@@ -199,14 +199,14 @@
           "name": "Mistão Família (4 pessoas)",
           "price": 159,
           "image": "mista-familia.jpg",
-          "description": "Acompanha arroz, feijão e farofa da casa"
+          "description": "Carne, camarão alho e óleo e calabresa acebolada. Acompanha arroz, feijão e farofa da casa"
         },
         {
           "id": "parmegiana-carne",
           "name": "Parmegiana de Carne",
           "price": 38,
           "priceSecondary": 72,
-          "description": "Ao molho bechamel com queijo muçarela e filé de carne ao molho madeira com barbecue",
+          "description": "Filézinhos de carne empanados e fritos, envolvidos em molho de tomate fresco e finalizados com muito queijo derretido e gratinado. Para acompanhar, escolha entre macarrão ao molho de tomate, arroz ao molho de tomate ou arroz branco",
           "image": "parmegiana-carne.jpg"
         },
         {
@@ -222,7 +222,7 @@
           "name": "Parmegiana de Frango",
           "price": 34,
           "priceSecondary": 66,
-          "description": "Ao molho bechamel com queijo muçarela",
+          "description": "Filézinhos de frango empanados e fritos, envolvidos em molho de tomate fresco e finalizados com muito queijo derretido e gratinado. Para acompanhar, escolha entre macarrão ao molho de tomate, arroz ao molho de tomate ou arroz branco",
           "image": "parmegiana-frango.jpg"
         },
         {
