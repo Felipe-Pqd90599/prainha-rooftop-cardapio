@@ -207,7 +207,7 @@
           "name": "Sertanejo do Prainha",
           "price": 41,
           "priceSecondary": 79,
-          "description": "Feijão verde, arroz refogado, carne de sol, queijo coalho, salada e fritas",
+          "description": "Feijão verde ou branco, arroz refogado, carne de sol e queijo coalho em cubos, salada e fritas",
           "image": "sertanejo-prainha.jpg"
         },
         {
@@ -263,7 +263,7 @@
           "name": "Baião de Dois",
           "price": 42,
           "priceSecondary": 79,
-          "description": "Feijão verde ou branco (consultar) com arroz, bacon, carne de sol desfiada e queijo coalho",
+          "description": "Cremoso ou tradicional | feijão verde ou branco, arroz, bacon, carne de sol desfiada e queijo coalho",
           "image": "baiao-dois.jpg"
         }
       ]
