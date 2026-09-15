@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.1-online",
+    "version": "1.1.2-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -33,19 +33,21 @@
           "id": "queijo-coalho-melaco",
           "name": "Queijo Coalho com Melaço",
           "price": 29,
+          "description": "Tiras de queijo coalho grelhado com melaço",
           "image": "queijo-coalho-melaco.jpg"
         },
         {
           "id": "dadinho-queijo",
           "name": "Dadinho de Queijo Empanado",
           "price": 31,
-          "description": "Com molhos da casa",
+          "description": "Cubinhos de queijo empanados | acompanha molhos da casa",
           "image": "dadinho-queijo.jpg"
         },
         {
           "id": "ginga-tapioca",
           "name": "Ginga com Tapioca",
           "price": 26,
+          "description": "Ginga frita crocante com tapioca",
           "image": "ginga-tapioca.jpg"
         },
         {
@@ -101,12 +103,14 @@
           "id": "escondidinho-carne-sol",
           "name": "Escondidinho de Carne de Sol",
           "price": 29,
+          "description": "Carne de sol desfiada coberta com purê e queijo gratinado",
           "image": "escondidinho-carne-sol.jpg"
         },
         {
           "id": "escondidinho-camarao",
           "name": "Escondidinho de Camarão",
           "price": 32,
+          "description": "Camarão ao creme coberto com purê e queijo gratinado",
           "image": "escondidinho-camarao.jpg"
         }
       ]
