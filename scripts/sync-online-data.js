@@ -33,10 +33,12 @@ function stampCacheBusters() {
   const menuPath = path.join(root, 'data/menu-data.json');
   const menu = JSON.parse(fs.readFileSync(menuPath, 'utf8'));
   const v = encodeURIComponent(menu.meta?.version || '1');
-  const indexPath = path.join(root, 'online/index.html');
-  let html = fs.readFileSync(indexPath, 'utf8');
-  html = html.replace(/href="styles\.css(?:\?v=[^"]*)?"/, `href="styles.css?v=${v}"`);
-  html = html.replace(/src="app\.js(?:\?v=[^"]*)?"/, `src="app.js?v=${v}"`);
-  fs.writeFileSync(indexPath, html);
-  console.log('cache-bust index.html v=', menu.meta?.version);
+  for (const rel of ['online/index.html', 'online/21st/index.html']) {
+    const indexPath = path.join(root, rel);
+    let html = fs.readFileSync(indexPath, 'utf8');
+    html = html.replace(/href="styles\.css(?:\?v=[^"]*)?"/, `href="styles.css?v=${v}"`);
+    html = html.replace(/src="app\.js(?:\?v=[^"]*)?"/, `src="app.js?v=${v}"`);
+    fs.writeFileSync(indexPath, html);
+    console.log('cache-bust', rel, 'v=', menu.meta?.version);
+  }
 }

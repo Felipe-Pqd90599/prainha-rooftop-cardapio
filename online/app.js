@@ -5,9 +5,13 @@ function formatPrice(value) {
   });
 }
 
+function assetVersion() {
+  return encodeURIComponent(appState.menu?.meta?.version || '1');
+}
+
 function imageSrc(item) {
   const file = item.image || `${item.id}.jpg`;
-  return `assets/fotos/${file}`;
+  return `assets/fotos/${file}?v=${assetVersion()}`;
 }
 
 function getBurgerCombo(meta) {
@@ -208,7 +212,7 @@ function renderHero(info) {
   const img = new Image();
   img.onload = () => bg.classList.add('has-photo');
   img.onerror = () => {};
-  img.src = 'assets/fotos/capa-prainha-rooftop.jpg';
+  img.src = `assets/fotos/capa-prainha-rooftop.jpg?v=${assetVersion()}`;
 
   const contact = document.getElementById('hero-contact');
   const ig = info.contact?.instagram || '@prainharooftop';

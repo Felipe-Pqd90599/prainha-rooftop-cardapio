@@ -11,9 +11,13 @@ function formatPrice(value) {
   });
 }
 
+function assetVersion() {
+  return encodeURIComponent(appState.menu?.meta?.version || '1');
+}
+
 function imageSrc(item) {
   const file = item.image || `${item.id}.jpg`;
-  return `../assets/fotos/${file}`;
+  return `../assets/fotos/${file}?v=${assetVersion()}`;
 }
 
 function getBurgerCombo(meta) {
@@ -233,7 +237,7 @@ function renderHero(info) {
   const container = document.getElementById('hero-images');
   container.innerHTML = HERO_FLOAT_ITEMS.map(
     (f) =>
-      `<img class="floating-hero__float-img ${f.className}" src="../assets/fotos/${f.id}.jpg" alt="${f.alt}" loading="lazy" onerror="this.remove()" />`
+      `<img class="floating-hero__float-img ${f.className}" src="../assets/fotos/${f.id}.jpg?v=${assetVersion()}" alt="${f.alt}" loading="lazy" onerror="this.remove()" />`
   ).join('');
 
   const contact = document.getElementById('hero-contact');
