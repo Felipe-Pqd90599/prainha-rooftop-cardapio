@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.2-online",
+    "version": "1.1.4-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -21,7 +21,8 @@
         "burger-potiguar",
         "mista-familia",
         "taca-camarao-empanado",
-        "parmegiana-carne"
+        "parmegiana-carne",
+        "fritas-potiguar"
       ]
     },
     {
@@ -389,13 +390,14 @@
           "id": "carne-sol-fritas",
           "name": "Carne de Sol com Fritas",
           "price": 82,
-          "image": "carne-sol-fritas.jpg"
+          "image": "carne-sol-fritas.jpg",
+          "description": "Carne de sol em cubos com fritas"
         },
         {
           "id": "carne-ao-molho",
-          "name": "Carne ao Molho",
+          "name": "Carne ao Molho Madeira com Fritas",
           "price": 82,
-          "description": "Madeira e barbecue com fritas",
+          "description": "Tirinhas de carne no molho madeira com fritas",
           "image": "carne-ao-molho.jpg"
         },
         {
@@ -415,8 +417,15 @@
           "id": "fritas-sertaneja",
           "name": "Fritas Sertaneja",
           "price": 37,
-          "description": "Carne, calabresa e camarão",
+          "description": "Carne e calabresa",
           "image": "fritas-sertaneja.jpg"
+        },
+        {
+          "id": "fritas-potiguar",
+          "name": "Fritas Potiguar",
+          "price": 48,
+          "description": "Filé de camarão ao creme de queijo",
+          "image": "fritas-potiguar.jpg"
         }
       ]
     },
