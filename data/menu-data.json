@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.9-online",
+    "version": "1.1.10-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -623,12 +623,14 @@
           "id": "arretado",
           "name": "Arretado",
           "price": 25,
+          "description": "Creme de macaxeira, bacon e carne desfiada",
           "image": "arretado.jpg"
         },
         {
           "id": "do-sertao",
           "name": "Do Sertão",
           "price": 22,
+          "description": "Feijão verde e coalho em cubinhos",
           "image": "do-sertao.jpg"
         },
         {
