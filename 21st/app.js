@@ -43,6 +43,41 @@ function getCategoryItems(cat, menu) {
   return cat.items || [];
 }
 
+function renderCategoryGrids(cat, menu, itemRenderer) {
+  const burgers = getBurgerCategory(menu);
+  const isBurgersTab = cat.id === 'burgers';
+  const renderOne = (item) =>
+    itemRenderer(item, menu.meta, {
+      category: cat,
+      showComboOffer:
+        isBurgersTab &&
+        item.id !== 'combo-fritas-refri' &&
+        burgers?.items?.some((i) => i.id === item.id),
+    });
+
+  const allItems = getCategoryItems(cat, menu);
+  if (cat.groups?.length) {
+    const byId = Object.fromEntries(allItems.map((item) => [item.id, item]));
+    return cat.groups
+      .map((group) => {
+        const cards = (group.itemIds || [])
+          .map((id) => byId[id])
+          .filter(Boolean)
+          .map(renderOne)
+          .join('');
+        if (!cards) return '';
+        return `
+          <div class="section__group">
+            <h3 class="section__subtitle">${group.name}</h3>
+            <div class="section__grid">${cards}</div>
+          </div>`;
+      })
+      .join('');
+  }
+
+  return `<div class="section__grid">${allItems.map(renderOne).join('')}</div>`;
+}
+
 function getPortionOptions(item) {
   return item.portionOptions?.length ? item.portionOptions : null;
 }
@@ -350,32 +385,20 @@ function renderMenuItemCard(item, meta, options = {}) {
 function renderMenu(menu) {
   const main = document.getElementById('menu');
   const sorted = [...menu.categories].sort((a, b) => a.order - b.order);
-  const burgers = getBurgerCategory(menu);
 
   main.innerHTML = sorted
     .map((cat) => {
-      const categoryItems = getCategoryItems(cat, menu);
-      const isBurgersTab = cat.id === 'burgers';
-      const items = categoryItems
-        .map((item) =>
-          renderMenuItemCard(item, menu.meta, {
-            category: cat,
-            showComboOffer:
-              isBurgersTab &&
-              item.id !== 'combo-fritas-refri' &&
-              burgers?.items?.some((i) => i.id === item.id),
-          })
-        )
-        .join('');
-      const count = categoryItems.length;
+      const count = getCategoryItems(cat, menu).length;
       const featuredClass = cat.id === 'mais-vendidos' ? ' section--featured' : '';
+      const note = cat.note ? `<p class="section__note">${cat.note}</p>` : '';
       return `
         <section class="section${featuredClass}" id="${cat.id}">
           <header class="section__header">
             <h2 class="section__title">${cat.name}</h2>
             <span class="section__count">${count} itens</span>
           </header>
-          <div class="section__grid">${items}</div>
+          ${note}
+          ${renderCategoryGrids(cat, menu, renderMenuItemCard)}
         </section>`;
     })
     .join('');

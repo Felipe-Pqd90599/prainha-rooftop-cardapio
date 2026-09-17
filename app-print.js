@@ -18,11 +18,31 @@ async function initPrint() {
 
   main.innerHTML = sorted
     .map((cat) => {
-      const items = cat.items
-        .map((item) => {
-          const file = item.image || `${item.id}.jpg`;
-          const prices = formatPrices(item, menu.meta);
-          return `
+      const allItems = cat.itemRefs?.length
+        ? cat.itemRefs
+            .map((id) => {
+              for (const c of menu.categories) {
+                const found = (c.items || []).find((i) => i.id === id);
+                if (found) return found;
+              }
+              return null;
+            })
+            .filter(Boolean)
+        : cat.items || [];
+      const byId = Object.fromEntries(allItems.map((item) => [item.id, item]));
+      const groups = cat.groups?.length
+        ? cat.groups.map((g) => ({
+            name: g.name,
+            items: (g.itemIds || []).map((id) => byId[id]).filter(Boolean),
+          }))
+        : [{ name: '', items: allItems }];
+      const body = groups
+        .map((group) => {
+          const items = group.items
+            .map((item) => {
+              const file = item.image || `${item.id}.jpg`;
+              const prices = formatPrices(item, menu.meta);
+              return `
             <article class="item">
               <img class="item__photo" src="${photoDir}/${file}" alt="" loading="eager"
                 onerror="this.closest('.item').classList.add('item--no-photo'); this.remove();" />
@@ -34,9 +54,13 @@ async function initPrint() {
                 ${item.description ? `<p class="item__desc">${item.description}</p>` : ''}
               </div>
             </article>`;
+            })
+            .join('');
+          const subtitle = group.name ? `<h3 class="section__subtitle">${group.name}</h3>` : '';
+          return `${subtitle}${items}`;
         })
         .join('');
-      return `<section class="section" id="${cat.id}"><h2 class="section__header">${cat.name}</h2>${items}</section>`;
+      return `<section class="section" id="${cat.id}"><h2 class="section__header">${cat.name}</h2>${body}</section>`;
     })
     .join('');
 

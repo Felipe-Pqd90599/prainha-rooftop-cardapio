@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.7-online",
+    "version": "1.1.8-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -440,7 +440,8 @@
           "id": "crepioca-queijo",
           "name": "Crepioca de Queijo",
           "price": 18,
-          "image": "crepioca-queijo.jpg"
+          "image": "crepioca-queijo.jpg",
+          "description": "Queijo"
         },
         {
           "id": "torrada-queijo",
@@ -460,85 +461,137 @@
           "id": "carne-sol-coalho",
           "name": "Tapioca de Carne de Sol com Coalho",
           "price": 26,
-          "image": "carne-sol-coalho.jpg"
-        },
-        {
-          "id": "cuscuz-carne-sol-coalho",
-          "name": "Cuscuz de Carne de Sol com Coalho",
-          "price": 26,
-          "image": "cuscuz-carne-sol-coalho.jpg"
+          "image": "carne-sol-coalho.jpg",
+          "description": "Carne de sol desfiada e queijo coalho"
         },
         {
           "id": "filezinhos-carne-molho",
           "name": "Tapioca de Filezinhos de Carne ao Molho",
           "price": 26,
-          "image": "filezinhos-carne-molho.jpg"
-        },
-        {
-          "id": "cuscuz-filezinhos-carne-molho",
-          "name": "Cuscuz de Filezinhos de Carne ao Molho",
-          "price": 26,
-          "image": "cuscuz-filezinhos-carne-molho.jpg"
+          "image": "filezinhos-carne-molho.jpg",
+          "description": "Filezinhos de carne ao molho"
         },
         {
           "id": "creme-frango-cubos",
           "name": "Tapioca de Creme de Frango em Cubos",
           "price": 24,
-          "image": "creme-frango-cubos.jpg"
-        },
-        {
-          "id": "cuscuz-creme-frango-cubos",
-          "name": "Cuscuz de Creme de Frango em Cubos",
-          "price": 24,
-          "image": "cuscuz-creme-frango-cubos.jpg"
+          "image": "creme-frango-cubos.jpg",
+          "description": "Creme de frango em cubos"
         },
         {
           "id": "calabresa-mucarela",
           "name": "Tapioca de Calabresa com Muçarela",
           "price": 24,
-          "image": "calabresa-mucarela.jpg"
-        },
-        {
-          "id": "cuscuz-calabresa-mucarela",
-          "name": "Cuscuz de Calabresa com Muçarela",
-          "price": 24,
-          "image": "cuscuz-calabresa-mucarela.jpg"
+          "image": "calabresa-mucarela.jpg",
+          "description": "Calabresa fatiada com muçarela"
         },
         {
           "id": "files-camarao-queijo",
           "name": "Tapioca de Filés de Camarão com Queijo",
           "price": 28,
-          "image": "files-camarao-queijo.jpg"
-        },
-        {
-          "id": "cuscuz-files-camarao-queijo",
-          "name": "Cuscuz de Filés de Camarão com Queijo",
-          "price": 28,
-          "image": "cuscuz-files-camarao-queijo.jpg"
+          "image": "files-camarao-queijo.jpg",
+          "description": "Filés de camarão com molho de queijo"
         },
         {
           "id": "ovos-mucarela",
           "name": "Tapioca de Ovos e Muçarela",
           "price": 22,
-          "image": "ovos-mucarela.jpg"
-        },
-        {
-          "id": "cuscuz-ovos-mucarela",
-          "name": "Cuscuz de Ovos e Muçarela",
-          "price": 22,
-          "image": "cuscuz-ovos-mucarela.jpg"
+          "image": "ovos-mucarela.jpg",
+          "description": "Ovos e muçarela"
         },
         {
           "id": "coco-leite-coco",
           "name": "Tapioca de Coco Ralado e Leite de Coco",
           "price": 22,
-          "image": "coco-leite-coco.jpg"
+          "image": "coco-leite-coco.jpg",
+          "description": "Coco ralado e leite de coco"
+        },
+        {
+          "id": "cuscuz-carne-sol-coalho",
+          "name": "Cuscuz de Carne de Sol com Coalho",
+          "price": 26,
+          "image": "cuscuz-carne-sol-coalho.jpg",
+          "description": "Carne de sol desfiada e queijo coalho"
+        },
+        {
+          "id": "cuscuz-filezinhos-carne-molho",
+          "name": "Cuscuz de Filezinhos de Carne ao Molho",
+          "price": 26,
+          "image": "cuscuz-filezinhos-carne-molho.jpg",
+          "description": "Filezinhos de carne ao molho"
+        },
+        {
+          "id": "cuscuz-creme-frango-cubos",
+          "name": "Cuscuz de Creme de Frango em Cubos",
+          "price": 24,
+          "image": "cuscuz-creme-frango-cubos.jpg",
+          "description": "Creme de frango em cubos"
+        },
+        {
+          "id": "cuscuz-calabresa-mucarela",
+          "name": "Cuscuz de Calabresa com Muçarela",
+          "price": 24,
+          "image": "cuscuz-calabresa-mucarela.jpg",
+          "description": "Calabresa fatiada com muçarela"
+        },
+        {
+          "id": "cuscuz-files-camarao-queijo",
+          "name": "Cuscuz de Filés de Camarão com Queijo",
+          "price": 28,
+          "image": "cuscuz-files-camarao-queijo.jpg",
+          "description": "Filés de camarão com molho de queijo"
+        },
+        {
+          "id": "cuscuz-ovos-mucarela",
+          "name": "Cuscuz de Ovos e Muçarela",
+          "price": 22,
+          "image": "cuscuz-ovos-mucarela.jpg",
+          "description": "Ovos e muçarela"
         },
         {
           "id": "cuscuz-coco-leite-coco",
           "name": "Cuscuz de Coco Ralado e Leite de Coco",
           "price": 22,
-          "image": "cuscuz-coco-leite-coco.jpg"
+          "image": "cuscuz-coco-leite-coco.jpg",
+          "description": "Coco ralado e leite de coco"
+        }
+      ],
+      "note": "Os mesmos sabores saem em tapioca ou em cuscuz.",
+      "groups": [
+        {
+          "id": "lanches",
+          "name": "Lanches",
+          "itemIds": [
+            "crepioca-queijo",
+            "torrada-queijo",
+            "misto"
+          ]
+        },
+        {
+          "id": "tapiocas",
+          "name": "Tapiocas",
+          "itemIds": [
+            "carne-sol-coalho",
+            "filezinhos-carne-molho",
+            "creme-frango-cubos",
+            "calabresa-mucarela",
+            "files-camarao-queijo",
+            "ovos-mucarela",
+            "coco-leite-coco"
+          ]
+        },
+        {
+          "id": "cuscuz",
+          "name": "Cuscuz",
+          "itemIds": [
+            "cuscuz-carne-sol-coalho",
+            "cuscuz-filezinhos-carne-molho",
+            "cuscuz-creme-frango-cubos",
+            "cuscuz-calabresa-mucarela",
+            "cuscuz-files-camarao-queijo",
+            "cuscuz-ovos-mucarela",
+            "cuscuz-coco-leite-coco"
+          ]
         }
       ]
     },
