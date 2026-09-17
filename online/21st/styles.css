@@ -334,6 +334,26 @@ body.modal-open {
   letter-spacing: 0.08em;
 }
 
+.section__note {
+  margin: -0.2rem 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.section__group + .section__group {
+  margin-top: 1.75rem;
+}
+
+.section__subtitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent, #b8956b);
+  margin: 0 0 0.85rem;
+}
+
 .section__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
