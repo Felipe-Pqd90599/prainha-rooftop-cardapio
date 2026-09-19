@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.16-online",
+    "version": "1.1.17-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -781,7 +781,7 @@
         },
         {
           "id": "agua-tonica",
-          "name": "Água Tônica",
+          "name": "Água Tônica ou Schweppes Citrus",
           "price": 8,
           "image": "agua-tonica.jpg"
         },
