@@ -1,0 +1,14 @@
+---
+description: Fotos do cardápio nunca entram cruas — editar no padrão Prainha.
+alwaysApply: true
+---
+
+# Fotos do cardápio — padrão Prainha
+
+Quando o Felipe enviar ou pedir para colocar uma foto:
+
+1. **Nunca colar a imagem crua** em `assets/fotos/`. Fundo de pia, parede, celular ou recorte solto quebra o cardápio.
+2. **Editar no estilo das fotos já publicadas** (referências: `suco-tradicional.jpg`, `agua-coco.jpg`, `refri-litro.jpg`): mesa de madeira redonda, luz natural de praia, oceano/plantas ao fundo, 4:3, profundidade de campo rasa, fotorealista de restaurante — não CGI, não estúdio branco.
+3. **Manter o produto real** da foto enviada (latas, garrafas, rótulos e marcas legíveis). O fundo e a luz é que mudam para o rooftop.
+4. **Subir qualidade**: nitidez, iluminação, condensação, resolução alvo ~1600×1200 JPEG. Guardar o original em `assets/referencias/originais-usuario/` se for foto do Felipe.
+5. Destino: `assets/fotos/{id}.jpg` → bump `meta.version` em `data/menu-data.json` → `npm run prepare-pdf-images` (ou miniatura das fotos novas) → `npm run sync-online`.
