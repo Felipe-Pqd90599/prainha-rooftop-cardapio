@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.18-online",
+    "version": "1.1.20-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -736,6 +736,7 @@
         {
           "id": "suco-especial",
           "name": "Suco Especial",
+          "description": "Dois sabores no mesmo copo",
           "price": 14,
           "priceSecondary": 28,
           "image": "suco-especial.jpg"
@@ -786,10 +787,18 @@
           "image": "agua-tonica.jpg"
         },
         {
-          "id": "energetico",
-          "name": "Energético",
+          "id": "energetico-monster",
+          "name": "Energético Monster",
+          "description": "Consultar sabores disponíveis",
+          "price": 16,
+          "image": "energetico-monster.jpg"
+        },
+        {
+          "id": "energetico-redbull",
+          "name": "Energético Red Bull",
+          "description": "Consultar sabores disponíveis",
           "price": 17,
-          "image": "energetico.jpg"
+          "image": "energetico-redbull.jpg"
         },
         {
           "id": "soda-italiana",
