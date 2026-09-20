@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.26-online",
+    "version": "1.1.27-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -1042,6 +1042,7 @@
             "spaten-600",
             "budweiser-600",
             "heineken-600",
+            "amstel-600",
             "petra-600",
             "devassa-600"
           ]
@@ -1053,6 +1054,7 @@
             "heineken-long",
             "budweiser-long",
             "amstel-ultra-long",
+            "corona-long",
             "zero-alcool-long"
           ]
         },
@@ -1098,6 +1100,12 @@
           "image": "heineken-600.jpg"
         },
         {
+          "id": "amstel-600",
+          "name": "Amstel 600ml",
+          "price": 15,
+          "image": "amstel-600.jpg"
+        },
+        {
           "id": "petra-600",
           "name": "Petra 600",
           "price": 13,
@@ -1126,6 +1134,12 @@
           "name": "Amstel Ultra Long Neck",
           "price": 11,
           "image": "amstel-ultra-long.jpg"
+        },
+        {
+          "id": "corona-long",
+          "name": "Corona Long Neck",
+          "price": 13,
+          "image": "corona-long.jpg"
         },
         {
           "id": "balde-heineken",
