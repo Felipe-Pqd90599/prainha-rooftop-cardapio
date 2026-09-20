@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.25-online",
+    "version": "1.1.26-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -1032,12 +1032,46 @@
       "id": "cervejas",
       "name": "Cervejas",
       "order": 16,
+      "groups": [
+        {
+          "id": "cervejas-600",
+          "name": "600ml",
+          "itemIds": [
+            "brahma-chopp-600",
+            "original-600",
+            "spaten-600",
+            "budweiser-600",
+            "heineken-600",
+            "petra-600",
+            "devassa-600"
+          ]
+        },
+        {
+          "id": "cervejas-long-neck",
+          "name": "Long Neck",
+          "itemIds": [
+            "heineken-long",
+            "budweiser-long",
+            "amstel-ultra-long",
+            "zero-alcool-long"
+          ]
+        },
+        {
+          "id": "cervejas-baldes",
+          "name": "Baldes",
+          "itemIds": [
+            "balde-heineken",
+            "balde-budweiser",
+            "balde-amstel-ultra"
+          ]
+        }
+      ],
       "items": [
         {
-          "id": "petra-600",
-          "name": "Petra 600",
-          "price": 13,
-          "image": "petra-600.jpg"
+          "id": "brahma-chopp-600",
+          "name": "Brahma Chopp 600ml",
+          "price": 15,
+          "image": "brahma-chopp-600.jpg"
         },
         {
           "id": "original-600",
@@ -1052,10 +1086,22 @@
           "image": "spaten-600.jpg"
         },
         {
-          "id": "brahma-duplo-600",
-          "name": "Brahma Duplo 600",
-          "price": 15,
-          "image": "brahma-duplo-600.jpg"
+          "id": "budweiser-600",
+          "name": "Budweiser 600ml",
+          "price": 16,
+          "image": "budweiser-600.jpg"
+        },
+        {
+          "id": "heineken-600",
+          "name": "Heineken 600ml",
+          "price": 20,
+          "image": "heineken-600.jpg"
+        },
+        {
+          "id": "petra-600",
+          "name": "Petra 600",
+          "price": 13,
+          "image": "petra-600.jpg"
         },
         {
           "id": "devassa-600",
@@ -1064,16 +1110,43 @@
           "image": "devassa-600.jpg"
         },
         {
+          "id": "heineken-long",
+          "name": "Heineken Long Neck",
+          "price": 13,
+          "image": "heineken-long.jpg"
+        },
+        {
           "id": "budweiser-long",
           "name": "Budweiser Long Neck",
           "price": 11,
           "image": "budweiser-long.jpg"
         },
         {
-          "id": "heineken-long",
-          "name": "Heineken Long Neck",
-          "price": 13,
-          "image": "heineken-long.jpg"
+          "id": "amstel-ultra-long",
+          "name": "Amstel Ultra Long Neck",
+          "price": 11,
+          "image": "amstel-ultra-long.jpg"
+        },
+        {
+          "id": "balde-heineken",
+          "name": "Balde Heineken",
+          "description": "6 long necks 330ml",
+          "price": 72,
+          "image": "balde-heineken.jpg"
+        },
+        {
+          "id": "balde-budweiser",
+          "name": "Balde Budweiser",
+          "description": "6 long necks 330ml",
+          "price": 62,
+          "image": "balde-budweiser.jpg"
+        },
+        {
+          "id": "balde-amstel-ultra",
+          "name": "Balde Amstel Ultra",
+          "description": "6 long necks 330ml",
+          "price": 62,
+          "image": "balde-amstel-ultra.jpg"
         },
         {
           "id": "zero-alcool-long",
