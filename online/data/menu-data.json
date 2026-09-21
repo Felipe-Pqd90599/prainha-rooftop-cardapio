@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.30-online",
+    "version": "1.1.31-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -1281,6 +1281,7 @@
         {
           "id": "rum",
           "name": "Rum",
+          "description": "Montilla Carta Cristal",
           "price": 9,
           "priceSecondary": 110,
           "priceSecondaryLabel": "litro",
