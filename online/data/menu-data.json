@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.29-online",
+    "version": "1.1.30-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -1178,6 +1178,7 @@
         {
           "id": "cachaca-branca",
           "name": "Cachaça Branca",
+          "description": "Caranguejo Prata",
           "price": 5,
           "priceSecondary": 49,
           "priceSecondaryLabel": "litro",
@@ -1186,6 +1187,7 @@
         {
           "id": "cachaca-ouro",
           "name": "Cachaça Ouro",
+          "description": "Caranguejo Ouro",
           "price": 7,
           "priceSecondary": 69,
           "priceSecondaryLabel": "litro",
@@ -1218,22 +1220,50 @@
         {
           "id": "whisky-nacional",
           "name": "Whisky Nacional",
+          "description": "Black & White",
           "price": 10,
           "priceSecondary": 120,
           "priceSecondaryLabel": "litro",
           "image": "whisky-nacional.jpg"
         },
         {
+          "id": "red-label",
+          "name": "Red Label",
+          "description": "Johnnie Walker",
+          "price": 13,
+          "priceSecondary": 180,
+          "priceSecondaryLabel": "litro",
+          "image": "red-label.jpg"
+        },
+        {
+          "id": "jack-daniels",
+          "name": "Jack Daniel's",
+          "price": 15,
+          "priceSecondary": 220,
+          "priceSecondaryLabel": "litro",
+          "image": "jack-daniels.jpg"
+        },
+        {
           "id": "whisky-12-anos",
           "name": "Whisky 12 Anos",
+          "description": "Chivas Regal ou Old Parr",
           "price": 15,
           "priceSecondary": 250,
           "priceSecondaryLabel": "litro",
           "image": "whisky-12-anos.jpg"
         },
         {
+          "id": "dreher",
+          "name": "Dreher",
+          "price": 8,
+          "priceSecondary": 90,
+          "priceSecondaryLabel": "litro",
+          "image": "dreher.jpg"
+        },
+        {
           "id": "gim-nacional",
           "name": "Gim Nacional",
+          "description": "Rock's",
           "price": 10,
           "priceSecondary": 120,
           "priceSecondaryLabel": "litro",
@@ -1242,6 +1272,7 @@
         {
           "id": "gim-importado",
           "name": "Gim Importado",
+          "description": "Tanqueray",
           "price": 15,
           "priceSecondary": 250,
           "priceSecondaryLabel": "litro",
@@ -1254,6 +1285,14 @@
           "priceSecondary": 110,
           "priceSecondaryLabel": "litro",
           "image": "rum.jpg"
+        },
+        {
+          "id": "campari",
+          "name": "Campari",
+          "price": 12,
+          "priceSecondary": 150,
+          "priceSecondaryLabel": "litro",
+          "image": "campari.jpg"
         },
         {
           "id": "shot-mar-vermelho",
