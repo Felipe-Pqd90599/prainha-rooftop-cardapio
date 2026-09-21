@@ -1,10 +1,11 @@
 /**
  * Gera os dois cardápios em PDF a partir de data/menu-data.json:
- *   - Gastronomia (comidas, sobremesas, adicionais)
- *   - Drinks & Bar (autorais, tradicionais, cervejas, doses, vinhos, sem álcool)
+ *   - Gastronomia (comidas, sucos e diversos, sobremesas, adicionais)
+ *   - Drinks & Bar (autorais, tradicionais, cervejas, doses e litros, vinhos)
  *
- * Layout A4 paginado à mão (capa cheia, abertura de capítulo com foto, grade de cards).
- * Uso: npm run generate-menus [-- --shots]
+ * Tema claro "praia": areia, mar e branco. Capítulos correm em sequência na
+ * mesma página para o cardápio não ficar longo demais.
+ * Uso: npm run generate-menus
  */
 const fs = require('fs');
 const path = require('path');
@@ -33,17 +34,21 @@ const FONT_SPECS = [
 const CHROME_UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 
-/** Medidas da página em milímetros — a paginação é calculada com estes valores. */
+/** Medidas em milímetros — a paginação é calculada com estes valores. */
 const LAYOUT = {
   pageH: 297,
-  headerH: 15,
-  footerH: 13,
-  heroH: 106,
-  heroGap: 7,
-  headingH: 12,
+  padX: 12,
+  headerH: 14,
+  footerH: 12,
+  chapterH: 28,
+  headingH: 11,
+  featureH: 92,
+  gapChapter: 8,
+  gapHeading: 7,
+  gapFeature: 6,
   grid: {
-    2: { cols: 2, gap: 7, rowGap: 6.5, cardH: 82 },
-    3: { cols: 3, gap: 6, rowGap: 5.5, cardH: 62 },
+    3: { cols: 3, gap: 5, rowGap: 5, cardH: 63, photoH: 38 },
+    4: { cols: 4, gap: 4.5, rowGap: 4.5, cardH: 49, photoH: 30 },
   },
 };
 
@@ -55,26 +60,25 @@ const MENUS = [
     title: 'Gastronomia',
     lead: 'Do mar ao sertão, com vista para o Morro do Careca',
     accent: '#B8956B',
-    accentLight: '#E8C98A',
-    accentRgb: '184, 149, 107',
+    accentDark: '#8C6E45',
+    accentSoft: '#F3E9DA',
     tocTitle: 'O que servimos',
     tocNote:
-      'Cozinha aberta todos os dias. Pratos de 2 pessoas marcados com o segundo preço. Peça pelo QR e acompanhe o cardápio sempre atualizado.',
-    coverThumbs: ['mista-familia', 'american-smash-duplo', 'taca-camarao-empanado'],
+      'Cozinha aberta todos os dias. Pratos para 2 pessoas trazem o segundo preço indicado. Aponte o QR e veja o cardápio sempre atualizado.',
     chapters: [
-      { cat: 'mais-vendidos', cols: 2, hero: 'mista-familia', lead: 'Os pratos que mais saem no rooftop', star: true },
-      { cat: 'entradas', cols: 2, hero: 'taca-camarao-empanado', lead: 'Para abrir a noite' },
-      { cat: 'frutos-do-mar', cols: 2, hero: 'camarao-caicoense', lead: 'O melhor do mar de Ponta Negra' },
-      { cat: 'carnes', cols: 2, hero: 'parmegiana-carne', lead: 'Pratos quentes para dividir' },
-      { cat: 'burgers', cols: 2, hero: 'american-smash-duplo', lead: 'Blend na chapa e pão macio' },
-      { cat: 'petiscos', cols: 2, hero: 'mista-prainha', lead: 'Para acompanhar a cerveja gelada' },
-      { cat: 'cuscuz-tapiocas-lanches', cols: 3, hero: 'cuscuz-carne-sol-coalho', lead: 'O Nordeste na chapa' },
-      { cat: 'caldos', cols: 2, hero: 'caldeirinho-mar', lead: 'Quentinhos para a brisa do mar' },
-      { cat: 'saladas-vegetarianos', cols: 2, hero: 'salada-camarao', lead: 'Leves, frescas e coloridas' },
-      { cat: 'infantis', cols: 2, hero: 'file-camarao-kids', lead: 'Porções pensadas para as crianças' },
-      { cat: 'sucos-diversos', cols: 3, hero: 'suco-especial', lead: 'Sucos, águas e geladas sem álcool' },
-      { cat: 'sobremesas-cafes', cols: 2, hero: 'petit-brownie', lead: 'O doce final com vista para o mar' },
-      { cat: 'adicionais', cols: 3, hero: 'carne-130g', lead: 'Complete o seu prato' },
+      { cat: 'mais-vendidos', cols: 3, photo: 'mista-familia', lead: 'Os pratos que mais saem no rooftop', star: true },
+      { cat: 'entradas', cols: 3, photo: 'taca-camarao-empanado', lead: 'Para abrir a noite' },
+      { cat: 'frutos-do-mar', cols: 3, photo: 'camarao-caicoense', lead: 'O melhor do mar de Ponta Negra' },
+      { cat: 'carnes', cols: 3, photo: 'parmegiana-carne', lead: 'Pratos quentes para dividir' },
+      { cat: 'burgers', cols: 3, photo: 'american-smash-duplo', lead: 'Blend na chapa e pão macio' },
+      { cat: 'petiscos', cols: 3, photo: 'mista-prainha', lead: 'Para acompanhar a cerveja gelada' },
+      { cat: 'cuscuz-tapiocas-lanches', cols: 4, photo: 'cuscuz-carne-sol-coalho', lead: 'O Nordeste na chapa' },
+      { cat: 'caldos', cols: 3, photo: 'caldeirinho-mar', lead: 'Quentinhos para a brisa do mar' },
+      { cat: 'saladas-vegetarianos', cols: 3, photo: 'salada-camarao', lead: 'Leves, frescas e coloridas' },
+      { cat: 'infantis', cols: 3, photo: 'file-camarao-kids', lead: 'Porções pensadas para as crianças' },
+      { cat: 'sucos-diversos', cols: 4, photo: 'suco-especial', lead: 'Sucos, águas e geladas sem álcool' },
+      { cat: 'sobremesas-cafes', cols: 3, photo: 'petit-brownie', lead: 'O doce final com vista para o mar' },
+      { cat: 'adicionais', cols: 4, photo: 'carne-130g', lead: 'Complete o seu prato' },
     ],
   },
   {
@@ -83,25 +87,17 @@ const MENUS = [
     kicker: 'Carta de',
     title: 'Drinks & Bar',
     lead: 'O pôr do sol da Prainha servido em taça',
-    accent: '#5BB5C9',
-    accentLight: '#7EC8E3',
-    accentRgb: '126, 200, 227',
+    accent: '#2E9FB8',
+    accentDark: '#1F7A90',
+    accentSoft: '#E2F2F7',
     tocTitle: 'O que tem no bar',
-    tocNote:
-      'Bar aberto até o fim da noite. Drinks preparados na hora, cervejas sempre geladas e baldes para a mesa toda.',
-    coverThumbs: ['caipi-prainha', 'caipifruta', 'balde-heineken'],
-    tocHighlights: [
-      { id: 'prainha-blue', label: 'Autorais da casa' },
-      { id: 'balde-budweiser', label: 'Baldes para a mesa' },
-      { id: 'suco-especial', label: 'Sem álcool' },
-    ],
+    tocNote: 'Bar aberto até o fim da noite. Drinks preparados na hora e cervejas sempre geladas.',
     chapters: [
-      { cat: 'drinks-autorais', cols: 2, hero: 'caipi-prainha', lead: 'Criações da casa, só daqui', star: true },
-      { cat: 'drinks-tradicionais', cols: 2, hero: 'caipifruta', lead: 'Os clássicos que nunca falham' },
-      { cat: 'cervejas', cols: 3, hero: 'balde-heineken', lead: 'Geladas, long necks e baldes' },
-      { cat: 'doses-litros', cols: 3, hero: 'whisky-12-anos', lead: 'Destilados, doses e litros' },
-      { cat: 'vinhos', cols: 2, hero: 'vinho-consultar', lead: 'Consulte os rótulos do dia' },
-      { cat: 'sucos-diversos', cols: 3, hero: 'suco-especial', lead: 'Sem álcool, do jeito que você gosta' },
+      { cat: 'drinks-autorais', cols: 3, photo: 'caipi-prainha', lead: 'Criações da casa, só daqui', star: true },
+      { cat: 'drinks-tradicionais', cols: 3, photo: 'caipifruta', lead: 'Os clássicos que nunca falham' },
+      { cat: 'cervejas', cols: 4, photo: 'balde-heineken', lead: 'Geladas, long necks e baldes' },
+      { cat: 'doses-litros', cols: 4, photo: 'whisky-12-anos', lead: 'Destilados, doses e litros' },
+      { cat: 'vinhos', cols: 3, photo: 'vinho-consultar', lead: 'Consulte os rótulos do dia' },
     ],
   },
 ];
@@ -223,8 +219,8 @@ async function ensureQr(info) {
   return ok;
 }
 
-/** Recorta as fotos nos tamanhos usados pelo PDF (card e faixa de abertura). */
-async function prepareImages(cardIds, heroIds, qr) {
+/** Recorta as fotos nos tamanhos usados pelo PDF (card e miniatura de capítulo). */
+async function prepareImages(cardIds, chapterIds, qr) {
   const imgDir = path.join(BUILD, 'img');
   fs.mkdirSync(imgDir, { recursive: true });
 
@@ -232,15 +228,15 @@ async function prepareImages(cardIds, heroIds, qr) {
     const dest = path.join(imgDir, `card-${id}.jpg`);
     if (fs.existsSync(dest)) continue;
     const img = await Jimp.read(path.join(FOTOS, `${id}.jpg`));
-    img.cover(720, 470).quality(72);
+    img.cover(600, 430).quality(74);
     await img.writeAsync(dest);
   }
 
-  for (const id of heroIds) {
-    const dest = path.join(imgDir, `hero-${id}.jpg`);
+  for (const id of chapterIds) {
+    const dest = path.join(imgDir, `cap-${id}.jpg`);
     if (fs.existsSync(dest)) continue;
     const img = await Jimp.read(path.join(FOTOS, `${id}.jpg`));
-    img.cover(1400, 730).quality(76);
+    img.cover(560, 370).quality(78);
     await img.writeAsync(dest);
   }
 
@@ -248,7 +244,7 @@ async function prepareImages(cardIds, heroIds, qr) {
   for (const name of Object.keys(qr)) {
     if (qr[name]) fs.copyFileSync(path.join(QRDIR, name), path.join(imgDir, name));
   }
-  console.log(`imagens: ${cardIds.length} cards + ${heroIds.length} faixas`);
+  console.log(`imagens: ${cardIds.length} cards + ${chapterIds.length} capítulos`);
 }
 
 /** Resolve os itens de uma categoria, respeitando itemRefs e groups. */
@@ -267,172 +263,173 @@ function chapterContent(menu, catId) {
   return { cat, items, groups };
 }
 
-/** Distribui títulos de grupo e linhas de cards nas páginas, medindo em milímetros. */
-function paginate(groups, cfg) {
+/** Monta a sequência de blocos do cardápio inteiro (capítulos emendam na mesma página). */
+function buildBlocks(chapters) {
   const blocks = [];
-  for (const group of groups) {
-    if (group.name) blocks.push({ type: 'heading', name: group.name });
-    for (let i = 0; i < group.items.length; i += cfg.cols) {
-      blocks.push({ type: 'row', items: group.items.slice(i, i + cfg.cols) });
+  for (const chapter of chapters) {
+    blocks.push({ type: 'chapter', chapter, height: LAYOUT.chapterH, gapBefore: LAYOUT.gapChapter });
+    if (chapter.items.length === 1) {
+      blocks.push({
+        type: 'feature',
+        chapter,
+        item: chapter.items[0],
+        height: LAYOUT.featureH,
+        gapBefore: LAYOUT.gapFeature,
+      });
+      continue;
+    }
+    const cfg = LAYOUT.grid[chapter.cols];
+    for (const group of chapter.groups) {
+      if (group.name) {
+        blocks.push({ type: 'heading', chapter, name: group.name, height: LAYOUT.headingH, gapBefore: LAYOUT.gapHeading });
+      }
+      for (let i = 0; i < group.items.length; i += chapter.cols) {
+        blocks.push({
+          type: 'row',
+          chapter,
+          cols: chapter.cols,
+          items: group.items.slice(i, i + chapter.cols),
+          height: cfg.cardH,
+          gapBefore: cfg.rowGap,
+        });
+      }
     }
   }
+  return blocks;
+}
 
-  const openerSpace = LAYOUT.pageH - LAYOUT.heroH - LAYOUT.heroGap - LAYOUT.footerH;
-  const innerSpace = LAYOUT.pageH - LAYOUT.headerH - LAYOUT.footerH;
-  const heightOf = (b) => (b.type === 'heading' ? LAYOUT.headingH : cfg.cardH);
-
+/** Quebra os blocos em páginas, sem deixar título de capítulo/grupo órfão no pé. */
+function paginate(blocks) {
+  const usable = LAYOUT.pageH - LAYOUT.headerH - LAYOUT.footerH;
   const pages = [];
-  let page = { opener: true, blocks: [], free: openerSpace };
-  for (const block of blocks) {
-    const needed = heightOf(block) + (page.blocks.length ? cfg.rowGap : 0);
-    if (needed > page.free) {
+  let page = { blocks: [], free: usable };
+
+  blocks.forEach((block, index) => {
+    const gap = page.blocks.length ? block.gapBefore : 0;
+    let needed = gap + block.height;
+
+    // Cabeçalho precisa levar junto o primeiro bloco de conteúdo.
+    if (block.type === 'chapter' || block.type === 'heading') {
+      const next = blocks[index + 1];
+      if (next) needed += next.gapBefore + next.height;
+    }
+
+    if (needed > page.free && page.blocks.length) {
       pages.push(page);
-      page = { opener: false, blocks: [], free: innerSpace };
-      page.free -= heightOf(block);
+      page = { blocks: [], free: usable };
+      page.free -= block.height;
     } else {
-      page.free -= needed;
+      page.free -= gap + block.height;
     }
     page.blocks.push(block);
-  }
+  });
+
   pages.push(page);
-
-  // Título de grupo sozinho no pé da página desce junto com os cards.
-  for (let i = 0; i < pages.length - 1; i++) {
-    const last = pages[i].blocks[pages[i].blocks.length - 1];
-    if (last?.type === 'heading') {
-      pages[i].blocks.pop();
-      pages[i + 1].blocks.unshift(last);
-    }
-  }
-
-  // Sem títulos de grupo dá para equilibrar as linhas e evitar a última página quase vazia.
-  if (!blocks.some((b) => b.type === 'heading') && pages.length > 1) {
-    const rowsPerPage = balanceRows(blocks.length, pages.length, cfg, openerSpace, innerSpace);
-    let cursor = 0;
-    return rowsPerPage.map((rows, index) => ({
-      opener: index === 0,
-      blocks: blocks.slice(cursor, (cursor += rows)),
-    }));
-  }
   return pages;
 }
 
-function balanceRows(totalRows, pageCount, cfg, openerSpace, innerSpace) {
-  const fits = (space) => Math.floor((space + cfg.rowGap) / (cfg.cardH + cfg.rowGap));
-  const capacity = (index) => fits(index === 0 ? openerSpace : innerSpace);
-  const counts = new Array(pageCount).fill(0);
-  let left = totalRows;
-  for (let i = 0; i < pageCount; i += 1) {
-    counts[i] = Math.min(capacity(i), Math.ceil(left / (pageCount - i)));
-    left -= counts[i];
-  }
-  for (let i = pageCount - 1; i >= 0 && left > 0; i -= 1) {
-    const add = Math.min(capacity(i) - counts[i], left);
-    counts[i] += add;
-    left -= add;
-  }
-  return counts;
-}
-
-function renderCard(item, cols, badge, wide) {
-  const prices = [];
+function priceLine(item) {
   if (item.portionOptions?.length) {
-    // Itens vendidos por tamanho (camarão alho e óleo) mostram todas as porções.
-    for (const option of item.portionOptions.slice(0, 3)) {
-      prices.push(`<span class="pill pill--second">${esc(option.label)} ${esc(money(option.price))}</span>`);
-    }
-  } else {
-    prices.push(`<span class="pill pill--price">${esc(money(item.price))}</span>`);
-    if (item.priceSecondary != null) {
-      prices.push(
-        `<span class="pill pill--second">${esc(item.priceSecondaryLabel || '2 pessoas')} ${esc(money(item.priceSecondary))}</span>`,
-      );
-    }
+    return item.portionOptions.map((o) => `${o.label} ${money(o.price)}`).join(' · ');
   }
-  return `
-        <article class="card card--${cols}${wide ? ' card--wide' : ''}">
-          <div class="card__media">
-            <img src="img/card-${esc(item.id)}.jpg" alt="" />
-            ${badge ? `<span class="card__badge">${esc(badge)}</span>` : ''}
-            <div class="card__prices">${prices.join('')}</div>
-          </div>
-          <div class="card__body">
-            <h3 class="card__name">${esc(item.name)}</h3>
-            ${item.description ? `<p class="card__desc">${esc(item.description)}</p>` : ''}
-          </div>
-        </article>`;
+  const parts = [money(item.price)];
+  if (item.priceSecondary != null) {
+    parts.push(`${item.priceSecondaryLabel || '2 pessoas'} ${money(item.priceSecondary)}`);
+  }
+  return parts.join(' · ');
 }
 
-/** Capítulo de um item só (vinhos) vira um card grande, em vez de um card perdido na página. */
+function renderCard(item, badge) {
+  return `
+          <article class="card">
+            <div class="card__media">
+              <img src="img/card-${esc(item.id)}.jpg" alt="" />
+              ${badge ? `<span class="card__badge">${esc(badge)}</span>` : ''}
+            </div>
+            <div class="card__body">
+              <h3 class="card__name">${esc(item.name)}</h3>
+              ${item.description ? `<p class="card__desc">${esc(item.description)}</p>` : ''}
+              <p class="card__price">${esc(priceLine(item))}</p>
+            </div>
+          </article>`;
+}
+
 function renderFeature(item) {
-  const prices = [money(item.price)];
-  if (item.priceSecondary != null) prices.push(`${item.priceSecondaryLabel || '2 pessoas'} ${money(item.priceSecondary)}`);
   return `
         <article class="feature">
           <div class="feature__media"><img src="img/card-${esc(item.id)}.jpg" alt="" /></div>
           <div class="feature__body">
             <h3 class="feature__name">${esc(item.name)}</h3>
             ${item.description ? `<p class="feature__desc">${esc(item.description)}</p>` : ''}
-            <p class="feature__price">${esc(prices.join(' · '))}</p>
+            <p class="feature__price">${esc(priceLine(item))}</p>
           </div>
         </article>`;
 }
 
-function renderBlocks(blocks, cfg, starFirst, wideLast) {
-  let first = starFirst;
-  return blocks
-    .map((block, index) => {
-      if (block.type === 'heading') {
-        return `<h4 class="group">${esc(block.name)}</h4>`;
-      }
-      // Item sozinho na última linha ocupa a largura toda, em vez de deixar um buraco.
-      const wide = wideLast && index === blocks.length - 1 && block.items.length === 1 && cfg.cols === 2;
-      return block.items
-        .map((item) => {
-          const badge = first ? 'Mais pedido' : '';
-          first = false;
-          return renderCard(item, cfg.cols, badge, wide);
-        })
-        .join('');
-    })
-    .join('');
+function renderChapter(chapter) {
+  return `
+        <header class="chapter">
+          <img class="chapter__photo" src="img/cap-${esc(chapter.photo)}.jpg" alt="" />
+          <div class="chapter__text">
+            <p class="chapter__num">${pad2(chapter.number)} — ${chapter.items.length} itens</p>
+            <h2 class="chapter__title">${esc(chapter.cat.name)}</h2>
+            <p class="chapter__lead">${esc(chapter.lead)}</p>
+          </div>
+        </header>`;
 }
 
-function renderFooter(pageNumber, menu) {
-  return `
-      <footer class="sheet__footer">
-        <span>Prainha Rooftop · Ponta Negra, Natal/RN</span>
-        <span class="sheet__page">${pad2(pageNumber)}</span>
-      </footer>`;
+/** Junta linhas seguidas de mesmo número de colunas numa única grade. */
+function renderPageBlocks(page, starIds) {
+  const html = [];
+  let open = null;
+  for (const block of page.blocks) {
+    if (block.type === 'row') {
+      if (open !== block.cols) {
+        if (open) html.push('</div>');
+        html.push(`<div class="grid grid--${block.cols}">`);
+        open = block.cols;
+      }
+      for (const item of block.items) {
+        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : ''));
+      }
+      continue;
+    }
+    if (open) {
+      html.push('</div>');
+      open = null;
+    }
+    if (block.type === 'chapter') html.push(renderChapter(block.chapter));
+    else if (block.type === 'heading') html.push(`<h4 class="group">${esc(block.name)}</h4>`);
+    else if (block.type === 'feature') html.push(renderFeature(block.item));
+  }
+  if (open) html.push('</div>');
+  return html.join('');
 }
 
 function buildMenuHtml(menuCfg, data, info, qr) {
   const chapters = menuCfg.chapters.map((chapter, index) => {
     const { cat, items, groups } = chapterContent(data, chapter.cat);
-    const cfg = LAYOUT.grid[chapter.cols];
-    return { ...chapter, cat, items, groups, cfg, number: index + 1 };
+    return { ...chapter, cat, items, groups, number: index + 1 };
   });
 
-  // Capa = 1, sumário = 2, capítulos a partir da 3.
-  let cursor = 3;
-  for (const chapter of chapters) {
-    chapter.pages = paginate(chapter.groups, chapter.cfg);
-    chapter.startPage = cursor;
-    cursor += chapter.pages.length;
-  }
-  const closingPage = cursor;
+  const starIds = new Set(
+    chapters.filter((c) => c.star && c.items[0]).map((c) => c.items[0].id),
+  );
 
-  const coverThumbs = menuCfg.coverThumbs
-    .map((id) => `<img src="img/card-${esc(id)}.jpg" alt="" />`)
-    .join('');
+  const showToc = chapters.length >= 7;
+  const firstContentPage = showToc ? 3 : 2;
+
+  const pages = paginate(buildBlocks(chapters));
+  for (const chapter of chapters) {
+    const index = pages.findIndex((p) => p.blocks.some((b) => b.type === 'chapter' && b.chapter === chapter));
+    chapter.startPage = firstContentPage + index;
+  }
 
   const cover = `
     <section class="sheet sheet--cover">
-      <img class="bleed" src="img/capa.jpg" alt="" />
-      <div class="cover__veil"></div>
-      <div class="cover__thumbs">${coverThumbs}</div>
-      <div class="cover__block">
-        <span class="hairline"></span>
+      <img class="cover__photo" src="img/capa.jpg" alt="" />
+      <div class="cover__panel">
+        <span class="rule"></span>
         <p class="cover__kicker">${esc(menuCfg.kicker)}</p>
         <h1 class="cover__title">${esc(menuCfg.title)}</h1>
         <p class="cover__lead">${esc(menuCfg.lead)}</p>
@@ -440,9 +437,16 @@ function buildMenuHtml(menuCfg, data, info, qr) {
       </div>
     </section>`;
 
-  const tocRows = chapters
-    .map(
-      (chapter) => `
+  const toc = showToc
+    ? `
+    <section class="sheet">
+      ${pageHeader(menuCfg.title)}
+      <div class="sheet__body sheet__body--toc">
+        <p class="eyebrow">Sumário</p>
+        <h2 class="toc__title">${esc(menuCfg.tocTitle)}</h2>
+        <ol class="toc">${chapters
+          .map(
+            (chapter) => `
           <li>
             <span class="toc__num">${pad2(chapter.number)}</span>
             <span class="toc__name">${esc(chapter.cat.name)}</span>
@@ -450,126 +454,50 @@ function buildMenuHtml(menuCfg, data, info, qr) {
             <span class="toc__count">${chapter.items.length} itens</span>
             <span class="toc__page">${pad2(chapter.startPage)}</span>
           </li>`,
-    )
-    .join('');
-
-  const highlights = menuCfg.tocHighlights?.length
-    ? `<div class="toc__highlights">${menuCfg.tocHighlights
-        .map(
-          (h) => `
-          <figure>
-            <img src="img/card-${esc(h.id)}.jpg" alt="" />
-            <figcaption>${esc(h.label)}</figcaption>
-          </figure>`,
-        )
-        .join('')}</div>`
-    : '';
-
-  const toc = `
-    <section class="sheet">
-      <header class="sheet__header">
-        <span>Prainha Rooftop</span>
-        <span>${esc(menuCfg.title)}</span>
-      </header>
-      <div class="sheet__body sheet__body--toc">
-        <p class="eyebrow">Sumário</p>
-        <h2 class="toc__title">${esc(menuCfg.tocTitle)}</h2>
-        <ol class="toc${highlights ? ' toc--tight' : ''}">${tocRows}</ol>
-        ${highlights}
+          )
+          .join('')}</ol>
         <div class="toc__foot">
           <p class="toc__note">${esc(menuCfg.tocNote)}</p>
-          ${
-            qr['cardapio.png']
-              ? `<div class="qr qr--small">
-                   <img src="img/cardapio.png" alt="" />
-                   <span>Cardápio<br />online</span>
-                 </div>`
-              : ''
-          }
+          ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
         </div>
       </div>
-      ${renderFooter(2, menuCfg)}
-    </section>`;
+      ${pageFooter(2)}
+    </section>`
+    : '';
 
-  const content = chapters
-    .map((chapter) =>
-      chapter.pages
-        .map((page, pageIndex) => {
-          const pageNumber = chapter.startPage + pageIndex;
-          const grid =
-            chapter.items.length === 1
-              ? renderFeature(chapter.items[0])
-              : `<div class="grid grid--${chapter.cols}">${renderBlocks(
-                  page.blocks,
-                  chapter.cfg,
-                  chapter.star && pageIndex === 0,
-                  pageIndex === chapter.pages.length - 1,
-                )}</div>`;
-
-          if (page.opener) {
-            return `
+  const content = pages
+    .map((page, index) => {
+      const chapter = (page.blocks.find((b) => b.chapter) || {}).chapter;
+      return `
     <section class="sheet">
-      <div class="hero">
-        <img class="bleed" src="img/hero-${esc(chapter.hero)}.jpg" alt="" />
-        <div class="hero__veil"></div>
-        <div class="hero__text">
-          <span class="hero__num">${pad2(chapter.number)}</span>
-          <div>
-            <h2 class="hero__title">${esc(chapter.cat.name)}</h2>
-            <p class="hero__lead">${esc(chapter.lead)} · ${chapter.items.length} itens</p>
-          </div>
-        </div>
-      </div>
-      <div class="sheet__body sheet__body--opener">${grid}</div>
-      ${renderFooter(pageNumber, menuCfg)}
+      ${pageHeader(chapter ? chapter.cat.name : menuCfg.title)}
+      <div class="sheet__body">${renderPageBlocks(page, starIds)}</div>
+      ${pageFooter(firstContentPage + index)}
     </section>`;
-          }
-
-          return `
-    <section class="sheet">
-      <header class="sheet__header">
-        <span>Prainha Rooftop</span>
-        <span>${esc(chapter.cat.name)}</span>
-      </header>
-      <div class="sheet__body">${grid}</div>
-      ${renderFooter(pageNumber, menuCfg)}
-    </section>`;
-        })
-        .join(''),
-    )
+    })
     .join('');
 
   const policies = info.policies || {};
   const closing = `
     <section class="sheet sheet--closing">
-      <img class="bleed" src="img/capa.jpg" alt="" />
-      <div class="closing__veil"></div>
-      <div class="closing__block">
-        <span class="hairline"></span>
+      <img class="closing__photo" src="img/capa.jpg" alt="" />
+      <div class="closing__panel">
+        <span class="rule"></span>
         <p class="closing__brand">Prainha</p>
         <p class="closing__sub">Rooftop</p>
         <p class="closing__tagline">${esc(info.description)}</p>
-        <p class="closing__menu">${esc(menuCfg.kicker)} ${esc(menuCfg.title)}</p>
         <div class="closing__qrs">
-          ${
-            qr['whatsapp.png']
-              ? `<div class="qr"><img src="img/whatsapp.png" alt="" /><span>Pedir no<br />WhatsApp</span></div>`
-              : ''
-          }
-          ${
-            qr['cardapio.png']
-              ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>`
-              : ''
-          }
+          ${qr['whatsapp.png'] ? `<div class="qr"><img src="img/whatsapp.png" alt="" /><span>Pedir no<br />WhatsApp</span></div>` : ''}
+          ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
+          <p class="closing__contact">${esc(info.contact.instagram)}<br />${esc(info.contact.phone)}</p>
         </div>
-        <p class="closing__contact">${esc(info.contact.instagram)} &nbsp;·&nbsp; ${esc(info.contact.phone)}</p>
         <ul class="closing__policies">
           ${policies.serviceChargeSuggestion ? `<li>${esc(policies.serviceChargeSuggestion)}</li>` : ''}
           ${policies.couvertArtistico ? `<li>${esc(policies.couvertArtistico)}</li>` : ''}
           ${policies.adicionaisNote ? `<li>${esc(policies.adicionaisNote)}</li>` : ''}
         </ul>
+        <p class="closing__version">Preços sujeitos a alteração · edição ${esc(data.meta.version.replace('-online', ''))}</p>
       </div>
-      <p class="closing__version">Preços sujeitos a alteração · edição ${esc(data.meta.version.replace('-online', ''))}</p>
     </section>`;
 
   const html = `<!DOCTYPE html>
@@ -584,34 +512,51 @@ function buildMenuHtml(menuCfg, data, info, qr) {
   </body>
 </html>`;
 
-  return { html, totalPages: closingPage, chapters };
+  return { html, totalPages: firstContentPage + pages.length, chapters, pages };
+}
+
+function pageHeader(label) {
+  return `
+      <header class="sheet__header">
+        <span>Prainha Rooftop</span>
+        <span>${esc(label)}</span>
+      </header>`;
+}
+
+function pageFooter(pageNumber) {
+  return `
+      <footer class="sheet__footer">
+        <span>Ponta Negra · Natal/RN · @prainharooftop</span>
+        <span class="sheet__page">${pad2(pageNumber)}</span>
+      </footer>`;
 }
 
 function css(menuCfg) {
-  const g2 = LAYOUT.grid[2];
   const g3 = LAYOUT.grid[3];
+  const g4 = LAYOUT.grid[4];
   return `
     @page { size: A4; margin: 0; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --ink: #0B0F11;
-      --surface: #161F23;
-      --line: #2B383E;
-      --white: #F6F7F5;
-      --muted: #94A4AA;
+      --sand-bg: #FBF7F0;
+      --paper: #FFFFFF;
+      --ink: #123742;
+      --ink-soft: #5E7279;
+      --line: #E9DFCF;
+      --sea: #7EC8E3;
       --accent: ${menuCfg.accent};
-      --accent-light: ${menuCfg.accentLight};
-      --accent-rgb: ${menuCfg.accentRgb};
+      --accent-dark: ${menuCfg.accentDark};
+      --accent-soft: ${menuCfg.accentSoft};
     }
     html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    body { background: var(--ink); color: var(--white); font-family: 'Source Sans 3', 'Segoe UI', sans-serif; }
+    body { background: var(--sand-bg); color: var(--ink); font-family: 'Source Sans 3', 'Segoe UI', sans-serif; }
 
     .sheet {
       position: relative;
       width: 210mm;
       height: 297mm;
       overflow: hidden;
-      background: var(--ink);
+      background: var(--sand-bg);
       break-after: page;
       page-break-after: always;
     }
@@ -619,426 +564,275 @@ function css(menuCfg) {
     .sheet::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(120% 55% at 50% -12%, rgba(var(--accent-rgb), 0.10), transparent 62%),
-        radial-gradient(90% 45% at 112% 112%, rgba(var(--accent-rgb), 0.08), transparent 60%);
+      top: 0; left: 0; right: 0;
+      height: 1.4mm;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--sea) 100%);
     }
     .sheet--cover::before, .sheet--closing::before { display: none; }
 
-    .bleed { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .hairline { display: block; width: 18mm; height: 0.6mm; background: var(--accent); }
+    .rule { display: block; width: 16mm; height: 0.7mm; background: var(--accent); }
 
     .sheet__header, .sheet__footer {
       position: absolute;
-      left: 13mm;
-      right: 13mm;
+      left: ${LAYOUT.padX}mm;
+      right: ${LAYOUT.padX}mm;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 6.6pt;
+      font-size: 6.4pt;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink-soft);
     }
-    .sheet__header { top: 0; height: ${LAYOUT.headerH}mm; padding-bottom: 4mm; border-bottom: 0.25mm solid var(--line); }
-    .sheet__footer { bottom: 0; height: ${LAYOUT.footerH}mm; padding-top: 4mm; border-top: 0.25mm solid var(--line); }
+    .sheet__header { top: 0; height: ${LAYOUT.headerH}mm; padding: 3mm 0 3.5mm; border-bottom: 0.2mm solid var(--line); }
+    .sheet__footer { bottom: 0; height: ${LAYOUT.footerH}mm; padding-top: 3.5mm; border-top: 0.2mm solid var(--line); }
     .sheet__page {
       font-family: Oswald, sans-serif;
       font-size: 9pt;
-      letter-spacing: 0.06em;
-      color: var(--accent-light);
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
     }
     .sheet__body {
       position: absolute;
-      left: 13mm;
-      right: 13mm;
+      left: ${LAYOUT.padX}mm;
+      right: ${LAYOUT.padX}mm;
       top: ${LAYOUT.headerH}mm;
       bottom: ${LAYOUT.footerH}mm;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
-    .sheet__body--opener { top: ${LAYOUT.heroH + LAYOUT.heroGap}mm; }
-    .sheet__body--toc { justify-content: flex-start; }
 
     /* ---------- capa ---------- */
-    .cover__veil {
+    .sheet--cover { background: var(--sand-bg); }
+    .cover__photo {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg,
-        rgba(11,15,17,0) 26%,
-        rgba(11,15,17,0.45) 44%,
-        rgba(11,15,17,0.93) 63%,
-        var(--ink) 78%);
-    }
-    .cover__thumbs {
-      position: absolute;
-      left: 16mm; right: 16mm; top: 168mm;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4mm;
-    }
-    .cover__thumbs img {
-      width: 100%;
-      height: 34mm;
+      top: 0; left: 0;
+      width: 210mm;
+      height: 197mm;
       object-fit: cover;
-      border-radius: 1.5mm;
-      border: 0.3mm solid rgba(var(--accent-rgb), 0.55);
+      object-position: 50% 0%;
     }
-    .cover__block { position: absolute; left: 16mm; right: 16mm; top: 210mm; }
+    .cover__panel { position: absolute; top: 197mm; left: 0; right: 0; bottom: 0; padding: 14mm 18mm 0; }
     .cover__kicker {
-      margin-top: 5mm;
+      margin-top: 6mm;
       font-size: 8pt;
-      letter-spacing: 0.42em;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--accent-light);
+      color: var(--accent-dark);
     }
     .cover__title {
-      font-family: Oswald, sans-serif;
-      font-weight: 700;
-      font-size: 41pt;
-      line-height: 1.02;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
       margin-top: 1mm;
+      font-family: Oswald, sans-serif;
+      font-weight: 600;
+      font-size: 38pt;
+      line-height: 1.02;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--ink);
     }
-    .cover__lead { margin-top: 3mm; font-size: 11pt; font-weight: 300; color: #D6DEE1; }
+    .cover__lead { margin-top: 3mm; font-size: 11pt; font-weight: 300; color: #4C6670; }
     .cover__meta {
       position: absolute;
-      left: 0;
-      top: 56mm;
-      font-size: 7.6pt;
+      left: 18mm;
+      bottom: 13mm;
+      font-size: 7.4pt;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink-soft);
     }
 
     /* ---------- sumário ---------- */
-    .eyebrow {
-      font-size: 7.4pt;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-    }
+    .sheet__body--toc { display: flex; flex-direction: column; }
+    .eyebrow { font-size: 7.4pt; letter-spacing: 0.34em; text-transform: uppercase; color: var(--accent-dark); }
     .toc__title {
       font-family: Oswald, sans-serif;
       font-weight: 600;
-      font-size: 27pt;
+      font-size: 26pt;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin: 2mm 0 9mm;
+      letter-spacing: 0.01em;
+      margin: 2mm 0 8mm;
     }
-    .toc {
-      list-style: none;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      padding-bottom: 6mm;
-    }
-    .toc--tight { flex: 0 0 auto; padding-bottom: 0; }
-    .toc--tight li + li { margin-top: 6mm; }
-    .toc li {
-      display: flex;
-      align-items: baseline;
-      gap: 3mm;
-      padding-bottom: 3.4mm;
-      border-bottom: 0.25mm solid var(--line);
-    }
-    .toc__highlights {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 6mm;
-    }
-    .toc__highlights figure { flex: 1; }
-    .toc__highlights img {
-      width: 100%;
-      height: 42mm;
-      object-fit: cover;
-      border-radius: 1.8mm;
-      border: 0.25mm solid var(--line);
-    }
-    .toc__highlights figcaption {
-      margin-top: 2.6mm;
-      font-size: 7pt;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-    }
+    .toc { list-style: none; flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; padding-bottom: 6mm; }
+    .toc li { display: flex; align-items: baseline; gap: 3mm; padding-bottom: 3mm; border-bottom: 0.2mm solid var(--line); }
     .toc__num { font-family: Oswald, sans-serif; font-size: 8.4pt; color: var(--accent); width: 8mm; }
-    .toc__name {
-      font-family: Oswald, sans-serif;
-      font-weight: 500;
-      font-size: 12pt;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .toc__dots { flex: 1; border-bottom: 0.25mm dotted #3A4A51; transform: translateY(-1mm); }
-    .toc__count { font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    .toc__page { font-family: Oswald, sans-serif; font-size: 12pt; color: var(--accent-light); width: 9mm; text-align: right; }
-    .toc__foot {
-      display: flex;
-      align-items: center;
-      gap: 8mm;
-      padding-top: 7mm;
-      border-top: 0.25mm solid var(--line);
-    }
-    .toc__note { font-size: 8.6pt; line-height: 1.5; color: var(--muted); font-weight: 300; }
+    .toc__name { font-family: Oswald, sans-serif; font-weight: 500; font-size: 12pt; text-transform: uppercase; letter-spacing: 0.03em; }
+    .toc__dots { flex: 1; border-bottom: 0.2mm dotted #CFC3B0; transform: translateY(-1mm); }
+    .toc__count { font-size: 7.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+    .toc__page { font-family: Oswald, sans-serif; font-size: 12pt; color: var(--accent-dark); width: 9mm; text-align: right; }
+    .toc__foot { display: flex; align-items: center; gap: 8mm; padding-top: 7mm; border-top: 0.2mm solid var(--line); }
+    .toc__note { font-size: 8.6pt; line-height: 1.5; color: var(--ink-soft); font-weight: 300; }
 
     .qr { display: flex; align-items: center; gap: 3mm; }
-    .qr img { width: 24mm; height: 24mm; border-radius: 1.2mm; background: #fff; padding: 1mm; }
-    .qr span {
-      font-size: 7.2pt;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      line-height: 1.5;
-    }
-    .qr--small img { width: 21mm; height: 21mm; }
+    .qr img { width: 22mm; height: 22mm; border: 0.2mm solid var(--line); background: #fff; padding: 1mm; border-radius: 1.2mm; }
+    .qr span { font-size: 7pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-dark); line-height: 1.5; }
 
-    /* ---------- abertura de capítulo ---------- */
-    .hero { position: absolute; top: 0; left: 0; right: 0; height: ${LAYOUT.heroH}mm; overflow: hidden; }
-    .hero__veil {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(11,15,17,0.15) 30%, rgba(11,15,17,0.82) 78%, var(--ink) 100%);
-    }
-    .hero__text {
-      position: absolute;
-      left: 13mm; right: 13mm; bottom: 8mm;
+    /* ---------- capítulo ---------- */
+    .chapter {
+      height: ${LAYOUT.chapterH}mm;
       display: flex;
-      align-items: flex-end;
-      gap: 5mm;
+      align-items: stretch;
+      gap: 6mm;
+      border-bottom: 0.3mm solid var(--line);
+      padding-bottom: 3mm;
     }
-    .hero__num {
+    .chapter__photo { width: 44mm; height: 100%; object-fit: cover; border-radius: 2mm; }
+    .chapter__text { display: flex; flex-direction: column; justify-content: center; }
+    .chapter__num { font-size: 7pt; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); }
+    .chapter__title {
       font-family: Oswald, sans-serif;
-      font-weight: 700;
-      font-size: 30pt;
-      line-height: 0.8;
-      color: transparent;
-      -webkit-text-stroke: 0.35mm var(--accent);
-    }
-    .hero__title {
-      font-family: Oswald, sans-serif;
-      font-weight: 700;
-      font-size: 26pt;
-      line-height: 1;
+      font-weight: 600;
+      font-size: 19pt;
+      line-height: 1.08;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
+      margin-top: 1mm;
     }
-    .hero__lead {
-      margin-top: 1.6mm;
-      font-size: 8.4pt;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-    }
+    .chapter__lead { margin-top: 1mm; font-size: 8.4pt; font-weight: 300; color: var(--ink-soft); }
 
-    /* ---------- grade ---------- */
-    .grid { display: grid; width: 100%; }
-    .grid--2 { grid-template-columns: repeat(2, 1fr); gap: ${g2.rowGap}mm ${g2.gap}mm; }
-    .grid--3 { grid-template-columns: repeat(3, 1fr); gap: ${g3.rowGap}mm ${g3.gap}mm; }
     .group {
-      grid-column: 1 / -1;
       height: ${LAYOUT.headingH}mm;
       display: flex;
       align-items: center;
       gap: 3mm;
       font-family: Oswald, sans-serif;
       font-weight: 500;
-      font-size: 9.6pt;
-      letter-spacing: 0.26em;
+      font-size: 9pt;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--accent-light);
+      color: var(--accent-dark);
     }
-    .group::after { content: ''; flex: 1; height: 0.25mm; background: var(--line); }
+    .group::after { content: ''; flex: 1; height: 0.2mm; background: var(--line); }
+
+    /* ---------- grade ---------- */
+    .grid { display: grid; width: 100%; }
+    .grid--3 { grid-template-columns: repeat(3, 1fr); gap: ${g3.rowGap}mm ${g3.gap}mm; }
+    .grid--4 { grid-template-columns: repeat(4, 1fr); gap: ${g4.rowGap}mm ${g4.gap}mm; }
+
+    /* Estes espaçamentos precisam bater com os gapBefore usados na paginação. */
+    .sheet__body > .chapter { margin-top: ${LAYOUT.gapChapter}mm; }
+    .sheet__body > .group { margin-top: ${LAYOUT.gapHeading}mm; }
+    .sheet__body > .grid--3 { margin-top: ${g3.rowGap}mm; }
+    .sheet__body > .grid--4 { margin-top: ${g4.rowGap}mm; }
+    .sheet__body > .feature { margin-top: ${LAYOUT.gapFeature}mm; }
+    .sheet__body > :first-child { margin-top: 0; }
 
     .card {
       position: relative;
       overflow: hidden;
-      background: var(--surface);
-      border: 0.25mm solid var(--line);
+      background: var(--paper);
+      border: 0.2mm solid var(--line);
       border-radius: 2.4mm;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 0.5mm 1.4mm rgba(18, 55, 66, 0.05);
     }
-    .card--2 { height: ${g2.cardH}mm; }
-    .card--3 { height: ${g3.cardH}mm; }
+    .grid--3 .card { height: ${g3.cardH}mm; }
+    .grid--4 .card { height: ${g4.cardH}mm; }
     .card__media { position: relative; overflow: hidden; }
-    .card--2 .card__media { height: 55mm; }
-    .card--3 .card__media { height: 38mm; }
+    .grid--3 .card__media { height: ${g3.photoH}mm; }
+    .grid--4 .card__media { height: ${g4.photoH}mm; }
     .card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .card__media::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(11,15,17,0) 55%, rgba(11,15,17,0.72) 100%);
-    }
-    .card__prices {
-      position: absolute;
-      left: 3mm;
-      bottom: 2.6mm;
-      display: flex;
-      align-items: center;
-      gap: 1.6mm;
-      z-index: 2;
-    }
-    .pill {
-      display: inline-block;
-      border-radius: 6mm;
-      background: rgba(11,15,17,0.86);
-      border: 0.25mm solid rgba(var(--accent-rgb), 0.6);
-      font-family: Oswald, sans-serif;
-      color: var(--accent-light);
-    }
-    .card--2 .pill--price { padding: 0.9mm 2.6mm; font-size: 10pt; }
-    .card--3 .pill--price { padding: 0.7mm 2.2mm; font-size: 8.6pt; }
-    .pill--second {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 6.4pt;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #C9D5D9;
-      border-color: rgba(255,255,255,0.18);
-    }
-    .card--2 .pill--second { padding: 1mm 2.2mm; }
-    .card--3 .pill--second { padding: 0.8mm 1.8mm; font-size: 5.8pt; }
     .card__badge {
       position: absolute;
-      top: 3mm;
-      left: 3mm;
-      z-index: 2;
-      padding: 1mm 2.4mm;
-      border-radius: 6mm;
+      top: 2mm;
+      left: 2mm;
+      padding: 0.8mm 2mm;
+      border-radius: 5mm;
       background: var(--accent);
-      color: #10161A;
+      color: #fff;
       font-family: Oswald, sans-serif;
-      font-size: 6.8pt;
-      letter-spacing: 0.16em;
+      font-size: 6pt;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
-    .card__body {
-      flex: 1;
-      padding: 3mm 3.4mm;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    .card__body { flex: 1; padding: 2.4mm 2.8mm 2.2mm; display: flex; flex-direction: column; overflow: hidden; }
     .card__name {
+      flex: 0 0 auto;
       font-family: Oswald, sans-serif;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
-      color: var(--white);
+      letter-spacing: 0.01em;
+      color: var(--ink);
       display: -webkit-box;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .card--2 .card__name { font-size: 10pt; line-height: 1.12; -webkit-line-clamp: 2; }
-    .card--3 .card__name { font-size: 8.2pt; line-height: 1.12; -webkit-line-clamp: 2; }
+    .grid--3 .card__name { font-size: 8.6pt; line-height: 1.14; -webkit-line-clamp: 2; }
+    .grid--4 .card__name { font-size: 7.6pt; line-height: 1.12; -webkit-line-clamp: 2; }
+    /* desc encolhe para o preço nunca ser empurrado para fora do card */
     .card__desc {
-      margin-top: 1.4mm;
-      color: var(--muted);
+      flex: 1 1 auto;
+      min-height: 0;
+      margin-top: 0.9mm;
+      color: var(--ink-soft);
       font-weight: 300;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .card--2 .card__desc { font-size: 7.6pt; line-height: 1.32; -webkit-line-clamp: 3; }
-    .card--3 .card__desc { font-size: 6.6pt; line-height: 1.28; -webkit-line-clamp: 2; }
-
-    .card--wide { grid-column: 1 / -1; flex-direction: row; }
-    .card--wide .card__media { width: 52%; height: 100%; }
-    .card--wide .card__body { width: 48%; padding: 6mm 7mm; }
-    .card--wide .card__name { font-size: 13pt; line-height: 1.1; }
-    .card--wide .card__desc { font-size: 8.4pt; line-height: 1.45; -webkit-line-clamp: 4; margin-top: 2.5mm; }
-
-    /* ---------- card destaque (capítulo de um item) ---------- */
-    .feature {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      height: 112mm;
-      overflow: hidden;
-      background: var(--surface);
-      border: 0.25mm solid var(--line);
-      border-radius: 2.4mm;
-    }
-    .feature__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .feature__body { padding: 12mm 10mm; display: flex; flex-direction: column; justify-content: center; }
-    .feature__name {
+    .grid--3 .card__desc { font-size: 6.8pt; line-height: 1.3; -webkit-line-clamp: 2; }
+    .grid--4 .card__desc { font-size: 6.2pt; line-height: 1.24; -webkit-line-clamp: 1; }
+    .card__price {
+      flex: 0 0 auto;
+      margin-top: auto;
+      padding-top: 1.2mm;
       font-family: Oswald, sans-serif;
-      font-weight: 600;
-      font-size: 21pt;
-      line-height: 1.05;
-      text-transform: uppercase;
+      color: var(--accent-dark);
       letter-spacing: 0.02em;
     }
-    .feature__desc { margin-top: 5mm; font-size: 9.6pt; line-height: 1.55; color: var(--muted); font-weight: 300; }
-    .feature__price {
-      margin-top: 9mm;
-      font-family: Oswald, sans-serif;
-      font-size: 19pt;
-      color: var(--accent-light);
+    .grid--3 .card__price { font-size: 9pt; }
+    .grid--4 .card__price { font-size: 8pt; }
+
+    /* ---------- destaque (capítulo de um item) ---------- */
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: ${LAYOUT.featureH}mm;
+      overflow: hidden;
+      background: var(--paper);
+      border: 0.2mm solid var(--line);
+      border-radius: 2.4mm;
+      box-shadow: 0 0.5mm 1.4mm rgba(18, 55, 66, 0.05);
     }
+    .feature__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .feature__body { padding: 10mm; display: flex; flex-direction: column; justify-content: center; }
+    .feature__name { font-family: Oswald, sans-serif; font-weight: 600; font-size: 18pt; text-transform: uppercase; line-height: 1.08; }
+    .feature__desc { margin-top: 4mm; font-size: 9pt; line-height: 1.5; color: var(--ink-soft); font-weight: 300; }
+    .feature__price { margin-top: 6mm; font-family: Oswald, sans-serif; font-size: 16pt; color: var(--accent-dark); }
 
     /* ---------- página final ---------- */
-    .closing__veil {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(11,15,17,0.90) 0%, rgba(11,15,17,0.95) 45%, rgba(11,15,17,0.985) 100%);
-    }
-    .closing__block {
-      position: absolute;
-      left: 20mm;
-      right: 20mm;
-      top: 0;
-      bottom: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .closing__menu {
-      margin-top: 3mm;
-      font-size: 7.6pt;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
+    .closing__photo { position: absolute; top: 0; left: 0; width: 210mm; height: 108mm; object-fit: cover; object-position: 50% 52%; }
+    .closing__panel { position: absolute; top: 108mm; left: 0; right: 0; bottom: 0; padding: 14mm 18mm 0; }
     .closing__brand {
+      margin-top: 6mm;
       font-family: Oswald, sans-serif;
-      font-weight: 700;
-      font-size: 40pt;
+      font-weight: 600;
+      font-size: 34pt;
       line-height: 1;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-top: 6mm;
+      letter-spacing: 0.03em;
     }
     .closing__sub {
       font-family: Oswald, sans-serif;
       font-weight: 400;
-      font-size: 16pt;
-      letter-spacing: 0.52em;
+      font-size: 14pt;
+      letter-spacing: 0.5em;
       text-transform: uppercase;
-      color: var(--accent-light);
+      color: var(--accent-dark);
     }
-    .closing__tagline { margin-top: 9mm; font-size: 11pt; font-weight: 300; line-height: 1.6; color: #D6DEE1; max-width: 120mm; }
-    .closing__qrs { margin-top: 13mm; display: flex; gap: 16mm; }
+    .closing__tagline { margin-top: 7mm; font-size: 10.5pt; font-weight: 300; line-height: 1.6; color: #4C6670; max-width: 130mm; }
+    .closing__qrs { margin-top: 11mm; display: flex; align-items: center; gap: 12mm; }
     .closing__contact {
-      margin-top: 14mm;
       font-family: Oswald, sans-serif;
-      font-size: 12pt;
-      letter-spacing: 0.14em;
+      font-size: 11pt;
+      line-height: 1.5;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent-light);
+      color: var(--ink);
     }
-    .closing__policies { margin-top: 6mm; list-style: none; }
+    .closing__policies { margin-top: 11mm; list-style: none; }
     .closing__policies li {
       font-size: 8pt;
       line-height: 1.7;
-      color: var(--muted);
+      color: var(--ink-soft);
       font-weight: 300;
       padding-left: 4mm;
       position: relative;
@@ -1047,20 +841,20 @@ function css(menuCfg) {
       content: '';
       position: absolute;
       left: 0;
-      top: 1.7mm;
-      width: 1.6mm;
-      height: 1.6mm;
+      top: 1.6mm;
+      width: 1.4mm;
+      height: 1.4mm;
       border-radius: 50%;
       background: var(--accent);
     }
     .closing__version {
       position: absolute;
-      left: 20mm;
-      bottom: 16mm;
+      left: 18mm;
+      bottom: 13mm;
       font-size: 7pt;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #6D7C82;
+      color: #A8B4B9;
     }
   `;
 }
@@ -1127,16 +921,14 @@ async function main() {
   const qr = await ensureQr(info);
 
   const cardIds = new Set();
-  const heroIds = new Set();
+  const chapterIds = new Set();
   for (const menuCfg of MENUS) {
-    for (const id of menuCfg.coverThumbs) cardIds.add(id);
-    for (const highlight of menuCfg.tocHighlights || []) cardIds.add(highlight.id);
     for (const chapter of menuCfg.chapters) {
-      heroIds.add(chapter.hero);
+      chapterIds.add(chapter.photo);
       for (const item of chapterContent(data, chapter.cat).items) cardIds.add(item.id);
     }
   }
-  await prepareImages([...cardIds], [...heroIds], qr);
+  await prepareImages([...cardIds], [...chapterIds], qr);
 
   for (const menuCfg of MENUS) {
     const { html, totalPages, chapters } = buildMenuHtml(menuCfg, data, info, qr);
@@ -1151,7 +943,7 @@ async function main() {
 
     console.log(`\n${menuCfg.title}: ${pages} páginas (previsto ${totalPages}) · ${mb} MB`);
     for (const chapter of chapters) {
-      console.log(`  p.${pad2(chapter.startPage)} ${chapter.cat.name} — ${chapter.items.length} itens, ${chapter.pages.length} pág.`);
+      console.log(`  p.${pad2(chapter.startPage)} ${chapter.cat.name} — ${chapter.items.length} itens`);
     }
     if (pages !== totalPages) console.warn('  atenção: contagem de páginas diferente do previsto');
   }
