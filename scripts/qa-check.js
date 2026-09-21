@@ -64,11 +64,16 @@ if (meta.missingCount > 0) {
 
 ok(`${items.length} itens em ${menu.categories.length} categorias`);
 
-const onlinePdf = path.join(ROOT, 'online/cardapio-prainha-rooftop.pdf');
-if (!fs.existsSync(onlinePdf)) warn('online/cardapio-prainha-rooftop.pdf não encontrado — rode npm run generate-pdf');
-else {
-  const mb = (fs.statSync(onlinePdf).size / (1024 * 1024)).toFixed(2);
-  ok(`PDF do site: ${mb} MB`);
+for (const file of [
+  'cardapio-prainha-rooftop-gastronomia.pdf',
+  'cardapio-prainha-rooftop-drinks.pdf',
+]) {
+  const onlinePdf = path.join(ROOT, 'online', file);
+  if (!fs.existsSync(onlinePdf)) warn(`online/${file} não encontrado — rode npm run generate-menus`);
+  else {
+    const mb = (fs.statSync(onlinePdf).size / (1024 * 1024)).toFixed(2);
+    ok(`PDF do site: ${file} (${mb} MB)`);
+  }
 }
 
 console.log('---');

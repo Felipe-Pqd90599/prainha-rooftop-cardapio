@@ -13,11 +13,11 @@ Cardápio online + PDF com **fonte única de dados** em `data/menu-data.json`.
 
 ## Status do cardápio
 
-_Métricas atualizadas automaticamente em 2026-09-21 01:52._
+_Métricas atualizadas automaticamente em 2026-09-21 04:14._
 
 - **165** itens em **18** categorias
 - **165** fotos em `assets/fotos/` (completo)
-- PDF do site: `online/cardapio-prainha-rooftop.pdf` (4.02 MB)
+- PDFs do site: Gastronomia `online/cardapio-prainha-rooftop-gastronomia.pdf` (9.67 MB) · Drinks `online/cardapio-prainha-rooftop-drinks.pdf` (4.84 MB)
 - Versão dos dados: `1.1.37-online`
 
 ## Estrutura
@@ -36,8 +36,8 @@ docs/                   → guias, agentes, QA
 ```bash
 npm run sync-online        # copia dados/fotos → online/ + atualiza README
 npm run qa-check             # valida JSON, fotos e PDF antes do deploy
+npm run generate-menus       # gera os 2 cardápios em PDF (gastronomia + drinks)
 npm run prepare-pdf-images   # miniaturas para PDF leve
-npm run generate-pdf         # gera PDF do site (~4 MB)
 npm run generate-pdf-full    # PDF alta resolução (local)
 ```
 

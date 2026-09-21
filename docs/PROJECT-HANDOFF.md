@@ -13,7 +13,8 @@
 |---------|----------------|
 | **Cardápio online (escuro)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/ |
 | **Cardápio online (21st / claro)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/21st/ |
-| **PDF (compartilhar)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/cardapio-prainha-rooftop.pdf |
+| **PDF Gastronomia** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/cardapio-prainha-rooftop-gastronomia.pdf |
+| **PDF Drinks** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/cardapio-prainha-rooftop-drinks.pdf |
 | **PDF alta resolução** | `%USERPROFILE%\Desktop\Prainha-Rooftop-Cardapio-PDF\` (local, `npm run generate-pdf-full`) |
 | **Código** | `C:\Users\Felipe\pagina-pessoal\prainha-rooftop-cardapio\` |
 

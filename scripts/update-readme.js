@@ -46,7 +46,7 @@ _Métricas atualizadas automaticamente em ${ctx.updatedAt}._
 
 - **${ctx.itemCount}** itens em **${ctx.categoryCount}** categorias
 - **${ctx.photoCount}** fotos em \`assets/fotos/\` (${ctx.missingCount === 0 ? 'completo' : `${ctx.missingCount} faltando`})
-- PDF do site: ${ctx.pdfSite}
+- PDFs do site: ${ctx.pdfSite}
 - Versão dos dados: \`${ctx.menuVersion}\`
 
 ## Estrutura
@@ -65,8 +65,8 @@ docs/                   → guias, agentes, QA
 \`\`\`bash
 npm run sync-online        # copia dados/fotos → online/ + atualiza README
 npm run qa-check             # valida JSON, fotos e PDF antes do deploy
+npm run generate-menus       # gera os 2 cardápios em PDF (gastronomia + drinks)
 npm run prepare-pdf-images   # miniaturas para PDF leve
-npm run generate-pdf         # gera PDF do site (~4 MB)
 npm run generate-pdf-full    # PDF alta resolução (local)
 \`\`\`
 
@@ -99,8 +99,16 @@ function main() {
   const instagram = info.contact?.instagram || '@prainharooftop';
   const instagramHandle = instagram.replace('@', '');
 
-  const pdfMb = pdfSizeMb('online/cardapio-prainha-rooftop.pdf');
-  const pdfSite = pdfMb ? `\`online/cardapio-prainha-rooftop.pdf\` (${pdfMb} MB)` : 'não gerado — rode `npm run generate-pdf`';
+  const pdfs = [
+    ['Gastronomia', 'online/cardapio-prainha-rooftop-gastronomia.pdf'],
+    ['Drinks', 'online/cardapio-prainha-rooftop-drinks.pdf'],
+  ]
+    .map(([label, rel]) => {
+      const mb = pdfSizeMb(rel);
+      return mb ? `${label} \`${rel}\` (${mb} MB)` : null;
+    })
+    .filter(Boolean);
+  const pdfSite = pdfs.length ? pdfs.join(' · ') : 'não gerados — rode `npm run generate-menus`';
 
   const ctx = {
     siteUrl,
