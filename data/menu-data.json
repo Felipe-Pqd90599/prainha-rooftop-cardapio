@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.36-online",
+    "version": "1.1.37-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -212,7 +212,7 @@
           "name": "Sertanejo do Prainha",
           "price": 41,
           "priceSecondary": 79,
-          "description": "Feijão verde ou branco, arroz refogado, carne de sol e queijo coalho em cubos, salada e fritas",
+          "description": "Feijão verde ou branco, arroz refogado, carne de sol e queijo coalho em cubos, salada, fritas e farofa da casa",
           "image": "sertanejo-prainha.jpg"
         },
         {
@@ -248,20 +248,12 @@
           "image": "brasileirinho-calabresa.jpg"
         },
         {
-          "id": "penne-carne",
-          "name": "Penne com Carne",
+          "id": "penne-fettuccine-carne",
+          "name": "Penne ou Fettuccine com Carne",
           "price": 41,
           "priceSecondary": 79,
-          "description": "Ao molho de queijo, salsinha e filé de carne",
-          "image": "penne-carne.jpg"
-        },
-        {
-          "id": "fettuccine-carne",
-          "name": "Fettuccine de Carne ao Molho",
-          "price": 41,
-          "priceSecondary": 79,
-          "description": "Fettuccine ao molho de tomate com filé de carne em cubos e salsinha",
-          "image": "fettuccine-carne.jpg"
+          "description": "Penne ou fettuccine ao molho branco, filé de carne ao molho madeira com barbecue",
+          "image": "penne-fettuccine-carne.jpg"
         },
         {
           "id": "baiao-dois",
