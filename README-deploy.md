@@ -37,6 +37,9 @@ https://github.com/Felipe-Pqd90599/prainha-rooftop-cardapio
 - Repositório público separado de `pagina-pessoal`
 - Settings → Pages → Deploy from branch → `gh-pages` / root
 
-## PDF no site
+## PDFs no site
 
-O arquivo `online/cardapio-prainha-rooftop.pdf` é copiado automaticamente por `npm run generate-pdf`. Link no botão "Baixar PDF" do hero.
+`npm run generate-menus` gera os dois cardápios e copia para `online/`:
+
+- `cardapio-prainha-rooftop-gastronomia.pdf` — botão "PDF Gastronomia"
+- `cardapio-prainha-rooftop-drinks.pdf` — botão "PDF Drinks"
