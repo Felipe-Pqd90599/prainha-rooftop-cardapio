@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.51-online",
+    "version": "1.1.52-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -738,6 +738,13 @@
           "image": "suco-especial.jpg"
         },
         {
+          "id": "soda-italiana",
+          "name": "Soda Italiana",
+          "description": "Água com gás, sumo de limão, xarope de groselha e gelo",
+          "price": 14,
+          "image": "soda-italiana.jpg"
+        },
+        {
           "id": "refri-lata",
           "name": "Refri Lata",
           "description": "Diversos sabores",
@@ -795,12 +802,6 @@
           "description": "Consultar sabores disponíveis",
           "price": 17,
           "image": "energetico-redbull.jpg"
-        },
-        {
-          "id": "soda-italiana",
-          "name": "Soda Italiana",
-          "price": 14,
-          "image": "soda-italiana.jpg"
         },
         {
           "id": "h2o",
