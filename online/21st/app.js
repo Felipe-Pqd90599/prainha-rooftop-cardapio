@@ -268,6 +268,35 @@ const HERO_FLOAT_ITEMS = [
   { id: 'nordestino-na-area', className: 'floating-hero__float-img--4', alt: 'Nordestino na Área' },
 ];
 
+const HERO_INSTAGRAM_ICON = `<svg class="hero-contact__ig-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="hero-ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fdf497"/>
+      <stop offset="25%" stop-color="#fd5949"/>
+      <stop offset="50%" stop-color="#d6249f"/>
+      <stop offset="100%" stop-color="#285aeb"/>
+    </linearGradient>
+  </defs>
+  <rect width="24" height="24" rx="7" fill="url(#hero-ig-gradient)"/>
+  <circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="1.75"/>
+  <circle cx="17.25" cy="6.75" r="1.15" fill="#fff"/>
+</svg>`;
+
+function renderHeroContactMarkup(info) {
+  const igRaw = info.contact?.instagram || '@prainharooftop';
+  const igHandle = igRaw.startsWith('@') ? igRaw : `@${igRaw}`;
+  const igUser = igRaw.replace('@', '');
+  const phone = info.contact?.phone || '(84) 2131-3667';
+  return `
+    <a class="hero-contact__instagram" href="https://instagram.com/${igUser}" target="_blank" rel="noopener noreferrer" aria-label="Seguir no Instagram ${igHandle}">
+      ${HERO_INSTAGRAM_ICON}
+      <span class="hero-contact__ig-text">${igHandle}</span>
+    </a>
+    <span class="hero-contact__sep" aria-hidden="true">·</span>
+    <span class="hero-contact__phone">${phone}</span>
+  `;
+}
+
 function renderHero(info) {
   const container = document.getElementById('hero-images');
   container.innerHTML = HERO_FLOAT_ITEMS.map(
@@ -276,12 +305,7 @@ function renderHero(info) {
   ).join('');
 
   const contact = document.getElementById('hero-contact');
-  const ig = info.contact?.instagram || '@prainharooftop';
-  const phone = info.contact?.phone || '(84) 2131-3667';
-  contact.innerHTML = `
-    <a href="https://instagram.com/${ig.replace('@', '')}" target="_blank" rel="noopener">${ig}</a>
-    · ${phone}
-  `;
+  contact.innerHTML = renderHeroContactMarkup(info);
   document.getElementById('btn-whatsapp').href = buildWhatsAppLinkGeneral(info);
 
   if (info.tagline) {
