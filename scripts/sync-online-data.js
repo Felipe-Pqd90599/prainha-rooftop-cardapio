@@ -50,4 +50,15 @@ function stampCacheBusters() {
     fs.writeFileSync(indexPath, html);
     console.log('cache-bust', rel, 'v=', menu.meta?.version);
   }
+
+  for (const rel of ['online/styles.css', 'online/21st/styles.css']) {
+    const cssPath = path.join(root, rel);
+    let css = fs.readFileSync(cssPath, 'utf8');
+    css = css.replace(
+      /capa-prainha-rooftop\.jpg(?:\?v=[^"')]+)?/g,
+      `capa-prainha-rooftop.jpg?v=${v}`,
+    );
+    fs.writeFileSync(cssPath, css);
+    console.log('cache-bust capa', rel);
+  }
 }
