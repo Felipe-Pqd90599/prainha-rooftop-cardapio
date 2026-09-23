@@ -85,7 +85,7 @@ body {
 
 .hero__bg.has-photo {
   background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)),
-    url("assets/fotos/capa-prainha-rooftop.jpg");
+    url("assets/fotos/capa-prainha-rooftop.jpg?v=1.1.45-online");
   background-size: cover;
   background-position: center;
 }
@@ -99,8 +99,8 @@ body {
 
 .hero__logo {
   display: block;
-  width: min(100%, 20rem);
-  max-height: 5.5rem;
+  width: min(100%, 26rem);
+  max-height: 7.25rem;
   height: auto;
   margin: 0 auto 0.85rem;
   object-fit: contain;
@@ -890,8 +890,8 @@ body.modal-open {
 
 @media (min-width: 900px) {
   .hero__logo {
-    max-height: 6.25rem;
-    width: min(100%, 22rem);
+    max-height: 8rem;
+    width: min(100%, 28rem);
   }
 }
 
