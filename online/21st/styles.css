@@ -346,6 +346,54 @@ body.modal-open {
   color: var(--accent-sand);
 }
 
+.section--compact .section__grid {
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+}
+
+.section--compact .menu-item-card {
+  display: grid;
+  grid-template-columns: 5.25rem minmax(0, 1fr);
+  align-items: stretch;
+  box-shadow: var(--shadow-sm);
+}
+
+.section--compact .menu-item-card__media {
+  aspect-ratio: 1;
+  min-height: 0;
+}
+
+.section--compact .menu-item-card__body {
+  padding: 0.55rem 0.7rem 0.55rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section--compact .menu-item-card__name {
+  font-size: 0.95rem;
+}
+
+.section--compact .menu-item-card__desc,
+.section--compact .menu-item-card__hint,
+.section--compact .menu-item-card__action {
+  display: none;
+}
+
+.section--compact .menu-item-card__price-overlay {
+  padding: 0.25rem;
+}
+
+.section--compact .menu-item-card__price-tag {
+  font-size: 0.68rem;
+}
+
+@media (min-width: 640px) {
+  .section--compact .section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .section__header {
   display: flex;
   align-items: baseline;
