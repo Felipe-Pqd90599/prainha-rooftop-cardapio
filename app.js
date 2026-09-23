@@ -259,6 +259,177 @@ function renderHero(info) {
   document.getElementById('btn-whatsapp').href = buildWhatsAppLinkGeneral(info);
 }
 
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function isDesktopSidebarNav() {
+  return window.matchMedia('(min-width: 1024px)').matches;
+}
+
+function getHorizontalCategoryNav() {
+  return document.getElementById('category-nav');
+}
+
+function measureCategoryScrollOffset() {
+  const nav = getHorizontalCategoryNav();
+  const useHorizontal = nav && !isDesktopSidebarNav();
+  const offsetPx = useHorizontal ? Math.ceil(nav.getBoundingClientRect().height + 10) : 16;
+  document.documentElement.style.setProperty('--scroll-offset', `${offsetPx}px`);
+  return offsetPx;
+}
+
+function scrollToCategory(catId) {
+  const section = document.getElementById(catId);
+  if (!section) return;
+
+  const offset = measureCategoryScrollOffset();
+  const top = section.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+  });
+
+  const hash = `#${catId}`;
+  if (history.replaceState) {
+    history.replaceState(null, '', hash);
+  } else {
+    location.hash = catId;
+  }
+}
+
+function syncActiveNavLink(catId) {
+  const horizontal = document.querySelector(`#category-nav a[data-cat="${catId}"]`);
+  if (horizontal && !isDesktopSidebarNav()) {
+    horizontal.scrollIntoView({
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
+  }
+
+  const sidebarLink = document.querySelector(`.menu-sidebar__nav a[data-cat="${catId}"]`);
+  if (sidebarLink) {
+    sidebarLink.scrollIntoView({
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+      block: 'nearest',
+    });
+  }
+}
+
+function setupCategorySectionSpy(sorted, allLinks) {
+  const sections = sorted.map((cat) => document.getElementById(cat.id)).filter(Boolean);
+  if (!sections.length) return;
+
+  let activeId = sections[0].id;
+  let frame = 0;
+
+  const setActive = (catId) => {
+    if (!catId || catId === activeId) return;
+    activeId = catId;
+    allLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.cat === catId));
+    syncActiveNavLink(catId);
+  };
+
+  const update = () => {
+    frame = 0;
+    if (document.body.classList.contains('modal-open')) return;
+
+    const marker = measureCategoryScrollOffset() + 16;
+    let current = sections[0].id;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= marker) {
+        current = section.id;
+      }
+    }
+    setActive(current);
+  };
+
+  const onScroll = () => {
+    if (!frame) frame = requestAnimationFrame(update);
+  };
+
+  allLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.cat === activeId));
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    measureCategoryScrollOffset();
+    update();
+  });
+  update();
+}
+
+function bindCategoryNavigation(sorted) {
+  const allLinks = document.querySelectorAll('#category-nav a, .menu-sidebar__nav a');
+  allLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToCategory(link.dataset.cat);
+    });
+  });
+
+  measureCategoryScrollOffset();
+  setupCategorySectionSpy(sorted, allLinks);
+
+  const hashId = location.hash.replace(/^#/, '');
+  if (hashId && document.getElementById(hashId)) {
+    requestAnimationFrame(() => scrollToCategory(hashId));
+  }
+}
+
+function setupStickyNavEnhancements() {
+  const nav = getHorizontalCategoryNav();
+  if (!nav) return;
+
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    nav.classList.toggle('is-stuck', window.scrollY > 48);
+  };
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    },
+    { passive: true },
+  );
+  update();
+}
+
+function setupBackToTop() {
+  const button = document.getElementById('back-to-top');
+  const hero = document.getElementById('topo');
+  if (!button) return;
+
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const threshold = hero ? hero.offsetHeight * 0.45 : 280;
+    const visible = window.scrollY > threshold;
+    button.classList.toggle('is-visible', visible);
+    button.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    button.tabIndex = visible ? 0 : -1;
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    },
+    { passive: true },
+  );
+  update();
+
+  button.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+    });
+    if (history.replaceState) {
+      history.replaceState(null, '', `${location.pathname}${location.search}`);
+    }
+  });
+}
+
 function renderNav(categories) {
   const sorted = [...categories].sort((a, b) => a.order - b.order);
   const linksHtml = sorted
@@ -275,25 +446,9 @@ function renderNav(categories) {
     `;
   }
 
-  const allLinks = document.querySelectorAll('#category-nav a, .menu-sidebar__nav a');
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          allLinks.forEach((l) =>
-            l.classList.toggle('is-active', l.dataset.cat === entry.target.id)
-          );
-        }
-      });
-    },
-    { rootMargin: '-30% 0px -55% 0px' }
-  );
-
-  sorted.forEach((cat) => {
-    const el = document.getElementById(cat.id);
-    if (el) observer.observe(el);
-  });
+  bindCategoryNavigation(sorted);
+  setupStickyNavEnhancements();
+  setupBackToTop();
 }
 
 function renderItem(item, meta, options = {}) {
@@ -587,8 +742,8 @@ async function init() {
     appState.info = info;
     applyTokens(tokens);
     renderHero(info);
-    renderNav(menu.categories);
     renderMenu(menu);
+    renderNav(menu.categories);
     renderFooter(info);
     bindItemInteractions();
   } catch (err) {
