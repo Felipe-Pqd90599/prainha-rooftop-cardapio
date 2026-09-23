@@ -25,6 +25,7 @@ for (const [src, dest] of files) {
 }
 
 copyDir(path.join(root, 'assets/fotos'), path.join(root, 'online/assets/fotos'));
+copyDir(path.join(root, 'assets/brand'), path.join(root, 'online/assets/brand'));
 
 stampCacheBusters();
 require('./update-readme.js');
@@ -38,6 +39,10 @@ function stampCacheBusters() {
     let html = fs.readFileSync(indexPath, 'utf8');
     html = html.replace(/href="styles\.css(?:\?v=[^"]*)?"/, `href="styles.css?v=${v}"`);
     html = html.replace(/src="app\.js(?:\?v=[^"]*)?"/, `src="app.js?v=${v}"`);
+    html = html.replace(
+      /logo-prainha-rooftop\.png(?:\?v=[^"]*)?/g,
+      `logo-prainha-rooftop.png?v=${v}`,
+    );
     fs.writeFileSync(indexPath, html);
     console.log('cache-bust', rel, 'v=', menu.meta?.version);
   }
