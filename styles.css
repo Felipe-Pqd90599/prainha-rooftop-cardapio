@@ -85,7 +85,7 @@ body {
 
 .hero__bg.has-photo {
   background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)),
-    url("assets/fotos/capa-prainha-rooftop.jpg?v=1.1.45-online");
+    url("assets/fotos/capa-prainha-rooftop.jpg?v=1.1.47-online");
   background-size: cover;
   background-position: center;
 }
@@ -114,14 +114,57 @@ body {
 }
 
 .hero__contact {
-  font-size: 0.88rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.7rem;
+  font-size: 0.9rem;
   margin-bottom: 1.25rem;
-  opacity: 0.9;
 }
 
-.hero__contact a {
-  color: var(--accent-sea, #7ec8e3);
+.hero-contact__instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
   text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.hero-contact__instagram:hover {
+  background: rgba(0, 0, 0, 0.48);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-contact__instagram:active {
+  transform: scale(0.98);
+}
+
+.hero-contact__ig-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.hero-contact__ig-text {
+  letter-spacing: 0.01em;
+}
+
+.hero-contact__sep {
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+.hero-contact__phone {
+  font-weight: 500;
+  opacity: 0.92;
 }
 
 .hero__actions {
