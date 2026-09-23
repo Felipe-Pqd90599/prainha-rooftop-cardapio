@@ -460,17 +460,17 @@ function renderMenuItemCard(item, meta, options = {}) {
       hints.push(opts ? 'tamanho' : `${primary.toLowerCase()} ou ${secondary.toLowerCase()}`);
     }
     if (showCombo) hints.push('combo');
-    hint = `<span class="menu-item-card__hint">Toque para escolher ${hints.join(' e ')}</span>`;
+    hint = `<span class="menu-item-card__tap-hint">Toque para escolher ${hints.join(' e ')}</span>`;
   }
 
   const comboOffer =
     showCombo && combo
-      ? `<p class="menu-item-card__desc">+ Combo ${formatPrice(combo.price)} · ${combo.description}</p>`
+      ? `<p class="menu-item-card__combo-offer">+ Combo ${formatPrice(combo.price)} · ${combo.description}</p>`
       : '';
 
   return `
     <article
-      class="menu-item-card"
+      class="menu-item-card${hasPortions ? ' menu-item-card--has-portions' : ''}${showCombo ? ' menu-item-card--has-combo' : ''}"
       data-id="${item.id}"
       role="button"
       tabindex="0"
@@ -484,15 +484,13 @@ function renderMenuItemCard(item, meta, options = {}) {
           loading="lazy"
           onerror="this.closest('.menu-item-card').classList.add('menu-item-card--no-photo'); this.remove();"
         />
-        <div class="menu-item-card__gradient" aria-hidden="true"></div>
         <div class="menu-item-card__price-overlay">${priceOverlayHtml(item, meta, category)}</div>
-        <span class="menu-item-card__action" aria-hidden="true">Ver</span>
+        ${hint}
       </div>
       <div class="menu-item-card__body">
         <h3 class="menu-item-card__name">${item.name}</h3>
         ${item.description ? `<p class="menu-item-card__desc">${item.description}</p>` : ''}
         ${comboOffer}
-        ${hint}
       </div>
     </article>`;
 }
@@ -545,9 +543,11 @@ function renderModalPortions(item, meta) {
   }
 
   if (opts) {
+    const pickerClass =
+      opts.length > 2 ? 'portion-picker portion-picker--multi' : 'portion-picker';
     container.innerHTML = `
       <p class="item-dialog__portions-label">Escolha o tamanho:</p>
-      <div class="portion-picker">
+      <div class="${pickerClass}">
         ${opts
           .map(
             (opt) => `
