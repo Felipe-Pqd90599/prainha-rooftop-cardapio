@@ -65,7 +65,7 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-color: #b8dce8;
-  background-image: var(--beach-overlay), url("../assets/fotos/capa-prainha-rooftop.jpg?v=1.1.48-online");
+  background-image: var(--beach-overlay), url("../assets/fotos/capa-prainha-rooftop.jpg?v=1.1.49-online");
   background-size: cover;
   background-position: center 25%;
   background-attachment: fixed;
@@ -168,6 +168,13 @@ body.modal-open {
   position: relative;
   z-index: 2;
   max-width: 520px;
+  padding: 1.35rem 1.15rem 1.1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(21, 61, 82, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.95);
 }
 
 .floating-hero__logo {
@@ -177,22 +184,21 @@ body.modal-open {
   height: auto;
   margin: 0 auto 0.85rem;
   object-fit: contain;
-  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(0 2px 8px rgba(30, 58, 79, 0.12));
 }
 
 .floating-hero__title {
   margin: 0 0 1rem;
   font-size: 1rem;
-  font-weight: 400;
-  opacity: 0.88;
-  color: #fff;
+  font-weight: 500;
+  color: var(--text);
 }
 
 .floating-hero__contact {
   display: flex;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: #fff;
+  color: var(--text);
 }
 
 .hero-contact__group {
@@ -249,20 +255,38 @@ body.modal-open {
   letter-spacing: 0.01em;
 }
 
-.floating-hero__contact .hero-contact__group {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
+.floating-hero .hero-contact__group {
+  background: rgba(30, 58, 79, 0.06);
+  border-color: rgba(30, 58, 79, 0.12);
+  box-shadow: none;
 }
 
-.floating-hero__contact .hero-contact__chip {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.38);
+.floating-hero .hero-contact__chip {
+  background: #fff;
+  border-color: var(--border);
+  color: var(--text);
 }
 
-.floating-hero__contact .hero-contact__chip:hover {
-  background: rgba(255, 255, 255, 0.24);
-  border-color: rgba(255, 255, 255, 0.52);
+.floating-hero .hero-contact__chip:hover {
+  background: var(--surface-elevated);
+  border-color: var(--primary);
+}
+
+.floating-hero .hero-contact__phone-icon {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.floating-hero .btn--ghost {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.floating-hero .btn--ghost:hover {
+  background: #fff;
+  border-color: var(--primary);
+  color: #153448;
 }
 
 @media (max-width: 380px) {
