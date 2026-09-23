@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.38-online",
+    "version": "1.1.41-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -22,7 +22,9 @@
         "mista-familia",
         "taca-camarao-empanado",
         "parmegiana-carne",
-        "fritas-potiguar"
+        "fritas-potiguar",
+        "cuscuz-carne-sol-coalho",
+        "files-camarao-queijo"
       ]
     },
     {
@@ -338,7 +340,7 @@
           "id": "empanados-mar",
           "name": "Empanados do Mar",
           "price": 139,
-          "description": "Peixe em cubos, filé de camarão, salada e batata",
+          "description": "Peixe e filé de camarão empanados, salada e batata frita",
           "image": "empanados-mar.jpg"
         },
         {
@@ -649,12 +651,14 @@
           "id": "salada-coalho",
           "name": "Salada com Coalho",
           "price": 29,
+          "description": "Salada verde com cubos de queijo coalho grelhados",
           "image": "salada-coalho.jpg"
         },
         {
           "id": "salada-frango",
           "name": "Salada com Frango",
           "price": 32,
+          "description": "Salada verde com cubos de frango grelhado",
           "image": "salada-frango.jpg"
         },
         {
@@ -1325,6 +1329,7 @@
       "id": "adicionais",
       "name": "Adicionais",
       "order": 18,
+      "layout": "compact",
       "items": [
         {
           "id": "feijao-ind",

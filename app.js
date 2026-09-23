@@ -510,9 +510,10 @@ function renderMenu(menu) {
     .map((cat) => {
       const count = getCategoryItems(cat, menu).length;
       const featuredClass = cat.id === 'mais-vendidos' ? ' section--featured' : '';
+      const compactClass = cat.layout === 'compact' ? ' section--compact' : '';
       const note = cat.note ? `<p class="section__note">${cat.note}</p>` : '';
       return `
-        <section class="section${featuredClass}" id="${cat.id}">
+        <section class="section${featuredClass}${compactClass}" id="${cat.id}">
           <header class="section__header">
             <h2 class="section__title">${cat.name}</h2>
             <span class="section__count">${count} itens</span>
