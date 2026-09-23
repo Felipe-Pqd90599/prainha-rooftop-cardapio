@@ -256,18 +256,34 @@ const HERO_INSTAGRAM_ICON = `<svg class="hero-contact__ig-icon" viewBox="0 0 24 
   <circle cx="17.25" cy="6.75" r="1.15" fill="#fff"/>
 </svg>`;
 
+const HERO_PHONE_ICON = `<svg class="hero-contact__phone-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/>
+</svg>`;
+
+function heroPhoneTelHref(info) {
+  const wa = String(info.contact?.whatsapp || '').replace(/\D/g, '');
+  if (wa) return `tel:+${wa.startsWith('55') ? wa : `55${wa}`}`;
+  const digits = String(info.contact?.phone || '').replace(/\D/g, '');
+  return digits ? `tel:+55${digits}` : 'tel:+558421313667';
+}
+
 function renderHeroContactMarkup(info) {
   const igRaw = info.contact?.instagram || '@prainharooftop';
   const igHandle = igRaw.startsWith('@') ? igRaw : `@${igRaw}`;
   const igUser = igRaw.replace('@', '');
   const phone = info.contact?.phone || '(84) 2131-3667';
+  const telHref = heroPhoneTelHref(info);
   return `
-    <a class="hero-contact__instagram" href="https://instagram.com/${igUser}" target="_blank" rel="noopener noreferrer" aria-label="Seguir no Instagram ${igHandle}">
-      ${HERO_INSTAGRAM_ICON}
-      <span class="hero-contact__ig-text">${igHandle}</span>
-    </a>
-    <span class="hero-contact__sep" aria-hidden="true">·</span>
-    <span class="hero-contact__phone">${phone}</span>
+    <div class="hero-contact__group" role="group" aria-label="Contato">
+      <a class="hero-contact__chip" href="https://instagram.com/${igUser}" target="_blank" rel="noopener noreferrer" aria-label="Seguir no Instagram ${igHandle}">
+        ${HERO_INSTAGRAM_ICON}
+        <span class="hero-contact__chip-text">${igHandle}</span>
+      </a>
+      <a class="hero-contact__chip" href="${telHref}" aria-label="Ligar para ${phone}">
+        ${HERO_PHONE_ICON}
+        <span class="hero-contact__chip-text">${phone}</span>
+      </a>
+    </div>
   `;
 }
 
