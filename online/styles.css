@@ -85,7 +85,7 @@ body {
 
 .hero__bg.has-photo {
   background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)),
-    url("assets/fotos/capa-prainha-rooftop.jpg?v=1.1.47-online");
+    url("assets/fotos/capa-prainha-rooftop.jpg?v=1.1.48-online");
   background-size: cover;
   background-position: center;
 }
@@ -115,56 +115,76 @@ body {
 
 .hero__contact {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  gap: 0.5rem 0.7rem;
-  font-size: 0.9rem;
   margin-bottom: 1.25rem;
 }
 
-.hero-contact__instagram {
+.hero-contact__group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  max-width: 100%;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero-contact__chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.85rem;
+  gap: 0.45rem;
+  padding: 0.42rem 0.8rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.2;
   text-decoration: none;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
-.hero-contact__instagram:hover {
-  background: rgba(0, 0, 0, 0.48);
-  border-color: rgba(255, 255, 255, 0.55);
+.hero-contact__chip:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
-.hero-contact__instagram:active {
+.hero-contact__chip:active {
   transform: scale(0.98);
 }
 
-.hero-contact__ig-icon {
+.hero-contact__ig-icon,
+.hero-contact__phone-icon {
   flex-shrink: 0;
   display: block;
 }
 
-.hero-contact__ig-text {
+.hero-contact__phone-icon {
+  opacity: 0.95;
+}
+
+.hero-contact__chip-text {
   letter-spacing: 0.01em;
 }
 
-.hero-contact__sep {
-  opacity: 0.5;
-  font-weight: 300;
-}
+@media (max-width: 380px) {
+  .hero-contact__group {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 16px;
+    padding: 0.4rem;
+  }
 
-.hero-contact__phone {
-  font-weight: 500;
-  opacity: 0.92;
+  .hero-contact__chip {
+    justify-content: center;
+    white-space: normal;
+  }
 }
 
 .hero__actions {
