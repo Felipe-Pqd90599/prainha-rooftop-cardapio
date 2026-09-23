@@ -40,6 +40,10 @@ function stampCacheBusters() {
     html = html.replace(/href="styles\.css(?:\?v=[^"]*)?"/, `href="styles.css?v=${v}"`);
     html = html.replace(/src="app\.js(?:\?v=[^"]*)?"/, `src="app.js?v=${v}"`);
     html = html.replace(
+      /logo-prainha-rooftop-branco\.png(?:\?v=[^"]*)?/g,
+      `logo-prainha-rooftop-branco.png?v=${v}`,
+    );
+    html = html.replace(
       /logo-prainha-rooftop\.png(?:\?v=[^"]*)?/g,
       `logo-prainha-rooftop.png?v=${v}`,
     );
