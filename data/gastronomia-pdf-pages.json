@@ -1,9 +1,4 @@
 {
-  "entradasMovedToFrutos": [
-    "taca-camarao-empanado",
-    "ceviche-camarao",
-    "escondidinho-camarao"
-  ],
   "pages": [
     {
       "cat": "mais-vendidos",
@@ -16,38 +11,13 @@
       "cat": "entradas",
       "photo": "taca-camarao-empanado",
       "lead": "Para abrir a noite",
-      "blocks": [
-        {
-          "type": "grid",
-          "cols": 3,
-          "ids": "cat:all",
-          "exclude": ["taca-camarao-empanado", "ceviche-camarao", "escondidinho-camarao"]
-        }
-      ]
+      "blocks": [{ "type": "grid", "cols": 4, "ids": "cat:all" }]
     },
     {
       "cat": "frutos-do-mar",
       "photo": "camarao-caicoense",
       "lead": "O melhor do mar de Ponta Negra",
-      "blocks": [
-        {
-          "type": "grid",
-          "cols": 3,
-          "ids": [
-            "camarao-grega",
-            "ensopado-peixe",
-            "camarao-caicoense",
-            "penne-camarao",
-            "camarao-prainha",
-            "brasileirinho-peixe",
-            "parmegiana-camarao",
-            "brasileirinho-camarao",
-            "taca-camarao-empanado",
-            "ceviche-camarao",
-            "escondidinho-camarao"
-          ]
-        }
-      ]
+      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
     },
     {
       "cat": "carnes",
