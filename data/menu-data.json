@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.55-online",
+    "version": "1.1.58-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -124,20 +124,12 @@
       "order": 3,
       "items": [
         {
-          "id": "camarao-grega",
-          "name": "Camarão à Grega",
-          "price": 44,
-          "priceSecondary": 84,
-          "description": "Arroz à grega, camarão empanado, queijo muçarela maçaricado e batata palha",
-          "image": "camarao-grega.jpg"
-        },
-        {
-          "id": "ensopado-peixe",
-          "name": "Ensopado de Peixe",
-          "price": 44,
-          "priceSecondary": 84,
-          "description": "Peixe ao creme com legumes, pirão e arroz refogado",
-          "image": "ensopado-peixe.jpg"
+          "id": "camarao-prainha",
+          "name": "Camarão do Prainha",
+          "price": 42,
+          "priceSecondary": 82,
+          "description": "Arroz cremoso com cubinhos de coalho, queijo muçarela maçaricado e filé de camarão empanado e manjericão",
+          "image": "camarao-prainha.jpg"
         },
         {
           "id": "camarao-caicoense",
@@ -148,28 +140,20 @@
           "image": "camarao-caicoense.jpg"
         },
         {
+          "id": "camarao-grega",
+          "name": "Camarão à Grega",
+          "price": 44,
+          "priceSecondary": 84,
+          "description": "Arroz à grega, camarão empanado, queijo muçarela maçaricado e batata palha",
+          "image": "camarao-grega.jpg"
+        },
+        {
           "id": "penne-camarao",
           "name": "Penne ou Fettuccine de Camarão",
           "price": 46,
           "priceSecondary": 89,
           "description": "Massa ao molho branco, salsinha e filé de camarão",
           "image": "penne-camarao.jpg"
-        },
-        {
-          "id": "camarao-prainha",
-          "name": "Camarão do Prainha",
-          "price": 42,
-          "priceSecondary": 82,
-          "description": "Arroz cremoso com cubinhos de coalho, queijo muçarela maçaricado e filé de camarão empanado e manjericão",
-          "image": "camarao-prainha.jpg"
-        },
-        {
-          "id": "brasileirinho-peixe",
-          "name": "Brasileirinho de Peixe",
-          "price": 33,
-          "priceSecondary": 64,
-          "description": "Peixe em posta ou filé de peixe frito, feijão preto, arroz, salada e farofa da casa",
-          "image": "brasileirinho-peixe.jpg"
         },
         {
           "id": "parmegiana-camarao",
@@ -180,12 +164,28 @@
           "image": "parmegiana-camarao.jpg"
         },
         {
+          "id": "ensopado-peixe",
+          "name": "Moqueca de Peixe",
+          "price": 44,
+          "priceSecondary": 84,
+          "description": "Peixe ao creme com legumes, pirão e arroz refogado",
+          "image": "ensopado-peixe.jpg"
+        },
+        {
           "id": "brasileirinho-camarao",
           "name": "Brasileirinho de Camarão",
           "price": 37,
           "priceSecondary": 71,
           "description": "Queijo, vinagrete e orégano",
           "image": "brasileirinho-camarao.jpg"
+        },
+        {
+          "id": "brasileirinho-peixe",
+          "name": "Brasileirinho de Peixe",
+          "price": 33,
+          "priceSecondary": 64,
+          "description": "Peixe em posta ou filé de peixe frito, feijão preto, arroz, salada e farofa da casa",
+          "image": "brasileirinho-peixe.jpg"
         }
       ]
     },
@@ -202,20 +202,36 @@
           "description": "Carne, camarão alho e óleo e calabresa acebolada. Acompanha arroz, feijão e farofa da casa"
         },
         {
-          "id": "parmegiana-carne",
-          "name": "Parmegiana de Carne",
-          "price": 38,
-          "priceSecondary": 72,
-          "description": "Filézinhos empanados ao molho de tomate com queijo gratinado | macarrão, arroz ao molho ou branco",
-          "image": "parmegiana-carne.jpg"
-        },
-        {
           "id": "sertanejo-prainha",
           "name": "Sertanejo do Prainha",
           "price": 41,
           "priceSecondary": 79,
           "description": "Feijão verde ou branco, arroz refogado, carne de sol e queijo coalho em cubos, salada, fritas e farofa da casa",
           "image": "sertanejo-prainha.jpg"
+        },
+        {
+          "id": "baiao-dois",
+          "name": "Baião de Dois",
+          "price": 42,
+          "priceSecondary": 79,
+          "description": "Cremoso ou tradicional | feijão verde ou branco, arroz, bacon, carne de sol desfiada e queijo coalho",
+          "image": "baiao-dois.jpg"
+        },
+        {
+          "id": "penne-fettuccine-carne",
+          "name": "Penne ou Fettuccine com Carne",
+          "price": 41,
+          "priceSecondary": 79,
+          "description": "Penne ou fettuccine ao molho branco, filé de carne ao molho madeira com barbecue",
+          "image": "penne-fettuccine-carne.jpg"
+        },
+        {
+          "id": "parmegiana-carne",
+          "name": "Parmegiana de Carne",
+          "price": 38,
+          "priceSecondary": 72,
+          "description": "Filézinhos empanados ao molho de tomate com queijo gratinado | macarrão, arroz ao molho ou branco",
+          "image": "parmegiana-carne.jpg"
         },
         {
           "id": "parmegiana-frango",
@@ -248,22 +264,6 @@
           "priceSecondary": 44,
           "description": "Calabresa acebolada, feijão preto, arroz, salada e farofa da casa",
           "image": "brasileirinho-calabresa.jpg"
-        },
-        {
-          "id": "penne-fettuccine-carne",
-          "name": "Penne ou Fettuccine com Carne",
-          "price": 41,
-          "priceSecondary": 79,
-          "description": "Penne ou fettuccine ao molho branco, filé de carne ao molho madeira com barbecue",
-          "image": "penne-fettuccine-carne.jpg"
-        },
-        {
-          "id": "baiao-dois",
-          "name": "Baião de Dois",
-          "price": 42,
-          "priceSecondary": 79,
-          "description": "Cremoso ou tradicional | feijão verde ou branco, arroz, bacon, carne de sol desfiada e queijo coalho",
-          "image": "baiao-dois.jpg"
         }
       ]
     },
@@ -273,18 +273,11 @@
       "order": 5,
       "items": [
         {
-          "id": "chicken-burger",
-          "name": "Chicken Burger",
-          "price": 25,
-          "description": "Pão, frango desfiado, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
-          "image": "chicken-burger.jpg"
-        },
-        {
-          "id": "blend-tradicional",
-          "name": "Blend Tradicional",
-          "price": 28,
-          "description": "Pão, 1 smash de carne bovina, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
-          "image": "blend-tradicional.jpg"
+          "id": "nordestino-na-area",
+          "name": "Nordestino na Área",
+          "price": 26,
+          "description": "Pão, carne desfiada, coalho, ovo, alface e molho da casa",
+          "image": "nordestino-na-area.jpg"
         },
         {
           "id": "american-smash-duplo",
@@ -301,11 +294,11 @@
           "image": "burger-potiguar.jpg"
         },
         {
-          "id": "nordestino-na-area",
-          "name": "Nordestino na Área",
-          "price": 26,
-          "description": "Pão, carne desfiada, coalho, ovo, alface e molho da casa",
-          "image": "nordestino-na-area.jpg"
+          "id": "blend-tradicional",
+          "name": "Blend Tradicional",
+          "price": 28,
+          "description": "Pão, 1 smash de carne bovina, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
+          "image": "blend-tradicional.jpg"
         },
         {
           "id": "cheeseburger",
@@ -313,6 +306,13 @@
           "price": 25,
           "description": "Pão, queijo muçarela empanado, ovo, cebola caramelizada, salada e molho da casa",
           "image": "cheeseburger.jpg"
+        },
+        {
+          "id": "chicken-burger",
+          "name": "Chicken Burger",
+          "price": 25,
+          "description": "Pão, frango desfiado, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
+          "image": "chicken-burger.jpg"
         },
         {
           "id": "combo-fritas-refri",
