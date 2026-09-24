@@ -54,7 +54,7 @@ function renderCategoryGrids(cat, menu, itemRenderer) {
   const allItems = getCategoryItems(cat, menu);
   if (cat.groups?.length) {
     const byId = Object.fromEntries(allItems.map((item) => [item.id, item]));
-    return cat.groups
+    const chunks = cat.groups
       .map((group) => {
         const cards = (group.itemIds || [])
           .map((id) => byId[id])
@@ -62,13 +62,12 @@ function renderCategoryGrids(cat, menu, itemRenderer) {
           .map(renderOne)
           .join('');
         if (!cards) return '';
-        return `
-          <div class="section__group">
-            <h3 class="section__subtitle">${group.name}</h3>
-            <div class="section__grid">${cards}</div>
-          </div>`;
+        return `<h3 class="section__subtitle section__grid-span">${group.name}</h3>${cards}`;
       })
+      .filter(Boolean)
       .join('');
+    if (!chunks) return '';
+    return `<div class="section__grid">${chunks}</div>`;
   }
 
   return `<div class="section__grid">${allItems.map(renderOne).join('')}</div>`;
