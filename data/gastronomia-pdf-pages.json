@@ -1,0 +1,209 @@
+{
+  "entradasMovedToFrutos": [
+    "taca-camarao-empanado",
+    "ceviche-camarao",
+    "escondidinho-camarao"
+  ],
+  "pages": [
+    {
+      "cat": "mais-vendidos",
+      "photo": "mista-familia",
+      "lead": "Os pratos que mais saem no rooftop",
+      "star": true,
+      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
+    },
+    {
+      "cat": "entradas",
+      "photo": "taca-camarao-empanado",
+      "lead": "Para abrir a noite",
+      "blocks": [
+        {
+          "type": "grid",
+          "cols": 3,
+          "ids": "cat:all",
+          "exclude": ["taca-camarao-empanado", "ceviche-camarao", "escondidinho-camarao"]
+        }
+      ]
+    },
+    {
+      "cat": "frutos-do-mar",
+      "photo": "camarao-caicoense",
+      "lead": "O melhor do mar de Ponta Negra",
+      "blocks": [
+        {
+          "type": "grid",
+          "cols": 3,
+          "ids": [
+            "camarao-grega",
+            "ensopado-peixe",
+            "camarao-caicoense",
+            "penne-camarao",
+            "camarao-prainha",
+            "brasileirinho-peixe",
+            "parmegiana-camarao",
+            "brasileirinho-camarao",
+            "taca-camarao-empanado",
+            "ceviche-camarao",
+            "escondidinho-camarao"
+          ]
+        }
+      ]
+    },
+    {
+      "cat": "carnes",
+      "photo": "parmegiana-carne",
+      "lead": "Pratos quentes para dividir",
+      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
+    },
+    {
+      "cat": "burgers",
+      "photo": "american-smash-duplo",
+      "lead": "Blend na chapa e pão macio",
+      "blocks": [
+        {
+          "type": "grid",
+          "cols": 3,
+          "ids": "cat:all",
+          "exclude": ["combo-fritas-refri"]
+        },
+        { "type": "combo", "id": "combo-fritas-refri" }
+      ]
+    },
+    {
+      "cat": "petiscos",
+      "photo": "mista-prainha",
+      "lead": "Para acompanhar a cerveja gelada",
+      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
+    },
+    {
+      "cat": "cuscuz-tapiocas-lanches",
+      "photo": "cuscuz-carne-sol-coalho",
+      "lead": "O Nordeste na chapa",
+      "blocks": [
+        { "type": "group", "name": "Tapiocas" },
+        {
+          "type": "grid",
+          "cols": 2,
+          "ids": ["carne-sol-coalho", "files-camarao-queijo"]
+        },
+        {
+          "type": "compact",
+          "cols": 2,
+          "ids": [
+            "filezinhos-carne-molho",
+            "creme-frango-cubos",
+            "calabresa-mucarela",
+            "ovos-mucarela",
+            "coco-leite-coco"
+          ]
+        },
+        { "type": "group", "name": "Cuscuz" },
+        {
+          "type": "grid",
+          "cols": 2,
+          "ids": ["cuscuz-carne-sol-coalho", "cuscuz-files-camarao-queijo"]
+        },
+        {
+          "type": "compact",
+          "cols": 2,
+          "ids": [
+            "cuscuz-filezinhos-carne-molho",
+            "cuscuz-creme-frango-cubos",
+            "cuscuz-calabresa-mucarela",
+            "cuscuz-ovos-mucarela",
+            "cuscuz-coco-leite-coco"
+          ]
+        }
+      ]
+    },
+    {
+      "cat": "cuscuz-tapiocas-lanches",
+      "photo": "cuscuz-carne-sol-coalho",
+      "lead": "O Nordeste na chapa",
+      "continued": true,
+      "blocks": [
+        { "type": "group", "name": "Lanches" },
+        {
+          "type": "compact",
+          "cols": 2,
+          "ids": ["crepioca-queijo", "torrada-queijo", "misto"]
+        }
+      ]
+    },
+    {
+      "cat": "caldos",
+      "photo": "caldeirinho-mar",
+      "lead": "Quentinhos para a brisa do mar",
+      "blocks": [
+        { "type": "grid", "cols": 2, "ids": ["camarao-entrada", "caldeirinho-mar"] },
+        {
+          "type": "compact",
+          "cols": 2,
+          "ids": ["peixe-entrada", "arretado", "do-sertao", "caldo-feijao", "sopa"]
+        },
+        { "type": "group", "name": "Saladas e Vegetarianos" },
+        {
+          "type": "grid",
+          "cols": 2,
+          "ids": ["salada-camarao", "salada-coalho"]
+        },
+        {
+          "type": "compact",
+          "cols": 2,
+          "ids": ["salada-frango", "arroz-tropical", "penne-pomodoro", "omelete-kids"]
+        }
+      ]
+    },
+    {
+      "cat": "infantis",
+      "photo": "file-camarao-kids",
+      "lead": "Porções pensadas para as crianças",
+      "blocks": [
+        { "type": "group", "name": "Infantis" },
+        {
+          "type": "compact",
+          "cols": 2,
+          "size": "md",
+          "ids": ["file-carne-kids", "file-frango-kids", "file-camarao-kids"]
+        }
+      ]
+    },
+    {
+      "cat": "sobremesas-cafes",
+      "photo": "petit-brownie",
+      "lead": "O doce final com vista para o mar",
+      "blocks": [
+        { "type": "group", "name": "Sobremesas" },
+        {
+          "type": "grid",
+          "cols": 3,
+          "ids": ["acai-tradicional", "petit-brownie", "ice-cream-frutas"]
+        },
+        {
+          "type": "compact",
+          "cols": 2,
+          "ids": ["cartola", "beijinho", "romeu-julieta", "frutas-chocolate"]
+        },
+        { "type": "group", "name": "Cafés" },
+        { "type": "grid", "cols": 1, "ids": ["cappuccino-chantilly-m"], "feature": true },
+        {
+          "type": "compact",
+          "cols": 2,
+          "ids": ["cafe-coado-m", "cafe-leite-m"]
+        }
+      ]
+    },
+    {
+      "cat": "sucos-diversos",
+      "photo": "suco-especial",
+      "lead": "Sucos, águas e geladas sem álcool",
+      "blocks": [{ "type": "grid", "cols": 4, "ids": "cat:all" }]
+    },
+    {
+      "cat": "adicionais",
+      "photo": "carne-130g",
+      "lead": "Complete o seu prato",
+      "blocks": [{ "type": "compact", "cols": 2, "ids": "cat:all" }]
+    }
+  ]
+}

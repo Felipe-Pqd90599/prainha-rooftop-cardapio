@@ -65,21 +65,9 @@ const MENUS = [
     tocTitle: 'O que servimos',
     tocNote:
       'Cozinha aberta todos os dias. Pratos para 2 pessoas trazem o segundo preço indicado. Aponte o QR e veja o cardápio sempre atualizado.',
-    chapters: [
-      { cat: 'mais-vendidos', cols: 3, photo: 'mista-familia', lead: 'Os pratos que mais saem no rooftop', star: true },
-      { cat: 'entradas', cols: 3, photo: 'taca-camarao-empanado', lead: 'Para abrir a noite' },
-      { cat: 'frutos-do-mar', cols: 3, photo: 'camarao-caicoense', lead: 'O melhor do mar de Ponta Negra' },
-      { cat: 'carnes', cols: 3, photo: 'parmegiana-carne', lead: 'Pratos quentes para dividir' },
-      { cat: 'burgers', cols: 3, photo: 'american-smash-duplo', lead: 'Blend na chapa e pão macio' },
-      { cat: 'petiscos', cols: 3, photo: 'mista-prainha', lead: 'Para acompanhar a cerveja gelada' },
-      { cat: 'cuscuz-tapiocas-lanches', cols: 4, photo: 'cuscuz-carne-sol-coalho', lead: 'O Nordeste na chapa' },
-      { cat: 'caldos', cols: 3, photo: 'caldeirinho-mar', lead: 'Quentinhos para a brisa do mar' },
-      { cat: 'saladas-vegetarianos', cols: 3, photo: 'salada-camarao', lead: 'Leves, frescas e coloridas' },
-      { cat: 'infantis', cols: 3, photo: 'file-camarao-kids', lead: 'Porções pensadas para as crianças' },
-      { cat: 'sucos-diversos', cols: 4, photo: 'suco-especial', lead: 'Sucos, águas e geladas sem álcool' },
-      { cat: 'sobremesas-cafes', cols: 3, photo: 'petit-brownie', lead: 'O doce final com vista para o mar' },
-      { cat: 'adicionais', cols: 4, photo: 'carne-130g', lead: 'Complete o seu prato' },
-    ],
+    useFixedPages: true,
+    fixedPagesFile: 'data/gastronomia-pdf-pages.json',
+    chapters: [],
   },
   {
     id: 'drinks',
@@ -247,6 +235,146 @@ async function prepareImages(cardIds, chapterIds, qr) {
   console.log(`imagens: ${cardIds.length} cards + ${chapterIds.length} capítulos`);
 }
 
+function findItem(menu, id) {
+  for (const cat of menu.categories) {
+    const item = (cat.items || []).find((i) => i.id === id);
+    if (item) return item;
+  }
+  return null;
+}
+
+function loadGastronomiaPages(menu) {
+  const raw = JSON.parse(
+    fs.readFileSync(path.join(ROOT, 'data/gastronomia-pdf-pages.json'), 'utf8'),
+  );
+  return raw.pages.map((page) => ({ ...page }));
+}
+
+function resolveBlockIds(menu, catId, block) {
+  let ids = block.ids;
+  if (ids === 'cat:all') {
+    ids = chapterContent(menu, catId).items.map((i) => i.id);
+  }
+  if (block.exclude?.length) {
+    ids = ids.filter((id) => !block.exclude.includes(id));
+  }
+  return ids;
+}
+
+function collectFixedPageCardIds(menu, pages) {
+  const ids = new Set();
+  for (const page of pages) {
+    for (const block of page.blocks) {
+      if (block.type === 'combo') {
+        ids.add(block.id);
+        continue;
+      }
+      if (!block.ids) continue;
+      for (const id of resolveBlockIds(menu, page.cat, block)) ids.add(id);
+    }
+  }
+  return ids;
+}
+
+function renderCompactGrid(items, cols, size = 'sm') {
+  const sizeClass = size === 'md' ? ' compact-grid--md' : '';
+  const rows = items
+    .map(
+      (item) => `
+          <article class="compact-item">
+            <img class="compact-item__thumb" src="img/card-${esc(item.id)}.jpg" alt="" />
+            <div class="compact-item__text">
+              <h3 class="compact-item__name">${esc(item.name)}</h3>
+              ${item.description ? `<p class="compact-item__desc">${esc(item.description)}</p>` : ''}
+              <p class="compact-item__price">${esc(priceLine(item))}</p>
+            </div>
+          </article>`,
+    )
+    .join('');
+  return `<div class="compact-grid compact-grid--${cols}${sizeClass}">${rows}</div>`;
+}
+
+function renderComboCallout(menu, meta, itemId) {
+  const item = findItem(menu, itemId);
+  const combo = meta.burgerCombo;
+  if (!item || !combo) return '';
+  return `
+        <aside class="combo-callout">
+          <div class="combo-callout__badge">Opcional</div>
+          <div class="combo-callout__body">
+            <h3 class="combo-callout__title">${esc(combo.label || item.name)}</h3>
+            <p class="combo-callout__desc">${esc(combo.description || item.description || '')}</p>
+            <p class="combo-callout__price">+ ${esc(money(combo.price ?? item.price))}</p>
+          </div>
+        </aside>`;
+}
+
+function renderFixedPageBody(menu, meta, pageDef, starIds) {
+  const html = [];
+  let openCols = null;
+
+  const closeGrid = () => {
+    if (openCols) {
+      html.push('</div>');
+      openCols = null;
+    }
+  };
+
+  for (const block of pageDef.blocks) {
+    if (block.type === 'group') {
+      closeGrid();
+      html.push(`<h4 class="group">${esc(block.name)}</h4>`);
+      continue;
+    }
+    if (block.type === 'combo') {
+      closeGrid();
+      html.push(renderComboCallout(menu, meta, block.id));
+      continue;
+    }
+
+    const ids = resolveBlockIds(menu, pageDef.cat, block);
+    const items = ids.map((id) => findItem(menu, id)).filter(Boolean);
+
+    if (block.type === 'compact') {
+      closeGrid();
+      html.push(renderCompactGrid(items, block.cols || 2, block.size || 'sm'));
+      continue;
+    }
+
+    if (block.type === 'grid') {
+      if (block.feature && items.length === 1) {
+        closeGrid();
+        html.push(renderFeature(items[0]));
+        continue;
+      }
+      const cols = block.cols || 3;
+      closeGrid();
+      html.push(`<div class="grid grid--${cols}">`);
+      openCols = cols;
+      for (const item of items) {
+        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : ''));
+      }
+      closeGrid();
+    }
+  }
+
+  closeGrid();
+  return html.join('');
+}
+
+function renderFixedChapterHeader(pageDef, menu, chapterMeta) {
+  const { cat, items } = chapterContent(menu, pageDef.cat);
+  if (pageDef.continued) {
+    return `<p class="chapter__continued">${esc(cat.name)} — continuação</p>`;
+  }
+  return renderChapter({
+    ...pageDef,
+    cat,
+    items,
+    number: chapterMeta.number,
+  });
+}
+
 /** Resolve os itens de uma categoria, respeitando itemRefs e groups. */
 function chapterContent(menu, catId) {
   const cat = menu.categories.find((c) => c.id === catId);
@@ -406,7 +534,140 @@ function renderPageBlocks(page, starIds) {
   return html.join('');
 }
 
+function buildFixedMenuHtml(menuCfg, data, info, qr) {
+  const pageDefs = loadGastronomiaPages(data);
+  const firstContentPage = 3;
+  const catFirstPage = new Map();
+  const chaptersToc = [];
+  const catSeen = new Set();
+
+  pageDefs.forEach((pageDef, index) => {
+    const pageNum = firstContentPage + index;
+    if (!catSeen.has(pageDef.cat)) {
+      catSeen.add(pageDef.cat);
+      const { cat, items } = chapterContent(data, pageDef.cat);
+      catFirstPage.set(pageDef.cat, pageNum);
+      chaptersToc.push({
+        cat,
+        items,
+        number: chaptersToc.length + 1,
+        startPage: pageNum,
+        lead: pageDef.lead,
+        photo: pageDef.photo,
+      });
+    }
+  });
+
+  const starIds = new Set();
+  const mv = pageDefs.find((p) => p.cat === 'mais-vendidos' && p.star);
+  if (mv) {
+    const first = chapterContent(data, 'mais-vendidos').items[0];
+    if (first) starIds.add(first.id);
+  }
+
+  const cover = `
+    <section class="sheet sheet--cover">
+      <img class="cover__photo" src="img/capa.jpg" alt="" />
+      <div class="cover__panel">
+        <span class="rule"></span>
+        <p class="cover__kicker">${esc(menuCfg.kicker)}</p>
+        <h1 class="cover__title">${esc(menuCfg.title)}</h1>
+        <p class="cover__lead">${esc(menuCfg.lead)}</p>
+        <p class="cover__meta">${esc(info.contact.instagram)} &nbsp;·&nbsp; ${esc(info.contact.phone)} &nbsp;·&nbsp; Ponta Negra, Natal/RN</p>
+      </div>
+    </section>`;
+
+  const toc = `
+    <section class="sheet">
+      ${pageHeader(menuCfg.title)}
+      <div class="sheet__body sheet__body--toc">
+        <p class="eyebrow">Sumário</p>
+        <h2 class="toc__title">${esc(menuCfg.tocTitle)}</h2>
+        <ol class="toc">${chaptersToc
+          .map(
+            (chapter) => `
+          <li>
+            <span class="toc__num">${pad2(chapter.number)}</span>
+            <span class="toc__name">${esc(chapter.cat.name)}</span>
+            <span class="toc__dots"></span>
+            <span class="toc__count">${chapter.items.length} itens</span>
+            <span class="toc__page">${pad2(chapter.startPage)}</span>
+          </li>`,
+          )
+          .join('')}</ol>
+        <div class="toc__foot">
+          <p class="toc__note">${esc(menuCfg.tocNote)}</p>
+          ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
+        </div>
+      </div>
+      ${pageFooter(2)}
+    </section>`;
+
+  const chapterMetaByCat = Object.fromEntries(chaptersToc.map((c) => [c.cat.id, c]));
+
+  const content = pageDefs
+    .map((pageDef, index) => {
+      const chapterMeta = chapterMetaByCat[pageDef.cat] || chaptersToc[0];
+      const { cat } = chapterContent(data, pageDef.cat);
+      const body =
+        renderFixedChapterHeader(pageDef, data, chapterMeta) +
+        renderFixedPageBody(data, data.meta, pageDef, starIds);
+      return `
+    <section class="sheet">
+      ${pageHeader(cat.name)}
+      <div class="sheet__body sheet__body--fixed">${body}</div>
+      ${pageFooter(firstContentPage + index)}
+    </section>`;
+    })
+    .join('');
+
+  const policies = info.policies || {};
+  const closing = `
+    <section class="sheet sheet--closing">
+      <img class="closing__photo" src="img/capa.jpg" alt="" />
+      <div class="closing__panel">
+        <span class="rule"></span>
+        <p class="closing__brand">Prainha</p>
+        <p class="closing__sub">Rooftop</p>
+        <p class="closing__tagline">${esc(info.description)}</p>
+        <div class="closing__qrs">
+          ${qr['whatsapp.png'] ? `<div class="qr"><img src="img/whatsapp.png" alt="" /><span>Pedir no<br />WhatsApp</span></div>` : ''}
+          ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
+          <p class="closing__contact">${esc(info.contact.instagram)}<br />${esc(info.contact.phone)}</p>
+        </div>
+        <ul class="closing__policies">
+          ${policies.serviceChargeSuggestion ? `<li>${esc(policies.serviceChargeSuggestion)}</li>` : ''}
+          ${policies.couvertArtistico ? `<li>${esc(policies.couvertArtistico)}</li>` : ''}
+          ${policies.adicionaisNote ? `<li>${esc(policies.adicionaisNote)}</li>` : ''}
+        </ul>
+        <p class="closing__version">Preços sujeitos a alteração · edição ${esc(data.meta.version.replace('-online', ''))}</p>
+      </div>
+    </section>`;
+
+  const html = `<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>${esc(info.name)} — ${esc(menuCfg.title)}</title>
+    <link rel="stylesheet" href="fontes/fontes.css" />
+    <style>${css(menuCfg)}</style>
+  </head>
+  <body>${cover}${toc}${content}${closing}
+  </body>
+</html>`;
+
+  const contentPages = pageDefs.length;
+  return {
+    html,
+    totalPages: firstContentPage + contentPages,
+    chapters: chaptersToc,
+    pages: pageDefs,
+  };
+}
+
 function buildMenuHtml(menuCfg, data, info, qr) {
+  if (menuCfg.useFixedPages) return buildFixedMenuHtml(menuCfg, data, info, qr);
+
   const chapters = menuCfg.chapters.map((chapter, index) => {
     const { cat, items, groups } = chapterContent(data, chapter.cat);
     return { ...chapter, cat, items, groups, number: index + 1 };
@@ -798,6 +1059,106 @@ function css(menuCfg) {
     .feature__desc { margin-top: 4mm; font-size: 9pt; line-height: 1.5; color: var(--ink-soft); font-weight: 300; }
     .feature__price { margin-top: 6mm; font-family: Oswald, sans-serif; font-size: 16pt; color: var(--accent-dark); }
 
+    .sheet__body--fixed > :first-child { margin-top: 0; }
+    .chapter__continued {
+      font-family: Oswald, sans-serif;
+      font-size: 11pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 4mm;
+      padding-bottom: 2mm;
+      border-bottom: 0.2mm solid var(--line);
+    }
+
+    .compact-grid {
+      display: grid;
+      width: 100%;
+      gap: 2.2mm 3mm;
+      margin-top: 3mm;
+    }
+    .compact-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .compact-item {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+      padding: 2mm 2.5mm;
+      background: var(--paper);
+      border: 0.2mm solid var(--line);
+      border-radius: 2mm;
+      min-height: 16mm;
+    }
+    .compact-grid--md .compact-item { min-height: 20mm; padding: 2.5mm 3mm; }
+    .compact-item__thumb {
+      width: 14mm;
+      height: 14mm;
+      object-fit: cover;
+      border-radius: 1.4mm;
+      flex-shrink: 0;
+    }
+    .compact-grid--md .compact-item__thumb { width: 17mm; height: 17mm; }
+    .compact-item__text { min-width: 0; flex: 1; }
+    .compact-item__name {
+      font-family: Oswald, sans-serif;
+      font-size: 7.8pt;
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .compact-grid--md .compact-item__name { font-size: 8.6pt; }
+    .compact-item__desc {
+      margin-top: 0.5mm;
+      font-size: 6.2pt;
+      line-height: 1.25;
+      color: var(--ink-soft);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .compact-item__price {
+      margin-top: 0.8mm;
+      font-family: Oswald, sans-serif;
+      font-size: 8pt;
+      color: var(--accent-dark);
+    }
+
+    .combo-callout {
+      margin-top: 5mm;
+      display: flex;
+      align-items: stretch;
+      gap: 4mm;
+      padding: 4mm 5mm;
+      border-radius: 2.4mm;
+      border: 0.35mm solid var(--accent);
+      background: linear-gradient(135deg, var(--accent-soft) 0%, #fff 55%);
+      box-shadow: 0 0.8mm 2mm rgba(18, 55, 66, 0.08);
+    }
+    .combo-callout__badge {
+      align-self: flex-start;
+      padding: 1mm 2.5mm;
+      border-radius: 4mm;
+      background: var(--accent);
+      color: #fff;
+      font-family: Oswald, sans-serif;
+      font-size: 6.5pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .combo-callout__title {
+      font-family: Oswald, sans-serif;
+      font-size: 12pt;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .combo-callout__desc { margin-top: 1.5mm; font-size: 8pt; color: var(--ink-soft); line-height: 1.4; }
+    .combo-callout__price {
+      margin-top: 2mm;
+      font-family: Oswald, sans-serif;
+      font-size: 13pt;
+      color: var(--accent-dark);
+    }
+
     /* ---------- página final ---------- */
     .closing__photo { position: absolute; top: 0; left: 0; width: 210mm; height: 108mm; object-fit: cover; object-position: 50% 52%; }
     .closing__panel { position: absolute; top: 108mm; left: 0; right: 0; bottom: 0; padding: 14mm 18mm 0; }
@@ -923,9 +1284,15 @@ async function main() {
   const cardIds = new Set();
   const chapterIds = new Set();
   for (const menuCfg of MENUS) {
-    for (const chapter of menuCfg.chapters) {
-      chapterIds.add(chapter.photo);
-      for (const item of chapterContent(data, chapter.cat).items) cardIds.add(item.id);
+    if (menuCfg.useFixedPages) {
+      const pages = loadGastronomiaPages(data);
+      for (const page of pages) chapterIds.add(page.photo);
+      for (const id of collectFixedPageCardIds(data, pages)) cardIds.add(id);
+    } else {
+      for (const chapter of menuCfg.chapters) {
+        chapterIds.add(chapter.photo);
+        for (const item of chapterContent(data, chapter.cat).items) cardIds.add(item.id);
+      }
     }
   }
   await prepareImages([...cardIds], [...chapterIds], qr);

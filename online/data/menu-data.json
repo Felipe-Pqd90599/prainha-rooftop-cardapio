@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.52-online",
+    "version": "1.1.53-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -553,15 +553,6 @@
       "note": "Os mesmos sabores saem em tapioca ou em cuscuz.",
       "groups": [
         {
-          "id": "lanches",
-          "name": "Lanches",
-          "itemIds": [
-            "crepioca-queijo",
-            "torrada-queijo",
-            "misto"
-          ]
-        },
-        {
           "id": "tapiocas",
           "name": "Tapiocas",
           "itemIds": [
@@ -585,6 +576,15 @@
             "cuscuz-files-camarao-queijo",
             "cuscuz-ovos-mucarela",
             "cuscuz-coco-leite-coco"
+          ]
+        },
+        {
+          "id": "lanches",
+          "name": "Lanches",
+          "itemIds": [
+            "crepioca-queijo",
+            "torrada-queijo",
+            "misto"
           ]
         }
       ]
@@ -718,9 +718,96 @@
       ]
     },
     {
+      "id": "sobremesas-cafes",
+      "name": "Sobremesas e Cafés",
+      "order": 11,
+      "groups": [
+        {
+          "id": "sobremesas",
+          "name": "Sobremesas",
+          "itemIds": [
+            "acai-tradicional",
+            "petit-brownie",
+            "cartola",
+            "ice-cream-frutas",
+            "beijinho",
+            "romeu-julieta",
+            "frutas-chocolate"
+          ]
+        },
+        {
+          "id": "cafes",
+          "name": "Cafés",
+          "itemIds": ["cappuccino-chantilly-m", "cafe-coado-m", "cafe-leite-m"]
+        }
+      ],
+      "items": [
+        {
+          "id": "acai-tradicional",
+          "name": "Açaí Tradicional 350ml",
+          "price": 22,
+          "image": "acai-tradicional.jpg"
+        },
+        {
+          "id": "petit-brownie",
+          "name": "Petit Brownie",
+          "price": 29,
+          "image": "petit-brownie.jpg"
+        },
+        {
+          "id": "cartola",
+          "name": "Cartola",
+          "price": 24,
+          "image": "cartola.jpg"
+        },
+        {
+          "id": "ice-cream-frutas",
+          "name": "Ice Cream com Frutas na Taça",
+          "price": 26,
+          "image": "ice-cream-frutas.jpg"
+        },
+        {
+          "id": "beijinho",
+          "name": "Beijinho",
+          "price": 24,
+          "image": "beijinho.jpg"
+        },
+        {
+          "id": "romeu-julieta",
+          "name": "Romeu e Julieta",
+          "price": 26,
+          "image": "romeu-julieta.jpg"
+        },
+        {
+          "id": "frutas-chocolate",
+          "name": "Frutas com Chocolate",
+          "price": 26,
+          "image": "frutas-chocolate.jpg"
+        },
+        {
+          "id": "cappuccino-chantilly-m",
+          "name": "Cappuccino com Chantilly M",
+          "price": 12,
+          "image": "cappuccino-chantilly-m.jpg"
+        },
+        {
+          "id": "cafe-coado-m",
+          "name": "Café Coado M",
+          "price": 5,
+          "image": "cafe-coado-m.jpg"
+        },
+        {
+          "id": "cafe-leite-m",
+          "name": "Café com Leite M",
+          "price": 7,
+          "image": "cafe-leite-m.jpg"
+        }
+      ]
+    },
+    {
       "id": "sucos-diversos",
       "name": "Sucos e Diversos",
-      "order": 11,
+      "order": 12,
       "items": [
         {
           "id": "suco-tradicional",
@@ -808,73 +895,6 @@
           "name": "H2O",
           "price": 9,
           "image": "h2o.jpg"
-        }
-      ]
-    },
-    {
-      "id": "sobremesas-cafes",
-      "name": "Cafés e Sobremesas",
-      "order": 12,
-      "items": [
-        {
-          "id": "cafe-coado-m",
-          "name": "Café Coado M",
-          "price": 5,
-          "image": "cafe-coado-m.jpg"
-        },
-        {
-          "id": "cafe-leite-m",
-          "name": "Café com Leite M",
-          "price": 7,
-          "image": "cafe-leite-m.jpg"
-        },
-        {
-          "id": "cappuccino-chantilly-m",
-          "name": "Cappuccino com Chantilly M",
-          "price": 12,
-          "image": "cappuccino-chantilly-m.jpg"
-        },
-        {
-          "id": "acai-tradicional",
-          "name": "Açaí Tradicional 350ml",
-          "price": 22,
-          "image": "acai-tradicional.jpg"
-        },
-        {
-          "id": "petit-brownie",
-          "name": "Petit Brownie",
-          "price": 29,
-          "image": "petit-brownie.jpg"
-        },
-        {
-          "id": "cartola",
-          "name": "Cartola",
-          "price": 24,
-          "image": "cartola.jpg"
-        },
-        {
-          "id": "ice-cream-frutas",
-          "name": "Ice Cream com Frutas na Taça",
-          "price": 26,
-          "image": "ice-cream-frutas.jpg"
-        },
-        {
-          "id": "beijinho",
-          "name": "Beijinho",
-          "price": 24,
-          "image": "beijinho.jpg"
-        },
-        {
-          "id": "romeu-julieta",
-          "name": "Romeu e Julieta",
-          "price": 26,
-          "image": "romeu-julieta.jpg"
-        },
-        {
-          "id": "frutas-chocolate",
-          "name": "Frutas com Chocolate",
-          "price": 26,
-          "image": "frutas-chocolate.jpg"
         }
       ]
     },
