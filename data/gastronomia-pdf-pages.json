@@ -84,20 +84,21 @@
             "cuscuz-ovos-mucarela",
             "cuscuz-coco-leite-coco"
           ]
-        },
-        { "type": "group", "name": "Lanches" },
-        {
-          "type": "compact",
-          "cols": 3,
-          "ids": ["crepioca-queijo", "torrada-queijo", "misto"]
         }
       ]
     },
     {
       "cat": "caldos",
       "photo": "caldeirinho-mar",
-      "lead": "Quentinhos para a brisa do mar",
+      "lead": "Lanches e caldos quentinhos",
+      "dense": true,
       "blocks": [
+        { "type": "group", "name": "Lanches" },
+        {
+          "type": "grid",
+          "cols": 3,
+          "ids": ["crepioca-queijo", "torrada-queijo", "misto"]
+        },
         { "type": "group", "name": "Caldos" },
         {
           "type": "grid",
@@ -108,7 +109,15 @@
           "type": "compact",
           "cols": 2,
           "ids": ["peixe-entrada", "arretado", "do-sertao", "caldo-feijao", "sopa"]
-        },
+        }
+      ]
+    },
+    {
+      "cat": "saladas-vegetarianos",
+      "photo": "salada-camarao",
+      "lead": "Saladas, vegetarianos e porções infantis",
+      "dense": true,
+      "blocks": [
         { "type": "group", "name": "Saladas e Vegetarianos" },
         {
           "type": "grid",
@@ -119,14 +128,7 @@
           "type": "compact",
           "cols": 2,
           "ids": ["salada-frango", "penne-pomodoro", "omelete-kids"]
-        }
-      ]
-    },
-    {
-      "cat": "infantis",
-      "photo": "file-camarao-kids",
-      "lead": "Porções pensadas para as crianças",
-      "blocks": [
+        },
         { "type": "group", "name": "Infantis" },
         {
           "type": "compact",
@@ -153,7 +155,11 @@
           "ids": ["cartola", "beijinho", "romeu-julieta", "frutas-chocolate"]
         },
         { "type": "group", "name": "Cafés" },
-        { "type": "grid", "cols": 1, "ids": ["cappuccino-chantilly-m"], "feature": true },
+        {
+          "type": "grid",
+          "cols": 3,
+          "ids": ["cappuccino-chantilly-m"]
+        },
         {
           "type": "compact",
           "cols": 2,
