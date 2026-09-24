@@ -53,7 +53,7 @@
         { "type": "group", "name": "Tapiocas" },
         {
           "type": "grid",
-          "cols": 2,
+          "cols": 3,
           "ids": ["carne-sol-coalho", "files-camarao-queijo"]
         },
         {
@@ -70,7 +70,7 @@
         { "type": "group", "name": "Cuscuz" },
         {
           "type": "grid",
-          "cols": 2,
+          "cols": 3,
           "ids": ["cuscuz-carne-sol-coalho", "cuscuz-files-camarao-queijo"]
         },
         {
@@ -83,15 +83,7 @@
             "cuscuz-ovos-mucarela",
             "cuscuz-coco-leite-coco"
           ]
-        }
-      ]
-    },
-    {
-      "cat": "cuscuz-tapiocas-lanches",
-      "photo": "cuscuz-carne-sol-coalho",
-      "lead": "O Nordeste na chapa",
-      "continued": true,
-      "blocks": [
+        },
         { "type": "group", "name": "Lanches" },
         {
           "type": "compact",

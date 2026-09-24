@@ -555,6 +555,7 @@
         {
           "id": "tapiocas",
           "name": "Tapiocas",
+          "featuredIds": ["carne-sol-coalho", "files-camarao-queijo"],
           "itemIds": [
             "carne-sol-coalho",
             "filezinhos-carne-molho",
@@ -568,6 +569,7 @@
         {
           "id": "cuscuz",
           "name": "Cuscuz",
+          "featuredIds": ["cuscuz-carne-sol-coalho", "cuscuz-files-camarao-queijo"],
           "itemIds": [
             "cuscuz-carne-sol-coalho",
             "cuscuz-filezinhos-carne-molho",
@@ -581,6 +583,7 @@
         {
           "id": "lanches",
           "name": "Lanches",
+          "compactOnly": true,
           "itemIds": [
             "crepioca-queijo",
             "torrada-queijo",
@@ -725,6 +728,7 @@
         {
           "id": "sobremesas",
           "name": "Sobremesas",
+          "featuredIds": ["acai-tradicional", "petit-brownie", "ice-cream-frutas"],
           "itemIds": [
             "acai-tradicional",
             "petit-brownie",
@@ -738,6 +742,7 @@
         {
           "id": "cafes",
           "name": "Cafés",
+          "featuredIds": ["cappuccino-chantilly-m"],
           "itemIds": ["cappuccino-chantilly-m", "cafe-coado-m", "cafe-leite-m"]
         }
       ],
