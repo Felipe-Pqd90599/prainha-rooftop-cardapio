@@ -60,26 +60,16 @@ function renderCategoryGrids(cat, menu, itemRenderer) {
     const byId = Object.fromEntries(allItems.map((item) => [item.id, item]));
     return cat.groups
       .map((group) => {
-        const ids = group.itemIds || [];
-        const featuredSet = new Set(group.featuredIds || []);
-        const featured = (group.featuredIds || []).map((id) => byId[id]).filter(Boolean);
-        const compact = ids
-          .filter((id) => !featuredSet.has(id))
+        const cards = (group.itemIds || [])
           .map((id) => byId[id])
-          .filter(Boolean);
-        if (!featured.length && !compact.length) return '';
-
-        let grids = '';
-        if (featured.length) {
-          grids += `<div class="section__grid">${featured.map(renderOne).join('')}</div>`;
-        }
-        if (compact.length) {
-          grids += `<div class="section__grid section__group-compact">${compact.map(renderOne).join('')}</div>`;
-        }
+          .filter(Boolean)
+          .map(renderOne)
+          .join('');
+        if (!cards) return '';
         return `
           <div class="section__group">
             <h3 class="section__subtitle">${group.name}</h3>
-            ${grids}
+            <div class="section__grid">${cards}</div>
           </div>`;
       })
       .join('');
