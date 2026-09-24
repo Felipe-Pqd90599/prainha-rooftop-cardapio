@@ -92,15 +92,9 @@
     {
       "cat": "caldos",
       "photo": "caldeirinho-mar",
-      "lead": "Lanches e caldos quentinhos",
+      "lead": "Caldos quentinhos e opções leves",
       "dense": true,
       "blocks": [
-        { "type": "group", "name": "Lanches" },
-        {
-          "type": "grid",
-          "cols": 3,
-          "ids": ["crepioca-queijo", "torrada-queijo", "misto"]
-        },
         { "type": "group", "name": "Caldos" },
         {
           "type": "grid",
@@ -111,15 +105,7 @@
           "type": "compact",
           "cols": 2,
           "ids": ["peixe-entrada", "arretado", "do-sertao", "caldo-feijao", "sopa"]
-        }
-      ]
-    },
-    {
-      "cat": "saladas-vegetarianos",
-      "photo": "salada-camarao",
-      "lead": "Saladas, vegetarianos e porções infantis",
-      "dense": true,
-      "blocks": [
+        },
         { "type": "group", "name": "Saladas e Vegetarianos" },
         {
           "type": "grid",
@@ -130,6 +116,20 @@
           "type": "compact",
           "cols": 2,
           "ids": ["salada-frango", "penne-pomodoro", "omelete-kids"]
+        }
+      ]
+    },
+    {
+      "cat": "infantis",
+      "photo": "file-camarao-kids",
+      "lead": "Lanches rápidos e porções infantis",
+      "dense": true,
+      "blocks": [
+        { "type": "group", "name": "Lanches" },
+        {
+          "type": "grid",
+          "cols": 3,
+          "ids": ["crepioca-queijo", "torrada-queijo", "misto"]
         },
         { "type": "group", "name": "Infantis" },
         {
