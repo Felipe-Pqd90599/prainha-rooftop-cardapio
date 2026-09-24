@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.59-online",
+    "version": "1.1.60-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -459,6 +459,13 @@
           "description": "Carne de sol desfiada e queijo coalho"
         },
         {
+          "id": "files-camarao-queijo",
+          "name": "Tapioca de Filés de Camarão com Queijo",
+          "price": 28,
+          "image": "files-camarao-queijo.jpg",
+          "description": "Filés de camarão com molho de queijo"
+        },
+        {
           "id": "filezinhos-carne-molho",
           "name": "Tapioca de Filezinhos de Carne ao Molho",
           "price": 26,
@@ -478,13 +485,6 @@
           "price": 24,
           "image": "calabresa-mucarela.jpg",
           "description": "Calabresa fatiada com muçarela"
-        },
-        {
-          "id": "files-camarao-queijo",
-          "name": "Tapioca de Filés de Camarão com Queijo",
-          "price": 28,
-          "image": "files-camarao-queijo.jpg",
-          "description": "Filés de camarão com molho de queijo"
         },
         {
           "id": "ovos-mucarela",
@@ -508,6 +508,13 @@
           "description": "Carne de sol desfiada e queijo coalho"
         },
         {
+          "id": "cuscuz-files-camarao-queijo",
+          "name": "Cuscuz de Filés de Camarão com Queijo",
+          "price": 28,
+          "image": "cuscuz-files-camarao-queijo.jpg",
+          "description": "Filés de camarão com molho de queijo"
+        },
+        {
           "id": "cuscuz-filezinhos-carne-molho",
           "name": "Cuscuz de Filezinhos de Carne ao Molho",
           "price": 26,
@@ -527,13 +534,6 @@
           "price": 24,
           "image": "cuscuz-calabresa-mucarela.jpg",
           "description": "Calabresa fatiada com muçarela"
-        },
-        {
-          "id": "cuscuz-files-camarao-queijo",
-          "name": "Cuscuz de Filés de Camarão com Queijo",
-          "price": 28,
-          "image": "cuscuz-files-camarao-queijo.jpg",
-          "description": "Filés de camarão com molho de queijo"
         },
         {
           "id": "cuscuz-ovos-mucarela",
@@ -557,10 +557,10 @@
           "name": "Tapiocas",
           "itemIds": [
             "carne-sol-coalho",
+            "files-camarao-queijo",
             "filezinhos-carne-molho",
             "creme-frango-cubos",
             "calabresa-mucarela",
-            "files-camarao-queijo",
             "ovos-mucarela",
             "coco-leite-coco"
           ]
@@ -570,10 +570,10 @@
           "name": "Cuscuz",
           "itemIds": [
             "cuscuz-carne-sol-coalho",
+            "cuscuz-files-camarao-queijo",
             "cuscuz-filezinhos-carne-molho",
             "cuscuz-creme-frango-cubos",
             "cuscuz-calabresa-mucarela",
-            "cuscuz-files-camarao-queijo",
             "cuscuz-ovos-mucarela",
             "cuscuz-coco-leite-coco"
           ]
