@@ -212,18 +212,26 @@ async function prepareImages(cardIds, chapterIds, qr) {
   const imgDir = path.join(BUILD, 'img');
   fs.mkdirSync(imgDir, { recursive: true });
 
+  const shouldRefresh = (srcPath, destPath) => {
+    if (!fs.existsSync(srcPath)) return false;
+    if (!fs.existsSync(destPath)) return true;
+    return fs.statSync(srcPath).mtimeMs > fs.statSync(destPath).mtimeMs;
+  };
+
   for (const id of cardIds) {
+    const src = path.join(FOTOS, `${id}.jpg`);
     const dest = path.join(imgDir, `card-${id}.jpg`);
-    if (fs.existsSync(dest)) continue;
-    const img = await Jimp.read(path.join(FOTOS, `${id}.jpg`));
+    if (!shouldRefresh(src, dest)) continue;
+    const img = await Jimp.read(src);
     img.cover(600, 430).quality(74);
     await img.writeAsync(dest);
   }
 
   for (const id of chapterIds) {
+    const src = path.join(FOTOS, `${id}.jpg`);
     const dest = path.join(imgDir, `cap-${id}.jpg`);
-    if (fs.existsSync(dest)) continue;
-    const img = await Jimp.read(path.join(FOTOS, `${id}.jpg`));
+    if (!shouldRefresh(src, dest)) continue;
+    const img = await Jimp.read(src);
     img.cover(560, 370).quality(78);
     await img.writeAsync(dest);
   }

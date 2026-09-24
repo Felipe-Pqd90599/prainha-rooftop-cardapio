@@ -2,7 +2,7 @@
   "pages": [
     {
       "cat": "mais-vendidos",
-      "photo": "mista-familia",
+      "photo": "camarao-prainha",
       "lead": "Os pratos que mais saem no rooftop",
       "star": true,
       "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
@@ -15,7 +15,7 @@
     },
     {
       "cat": "frutos-do-mar",
-      "photo": "camarao-caicoense",
+      "photo": "camarao-prainha",
       "lead": "O melhor do mar de Ponta Negra",
       "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
     },
@@ -55,13 +55,12 @@
         {
           "type": "grid",
           "cols": 3,
-          "ids": ["carne-sol-coalho", "files-camarao-queijo"]
+          "ids": ["carne-sol-coalho", "files-camarao-queijo", "filezinhos-carne-molho"]
         },
         {
           "type": "compact",
           "cols": 2,
           "ids": [
-            "filezinhos-carne-molho",
             "creme-frango-cubos",
             "calabresa-mucarela",
             "ovos-mucarela",
@@ -72,13 +71,16 @@
         {
           "type": "grid",
           "cols": 3,
-          "ids": ["cuscuz-carne-sol-coalho", "cuscuz-files-camarao-queijo"]
+          "ids": [
+            "cuscuz-carne-sol-coalho",
+            "cuscuz-files-camarao-queijo",
+            "cuscuz-filezinhos-carne-molho"
+          ]
         },
         {
           "type": "compact",
           "cols": 3,
           "ids": [
-            "cuscuz-filezinhos-carne-molho",
             "cuscuz-creme-frango-cubos",
             "cuscuz-calabresa-mucarela",
             "cuscuz-ovos-mucarela",
