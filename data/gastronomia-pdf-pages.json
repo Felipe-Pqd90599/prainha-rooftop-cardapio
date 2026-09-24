@@ -43,12 +43,13 @@
       "cat": "petiscos",
       "photo": "mista-prainha",
       "lead": "Para acompanhar a cerveja gelada",
-      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
+      "blocks": [{ "type": "grid", "cols": 4, "ids": "cat:all" }]
     },
     {
       "cat": "cuscuz-tapiocas-lanches",
       "photo": "cuscuz-carne-sol-coalho",
       "lead": "O Nordeste na chapa",
+      "dense": true,
       "blocks": [
         { "type": "group", "name": "Tapiocas" },
         {
@@ -75,7 +76,7 @@
         },
         {
           "type": "compact",
-          "cols": 2,
+          "cols": 3,
           "ids": [
             "cuscuz-filezinhos-carne-molho",
             "cuscuz-creme-frango-cubos",
@@ -87,7 +88,7 @@
         { "type": "group", "name": "Lanches" },
         {
           "type": "compact",
-          "cols": 2,
+          "cols": 3,
           "ids": ["crepioca-queijo", "torrada-queijo", "misto"]
         }
       ]
@@ -97,7 +98,12 @@
       "photo": "caldeirinho-mar",
       "lead": "Quentinhos para a brisa do mar",
       "blocks": [
-        { "type": "grid", "cols": 2, "ids": ["camarao-entrada", "caldeirinho-mar"] },
+        { "type": "group", "name": "Caldos" },
+        {
+          "type": "grid",
+          "cols": 3,
+          "ids": ["caldeirinho-mar", "camarao-entrada"]
+        },
         {
           "type": "compact",
           "cols": 2,
@@ -106,13 +112,13 @@
         { "type": "group", "name": "Saladas e Vegetarianos" },
         {
           "type": "grid",
-          "cols": 2,
-          "ids": ["salada-camarao", "salada-coalho"]
+          "cols": 3,
+          "ids": ["salada-camarao", "salada-coalho", "arroz-tropical"]
         },
         {
           "type": "compact",
           "cols": 2,
-          "ids": ["salada-frango", "arroz-tropical", "penne-pomodoro", "omelete-kids"]
+          "ids": ["salada-frango", "penne-pomodoro", "omelete-kids"]
         }
       ]
     },

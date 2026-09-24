@@ -367,6 +367,15 @@ function renderFixedChapterHeader(pageDef, menu, chapterMeta) {
   if (pageDef.continued) {
     return `<p class="chapter__continued">${esc(cat.name)} — continuação</p>`;
   }
+  if (pageDef.dense) {
+    return `
+        <header class="chapter chapter--dense">
+          <div class="chapter__text">
+            <h2 class="chapter__title">${esc(cat.name)}</h2>
+            <p class="chapter__lead">${esc(pageDef.lead || '')}</p>
+          </div>
+        </header>`;
+  }
   return renderChapter({
     ...pageDef,
     cat,
@@ -615,7 +624,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
       return `
     <section class="sheet">
       ${pageHeader(cat.name)}
-      <div class="sheet__body sheet__body--fixed">${body}</div>
+      <div class="sheet__body sheet__body--fixed${pageDef.dense ? ' sheet__body--dense' : ''}">${body}</div>
       ${pageFooter(firstContentPage + index)}
     </section>`;
     })
@@ -948,6 +957,20 @@ function css(menuCfg) {
     }
     .chapter__lead { margin-top: 1mm; font-size: 8.4pt; font-weight: 300; color: var(--ink-soft); }
 
+    .chapter--dense {
+      height: auto;
+      min-height: 11mm;
+      padding-bottom: 2mm;
+      margin-bottom: 1mm;
+      border-bottom: 0.3mm solid var(--line);
+    }
+    .chapter--dense .chapter__title {
+      font-size: 15pt;
+      margin: 0;
+      line-height: 1.1;
+    }
+    .chapter--dense .chapter__lead { margin-top: 0.8mm; font-size: 8pt; }
+
     .group {
       height: ${LAYOUT.headingH}mm;
       display: flex;
@@ -1078,6 +1101,13 @@ function css(menuCfg) {
       margin-top: 3mm;
     }
     .compact-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .compact-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .sheet__body--dense .group { margin-top: 4mm; height: 9mm; }
+    .sheet__body--dense .compact-grid { margin-top: 2mm; gap: 1.8mm 2.5mm; }
+    .sheet__body--dense .compact-item { min-height: 14mm; padding: 1.6mm 2mm; }
+    .sheet__body--dense .compact-item__thumb { width: 12mm; height: 12mm; }
+    .sheet__body--dense .compact-item__name { font-size: 7.2pt; }
+    .sheet__body--dense .compact-item__desc { display: none; }
     .compact-item {
       display: flex;
       align-items: center;

@@ -13,7 +13,7 @@ Cardápio online + PDF com **fonte única de dados** em `data/menu-data.json`.
 
 ## Status do cardápio
 
-_Métricas atualizadas automaticamente em 2026-09-24 01:13._
+_Métricas atualizadas automaticamente em 2026-09-24 01:21._
 
 - **165** itens em **18** categorias
 - **165** fotos em `assets/fotos/` (completo)
