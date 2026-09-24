@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.58-online",
+    "version": "1.1.59-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -17,10 +17,10 @@
       "order": 1,
       "itemRefs": [
         "camarao-prainha",
+        "taca-camarao-empanado",
+        "mista-familia",
         "nordestino-na-area",
         "burger-potiguar",
-        "mista-familia",
-        "taca-camarao-empanado",
         "parmegiana-carne",
         "fritas-potiguar",
         "cuscuz-carne-sol-coalho",
@@ -52,6 +52,13 @@
           "price": 26,
           "description": "Ginga frita crocante com tapioca",
           "image": "ginga-tapioca.jpg"
+        },
+        {
+          "id": "taca-camarao-empanado",
+          "name": "Taça de Camarão Empanado",
+          "price": 51,
+          "description": "Camarão empanado crocante na taça com molho da casa e salsinha",
+          "image": "taca-camarao-empanado.jpg"
         },
         {
           "id": "pastel-diversos",
@@ -87,13 +94,6 @@
           "price": 32,
           "description": "Banana fatiada, queijo muçarela, manjericão e melaço | 4 unid",
           "image": "bruschetta-terra.jpg"
-        },
-        {
-          "id": "taca-camarao-empanado",
-          "name": "Taça de Camarão Empanado",
-          "price": 51,
-          "description": "Camarão empanado crocante na taça com molho da casa e salsinha",
-          "image": "taca-camarao-empanado.jpg"
         },
         {
           "id": "ceviche-camarao",
