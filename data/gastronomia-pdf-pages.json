@@ -34,9 +34,10 @@
           "type": "grid",
           "cols": 3,
           "ids": "cat:all",
-          "exclude": ["combo-fritas-refri"]
+          "exclude": ["combo-fritas-refri", "combo-fritas-acai"]
         },
-        { "type": "combo", "id": "combo-fritas-refri" }
+        { "type": "combo", "id": "combo-fritas-refri" },
+        { "type": "combo", "id": "combo-fritas-acai" }
       ]
     },
     {

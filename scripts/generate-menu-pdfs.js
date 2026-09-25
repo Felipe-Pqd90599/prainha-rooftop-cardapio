@@ -307,17 +307,16 @@ function renderCompactGrid(items, cols, size = 'sm') {
   return `<div class="compact-grid compact-grid--${cols}${sizeClass}">${rows}</div>`;
 }
 
-function renderComboCallout(menu, meta, itemId) {
+function renderComboCallout(menu, itemId) {
   const item = findItem(menu, itemId);
-  const combo = meta.burgerCombo;
-  if (!item || !combo) return '';
+  if (!item) return '';
   return `
         <aside class="combo-callout">
           <div class="combo-callout__badge">Opcional</div>
           <div class="combo-callout__body">
-            <h3 class="combo-callout__title">${esc(combo.label || item.name)}</h3>
-            <p class="combo-callout__desc">${esc(combo.description || item.description || '')}</p>
-            <p class="combo-callout__price">+ ${esc(money(combo.price ?? item.price))}</p>
+            <h3 class="combo-callout__title">${esc(item.name)}</h3>
+            <p class="combo-callout__desc">${esc(item.description || '')}</p>
+            <p class="combo-callout__price">+ ${esc(money(item.price))}</p>
           </div>
         </aside>`;
 }
@@ -341,7 +340,7 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
     }
     if (block.type === 'combo') {
       closeGrid();
-      html.push(renderComboCallout(menu, meta, block.id));
+      html.push(renderComboCallout(menu, block.id));
       continue;
     }
 
