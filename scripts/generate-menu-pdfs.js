@@ -258,10 +258,15 @@ function loadGastronomiaPages(menu) {
   return raw.pages.map((page) => ({ ...page }));
 }
 
+function pageDisplayTitle(pageDef, cat) {
+  return pageDef.chapterTitle || cat.name;
+}
+
 function resolveBlockIds(menu, catId, block) {
+  const sourceCat = block.cat || catId;
   let ids = block.ids;
   if (ids === 'cat:all') {
-    ids = chapterContent(menu, catId).items.map((i) => i.id);
+    ids = chapterContent(menu, sourceCat).items.map((i) => i.id);
   }
   if (block.exclude?.length) {
     ids = ids.filter((id) => !block.exclude.includes(id));
@@ -340,7 +345,7 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
       continue;
     }
 
-    const ids = resolveBlockIds(menu, pageDef.cat, block);
+    const ids = resolveBlockIds(menu, block.cat || pageDef.cat, block);
     const items = ids.map((id) => findItem(menu, id)).filter(Boolean);
 
     if (block.type === 'compact') {
@@ -373,20 +378,21 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
 function renderFixedChapterHeader(pageDef, menu, chapterMeta) {
   const { cat, items } = chapterContent(menu, pageDef.cat);
   if (pageDef.continued) {
-    return `<p class="chapter__continued">${esc(cat.name)} — continuação</p>`;
+    return `<p class="chapter__continued">${esc(pageDisplayTitle(pageDef, cat))} — continuação</p>`;
   }
+  const title = pageDisplayTitle(pageDef, cat);
   if (pageDef.dense) {
     return `
         <header class="chapter chapter--dense">
           <div class="chapter__text">
-            <h2 class="chapter__title">${esc(cat.name)}</h2>
+            <h2 class="chapter__title">${esc(title)}</h2>
             <p class="chapter__lead">${esc(pageDef.lead || '')}</p>
           </div>
         </header>`;
   }
   return renderChapter({
     ...pageDef,
-    cat,
+    cat: { ...cat, name: title },
     items,
     number: chapterMeta.number,
   });
@@ -565,7 +571,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
       const { cat, items } = chapterContent(data, pageDef.cat);
       catFirstPage.set(pageDef.cat, pageNum);
       chaptersToc.push({
-        cat,
+        cat: { ...cat, name: pageDisplayTitle(pageDef, cat) },
         items,
         number: chaptersToc.length + 1,
         startPage: pageNum,
@@ -631,7 +637,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
         renderFixedPageBody(data, data.meta, pageDef, starIds);
       return `
     <section class="sheet">
-      ${pageHeader(cat.name)}
+      ${pageHeader(pageDisplayTitle(pageDef, cat))}
       <div class="sheet__body sheet__body--fixed${pageDef.dense ? ' sheet__body--dense' : ''}">${body}</div>
       ${pageFooter(firstContentPage + index)}
     </section>`;

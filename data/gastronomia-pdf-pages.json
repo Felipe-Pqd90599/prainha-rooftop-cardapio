@@ -47,6 +47,7 @@
     },
     {
       "cat": "cuscuz-tapiocas-lanches",
+      "chapterTitle": "Cuscuz e Tapiocas",
       "photo": "cuscuz-carne-sol-coalho",
       "lead": "O Nordeste na chapa",
       "dense": true,
@@ -91,6 +92,7 @@
     },
     {
       "cat": "caldos",
+      "chapterTitle": "Caldos e Saladas e Vegetarianos",
       "photo": "caldeirinho-mar",
       "lead": "Caldos quentinhos e opções leves",
       "dense": true,
@@ -121,8 +123,9 @@
     },
     {
       "cat": "infantis",
+      "chapterTitle": "Lanches, Infantis e Adicionais",
       "photo": "file-camarao-kids",
-      "lead": "Lanches rápidos e porções infantis",
+      "lead": "Lanches, kids e porções para completar",
       "dense": true,
       "blocks": [
         { "type": "group", "name": "Lanches" },
@@ -137,6 +140,13 @@
           "cols": 2,
           "size": "md",
           "ids": ["file-carne-kids", "file-frango-kids", "file-camarao-kids"]
+        },
+        { "type": "group", "name": "Adicionais" },
+        {
+          "type": "compact",
+          "cols": 2,
+          "cat": "adicionais",
+          "ids": "cat:all"
         }
       ]
     },
@@ -160,12 +170,7 @@
         {
           "type": "grid",
           "cols": 3,
-          "ids": ["cappuccino-chantilly-m"]
-        },
-        {
-          "type": "compact",
-          "cols": 2,
-          "ids": ["cafe-coado-m", "cafe-leite-m"]
+          "ids": ["cappuccino-chantilly-m", "cafe-coado-m", "cafe-leite-m"]
         }
       ]
     },
@@ -174,12 +179,6 @@
       "photo": "suco-especial",
       "lead": "Sucos, águas e geladas sem álcool",
       "blocks": [{ "type": "grid", "cols": 4, "ids": "cat:all" }]
-    },
-    {
-      "cat": "adicionais",
-      "photo": "carne-130g",
-      "lead": "Complete o seu prato",
-      "blocks": [{ "type": "compact", "cols": 2, "ids": "cat:all" }]
     }
   ]
 }
