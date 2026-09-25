@@ -22,12 +22,33 @@ function getBurgerCategory(menu) {
   return menu?.categories?.find((c) => c.id === 'burgers' || c.comboUpgrade);
 }
 
-function itemHasComboUpgrade(itemId, menu) {
-  if (itemId === 'combo-fritas-refri') return false;
-  const combo = getBurgerCombo(menu?.meta);
+function getBurgerComboItems(menu) {
   const burgers = getBurgerCategory(menu);
-  if (!combo || !burgers?.items) return false;
-  return burgers.items.some((i) => i.id === itemId);
+  if (!burgers?.items) return [];
+  const ids = burgers.comboItemIds;
+  if (ids?.length) {
+    const byId = Object.fromEntries(burgers.items.map((i) => [i.id, i]));
+    return ids.map((id) => byId[id]).filter(Boolean);
+  }
+  return burgers.items.filter((i) => i.id.startsWith('combo-'));
+}
+
+function isBurgerComboItemId(itemId, menu) {
+  return getBurgerComboItems(menu).some((i) => i.id === itemId);
+}
+
+function getBurgerComboItem(menu, comboId) {
+  if (!comboId) return null;
+  return getBurgerComboItems(menu).find((i) => i.id === comboId) || null;
+}
+
+function itemHasComboUpgrade(itemId, menu) {
+  if (isBurgerComboItemId(itemId, menu)) return false;
+  const burgers = getBurgerCategory(menu);
+  if (!burgers?.items) return false;
+  return (
+    getBurgerComboItems(menu).length > 0 && burgers.items.some((i) => i.id === itemId)
+  );
 }
 
 function getCategoryItems(cat, menu) {
@@ -47,7 +68,7 @@ function renderCategoryGrids(cat, menu, itemRenderer) {
       category: cat,
       showComboOffer:
         isBurgersTab &&
-        item.id !== 'combo-fritas-refri' &&
+        !isBurgerComboItemId(item.id, menu) &&
         burgers?.items?.some((i) => i.id === item.id),
     });
 
@@ -111,10 +132,10 @@ function getModalBasePrice(item, portionKey) {
   return item.price;
 }
 
-function getModalPrice(item, portionKey, withCombo, meta) {
+function getModalPrice(item, portionKey, comboId, menu) {
   let price = getModalBasePrice(item, portionKey);
-  const combo = getBurgerCombo(meta);
-  if (withCombo && combo) price += combo.price;
+  const comboItem = getBurgerComboItem(menu, comboId);
+  if (comboItem) price += comboItem.price;
   return price;
 }
 
@@ -132,10 +153,11 @@ function getPortionLabels(item, category, meta) {
   return { primary, secondary };
 }
 
-function buildWhatsAppLink(info, item, portionKey, meta, withCombo, category) {
+function buildWhatsAppLink(info, item, portionKey, menu, comboId, category) {
   const phone = info.contact?.whatsapp || '558421313667';
   let portionText = '';
-  const combo = getBurgerCombo(meta);
+  const meta = menu?.meta;
+  const comboItem = getBurgerComboItem(menu, comboId);
   const { primary, secondary } = getPortionLabels(item, category, meta);
   const opts = getPortionOptions(item);
 
@@ -149,11 +171,11 @@ function buildWhatsAppLink(info, item, portionKey, meta, withCombo, category) {
   }
 
   let comboText = '';
-  if (withCombo && combo) {
-    comboText = ` + Combo (${combo.description || 'refri lata + batata frita'})`;
+  if (comboItem) {
+    comboText = ` + ${comboItem.name} (${comboItem.description || ''})`;
   }
 
-  const price = getModalPrice(item, portionKey, withCombo, meta);
+  const price = getModalPrice(item, portionKey, comboId, menu);
   const text = encodeURIComponent(
     `Olá! Quero pedir: ${item.name}${portionText}${comboText} — ${formatPrice(price)}. Vi no cardápio do Prainha Rooftop.`
   );
@@ -174,7 +196,7 @@ let appState = {
   modalItem: null,
   modalCategory: null,
   modalPortion: 'primary',
-  modalCombo: false,
+  modalComboId: null,
 };
 
 async function loadData() {
@@ -495,9 +517,10 @@ function renderItem(item, meta, options = {}) {
   const src = imageSrc(item);
   const hasPortions = hasMultiplePortions(item);
   const { primary, secondary } = getPortionLabels(item, category, meta);
-  const showCombo = options.showComboOffer && getBurgerCombo(meta);
-  const combo = getBurgerCombo(meta);
-  const isComboCard = item.id === 'combo-fritas-refri';
+  const menu = appState.menu;
+  const comboOptions = getBurgerComboItems(menu);
+  const showCombo = options.showComboOffer && comboOptions.length > 0;
+  const isComboCard = isBurgerComboItemId(item.id, menu);
 
   let tapHint = '';
   if (hasPortions || showCombo) {
@@ -511,7 +534,12 @@ function renderItem(item, meta, options = {}) {
   }
 
   const comboOffer = showCombo
-    ? `<p class="item__combo-offer">+ Combo ${formatPrice(combo.price)} · ${combo.description}</p>`
+    ? comboOptions
+        .map(
+          (combo) =>
+            `<p class="item__combo-offer">+ ${combo.name} ${formatPrice(combo.price)} · ${combo.description}</p>`
+        )
+        .join('')
     : '';
 
   return `
@@ -634,35 +662,40 @@ function renderModalPortions(item, meta) {
 
 function renderModalCombo(item, meta) {
   const container = document.getElementById('modal-combo');
-  const combo = getBurgerCombo(meta);
-  const show = itemHasComboUpgrade(item.id, appState.menu);
+  const menu = appState.menu;
+  const combos = getBurgerComboItems(menu);
+  const show = itemHasComboUpgrade(item.id, menu);
 
-  if (!show || !combo) {
+  if (!show || !combos.length) {
     container.hidden = true;
     container.innerHTML = '';
     return;
   }
 
   container.hidden = false;
-  const label = combo.label || 'Transformar em Combo';
 
   container.innerHTML = `
-    <p class="item-modal__portions-label">${label}:</p>
-    <div class="portion-picker combo-picker">
-      <button type="button" class="portion-picker__btn is-selected" data-combo="false">
+    <p class="item-modal__portions-label">Transformar em combo:</p>
+    <div class="portion-picker combo-picker portion-picker--multi">
+      <button type="button" class="portion-picker__btn is-selected" data-combo-id="">
         <span class="portion-picker__name">Só o burger</span>
         <span class="portion-picker__price">${formatPrice(getModalBasePrice(item, appState.modalPortion))}</span>
       </button>
-      <button type="button" class="portion-picker__btn" data-combo="true">
-        <span class="portion-picker__name">Com combo</span>
+      ${combos
+        .map(
+          (combo) => `
+      <button type="button" class="portion-picker__btn" data-combo-id="${combo.id}">
+        <span class="portion-picker__name">${combo.name}</span>
         <span class="portion-picker__price">+ ${formatPrice(combo.price)}</span>
         <span class="portion-picker__detail">${combo.description}</span>
-      </button>
+      </button>`
+        )
+        .join('')}
     </div>`;
 
   container.querySelectorAll('.portion-picker__btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      appState.modalCombo = btn.dataset.combo === 'true';
+      appState.modalComboId = btn.dataset.comboId || null;
       container.querySelectorAll('.portion-picker__btn').forEach((b) =>
         b.classList.toggle('is-selected', b === btn)
       );
@@ -676,13 +709,9 @@ function updateModalPriceOverlay(item, meta) {
   const overlay = document.getElementById('modal-price-overlay');
   if (!overlay) return;
 
-  const total = getModalPrice(
-    item,
-    appState.modalPortion,
-    appState.modalCombo,
-    meta
-  );
-  const combo = getBurgerCombo(meta);
+  const menu = appState.menu;
+  const total = getModalPrice(item, appState.modalPortion, appState.modalComboId, menu);
+  const comboItem = getBurgerComboItem(menu, appState.modalComboId);
   const category = appState.modalCategory;
   const { primary, secondary } = getPortionLabels(item, category, meta);
 
@@ -695,18 +724,19 @@ function updateModalPriceOverlay(item, meta) {
       appState.modalPortion === 'secondary' ? secondary : primary;
   }
 
-  if (appState.modalCombo && combo) {
-    detail = detail ? `${detail} · combo` : 'com combo';
+  if (comboItem) {
+    const comboLabel = comboItem.name.replace(/^Transformar em /i, '');
+    detail = detail ? `${detail} · ${comboLabel}` : comboLabel;
   }
 
   overlay.innerHTML = `<span class="item__price-tag">${formatPrice(total)}${detail ? ` <small>${detail}</small>` : ''}</span>`;
 }
 
 function updateModalWhatsApp() {
-  const { modalItem: item, modalCategory, info, modalPortion, modalCombo, menu } = appState;
+  const { modalItem: item, modalCategory, info, modalPortion, modalComboId, menu } = appState;
   if (!item || !info) return;
   const wa = document.getElementById('modal-wa');
-  wa.href = buildWhatsAppLink(info, item, modalPortion, menu.meta, modalCombo, modalCategory);
+  wa.href = buildWhatsAppLink(info, item, modalPortion, menu, modalComboId, modalCategory);
 }
 
 function openItemModal(itemId) {
@@ -718,7 +748,7 @@ function openItemModal(itemId) {
   appState.modalItem = item;
   appState.modalCategory = category;
   appState.modalPortion = getDefaultPortionKey(item);
-  appState.modalCombo = false;
+  appState.modalComboId = null;
 
   const modal = document.getElementById('item-modal');
   const img = document.getElementById('modal-img');
@@ -746,7 +776,7 @@ function closeItemModal() {
   document.body.classList.remove('modal-open');
   appState.modalItem = null;
   appState.modalCategory = null;
-  appState.modalCombo = false;
+  appState.modalComboId = null;
 }
 
 function bindItemInteractions() {

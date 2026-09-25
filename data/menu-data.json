@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.62-online",
+    "version": "1.1.63-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -320,9 +320,17 @@
           "price": 11.99,
           "description": "150g de batata frita + refrigerante lata — adicione a qualquer burger",
           "image": "combo-fritas-refri.jpg"
+        },
+        {
+          "id": "combo-fritas-acai",
+          "name": "Transformar em Combo Açaí",
+          "price": 21.99,
+          "description": "150g de batata frita + açaí tradicional 400ml — acompanhamento: fruta, leite condensado e granola. Adicione a qualquer burger",
+          "image": "combo-fritas-acai.jpg"
         }
       ],
-      "comboUpgrade": true
+      "comboUpgrade": true,
+      "comboItemIds": ["combo-fritas-refri", "combo-fritas-acai"]
     },
     {
       "id": "petiscos",
