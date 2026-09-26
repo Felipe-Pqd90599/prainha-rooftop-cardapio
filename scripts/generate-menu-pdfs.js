@@ -243,8 +243,22 @@ async function prepareImages(cardIds, chapterIds, qr) {
   }
 
   fs.copyFileSync(path.join(FOTOS, 'capa-prainha-rooftop.jpg'), path.join(imgDir, 'capa.jpg'));
+
+  const qrPx = 520;
   for (const name of Object.keys(qr)) {
-    if (qr[name]) fs.copyFileSync(path.join(QRDIR, name), path.join(imgDir, name));
+    if (!qr[name]) continue;
+    const src = path.join(QRDIR, name);
+    const dest = path.join(imgDir, name);
+    if (!shouldRefresh(src, dest)) continue;
+    let image = await Jimp.read(src);
+    if (/^wifi\./i.test(name)) {
+      const h = image.bitmap.height;
+      const top = Math.round(h * 0.11);
+      image.crop(0, top, image.bitmap.width, h - top);
+    }
+    image.cover(qrPx, qrPx);
+    if (name.endsWith('.png')) await image.writeAsync(dest);
+    else await image.quality(92).writeAsync(dest);
   }
   console.log(`imagens: ${cardIds.length} cards + ${chapterIds.length} capítulos`);
 }
@@ -857,7 +871,7 @@ function renderClosingQrs(info, qr) {
             ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
             ${
               qr[wifiQrFile]
-                ? `<div class="qr qr--wifi"><img src="img/${esc(wifiQrFile)}" alt="" /><span>Wi-Fi${wifiSsid ? `<br />${esc(wifiSsid)}` : ''}</span></div>`
+                ? `<div class="qr"><img src="img/${esc(wifiQrFile)}" alt="" /><span>Wi-Fi${wifiSsid ? `<br />${esc(wifiSsid)}` : ''}</span></div>`
                 : ''
             }
           </div>
@@ -995,7 +1009,18 @@ function css(menuCfg) {
     .toc__note { font-size: 8.6pt; line-height: 1.5; color: var(--ink-soft); font-weight: 300; }
 
     .qr { display: flex; align-items: center; gap: 3mm; }
-    .qr img { width: 22mm; height: 22mm; border: 0.2mm solid var(--line); background: #fff; padding: 1mm; border-radius: 1.2mm; }
+    .qr img {
+      width: 22mm;
+      height: 22mm;
+      border: 0.2mm solid var(--line);
+      background: #fff;
+      padding: 1mm;
+      border-radius: 1.2mm;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      flex-shrink: 0;
+    }
     .qr span { font-size: 7pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-dark); line-height: 1.5; }
 
     /* ---------- capítulo ---------- */
@@ -1308,7 +1333,6 @@ function css(menuCfg) {
     .closing__qrs { margin-top: 10mm; display: flex; flex-direction: column; gap: 7mm; }
     .closing__qr-group { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 7mm 9mm; }
     .closing__qr-group .qr img { width: 20mm; height: 20mm; }
-    .qr--wifi img { object-fit: contain; padding: 0.5mm; }
     .closing__contact {
       font-family: Oswald, sans-serif;
       font-size: 11pt;
