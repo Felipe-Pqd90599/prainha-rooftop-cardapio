@@ -260,26 +260,37 @@ function findItemById(id) {
   return null;
 }
 
+function priceTagBlock(classBase, label, price, variantClass = '') {
+  const labelHtml = label
+    ? `<span class="${classBase}__label">${label}</span>`
+    : '';
+  return `<span class="${classBase}${variantClass}">${labelHtml}<span class="${classBase}__value">${formatPrice(price)}</span></span>`;
+}
+
 function priceOverlayHtml(item, meta, category) {
   const opts = getPortionOptions(item);
   if (opts) {
     return opts
-      .map(
-        (opt) =>
-          `<span class="menu-item-card__price-tag${opt.badge ? ' menu-item-card__price-tag--alt' : ''}">${formatPrice(opt.price)} <small>${opt.label}</small></span>`
+      .map((opt) =>
+        priceTagBlock(
+          'menu-item-card__price-tag',
+          opt.label,
+          opt.price,
+          opt.badge ? ' menu-item-card__price-tag--alt' : ''
+        )
       )
       .join('');
   }
 
   const { primary, secondary } = getPortionLabels(item, category, meta);
-  const showPrimaryLabel = item.priceLabel || category?.portionLabels?.primary;
-  let html = `<span class="menu-item-card__price-tag">${formatPrice(item.price)}${
-    showPrimaryLabel && item.priceSecondary != null ? ` <small>${primary}</small>` : ''
-  }</span>`;
   if (item.priceSecondary != null) {
-    html += `<span class="menu-item-card__price-tag menu-item-card__price-tag--alt">${formatPrice(item.priceSecondary)} <small>${secondary}</small></span>`;
+    return (
+      priceTagBlock('menu-item-card__price-tag', primary, item.price) +
+      priceTagBlock('menu-item-card__price-tag menu-item-card__price-tag--alt', secondary, item.priceSecondary)
+    );
   }
-  return html;
+
+  return priceTagBlock('menu-item-card__price-tag', '', item.price);
 }
 
 const HERO_FLOAT_ITEMS = [
