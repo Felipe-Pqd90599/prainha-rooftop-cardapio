@@ -182,7 +182,37 @@ async function ensureFonts(browser) {
   return true;
 }
 
-/** QR do WhatsApp, cardápio online e Wi-Fi (arquivo em assets/qr), cacheados para o build. */
+function escapeWifiField(value) {
+  return String(value).replace(/([\\;,":])/g, '\\$1');
+}
+
+/** Payload padrão para QR de Wi-Fi (Android/iOS). */
+function wifiQrPayload(wifi) {
+  if (!wifi?.ssid) return null;
+  const ssid = escapeWifiField(wifi.ssid);
+  const auth = wifi.security === 'nopass' ? 'nopass' : 'WPA';
+  if (auth === 'nopass' || wifi.password == null || wifi.password === '') {
+    return `WIFI:T:nopass;S:${ssid};;`;
+  }
+  return `WIFI:T:WPA;S:${ssid};P:${escapeWifiField(wifi.password)};;`;
+}
+
+async function ensureQrImage(name, data, { force = false } = {}) {
+  const dest = path.join(QRDIR, name);
+  if (!force && fs.existsSync(dest)) return fs.existsSync(dest);
+  try {
+    await download(
+      `https://api.qrserver.com/v1/create-qr-code/?size=520x520&margin=8&format=png&data=${encodeURIComponent(data)}`,
+      dest,
+    );
+    return true;
+  } catch (err) {
+    console.warn(`qr ${name}: falhou —`, err.message);
+    return fs.existsSync(dest);
+  }
+}
+
+/** QR do WhatsApp, cardápio online e Wi-Fi (gerados iguais, 520×520 PNG). */
 async function ensureQr(info) {
   fs.mkdirSync(QRDIR, { recursive: true });
   const targets = [
@@ -191,24 +221,22 @@ async function ensureQr(info) {
   ];
   const ok = {};
   for (const [name, data] of targets) {
-    const dest = path.join(QRDIR, name);
-    if (!fs.existsSync(dest)) {
-      try {
-        await download(
-          `https://api.qrserver.com/v1/create-qr-code/?size=520x520&margin=8&format=png&data=${encodeURIComponent(data)}`,
-          dest,
-        );
-      } catch (err) {
-        console.warn(`qr ${name}: falhou —`, err.message);
-      }
-    }
-    ok[name] = fs.existsSync(dest);
+    ok[name] = await ensureQrImage(name, data);
   }
 
-  const wifiFile = info.wifi?.qrFile || 'wifi.jpg';
-  const wifiPath = path.join(QRDIR, wifiFile);
-  if (fs.existsSync(wifiPath)) ok[wifiFile] = true;
-  else console.warn(`qr ${wifiFile}: não encontrado em assets/qr`);
+  const wifiPayload = wifiQrPayload(info.wifi);
+  if (wifiPayload) {
+    const stampPath = path.join(QRDIR, 'wifi.payload.txt');
+    const stale =
+      !fs.existsSync(stampPath) ||
+      fs.readFileSync(stampPath, 'utf8') !== wifiPayload ||
+      !fs.existsSync(path.join(QRDIR, 'wifi.png'));
+    if (stale) {
+      const saved = await ensureQrImage('wifi.png', wifiPayload, { force: true });
+      if (saved) fs.writeFileSync(stampPath, wifiPayload);
+    }
+    ok['wifi.png'] = fs.existsSync(path.join(QRDIR, 'wifi.png'));
+  }
 
   return ok;
 }
@@ -250,12 +278,7 @@ async function prepareImages(cardIds, chapterIds, qr) {
     const src = path.join(QRDIR, name);
     const dest = path.join(imgDir, name);
     if (!shouldRefresh(src, dest)) continue;
-    let image = await Jimp.read(src);
-    if (/^wifi\./i.test(name)) {
-      const h = image.bitmap.height;
-      const top = Math.round(h * 0.11);
-      image.crop(0, top, image.bitmap.width, h - top);
-    }
+    const image = await Jimp.read(src);
     image.cover(qrPx, qrPx);
     if (name.endsWith('.png')) await image.writeAsync(dest);
     else await image.quality(92).writeAsync(dest);
@@ -862,7 +885,6 @@ function pageFooter(pageNumber) {
 }
 
 function renderClosingQrs(info, qr) {
-  const wifiQrFile = info.wifi?.qrFile || 'wifi.jpg';
   const wifiSsid = info.wifi?.ssid || '';
   return `
         <div class="closing__qrs">
@@ -870,8 +892,8 @@ function renderClosingQrs(info, qr) {
             ${qr['whatsapp.png'] ? `<div class="qr"><img src="img/whatsapp.png" alt="" /><span>Pedir no<br />WhatsApp</span></div>` : ''}
             ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
             ${
-              qr[wifiQrFile]
-                ? `<div class="qr"><img src="img/${esc(wifiQrFile)}" alt="" /><span>Wi-Fi${wifiSsid ? `<br />${esc(wifiSsid)}` : ''}</span></div>`
+              qr['wifi.png']
+                ? `<div class="qr"><img src="img/wifi.png" alt="" /><span>Wi-Fi${wifiSsid ? `<br />${esc(wifiSsid)}` : ''}</span></div>`
                 : ''
             }
           </div>

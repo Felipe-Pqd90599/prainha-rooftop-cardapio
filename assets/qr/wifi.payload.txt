@@ -1,0 +1,1 @@
+WIFI:T:WPA;S:brisa-3626660;P:brisa-3626660;;

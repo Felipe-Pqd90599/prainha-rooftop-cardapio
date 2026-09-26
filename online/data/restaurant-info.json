@@ -14,7 +14,8 @@
   },
   "wifi": {
     "ssid": "brisa-3626660",
-    "qrFile": "wifi.jpg"
+    "password": "brisa-3626660",
+    "security": "WPA"
   },
   "site": {
     "githubPages": "https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/",
