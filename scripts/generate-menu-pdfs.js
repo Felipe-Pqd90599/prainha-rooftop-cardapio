@@ -182,7 +182,7 @@ async function ensureFonts(browser) {
   return true;
 }
 
-/** QR do WhatsApp e do cardápio online, cacheados em assets/qr. */
+/** QR do WhatsApp, cardápio online e Wi-Fi (arquivo em assets/qr), cacheados para o build. */
 async function ensureQr(info) {
   fs.mkdirSync(QRDIR, { recursive: true });
   const targets = [
@@ -204,6 +204,12 @@ async function ensureQr(info) {
     }
     ok[name] = fs.existsSync(dest);
   }
+
+  const wifiFile = info.wifi?.qrFile || 'wifi.jpg';
+  const wifiPath = path.join(QRDIR, wifiFile);
+  if (fs.existsSync(wifiPath)) ok[wifiFile] = true;
+  else console.warn(`qr ${wifiFile}: não encontrado em assets/qr`);
+
   return ok;
 }
 
@@ -687,11 +693,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
         <p class="closing__brand">Prainha</p>
         <p class="closing__sub">Rooftop</p>
         <p class="closing__tagline">${esc(info.description)}</p>
-        <div class="closing__qrs">
-          ${qr['whatsapp.png'] ? `<div class="qr"><img src="img/whatsapp.png" alt="" /><span>Pedir no<br />WhatsApp</span></div>` : ''}
-          ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
-          <p class="closing__contact">${esc(info.contact.instagram)}<br />${esc(info.contact.phone)}</p>
-        </div>
+        ${renderClosingQrs(info, qr)}
         <ul class="closing__policies">
           ${policies.serviceChargeSuggestion ? `<li>${esc(policies.serviceChargeSuggestion)}</li>` : ''}
           ${policies.couvertArtistico ? `<li>${esc(policies.couvertArtistico)}</li>` : ''}
@@ -804,11 +806,7 @@ function buildMenuHtml(menuCfg, data, info, qr) {
         <p class="closing__brand">Prainha</p>
         <p class="closing__sub">Rooftop</p>
         <p class="closing__tagline">${esc(info.description)}</p>
-        <div class="closing__qrs">
-          ${qr['whatsapp.png'] ? `<div class="qr"><img src="img/whatsapp.png" alt="" /><span>Pedir no<br />WhatsApp</span></div>` : ''}
-          ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
-          <p class="closing__contact">${esc(info.contact.instagram)}<br />${esc(info.contact.phone)}</p>
-        </div>
+        ${renderClosingQrs(info, qr)}
         <ul class="closing__policies">
           ${policies.serviceChargeSuggestion ? `<li>${esc(policies.serviceChargeSuggestion)}</li>` : ''}
           ${policies.couvertArtistico ? `<li>${esc(policies.couvertArtistico)}</li>` : ''}
@@ -847,6 +845,24 @@ function pageFooter(pageNumber) {
         <span>Ponta Negra · Natal/RN · @prainharooftop</span>
         <span class="sheet__page">${pad2(pageNumber)}</span>
       </footer>`;
+}
+
+function renderClosingQrs(info, qr) {
+  const wifiQrFile = info.wifi?.qrFile || 'wifi.jpg';
+  const wifiSsid = info.wifi?.ssid || '';
+  return `
+        <div class="closing__qrs">
+          <div class="closing__qr-group">
+            ${qr['whatsapp.png'] ? `<div class="qr"><img src="img/whatsapp.png" alt="" /><span>Pedir no<br />WhatsApp</span></div>` : ''}
+            ${qr['cardapio.png'] ? `<div class="qr"><img src="img/cardapio.png" alt="" /><span>Cardápio<br />online</span></div>` : ''}
+            ${
+              qr[wifiQrFile]
+                ? `<div class="qr qr--wifi"><img src="img/${esc(wifiQrFile)}" alt="" /><span>Wi-Fi${wifiSsid ? `<br />${esc(wifiSsid)}` : ''}</span></div>`
+                : ''
+            }
+          </div>
+          <p class="closing__contact">${esc(info.contact.instagram)}<br />${esc(info.contact.phone)}</p>
+        </div>`;
 }
 
 function css(menuCfg) {
@@ -1289,7 +1305,10 @@ function css(menuCfg) {
       color: var(--accent-dark);
     }
     .closing__tagline { margin-top: 7mm; font-size: 10.5pt; font-weight: 300; line-height: 1.6; color: #4C6670; max-width: 130mm; }
-    .closing__qrs { margin-top: 11mm; display: flex; align-items: center; gap: 12mm; }
+    .closing__qrs { margin-top: 10mm; display: flex; flex-direction: column; gap: 7mm; }
+    .closing__qr-group { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 7mm 9mm; }
+    .closing__qr-group .qr img { width: 20mm; height: 20mm; }
+    .qr--wifi img { object-fit: contain; padding: 0.5mm; }
     .closing__contact {
       font-family: Oswald, sans-serif;
       font-size: 11pt;
