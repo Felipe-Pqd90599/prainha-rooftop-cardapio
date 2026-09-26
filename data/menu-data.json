@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.70-online",
+    "version": "1.1.71-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -284,42 +284,42 @@
         {
           "id": "nordestino-na-area",
           "name": "Nordestino na Área",
-          "price": 26,
+          "price": 29,
           "description": "Pão, carne desfiada, coalho, ovo, alface e molho da casa",
           "image": "nordestino-na-area.jpg"
         },
         {
           "id": "american-smash-duplo",
           "name": "American Smash Duplo",
-          "price": 36,
+          "price": 38,
           "description": "Pão, 2 smash de carne bovina, bacon, cheddar, alface e molho da casa",
           "image": "american-smash-duplo.jpg"
         },
         {
           "id": "burger-potiguar",
           "name": "Burger Potiguar",
-          "price": 32,
+          "price": 38,
           "description": "Pão, filé de camarão, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
           "image": "burger-potiguar.jpg"
         },
         {
           "id": "blend-tradicional",
           "name": "Blend Tradicional",
-          "price": 28,
+          "price": 29,
           "description": "Pão, 1 smash de carne bovina, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
           "image": "blend-tradicional.jpg"
         },
         {
           "id": "cheeseburger",
           "name": "Cheeseburger",
-          "price": 25,
+          "price": 27,
           "description": "Pão, queijo muçarela empanado, ovo, cebola caramelizada, salada e molho da casa",
           "image": "cheeseburger.jpg"
         },
         {
           "id": "chicken-burger",
           "name": "Chicken Burger",
-          "price": 25,
+          "price": 27,
           "description": "Pão, frango desfiado, queijo muçarela, anéis de cebola empanada, alface e molho da casa",
           "image": "chicken-burger.jpg"
         },
@@ -1075,23 +1075,23 @@
           "id": "cervejas-600",
           "name": "600ml",
           "itemIds": [
+            "petra-600",
+            "devassa-600",
+            "amstel-600",
             "brahma-chopp-600",
+            "budweiser-600",
             "original-600",
             "spaten-600",
-            "budweiser-600",
-            "heineken-600",
-            "amstel-600",
-            "petra-600",
-            "devassa-600"
+            "heineken-600"
           ]
         },
         {
           "id": "cervejas-long-neck",
           "name": "Long Neck",
           "itemIds": [
-            "heineken-long",
             "budweiser-long",
             "amstel-ultra-long",
+            "heineken-long",
             "corona-long",
             "zero-alcool-long"
           ]
@@ -1100,9 +1100,10 @@
           "id": "cervejas-baldes",
           "name": "Baldes",
           "itemIds": [
-            "balde-heineken",
             "balde-budweiser",
-            "balde-amstel-ultra"
+            "balde-amstel-ultra",
+            "balde-heineken",
+            "balde-corona"
           ]
         }
       ],
@@ -1185,6 +1186,13 @@
           "description": "6 long necks 330ml",
           "price": 72,
           "image": "balde-heineken.jpg"
+        },
+        {
+          "id": "balde-corona",
+          "name": "Balde Corona",
+          "description": "6 long necks 330ml",
+          "price": 72,
+          "image": "balde-corona.jpg"
         },
         {
           "id": "balde-budweiser",
