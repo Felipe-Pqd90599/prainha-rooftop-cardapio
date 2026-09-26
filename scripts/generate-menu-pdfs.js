@@ -251,6 +251,27 @@ function findItem(menu, id) {
   return null;
 }
 
+function findCategoryForItem(menu, itemId) {
+  for (const cat of menu.categories) {
+    if ((cat.items || []).some((i) => i.id === itemId)) return cat;
+  }
+  return null;
+}
+
+function portionLabels(item, category, meta) {
+  const primary =
+    item.priceLabel ||
+    category?.portionLabels?.primary ||
+    meta?.priceLabelDefault ||
+    'Executivo';
+  const secondary =
+    item.priceSecondaryLabel ||
+    category?.portionLabels?.secondary ||
+    meta?.priceSecondaryLabelDefault ||
+    '2 pessoas';
+  return { primary, secondary };
+}
+
 function loadGastronomiaPages(menu) {
   const raw = JSON.parse(
     fs.readFileSync(path.join(ROOT, 'data/gastronomia-pdf-pages.json'), 'utf8'),
@@ -289,7 +310,7 @@ function collectFixedPageCardIds(menu, pages) {
   return ids;
 }
 
-function renderCompactGrid(items, cols, size = 'sm') {
+function renderCompactGrid(items, cols, size, menu) {
   const sizeClass = size === 'md' ? ' compact-grid--md' : '';
   const rows = items
     .map(
@@ -299,7 +320,7 @@ function renderCompactGrid(items, cols, size = 'sm') {
             <div class="compact-item__text">
               <h3 class="compact-item__name">${esc(item.name)}</h3>
               ${item.description ? `<p class="compact-item__desc">${esc(item.description)}</p>` : ''}
-              <p class="compact-item__price">${esc(priceLine(item))}</p>
+              <p class="compact-item__price">${esc(priceLine(item, menu))}</p>
             </div>
           </article>`,
     )
@@ -349,14 +370,14 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
 
     if (block.type === 'compact') {
       closeGrid();
-      html.push(renderCompactGrid(items, block.cols || 2, block.size || 'sm'));
+      html.push(renderCompactGrid(items, block.cols || 2, block.size || 'sm', menu));
       continue;
     }
 
     if (block.type === 'grid') {
       if (block.feature && items.length === 1) {
         closeGrid();
-        html.push(renderFeature(items[0]));
+        html.push(renderFeature(items[0], menu));
         continue;
       }
       const cols = block.cols || 3;
@@ -364,7 +385,7 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
       html.push(`<div class="grid grid--${cols}">`);
       openCols = cols;
       for (const item of items) {
-        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : ''));
+        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu));
       }
       closeGrid();
     }
@@ -478,18 +499,19 @@ function paginate(blocks) {
   return pages;
 }
 
-function priceLine(item) {
+function priceLine(item, menu) {
   if (item.portionOptions?.length) {
     return item.portionOptions.map((o) => `${o.label} ${money(o.price)}`).join(' · ');
   }
-  const parts = [money(item.price)];
   if (item.priceSecondary != null) {
-    parts.push(`${item.priceSecondaryLabel || '2 pessoas'} ${money(item.priceSecondary)}`);
+    const category = findCategoryForItem(menu, item.id);
+    const { primary, secondary } = portionLabels(item, category, menu?.meta || {});
+    return `${money(item.price)} ${primary} · ${money(item.priceSecondary)} ${secondary}`;
   }
-  return parts.join(' · ');
+  return money(item.price);
 }
 
-function renderCard(item, badge) {
+function renderCard(item, badge, menu) {
   return `
           <article class="card">
             <div class="card__media">
@@ -499,19 +521,19 @@ function renderCard(item, badge) {
             <div class="card__body">
               <h3 class="card__name">${esc(item.name)}</h3>
               ${item.description ? `<p class="card__desc">${esc(item.description)}</p>` : ''}
-              <p class="card__price">${esc(priceLine(item))}</p>
+              <p class="card__price">${esc(priceLine(item, menu))}</p>
             </div>
           </article>`;
 }
 
-function renderFeature(item) {
+function renderFeature(item, menu) {
   return `
         <article class="feature">
           <div class="feature__media"><img src="img/card-${esc(item.id)}.jpg" alt="" /></div>
           <div class="feature__body">
             <h3 class="feature__name">${esc(item.name)}</h3>
             ${item.description ? `<p class="feature__desc">${esc(item.description)}</p>` : ''}
-            <p class="feature__price">${esc(priceLine(item))}</p>
+            <p class="feature__price">${esc(priceLine(item, menu))}</p>
           </div>
         </article>`;
 }
@@ -529,7 +551,7 @@ function renderChapter(chapter) {
 }
 
 /** Junta linhas seguidas de mesmo número de colunas numa única grade. */
-function renderPageBlocks(page, starIds) {
+function renderPageBlocks(page, starIds, menu) {
   const html = [];
   let open = null;
   for (const block of page.blocks) {
@@ -540,7 +562,7 @@ function renderPageBlocks(page, starIds) {
         open = block.cols;
       }
       for (const item of block.items) {
-        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : ''));
+        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu));
       }
       continue;
     }
@@ -550,7 +572,7 @@ function renderPageBlocks(page, starIds) {
     }
     if (block.type === 'chapter') html.push(renderChapter(block.chapter));
     else if (block.type === 'heading') html.push(`<h4 class="group">${esc(block.name)}</h4>`);
-    else if (block.type === 'feature') html.push(renderFeature(block.item));
+    else if (block.type === 'feature') html.push(renderFeature(block.item, menu));
   }
   if (open) html.push('</div>');
   return html.join('');
@@ -754,7 +776,7 @@ function buildMenuHtml(menuCfg, data, info, qr) {
       return `
     <section class="sheet">
       ${pageHeader(chapter ? chapter.cat.name : menuCfg.title)}
-      <div class="sheet__body">${renderPageBlocks(page, starIds)}</div>
+      <div class="sheet__body">${renderPageBlocks(page, starIds, data)}</div>
       ${pageFooter(firstContentPage + index)}
     </section>`;
     })
