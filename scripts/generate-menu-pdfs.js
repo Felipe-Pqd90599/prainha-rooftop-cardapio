@@ -320,7 +320,7 @@ function renderCompactGrid(items, cols, size, menu) {
             <div class="compact-item__text">
               <h3 class="compact-item__name">${esc(item.name)}</h3>
               ${item.description ? `<p class="compact-item__desc">${esc(item.description)}</p>` : ''}
-              <p class="compact-item__price">${esc(priceLine(item, menu))}</p>
+              <div class="compact-item__price">${renderPriceHtml(item, menu)}</div>
             </div>
           </article>`,
     )
@@ -499,16 +499,29 @@ function paginate(blocks) {
   return pages;
 }
 
-function priceLine(item, menu) {
+function renderPriceHtml(item, menu) {
+  const priceTag = (value, label, alt = false) => {
+    const labelHtml = label ? ` <small>${esc(label)}</small>` : '';
+    return `<span class="price-tag${alt ? ' price-tag--alt' : ''}">${esc(money(value))}${labelHtml}</span>`;
+  };
+
   if (item.portionOptions?.length) {
-    return item.portionOptions.map((o) => `${o.label} ${money(o.price)}`).join(' · ');
+    return `<div class="price-tags">${item.portionOptions
+      .map((o) => priceTag(o.price, o.label, Boolean(o.badge)))
+      .join('')}</div>`;
   }
+
   if (item.priceSecondary != null) {
     const category = findCategoryForItem(menu, item.id);
     const { primary, secondary } = portionLabels(item, category, menu?.meta || {});
-    return `${money(item.price)} ${primary} · ${money(item.priceSecondary)} ${secondary}`;
+    return `<div class="price-tags">${priceTag(item.price, primary)}${priceTag(
+      item.priceSecondary,
+      secondary,
+      true,
+    )}</div>`;
   }
-  return money(item.price);
+
+  return `<div class="price-tags">${priceTag(item.price, '')}</div>`;
 }
 
 function renderCard(item, badge, menu) {
@@ -521,7 +534,7 @@ function renderCard(item, badge, menu) {
             <div class="card__body">
               <h3 class="card__name">${esc(item.name)}</h3>
               ${item.description ? `<p class="card__desc">${esc(item.description)}</p>` : ''}
-              <p class="card__price">${esc(priceLine(item, menu))}</p>
+              <div class="card__price">${renderPriceHtml(item, menu)}</div>
             </div>
           </article>`;
 }
@@ -533,7 +546,7 @@ function renderFeature(item, menu) {
           <div class="feature__body">
             <h3 class="feature__name">${esc(item.name)}</h3>
             ${item.description ? `<p class="feature__desc">${esc(item.description)}</p>` : ''}
-            <p class="feature__price">${esc(priceLine(item, menu))}</p>
+            <div class="feature__price">${renderPriceHtml(item, menu)}</div>
           </div>
         </article>`;
 }
@@ -1097,8 +1110,44 @@ function css(menuCfg) {
       color: var(--accent-dark);
       letter-spacing: 0.02em;
     }
-    .grid--3 .card__price { font-size: 9pt; }
-    .grid--4 .card__price { font-size: 8pt; }
+    .card__price .price-tags,
+    .feature__price .price-tags,
+    .compact-item__price .price-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1mm;
+      align-items: flex-end;
+    }
+    .price-tag {
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5mm;
+      padding: 0.55mm 1.3mm;
+      border-radius: 1mm;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-family: Oswald, sans-serif;
+      font-size: 8pt;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+    .grid--4 .price-tag { font-size: 7pt; }
+    .price-tag small {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 5.6pt;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .grid--4 .price-tag small { font-size: 5.1pt; }
+    .price-tag--alt {
+      background: #f2f0ec;
+      border: 0.15mm solid var(--line);
+    }
+    .feature__price .price-tag { font-size: 11pt; padding: 0.8mm 1.8mm; }
+    .feature__price .price-tag small { font-size: 7pt; }
 
     /* ---------- destaque (capítulo de um item) ---------- */
     .feature {
@@ -1115,7 +1164,7 @@ function css(menuCfg) {
     .feature__body { padding: 10mm; display: flex; flex-direction: column; justify-content: center; }
     .feature__name { font-family: Oswald, sans-serif; font-weight: 600; font-size: 18pt; text-transform: uppercase; line-height: 1.08; }
     .feature__desc { margin-top: 4mm; font-size: 9pt; line-height: 1.5; color: var(--ink-soft); font-weight: 300; }
-    .feature__price { margin-top: 6mm; font-family: Oswald, sans-serif; font-size: 16pt; color: var(--accent-dark); }
+    .feature__price { margin-top: 6mm; }
 
     .sheet__body--fixed > :first-child { margin-top: 0; }
     .chapter__continued {
@@ -1181,12 +1230,7 @@ function css(menuCfg) {
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .compact-item__price {
-      margin-top: 0.8mm;
-      font-family: Oswald, sans-serif;
-      font-size: 8pt;
-      color: var(--accent-dark);
-    }
+    .compact-item__price { margin-top: 0.8mm; }
 
     .combo-callout {
       margin-top: 5mm;
