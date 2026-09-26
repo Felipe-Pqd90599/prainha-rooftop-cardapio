@@ -65,7 +65,7 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-color: #b8dce8;
-  background-image: var(--beach-overlay), url("../assets/fotos/capa-prainha-rooftop.jpg?v=1.1.71-online");
+  background-image: var(--beach-overlay), url("../assets/fotos/capa-prainha-rooftop.jpg?v=1.1.72-online");
   background-size: cover;
   background-position: center 25%;
   background-attachment: fixed;
