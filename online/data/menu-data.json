@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.63-online",
+    "version": "1.1.64-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceSecondaryLabelDefault": "2 pessoas",
@@ -341,20 +341,20 @@
           "id": "mista-prainha",
           "name": "Mistão do Prainha",
           "price": 139,
-          "description": "Carne, calabresa, camarão e batata frita",
+          "description": "Carne, calabresa, camarão e fritas (batata ou macaxeira)",
           "image": "mista-prainha.jpg"
         },
         {
           "id": "empanados-mar",
           "name": "Empanados do Mar",
           "price": 139,
-          "description": "Peixe e filé de camarão empanados, salada e batata frita",
+          "description": "Peixe e filé de camarão empanados, salada e fritas (batata ou macaxeira)",
           "image": "empanados-mar.jpg"
         },
         {
           "id": "camarao-alho-oleo",
           "name": "Camarão Alho e Óleo",
-          "description": "Camarão salteado com fritas — escolha o tamanho",
+          "description": "Camarão salteado com fritas (batata ou macaxeira) — escolha o tamanho",
           "image": "camarao-alho-oleo.jpg",
           "portionOptions": [
             {
@@ -386,7 +386,7 @@
           "id": "mix-sertanejo",
           "name": "Mix Sertanejo",
           "price": 99,
-          "description": "Carne de sol, queijo coalho e fritas",
+          "description": "Carne de sol, queijo coalho e fritas (batata ou macaxeira)",
           "image": "mix-sertanejo.jpg"
         },
         {
@@ -394,41 +394,41 @@
           "name": "Carne de Sol com Fritas",
           "price": 82,
           "image": "carne-sol-fritas.jpg",
-          "description": "Carne de sol em cubos com fritas"
+          "description": "Carne de sol em cubos com fritas (batata ou macaxeira)"
         },
         {
           "id": "carne-ao-molho",
           "name": "Carne ao Molho Madeira com Fritas",
           "price": 82,
-          "description": "Tirinhas de carne no molho madeira com fritas",
+          "description": "Tirinhas de carne no molho madeira com fritas (batata ou macaxeira)",
           "image": "carne-ao-molho.jpg"
         },
         {
           "id": "fritas-tradicional",
           "name": "Fritas Tradicional",
           "price": 25,
-          "description": "Porção de batata frita",
+          "description": "Porção de fritas — batata ou macaxeira",
           "image": "fritas-tradicional.jpg"
         },
         {
           "id": "fritas-nordestina",
           "name": "Fritas Nordestina",
           "price": 44,
-          "description": "Carne de sol desfiada ao creme de queijo",
+          "description": "Carne de sol desfiada ao creme de queijo sobre fritas (batata ou macaxeira)",
           "image": "fritas-nordestina.jpg"
         },
         {
           "id": "fritas-sertaneja",
           "name": "Fritas Sertaneja",
           "price": 37,
-          "description": "Cheddar e bacon",
+          "description": "Cheddar e bacon sobre fritas (batata ou macaxeira)",
           "image": "fritas-sertaneja.jpg"
         },
         {
           "id": "fritas-potiguar",
           "name": "Fritas Potiguar",
           "price": 48,
-          "description": "Filé de camarão ao creme de queijo",
+          "description": "Filé de camarão ao creme de queijo sobre fritas (batata ou macaxeira)",
           "image": "fritas-potiguar.jpg"
         }
       ]
