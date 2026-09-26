@@ -1,8 +1,9 @@
 {
   "meta": {
-    "version": "1.1.65-online",
+    "version": "1.1.66-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
+    "priceLabelDefault": "Executivo",
     "priceSecondaryLabelDefault": "2 pessoas",
     "burgerCombo": {
       "price": 11.99,
@@ -122,6 +123,10 @@
       "id": "frutos-do-mar",
       "name": "Camarões, Peixes e Frutos do Mar",
       "order": 3,
+      "portionLabels": {
+        "primary": "Executivo",
+        "secondary": "2 pessoas"
+      },
       "items": [
         {
           "id": "camarao-prainha",
@@ -193,6 +198,10 @@
       "id": "carnes",
       "name": "Carnes",
       "order": 4,
+      "portionLabels": {
+        "primary": "Executivo",
+        "secondary": "2 pessoas"
+      },
       "items": [
         {
           "id": "mista-familia",
@@ -816,6 +825,10 @@
       "id": "sucos-diversos",
       "name": "Sucos e Diversos",
       "order": 12,
+      "portionLabels": {
+        "primary": "Copo",
+        "secondary": "Jarra"
+      },
       "items": [
         {
           "id": "suco-tradicional",

@@ -272,9 +272,8 @@ function priceOverlayHtml(item, meta, category) {
   }
 
   const { primary, secondary } = getPortionLabels(item, category, meta);
-  const showPrimaryLabel = item.priceLabel || category?.portionLabels?.primary;
   let html = `<span class="menu-item-card__price-tag">${formatPrice(item.price)}${
-    showPrimaryLabel && item.priceSecondary != null ? ` <small>${primary}</small>` : ''
+    item.priceSecondary != null ? ` <small>${primary}</small>` : ''
   }</span>`;
   if (item.priceSecondary != null) {
     html += `<span class="menu-item-card__price-tag menu-item-card__price-tag--alt">${formatPrice(item.priceSecondary)} <small>${secondary}</small></span>`;

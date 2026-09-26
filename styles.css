@@ -85,7 +85,7 @@ body {
 
 .hero__bg.has-photo {
   background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)),
-    url("assets/fotos/capa-prainha-rooftop.jpg?v=1.1.65-online");
+    url("assets/fotos/capa-prainha-rooftop.jpg?v=1.1.66-online");
   background-size: cover;
   background-position: center;
 }
