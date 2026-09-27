@@ -1,0 +1,115 @@
+{
+  "pages": [
+    {
+      "cat": "drinks-autorais",
+      "photo": "caipi-prainha",
+      "lead": "Criações da casa, só daqui",
+      "star": true,
+      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
+    },
+    {
+      "cat": "drinks-tradicionais",
+      "photo": "caipifruta",
+      "lead": "Os clássicos que nunca falham",
+      "dense": true,
+      "blocks": [{ "type": "grid", "cols": 4, "ids": "cat:all" }]
+    },
+    {
+      "cat": "cervejas",
+      "photo": "balde-heineken",
+      "lead": "Geladas, long necks e baldes",
+      "dense": true,
+      "blocks": [
+        { "type": "group", "name": "600ml" },
+        {
+          "type": "compact",
+          "cols": 3,
+          "size": "md",
+          "ids": [
+            "petra-600",
+            "devassa-600",
+            "amstel-600",
+            "brahma-chopp-600",
+            "budweiser-600",
+            "original-600",
+            "spaten-600",
+            "heineken-600"
+          ]
+        },
+        { "type": "group", "name": "Long Neck" },
+        {
+          "type": "compact",
+          "cols": 3,
+          "size": "md",
+          "ids": [
+            "budweiser-long",
+            "amstel-ultra-long",
+            "heineken-long",
+            "corona-long",
+            "zero-alcool-long"
+          ]
+        },
+        { "type": "group", "name": "Baldes" },
+        {
+          "type": "grid",
+          "cols": 4,
+          "ids": ["balde-budweiser", "balde-amstel-ultra", "balde-heineken", "balde-corona"]
+        }
+      ]
+    },
+    {
+      "cat": "doses-litros",
+      "photo": "whisky-12-anos",
+      "lead": "Doses e litros — preço da dose e do litro",
+      "dense": true,
+      "blocks": [
+        {
+          "type": "compact",
+          "cols": 3,
+          "size": "md",
+          "ids": [
+            "cachaca-branca",
+            "cachaca-ouro",
+            "cachaca-matuta",
+            "vodka-smirnoff",
+            "tequila-branca",
+            "whisky-nacional",
+            "red-label",
+            "jack-daniels",
+            "whisky-12-anos"
+          ]
+        }
+      ]
+    },
+    {
+      "cat": "doses-litros",
+      "photo": "whisky-12-anos",
+      "continued": true,
+      "dense": true,
+      "blocks": [
+        {
+          "type": "compact",
+          "cols": 3,
+          "size": "md",
+          "ids": [
+            "dreher",
+            "gim-nacional",
+            "gim-importado",
+            "rum",
+            "campari",
+            "shot-mar-vermelho",
+            "shot-marola-verde",
+            "shot-blue",
+            "trilogia-marolinha"
+          ]
+        }
+      ]
+    },
+    {
+      "cat": "vinhos",
+      "photo": "vinho-consultar",
+      "lead": "Consulte os rótulos do dia",
+      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all", "feature": true }]
+    }
+  ]
+}

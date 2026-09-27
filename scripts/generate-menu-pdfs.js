@@ -80,13 +80,9 @@ const MENUS = [
     accentSoft: '#E2F2F7',
     tocTitle: 'O que tem no bar',
     tocNote: 'Bar aberto até o fim da noite. Drinks preparados na hora e cervejas sempre geladas.',
-    chapters: [
-      { cat: 'drinks-autorais', cols: 3, photo: 'caipi-prainha', lead: 'Criações da casa, só daqui', star: true },
-      { cat: 'drinks-tradicionais', cols: 3, photo: 'caipifruta', lead: 'Os clássicos que nunca falham' },
-      { cat: 'cervejas', cols: 4, photo: 'balde-heineken', lead: 'Geladas, long necks e baldes' },
-      { cat: 'doses-litros', cols: 4, photo: 'whisky-12-anos', lead: 'Destilados, doses e litros' },
-      { cat: 'vinhos', cols: 3, photo: 'vinho-consultar', lead: 'Consulte os rótulos do dia' },
-    ],
+    useFixedPages: true,
+    fixedPagesFile: 'data/drinks-pdf-pages.json',
+    chapters: [],
   },
 ];
 
@@ -315,10 +311,8 @@ function portionLabels(item, category, meta) {
   return { primary, secondary };
 }
 
-function loadGastronomiaPages(menu) {
-  const raw = JSON.parse(
-    fs.readFileSync(path.join(ROOT, 'data/gastronomia-pdf-pages.json'), 'utf8'),
-  );
+function loadFixedPages(file) {
+  const raw = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
   return raw.pages.map((page) => ({ ...page }));
 }
 
@@ -635,7 +629,7 @@ function renderPageBlocks(page, starIds, menu) {
 }
 
 function buildFixedMenuHtml(menuCfg, data, info, qr) {
-  const pageDefs = loadGastronomiaPages(data);
+  const pageDefs = loadFixedPages(menuCfg.fixedPagesFile);
   const firstContentPage = 3;
   const catFirstPage = new Map();
   const chaptersToc = [];
@@ -659,9 +653,9 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
   });
 
   const starIds = new Set();
-  const mv = pageDefs.find((p) => p.cat === 'mais-vendidos' && p.star);
-  if (mv) {
-    const first = chapterContent(data, 'mais-vendidos').items[0];
+  for (const pageDef of pageDefs) {
+    if (!pageDef.star || pageDef.continued) continue;
+    const first = chapterContent(data, pageDef.cat).items[0];
     if (first) starIds.add(first.id);
   }
 
@@ -1459,7 +1453,7 @@ async function main() {
   const chapterIds = new Set();
   for (const menuCfg of MENUS) {
     if (menuCfg.useFixedPages) {
-      const pages = loadGastronomiaPages(data);
+      const pages = loadFixedPages(menuCfg.fixedPagesFile);
       for (const page of pages) chapterIds.add(page.photo);
       for (const id of collectFixedPageCardIds(data, pages)) cardIds.add(id);
     } else {
