@@ -1,138 +1,287 @@
-{
-  "pages": [
-    {
-      "cat": "drinks-tradicionais",
-      "photo": "caipifruta",
-      "lead": "Os clássicos que nunca falham",
-      "bodyDense": true,
-      "tightGrid": true,
-      "blocks": [
-        {
-          "type": "grid",
-          "cols": 3,
-          "tallCards": true,
-          "ids": ["pina-colada", "sex-on-the-beach", "moscow-mule"]
-        },
-        {
-          "type": "grid",
-          "cols": 4,
-          "ids": [
-            "caipirinha",
-            "caipiroska",
-            "caipifruta",
-            "gim-tradicional",
-            "gim-frutado",
-            "espanhola",
-            "mojito",
-            "cozumel"
-          ]
-        }
-      ]
-    },
-    {
-      "cat": "cervejas",
-      "photo": "balde-heineken",
-      "lead": "Geladas, long necks e baldes",
-      "dense": true,
-      "blocks": [
-        { "type": "group", "name": "600ml" },
-        {
-          "type": "compact",
-          "cols": 3,
-          "size": "md",
-          "ids": [
-            "petra-600",
-            "devassa-600",
-            "amstel-600",
-            "brahma-chopp-600",
-            "budweiser-600",
-            "original-600",
-            "spaten-600",
-            "heineken-600"
-          ]
-        },
-        { "type": "group", "name": "Long Neck" },
-        {
-          "type": "compact",
-          "cols": 3,
-          "size": "md",
-          "ids": [
-            "budweiser-long",
-            "amstel-ultra-long",
-            "heineken-long",
-            "corona-long",
-            "zero-alcool-long"
-          ]
-        },
-        { "type": "group", "name": "Baldes" },
-        {
-          "type": "grid",
-          "cols": 4,
-          "ids": ["balde-budweiser", "balde-amstel-ultra", "balde-heineken", "balde-corona"]
-        }
-      ]
-    },
-    {
-      "cat": "doses-litros",
-      "photo": "whisky-12-anos",
-      "lead": "Dose · litro — consulte o valor de cada destilado",
-      "dense": true,
-      "bodyDense": true,
-      "blocks": [
-        {
-          "type": "grid",
-          "cols": 4,
-          "ids": [
-            "cachaca-branca",
-            "cachaca-ouro",
-            "cachaca-matuta",
-            "vodka-smirnoff",
-            "tequila-branca",
-            "whisky-nacional",
-            "red-label",
-            "jack-daniels",
-            "whisky-12-anos",
-            "dreher",
-            "gim-nacional",
-            "gim-importado",
-            "rum",
-            "campari"
-          ]
-        }
-      ]
-    },
-    {
-      "cat": "doses-litros",
-      "continued": true,
-      "dense": true,
-      "bodyDense": true,
-      "blocks": [
-        { "type": "group", "name": "Shots" },
-        {
-          "type": "grid",
-          "cols": 4,
-          "ids": [
-            "shot-mar-vermelho",
-            "shot-marola-verde",
-            "shot-blue",
-            "trilogia-marolinha"
-          ]
-        },
-        { "type": "group", "name": "Combos" },
-        {
-          "type": "grid",
-          "cols": 4,
-          "ids": [
-            "pdf-combo-vodka-redbull",
-            "pdf-combo-gin-importado-redbull",
-            "pdf-combo-jack-redbull",
-            "pdf-combo-red-label-redbull",
-            "pdf-combo-whisky-12-redbull",
-            "pdf-redbull-sabores"
-          ]
-        }
-      ]
-    }
-  ]
-}
-
+{
+
+  "pages": [
+
+    {
+
+      "cat": "drinks-tradicionais",
+
+      "photo": "caipifruta",
+
+      "lead": "Os clássicos que nunca falham",
+
+      "bodyDense": true,
+
+      "tightGrid": true,
+
+      "blocks": [
+
+        {
+
+          "type": "grid",
+
+          "cols": 3,
+
+          "tallCards": true,
+
+          "ids": ["pina-colada", "sex-on-the-beach", "moscow-mule"]
+
+        },
+
+        {
+
+          "type": "grid",
+
+          "cols": 4,
+
+          "ids": [
+
+            "caipirinha",
+
+            "caipiroska",
+
+            "caipifruta",
+
+            "gim-tradicional",
+
+            "gim-frutado",
+
+            "espanhola",
+
+            "mojito",
+
+            "cozumel"
+
+          ]
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "cat": "cervejas",
+
+      "photo": "balde-heineken",
+
+      "lead": "Geladas, long necks e baldes",
+
+      "dense": true,
+
+      "blocks": [
+
+        { "type": "group", "name": "600ml" },
+
+        {
+
+          "type": "compact",
+
+          "cols": 3,
+
+          "size": "md",
+
+          "ids": [
+
+            "petra-600",
+
+            "devassa-600",
+
+            "amstel-600",
+
+            "brahma-chopp-600",
+
+            "budweiser-600",
+
+            "original-600",
+
+            "spaten-600",
+
+            "heineken-600"
+
+          ]
+
+        },
+
+        { "type": "group", "name": "Long Neck" },
+
+        {
+
+          "type": "compact",
+
+          "cols": 3,
+
+          "size": "md",
+
+          "ids": [
+
+            "budweiser-long",
+
+            "amstel-ultra-long",
+
+            "heineken-long",
+
+            "corona-long",
+
+            "zero-alcool-long"
+
+          ]
+
+        },
+
+        { "type": "group", "name": "Baldes" },
+
+        {
+
+          "type": "grid",
+
+          "cols": 4,
+
+          "ids": ["balde-budweiser", "balde-amstel-ultra", "balde-heineken", "balde-corona"]
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "cat": "doses-litros",
+
+      "photo": "whisky-12-anos",
+
+      "lead": "Dose · litro — consulte o valor de cada destilado",
+
+      "dense": true,
+
+      "bodyDense": true,
+
+      "blocks": [
+
+        {
+
+          "type": "grid",
+
+          "cols": 4,
+
+          "ids": [
+
+            "cachaca-branca",
+
+            "cachaca-ouro",
+
+            "cachaca-matuta",
+
+            "vodka-smirnoff",
+
+            "tequila-branca",
+
+            "whisky-nacional",
+
+            "red-label",
+
+            "jack-daniels",
+
+            "whisky-12-anos",
+
+            "dreher",
+
+            "gim-nacional",
+
+            "gim-importado",
+
+            "rum",
+
+            "campari"
+
+          ]
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "cat": "doses-litros",
+
+      "continued": true,
+
+      "dense": true,
+
+      "bodyDense": true,
+
+      "blocks": [
+
+        { "type": "group", "name": "Shots" },
+
+        {
+
+          "type": "grid",
+
+          "cols": 4,
+
+          "ids": [
+
+            "shot-mar-vermelho",
+
+            "shot-marola-verde",
+
+            "shot-blue",
+
+            "trilogia-marolinha"
+
+          ]
+
+        },
+
+        { "type": "group", "name": "Combos" },
+
+        {
+
+          "type": "grid",
+
+          "cols": 4,
+
+          "ids": [
+
+            "pdf-combo-vodka-redbull",
+
+            "pdf-combo-gin-importado-redbull",
+
+            "pdf-combo-jack-redbull",
+
+            "pdf-combo-red-label-redbull",
+
+            "pdf-combo-whisky-12-redbull",
+
+            "pdf-redbull-sabores"
+
+          ]
+
+        },
+
+        { "type": "group", "name": "Vinhos" },
+
+        {
+
+          "type": "grid",
+
+          "cols": 4,
+
+          "ids": ["vinho-consultar"]
+
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+
+

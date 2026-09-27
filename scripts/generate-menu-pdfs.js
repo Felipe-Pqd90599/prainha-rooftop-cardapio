@@ -85,7 +85,6 @@ const MENUS = [
     cervejasFixedPageFile: 'data/drinks-pdf-pages.json',
     chapters: [
       { cat: 'drinks-autorais', cols: 3, photo: 'caipi-prainha', lead: 'Criações da casa, só daqui', star: true, tallCards: true },
-      { cat: 'vinhos', cols: 3, photo: 'vinho-consultar', lead: 'Consulte os rótulos do dia', forceGrid: true },
     ],
   },
 ];
@@ -731,13 +730,12 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
   };
 
   const autDef = menuCfg.chapters.find((ch) => ch.cat === 'drinks-autorais');
-  const vinhosDef = menuCfg.chapters.find((ch) => ch.cat === 'vinhos');
   const autorais = resolveChapter(autDef, 0);
-  const vinhos = resolveChapter(vinhosDef, 1);
   const fixedPages = loadFixedPages(menuCfg.cervejasFixedPageFile);
   const tradicionaisMeta = chapterContent(menu, 'drinks-tradicionais');
   const cervejasMeta = chapterContent(menu, 'cervejas');
   const dosesMeta = chapterContent(menu, 'doses-litros');
+  const vinhosMeta = chapterContent(menu, 'vinhos');
 
   const starIds = new Set();
   if (autorais.star && autorais.items[0]) starIds.add(autorais.items[0].id);
@@ -750,22 +748,8 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
   const catChapterNum = new Map();
   const fixedStartByCat = new Map();
   const nextFixedChapter = { value: 2 };
-  const dosesShotsPage = fixedPages.filter((p) => p.cat === 'doses-litros' && p.continued);
-  const fixedBeforeVinhos = fixedPages.filter((p) => !(p.cat === 'doses-litros' && p.continued));
-
-  for (const pageDef of fixedBeforeVinhos) {
+  for (const pageDef of fixedPages) {
     if (!fixedStartByCat.has(pageDef.cat)) fixedStartByCat.set(pageDef.cat, pageNum);
-    const chapterNumber = assignDrinksFixedChapterNumber(pageDef, catChapterNum, nextFixedChapter);
-    content += renderDrinksFixedSheet(pageDef, menu, menu.meta, pageNum, starIds, chapterNumber);
-    pageNum += 1;
-  }
-
-  const pVinhos = paginate(buildBlocks([vinhos]), { pageBreakBeforeChapter: true });
-  const vinhosStart = pageNum;
-  content += renderFlowContentPages(pVinhos, menuCfg, menu, starIds, pageNum);
-  pageNum += pVinhos.length;
-
-  for (const pageDef of dosesShotsPage) {
     const chapterNumber = assignDrinksFixedChapterNumber(pageDef, catChapterNum, nextFixedChapter);
     content += renderDrinksFixedSheet(pageDef, menu, menu.meta, pageNum, starIds, chapterNumber);
     pageNum += 1;
@@ -834,7 +818,12 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
       startPage: fixedStartByCat.get('doses-litros') || firstContentPage + pAut.length,
       number: catChapterNum.get('doses-litros') || 4,
     },
-    { cat: vinhos.cat, items: vinhos.items, startPage: vinhosStart, number: (catChapterNum.get('doses-litros') || 4) + 1 },
+    {
+      cat: vinhosMeta.cat,
+      items: vinhosMeta.items,
+      startPage: fixedStartByCat.get('doses-litros') || firstContentPage + pAut.length,
+      number: (catChapterNum.get('doses-litros') || 4) + 1,
+    },
   ];
 
   return { html, totalPages: pageNum, chapters, pages: [] };
