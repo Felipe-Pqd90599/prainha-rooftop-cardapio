@@ -709,7 +709,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
       return `
     <section class="sheet">
       ${pageHeader(pageDisplayTitle(pageDef, cat))}
-      <div class="sheet__body sheet__body--fixed${pageDef.dense ? ' sheet__body--dense' : ''}">${body}</div>
+      <div class="sheet__body sheet__body--fixed${pageDef.dense || pageDef.bodyDense ? ' sheet__body--dense' : ''}${pageDef.tightGrid ? ' sheet__body--tight-grid' : ''}">${body}</div>
       ${pageFooter(firstContentPage + index)}
     </section>`;
     })
@@ -1249,6 +1249,12 @@ function css(menuCfg) {
     .sheet__body--dense .compact-item__thumb { width: 12mm; height: 12mm; }
     .sheet__body--dense .compact-item__name { font-size: 7.2pt; }
     .sheet__body--dense .compact-item__desc { display: none; }
+
+    /* Tradicionais: capítulo com foto grande + 11 cards em 3 colunas na mesma folha */
+    .sheet__body--tight-grid .grid--3 .card { height: 56mm; }
+    .sheet__body--tight-grid .grid--3 .card__media { height: 33mm; }
+    .sheet__body--tight-grid .grid--3 .card__name { font-size: 8.2pt; -webkit-line-clamp: 2; }
+    .sheet__body--tight-grid .grid--3 .card__desc { font-size: 6.5pt; -webkit-line-clamp: 2; }
     .compact-item {
       display: flex;
       align-items: center;

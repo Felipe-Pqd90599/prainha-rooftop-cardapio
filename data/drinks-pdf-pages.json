@@ -11,8 +11,8 @@
       "cat": "drinks-tradicionais",
       "photo": "caipifruta",
       "lead": "Os clássicos que nunca falham",
-      "dense": true,
-      "blocks": [{ "type": "grid", "cols": 4, "ids": "cat:all" }]
+      "tightGrid": true,
+      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
     },
     {
       "cat": "cervejas",
@@ -60,8 +60,8 @@
     {
       "cat": "doses-litros",
       "photo": "whisky-12-anos",
-      "lead": "Doses e litros — preço da dose e do litro",
-      "dense": true,
+      "lead": "Destilados, doses e litros",
+      "bodyDense": true,
       "blocks": [
         {
           "type": "compact",
@@ -76,22 +76,7 @@
             "whisky-nacional",
             "red-label",
             "jack-daniels",
-            "whisky-12-anos"
-          ]
-        }
-      ]
-    },
-    {
-      "cat": "doses-litros",
-      "photo": "whisky-12-anos",
-      "continued": true,
-      "dense": true,
-      "blocks": [
-        {
-          "type": "compact",
-          "cols": 3,
-          "size": "md",
-          "ids": [
+            "whisky-12-anos",
             "dreher",
             "gim-nacional",
             "gim-importado",
@@ -109,7 +94,7 @@
       "cat": "vinhos",
       "photo": "vinho-consultar",
       "lead": "Consulte os rótulos do dia",
-      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all", "feature": true }]
+      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
     }
   ]
 }
