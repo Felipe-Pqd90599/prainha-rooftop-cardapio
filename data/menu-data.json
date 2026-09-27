@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.84-online",
+    "version": "1.1.85-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -944,6 +944,13 @@
           "price": 32,
           "description": "Whisky, suco de limão siciliano, maracujá, tônica, espuma de gengibre e gelo",
           "image": "whisky-tropical.jpg"
+        },
+        {
+          "id": "penicillin-prainha",
+          "name": "Penicillin do Prainha",
+          "price": 32,
+          "description": "Whisky 12 anos, gengibre, mel e espuma de gengibre",
+          "image": "penicillin-prainha.jpg"
         },
         {
           "id": "gim-nevado",
