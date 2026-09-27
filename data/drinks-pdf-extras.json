@@ -38,28 +38,28 @@
     {
       "id": "pdf-combo-redbull-original",
       "name": "Red Bull Original",
-      "price": 15,
+      "price": 17,
       "description": "Energético Red Bull 250ml",
       "image": "energetico-redbull.jpg"
     },
     {
       "id": "pdf-combo-redbull-tropical",
       "name": "Red Bull Tropical",
-      "price": 15,
+      "price": 17,
       "description": "Energético Red Bull 250ml",
       "image": "energetico-redbull.jpg"
     },
     {
       "id": "pdf-combo-redbull-melancia",
       "name": "Red Bull Melancia",
-      "price": 15,
+      "price": 17,
       "description": "Energético Red Bull 250ml",
       "image": "energetico-redbull.jpg"
     },
     {
       "id": "pdf-combo-redbull-sugarfree",
       "name": "Red Bull Sugarfree",
-      "price": 15,
+      "price": 17,
       "description": "Energético Red Bull sem açúcar 250ml",
       "image": "energetico-redbull.jpg"
     }
