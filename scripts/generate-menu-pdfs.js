@@ -80,9 +80,15 @@ const MENUS = [
     accentSoft: '#E2F2F7',
     tocTitle: 'O que tem no bar',
     tocNote: 'Bar aberto até o fim da noite. Drinks preparados na hora e cervejas sempre geladas.',
-    useFixedPages: true,
-    fixedPagesFile: 'data/drinks-pdf-pages.json',
-    chapters: [],
+    drinksPdf: true,
+    pdfExtrasFile: 'data/drinks-pdf-extras.json',
+    cervejasFixedPageFile: 'data/drinks-pdf-pages.json',
+    chapters: [
+      { cat: 'drinks-autorais', cols: 3, photo: 'caipi-prainha', lead: 'Criações da casa, só daqui', star: true, tallCards: true },
+      { cat: 'drinks-tradicionais', cols: 3, photo: 'caipifruta', lead: 'Os clássicos que nunca falham', tallCards: true },
+      { cat: 'doses-litros', cols: 4, photo: 'whisky-12-anos', lead: 'Dose · litro — consulte o valor de cada destilado', withPdfCombos: true },
+      { cat: 'vinhos', cols: 3, photo: 'vinho-consultar', lead: 'Consulte os rótulos do dia', forceGrid: true },
+    ],
   },
 ];
 
@@ -238,7 +244,12 @@ async function ensureQr(info) {
 }
 
 /** Recorta as fotos nos tamanhos usados pelo PDF (card e miniatura de capítulo). */
-async function prepareImages(cardIds, chapterIds, qr) {
+function cardPhotoFile(menu, itemId) {
+  const item = findItem(menu, itemId);
+  return item?.image || `${itemId}.jpg`;
+}
+
+async function prepareImages(cardIds, chapterIds, qr, menu) {
   const imgDir = path.join(BUILD, 'img');
   fs.mkdirSync(imgDir, { recursive: true });
 
@@ -249,7 +260,7 @@ async function prepareImages(cardIds, chapterIds, qr) {
   };
 
   for (const id of cardIds) {
-    const src = path.join(FOTOS, `${id}.jpg`);
+    const src = path.join(FOTOS, cardPhotoFile(menu, id));
     const dest = path.join(imgDir, `card-${id}.jpg`);
     if (!shouldRefresh(src, dest)) continue;
     const img = await Jimp.read(src);
@@ -476,7 +487,7 @@ function buildBlocks(chapters) {
   const blocks = [];
   for (const chapter of chapters) {
     blocks.push({ type: 'chapter', chapter, height: LAYOUT.chapterH, gapBefore: LAYOUT.gapChapter });
-    if (chapter.items.length === 1) {
+    if (chapter.items.length === 1 && !chapter.forceGrid) {
       blocks.push({
         type: 'feature',
         chapter,
@@ -507,12 +518,17 @@ function buildBlocks(chapters) {
 }
 
 /** Quebra os blocos em páginas, sem deixar título de capítulo/grupo órfão no pé. */
-function paginate(blocks) {
+function paginate(blocks, options = {}) {
   const usable = LAYOUT.pageH - LAYOUT.headerH - LAYOUT.footerH;
   const pages = [];
   let page = { blocks: [], free: usable };
 
   blocks.forEach((block, index) => {
+    if (options.pageBreakBeforeChapter && block.type === 'chapter' && page.blocks.length) {
+      pages.push(page);
+      page = { blocks: [], free: usable };
+    }
+
     const gap = page.blocks.length ? block.gapBefore : 0;
     let needed = gap + block.height;
 
@@ -561,9 +577,9 @@ function renderPriceHtml(item, menu) {
   return `<div class="price-tags">${priceTag(item.price, '')}</div>`;
 }
 
-function renderCard(item, badge, menu) {
+function renderCard(item, badge, menu, cardClass = '') {
   return `
-          <article class="card">
+          <article class="card${cardClass ? ` ${cardClass}` : ''}">
             <div class="card__media">
               <img src="img/card-${esc(item.id)}.jpg" alt="" />
               ${badge ? `<span class="card__badge">${esc(badge)}</span>` : ''}
@@ -611,8 +627,9 @@ function renderPageBlocks(page, starIds, menu) {
         html.push(`<div class="grid grid--${block.cols}">`);
         open = block.cols;
       }
+      const cardClass = block.chapter?.tallCards ? 'card--tall' : '';
       for (const item of block.items) {
-        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu));
+        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu, cardClass));
       }
       continue;
     }
@@ -626,6 +643,161 @@ function renderPageBlocks(page, starIds, menu) {
   }
   if (open) html.push('</div>');
   return html.join('');
+}
+
+function withDrinksPdfExtras(data, relPath) {
+  const file = path.join(ROOT, relPath);
+  if (!fs.existsSync(file)) return { menu: data, comboItems: [] };
+  const { combos = [] } = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const menu = JSON.parse(JSON.stringify(data));
+  if (combos.length) {
+    menu.categories.push({ id: 'pdf-combos-bar', name: 'Combos', items: combos });
+  }
+  return { menu, comboItems: combos };
+}
+
+function collectDrinksPdfCardIds(menuCfg, menu) {
+  const ids = new Set();
+  for (const ch of menuCfg.chapters) {
+    for (const item of chapterContent(menu, ch.cat).items) ids.add(item.id);
+    if (ch.withPdfCombos) {
+      for (const item of menu.categories.find((c) => c.id === 'pdf-combos-bar')?.items || []) {
+        ids.add(item.id);
+      }
+    }
+  }
+  const cervejasPage = loadFixedPages(menuCfg.cervejasFixedPageFile).find((p) => p.cat === 'cervejas');
+  if (cervejasPage) {
+    for (const id of collectFixedPageCardIds(menu, [cervejasPage])) ids.add(id);
+  }
+  return ids;
+}
+
+function renderFlowContentPages(pages, menuCfg, menu, starIds, startPage) {
+  return pages
+    .map((page, index) => {
+      const chapter = (page.blocks.find((b) => b.chapter) || {}).chapter;
+      return `
+    <section class="sheet">
+      ${pageHeader(chapter ? chapter.cat.name : menuCfg.title)}
+      <div class="sheet__body sheet__body--flow">${renderPageBlocks(page, starIds, menu)}</div>
+      ${pageFooter(startPage + index)}
+    </section>`;
+    })
+    .join('');
+}
+
+function renderCervejasFixedSheet(pageDef, menu, meta, pageNumber, starIds, chapterNumber) {
+  const { cat } = chapterContent(menu, pageDef.cat);
+  const chapterMeta = { number: chapterNumber };
+  const body =
+    renderFixedChapterHeader(pageDef, menu, chapterMeta) +
+    renderFixedPageBody(menu, meta, pageDef, starIds);
+  return `
+    <section class="sheet">
+      ${pageHeader(cat.name)}
+      <div class="sheet__body sheet__body--fixed sheet__body--dense">${body}</div>
+      ${pageFooter(pageNumber)}
+    </section>`;
+}
+
+function buildDrinksMenuHtml(menuCfg, data, info, qr) {
+  const { menu, comboItems } = withDrinksPdfExtras(data, menuCfg.pdfExtrasFile);
+  const firstContentPage = 2;
+
+  const resolveChapter = (chDef, index) => {
+    let { cat, items, groups } = chapterContent(menu, chDef.cat);
+    if (chDef.withPdfCombos && comboItems.length) {
+      groups = [
+        { name: 'Doses e litros', items },
+        { name: 'Combos', items: comboItems },
+      ];
+    }
+    return { ...chDef, cat, items, groups, number: index + 1 };
+  };
+
+  const [autDef, tradDef, dosesDef, vinhosDef] = menuCfg.chapters;
+  const autorais = resolveChapter(autDef, 0);
+  const tradicionais = resolveChapter(tradDef, 1);
+  const doses = resolveChapter(dosesDef, 2);
+  const vinhos = resolveChapter(vinhosDef, 3);
+  const cervejasDef = loadFixedPages(menuCfg.cervejasFixedPageFile).find((p) => p.cat === 'cervejas');
+  const cervejasMeta = chapterContent(menu, 'cervejas');
+
+  const starIds = new Set();
+  if (autorais.star && autorais.items[0]) starIds.add(autorais.items[0].id);
+
+  let pageNum = firstContentPage;
+  const pAut = paginate(buildBlocks([autorais]), { pageBreakBeforeChapter: true });
+  let content = renderFlowContentPages(pAut, menuCfg, menu, starIds, pageNum);
+  pageNum += pAut.length;
+
+  const pTrad = paginate(buildBlocks([tradicionais]), { pageBreakBeforeChapter: true });
+  content += renderFlowContentPages(pTrad, menuCfg, menu, starIds, pageNum);
+  const tradStart = pageNum;
+  pageNum += pTrad.length;
+
+  const cervejasStart = pageNum;
+  content += renderCervejasFixedSheet(cervejasDef, menu, menu.meta, pageNum, starIds, 3);
+  pageNum += 1;
+
+  const pDoseVinho = paginate(buildBlocks([doses, vinhos]), { pageBreakBeforeChapter: true });
+  const dosesStart = pageNum;
+  content += renderFlowContentPages(pDoseVinho, menuCfg, menu, starIds, pageNum);
+  pageNum += pDoseVinho.length;
+
+  const cover = `
+    <section class="sheet sheet--cover">
+      <img class="cover__photo" src="img/capa.jpg" alt="" />
+      <div class="cover__panel">
+        <span class="rule"></span>
+        <p class="cover__kicker">${esc(menuCfg.kicker)}</p>
+        <h1 class="cover__title">${esc(menuCfg.title)}</h1>
+        <p class="cover__lead">${esc(menuCfg.lead)}</p>
+        <p class="cover__meta">${esc(info.contact.instagram)} &nbsp;·&nbsp; ${esc(info.contact.phone)} &nbsp;·&nbsp; Ponta Negra, Natal/RN</p>
+      </div>
+    </section>`;
+
+  const policies = info.policies || {};
+  const closing = `
+    <section class="sheet sheet--closing">
+      <img class="closing__photo" src="img/capa.jpg" alt="" />
+      <div class="closing__panel">
+        <span class="rule"></span>
+        <p class="closing__brand">Prainha</p>
+        <p class="closing__sub">Rooftop</p>
+        <p class="closing__tagline">${esc(info.description)}</p>
+        ${renderClosingQrs(info, qr)}
+        <ul class="closing__policies">
+          ${policies.serviceChargeSuggestion ? `<li>${esc(policies.serviceChargeSuggestion)}</li>` : ''}
+          ${policies.couvertArtistico ? `<li>${esc(policies.couvertArtistico)}</li>` : ''}
+          ${policies.adicionaisNote ? `<li>${esc(policies.adicionaisNote)}</li>` : ''}
+        </ul>
+        <p class="closing__version">Preços sujeitos a alteração · edição ${esc(data.meta.version.replace('-online', ''))}</p>
+      </div>
+    </section>`;
+
+  const html = `<!DOCTYPE html>
+<html lang="pt-BR" class="menu-drinks">
+  <head>
+    <meta charset="utf-8" />
+    <title>${esc(info.name)} — ${esc(menuCfg.title)}</title>
+    <link rel="stylesheet" href="fontes/fontes.css" />
+    <style>${css(menuCfg)}</style>
+  </head>
+  <body class="menu-drinks">${cover}${content}${closing}
+  </body>
+</html>`;
+
+  const chapters = [
+    { cat: autorais.cat, items: autorais.items, startPage: firstContentPage, number: 1 },
+    { cat: tradicionais.cat, items: tradicionais.items, startPage: tradStart, number: 2 },
+    { cat: cervejasMeta.cat, items: cervejasMeta.items, startPage: cervejasStart, number: 3 },
+    { cat: doses.cat, items: [...doses.items, ...comboItems], startPage: dosesStart, number: 4 },
+    { cat: vinhos.cat, items: vinhos.items, startPage: dosesStart + pDoseVinho.length - (pDoseVinho.length > 1 ? 0 : 0), number: 5 },
+  ];
+
+  return { html, totalPages: pageNum, chapters, pages: [] };
 }
 
 function buildFixedMenuHtml(menuCfg, data, info, qr) {
@@ -756,6 +928,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
 }
 
 function buildMenuHtml(menuCfg, data, info, qr) {
+  if (menuCfg.drinksPdf) return buildDrinksMenuHtml(menuCfg, data, info, qr);
   if (menuCfg.useFixedPages) return buildFixedMenuHtml(menuCfg, data, info, qr);
 
   const chapters = menuCfg.chapters.map((chapter, index) => {
@@ -767,7 +940,7 @@ function buildMenuHtml(menuCfg, data, info, qr) {
     chapters.filter((c) => c.star && c.items[0]).map((c) => c.items[0].id),
   );
 
-  const showToc = chapters.length >= 7;
+  const showToc = menuCfg.showToc !== false && chapters.length >= 7;
   const firstContentPage = showToc ? 3 : 2;
 
   const pages = paginate(buildBlocks(chapters));
@@ -1159,6 +1332,10 @@ function css(menuCfg) {
     }
     .grid--3 .card__desc { font-size: 6.8pt; line-height: 1.3; -webkit-line-clamp: 2; }
     .grid--4 .card__desc { font-size: 6.2pt; line-height: 1.24; -webkit-line-clamp: 1; }
+    .menu-drinks .card--tall { height: 74mm; }
+    .menu-drinks .card--tall .card__media { height: 48mm; }
+    .menu-drinks .card--tall .card__name { font-size: 8.8pt; line-height: 1.16; }
+    .menu-drinks .card--tall .card__desc { font-size: 7pt; line-height: 1.32; -webkit-line-clamp: 3; }
     .card__price {
       flex: 0 0 auto;
       margin-top: auto;
@@ -1457,8 +1634,15 @@ async function main() {
 
   const cardIds = new Set();
   const chapterIds = new Set();
+  let menuForImages = data;
   for (const menuCfg of MENUS) {
-    if (menuCfg.useFixedPages) {
+    if (menuCfg.drinksPdf) {
+      ({ menu: menuForImages } = withDrinksPdfExtras(data, menuCfg.pdfExtrasFile));
+      for (const id of collectDrinksPdfCardIds(menuCfg, menuForImages)) cardIds.add(id);
+      const cervejasPage = loadFixedPages(menuCfg.cervejasFixedPageFile).find((p) => p.cat === 'cervejas');
+      if (cervejasPage) chapterIds.add(cervejasPage.photo);
+      for (const ch of menuCfg.chapters) chapterIds.add(ch.photo);
+    } else if (menuCfg.useFixedPages) {
       const pages = loadFixedPages(menuCfg.fixedPagesFile);
       for (const page of pages) chapterIds.add(page.photo);
       for (const id of collectFixedPageCardIds(data, pages)) cardIds.add(id);
@@ -1469,7 +1653,7 @@ async function main() {
       }
     }
   }
-  await prepareImages([...cardIds], [...chapterIds], qr);
+  await prepareImages([...cardIds], [...chapterIds], qr, menuForImages);
 
   for (const menuCfg of MENUS) {
     const { html, totalPages, chapters } = buildMenuHtml(menuCfg, data, info, qr);

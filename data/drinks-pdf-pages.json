@@ -1,20 +1,6 @@
 {
   "pages": [
     {
-      "cat": "drinks-autorais",
-      "photo": "caipi-prainha",
-      "lead": "Criações da casa, só daqui",
-      "star": true,
-      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
-    },
-    {
-      "cat": "drinks-tradicionais",
-      "photo": "caipifruta",
-      "lead": "Os clássicos que nunca falham",
-      "tightGrid": true,
-      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
-    },
-    {
       "cat": "cervejas",
       "photo": "balde-heineken",
       "lead": "Geladas, long necks e baldes",
@@ -56,45 +42,6 @@
           "ids": ["balde-budweiser", "balde-amstel-ultra", "balde-heineken", "balde-corona"]
         }
       ]
-    },
-    {
-      "cat": "doses-litros",
-      "photo": "whisky-12-anos",
-      "lead": "Destilados, doses e litros",
-      "bodyDense": true,
-      "blocks": [
-        {
-          "type": "compact",
-          "cols": 3,
-          "size": "md",
-          "ids": [
-            "cachaca-branca",
-            "cachaca-ouro",
-            "cachaca-matuta",
-            "vodka-smirnoff",
-            "tequila-branca",
-            "whisky-nacional",
-            "red-label",
-            "jack-daniels",
-            "whisky-12-anos",
-            "dreher",
-            "gim-nacional",
-            "gim-importado",
-            "rum",
-            "campari",
-            "shot-mar-vermelho",
-            "shot-marola-verde",
-            "shot-blue",
-            "trilogia-marolinha"
-          ]
-        }
-      ]
-    },
-    {
-      "cat": "vinhos",
-      "photo": "vinho-consultar",
-      "lead": "Consulte os rótulos do dia",
-      "blocks": [{ "type": "grid", "cols": 3, "ids": "cat:all" }]
     }
   ]
 }

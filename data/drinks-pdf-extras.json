@@ -1,0 +1,53 @@
+{
+  "combos": [
+    {
+      "id": "pdf-combo-vodka-redbull",
+      "name": "Combo Vodka + Red Bull",
+      "price": 25,
+      "description": "Dose vodka Smirnoff + Red Bull (Original, Tropical, Melancia ou Sugarfree)",
+      "image": "vodka-smirnoff.jpg"
+    },
+    {
+      "id": "pdf-combo-gin-importado-redbull",
+      "name": "Combo Gin Importado + Red Bull",
+      "price": 30,
+      "description": "Dose gin Tanqueray + Red Bull (Original, Tropical, Melancia ou Sugarfree)",
+      "image": "gim-importado.jpg"
+    },
+    {
+      "id": "pdf-combo-whisky-redbull",
+      "name": "Combo Whisky + Red Bull",
+      "price": 30,
+      "description": "Dose Jack Daniel's, Red Label ou 12 anos + Red Bull (sabor à escolha)",
+      "image": "jack-daniels.jpg"
+    },
+    {
+      "id": "pdf-combo-redbull-original",
+      "name": "Red Bull Original",
+      "price": 17,
+      "description": "Energético Red Bull 250ml",
+      "image": "energetico-redbull.jpg"
+    },
+    {
+      "id": "pdf-combo-redbull-tropical",
+      "name": "Red Bull Tropical",
+      "price": 17,
+      "description": "Energético Red Bull 250ml",
+      "image": "energetico-redbull.jpg"
+    },
+    {
+      "id": "pdf-combo-redbull-melancia",
+      "name": "Red Bull Melancia",
+      "price": 17,
+      "description": "Energético Red Bull 250ml",
+      "image": "energetico-redbull.jpg"
+    },
+    {
+      "id": "pdf-combo-redbull-sugarfree",
+      "name": "Red Bull Sugarfree",
+      "price": 17,
+      "description": "Energético Red Bull sem açúcar 250ml",
+      "image": "energetico-redbull.jpg"
+    }
+  ]
+}
