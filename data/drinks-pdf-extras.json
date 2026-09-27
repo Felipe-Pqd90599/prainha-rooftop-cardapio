@@ -3,49 +3,63 @@
     {
       "id": "pdf-combo-vodka-redbull",
       "name": "Combo Vodka + Red Bull",
-      "price": 25,
-      "description": "Dose vodka Smirnoff + Red Bull (Original, Tropical, Melancia ou Sugarfree)",
+      "price": 170,
+      "description": "Garrafa 1L Smirnoff + 4 Red Bull (Original, Tropical, Melancia ou Sugarfree)",
       "image": "vodka-smirnoff.jpg"
     },
     {
       "id": "pdf-combo-gin-importado-redbull",
       "name": "Combo Gin Importado + Red Bull",
-      "price": 30,
-      "description": "Dose gin Tanqueray + Red Bull (Original, Tropical, Melancia ou Sugarfree)",
+      "price": 310,
+      "description": "Garrafa 1L Tanqueray + 4 Red Bull (Original, Tropical, Melancia ou Sugarfree)",
       "image": "gim-importado.jpg"
     },
     {
-      "id": "pdf-combo-whisky-redbull",
-      "name": "Combo Whisky + Red Bull",
-      "price": 30,
-      "description": "Dose Jack Daniel's, Red Label ou 12 anos + Red Bull (sabor à escolha)",
+      "id": "pdf-combo-jack-redbull",
+      "name": "Combo Jack Daniel's + Red Bull",
+      "price": 280,
+      "description": "Garrafa 1L Jack Daniel's + 4 Red Bull (sabor à escolha)",
       "image": "jack-daniels.jpg"
+    },
+    {
+      "id": "pdf-combo-red-label-redbull",
+      "name": "Combo Red Label + Red Bull",
+      "price": 240,
+      "description": "Garrafa 1L Johnnie Walker Red Label + 4 Red Bull (sabor à escolha)",
+      "image": "red-label.jpg"
+    },
+    {
+      "id": "pdf-combo-whisky-12-redbull",
+      "name": "Combo Whisky 12 Anos + Red Bull",
+      "price": 310,
+      "description": "Garrafa 1L Chivas ou Old Parr + 4 Red Bull (sabor à escolha)",
+      "image": "whisky-12-anos.jpg"
     },
     {
       "id": "pdf-combo-redbull-original",
       "name": "Red Bull Original",
-      "price": 17,
+      "price": 15,
       "description": "Energético Red Bull 250ml",
       "image": "energetico-redbull.jpg"
     },
     {
       "id": "pdf-combo-redbull-tropical",
       "name": "Red Bull Tropical",
-      "price": 17,
+      "price": 15,
       "description": "Energético Red Bull 250ml",
       "image": "energetico-redbull.jpg"
     },
     {
       "id": "pdf-combo-redbull-melancia",
       "name": "Red Bull Melancia",
-      "price": 17,
+      "price": 15,
       "description": "Energético Red Bull 250ml",
       "image": "energetico-redbull.jpg"
     },
     {
       "id": "pdf-combo-redbull-sugarfree",
       "name": "Red Bull Sugarfree",
-      "price": 17,
+      "price": 15,
       "description": "Energético Red Bull sem açúcar 250ml",
       "image": "energetico-redbull.jpg"
     }
