@@ -85,8 +85,6 @@ const MENUS = [
     cervejasFixedPageFile: 'data/drinks-pdf-pages.json',
     chapters: [
       { cat: 'drinks-autorais', cols: 3, photo: 'caipi-prainha', lead: 'Criações da casa, só daqui', star: true, tallCards: true },
-      { cat: 'drinks-tradicionais', cols: 3, photo: 'caipifruta', lead: 'Os clássicos que nunca falham', tallCards: true },
-      { cat: 'doses-litros', cols: 4, photo: 'whisky-12-anos', lead: 'Dose · litro — consulte o valor de cada destilado', withPdfCombos: true },
       { cat: 'vinhos', cols: 3, photo: 'vinho-consultar', lead: 'Consulte os rótulos do dia', forceGrid: true },
     ],
   },
@@ -432,8 +430,9 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
       closeGrid();
       html.push(`<div class="grid grid--${cols}">`);
       openCols = cols;
+      const cardClass = block.tallCards ? 'card--tall' : '';
       for (const item of items) {
-        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu));
+        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu, cardClass));
       }
       closeGrid();
     }
@@ -666,10 +665,8 @@ function collectDrinksPdfCardIds(menuCfg, menu) {
       }
     }
   }
-  const cervejasPage = loadFixedPages(menuCfg.cervejasFixedPageFile).find((p) => p.cat === 'cervejas');
-  if (cervejasPage) {
-    for (const id of collectFixedPageCardIds(menu, [cervejasPage])) ids.add(id);
-  }
+  const fixedPages = loadFixedPages(menuCfg.cervejasFixedPageFile);
+  for (const id of collectFixedPageCardIds(menu, fixedPages)) ids.add(id);
   return ids;
 }
 
@@ -687,18 +684,35 @@ function renderFlowContentPages(pages, menuCfg, menu, starIds, startPage) {
     .join('');
 }
 
-function renderCervejasFixedSheet(pageDef, menu, meta, pageNumber, starIds, chapterNumber) {
+function renderDrinksFixedSheet(pageDef, menu, meta, pageNumber, starIds, chapterNumber) {
   const { cat } = chapterContent(menu, pageDef.cat);
   const chapterMeta = { number: chapterNumber };
   const body =
     renderFixedChapterHeader(pageDef, menu, chapterMeta) +
     renderFixedPageBody(menu, meta, pageDef, starIds);
+  const bodyClass = [
+    'sheet__body',
+    'sheet__body--fixed',
+    pageDef.dense ? 'sheet__body--dense' : '',
+    pageDef.bodyDense ? 'sheet__body--dense-grid' : '',
+    pageDef.tightGrid ? 'sheet__body--tight-grid' : '',
+    pageDef.cat === 'drinks-tradicionais' ? 'sheet__body--tradicionais' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
   return `
     <section class="sheet">
       ${pageHeader(cat.name)}
-      <div class="sheet__body sheet__body--fixed sheet__body--dense">${body}</div>
+      <div class="${bodyClass}">${body}</div>
       ${pageFooter(pageNumber)}
     </section>`;
+}
+
+function assignDrinksFixedChapterNumber(pageDef, catChapterNum, nextChapter) {
+  if (catChapterNum.has(pageDef.cat)) return catChapterNum.get(pageDef.cat);
+  catChapterNum.set(pageDef.cat, nextChapter.value);
+  nextChapter.value += 1;
+  return catChapterNum.get(pageDef.cat);
 }
 
 function buildDrinksMenuHtml(menuCfg, data, info, qr) {
@@ -716,13 +730,14 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
     return { ...chDef, cat, items, groups, number: index + 1 };
   };
 
-  const [autDef, tradDef, dosesDef, vinhosDef] = menuCfg.chapters;
+  const autDef = menuCfg.chapters.find((ch) => ch.cat === 'drinks-autorais');
+  const vinhosDef = menuCfg.chapters.find((ch) => ch.cat === 'vinhos');
   const autorais = resolveChapter(autDef, 0);
-  const tradicionais = resolveChapter(tradDef, 1);
-  const doses = resolveChapter(dosesDef, 2);
-  const vinhos = resolveChapter(vinhosDef, 3);
-  const cervejasDef = loadFixedPages(menuCfg.cervejasFixedPageFile).find((p) => p.cat === 'cervejas');
+  const vinhos = resolveChapter(vinhosDef, 1);
+  const fixedPages = loadFixedPages(menuCfg.cervejasFixedPageFile);
+  const tradicionaisMeta = chapterContent(menu, 'drinks-tradicionais');
   const cervejasMeta = chapterContent(menu, 'cervejas');
+  const dosesMeta = chapterContent(menu, 'doses-litros');
 
   const starIds = new Set();
   if (autorais.star && autorais.items[0]) starIds.add(autorais.items[0].id);
@@ -732,19 +747,29 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
   let content = renderFlowContentPages(pAut, menuCfg, menu, starIds, pageNum);
   pageNum += pAut.length;
 
-  const pTrad = paginate(buildBlocks([tradicionais]), { pageBreakBeforeChapter: true });
-  content += renderFlowContentPages(pTrad, menuCfg, menu, starIds, pageNum);
-  const tradStart = pageNum;
-  pageNum += pTrad.length;
+  const catChapterNum = new Map();
+  const fixedStartByCat = new Map();
+  const nextFixedChapter = { value: 2 };
+  const dosesShotsPage = fixedPages.filter((p) => p.cat === 'doses-litros' && p.continued);
+  const fixedBeforeVinhos = fixedPages.filter((p) => !(p.cat === 'doses-litros' && p.continued));
 
-  const cervejasStart = pageNum;
-  content += renderCervejasFixedSheet(cervejasDef, menu, menu.meta, pageNum, starIds, 3);
-  pageNum += 1;
+  for (const pageDef of fixedBeforeVinhos) {
+    if (!fixedStartByCat.has(pageDef.cat)) fixedStartByCat.set(pageDef.cat, pageNum);
+    const chapterNumber = assignDrinksFixedChapterNumber(pageDef, catChapterNum, nextFixedChapter);
+    content += renderDrinksFixedSheet(pageDef, menu, menu.meta, pageNum, starIds, chapterNumber);
+    pageNum += 1;
+  }
 
-  const pDoseVinho = paginate(buildBlocks([doses, vinhos]), { pageBreakBeforeChapter: true });
-  const dosesStart = pageNum;
-  content += renderFlowContentPages(pDoseVinho, menuCfg, menu, starIds, pageNum);
-  pageNum += pDoseVinho.length;
+  const pVinhos = paginate(buildBlocks([vinhos]), { pageBreakBeforeChapter: true });
+  const vinhosStart = pageNum;
+  content += renderFlowContentPages(pVinhos, menuCfg, menu, starIds, pageNum);
+  pageNum += pVinhos.length;
+
+  for (const pageDef of dosesShotsPage) {
+    const chapterNumber = assignDrinksFixedChapterNumber(pageDef, catChapterNum, nextFixedChapter);
+    content += renderDrinksFixedSheet(pageDef, menu, menu.meta, pageNum, starIds, chapterNumber);
+    pageNum += 1;
+  }
 
   const cover = `
     <section class="sheet sheet--cover">
@@ -791,10 +816,25 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
 
   const chapters = [
     { cat: autorais.cat, items: autorais.items, startPage: firstContentPage, number: 1 },
-    { cat: tradicionais.cat, items: tradicionais.items, startPage: tradStart, number: 2 },
-    { cat: cervejasMeta.cat, items: cervejasMeta.items, startPage: cervejasStart, number: 3 },
-    { cat: doses.cat, items: [...doses.items, ...comboItems], startPage: dosesStart, number: 4 },
-    { cat: vinhos.cat, items: vinhos.items, startPage: dosesStart + pDoseVinho.length - (pDoseVinho.length > 1 ? 0 : 0), number: 5 },
+    {
+      cat: tradicionaisMeta.cat,
+      items: tradicionaisMeta.items,
+      startPage: fixedStartByCat.get('drinks-tradicionais') || firstContentPage + pAut.length,
+      number: catChapterNum.get('drinks-tradicionais') || 2,
+    },
+    {
+      cat: cervejasMeta.cat,
+      items: cervejasMeta.items,
+      startPage: fixedStartByCat.get('cervejas') || firstContentPage + pAut.length,
+      number: catChapterNum.get('cervejas') || 3,
+    },
+    {
+      cat: dosesMeta.cat,
+      items: [...dosesMeta.items, ...comboItems],
+      startPage: fixedStartByCat.get('doses-litros') || firstContentPage + pAut.length,
+      number: catChapterNum.get('doses-litros') || 4,
+    },
+    { cat: vinhos.cat, items: vinhos.items, startPage: vinhosStart, number: (catChapterNum.get('doses-litros') || 4) + 1 },
   ];
 
   return { html, totalPages: pageNum, chapters, pages: [] };
@@ -1427,11 +1467,17 @@ function css(menuCfg) {
     .sheet__body--dense .compact-item__name { font-size: 7.2pt; }
     .sheet__body--dense .compact-item__desc { display: none; }
 
-    /* Tradicionais: capítulo com foto grande + 11 cards em 3 colunas na mesma folha */
-    .sheet__body--tight-grid .grid--3 .card { height: 56mm; }
-    .sheet__body--tight-grid .grid--3 .card__media { height: 33mm; }
-    .sheet__body--tight-grid .grid--3 .card__name { font-size: 8.2pt; -webkit-line-clamp: 2; }
-    .sheet__body--tight-grid .grid--3 .card__desc { font-size: 6.5pt; -webkit-line-clamp: 2; }
+    /* Tradicionais: destaques altos + demais em grade compacta na mesma folha */
+    .sheet__body--tight-grid .grid--3 .card:not(.card--tall) { height: 56mm; }
+    .sheet__body--tight-grid .grid--3 .card:not(.card--tall) .card__media { height: 33mm; }
+    .sheet__body--tight-grid .grid--3 .card:not(.card--tall) .card__name { font-size: 8.2pt; -webkit-line-clamp: 2; }
+    .sheet__body--tight-grid .grid--3 .card:not(.card--tall) .card__desc { font-size: 6.5pt; -webkit-line-clamp: 2; }
+
+    .sheet__body--tradicionais > .chapter { margin-top: ${LAYOUT.gapChapter}mm; }
+    .sheet__body--tradicionais > .grid--3 { margin-top: 5mm; }
+    .sheet__body--tradicionais > .grid--4 { margin-top: 4mm; }
+    .sheet__body--dense-grid > .group { height: 9mm; margin-top: 3mm; font-size: 8.5pt; }
+    .sheet__body--dense-grid > .grid--4 { margin-top: 3mm; }
     .compact-item {
       display: flex;
       align-items: center;
@@ -1639,8 +1685,9 @@ async function main() {
     if (menuCfg.drinksPdf) {
       ({ menu: menuForImages } = withDrinksPdfExtras(data, menuCfg.pdfExtrasFile));
       for (const id of collectDrinksPdfCardIds(menuCfg, menuForImages)) cardIds.add(id);
-      const cervejasPage = loadFixedPages(menuCfg.cervejasFixedPageFile).find((p) => p.cat === 'cervejas');
-      if (cervejasPage) chapterIds.add(cervejasPage.photo);
+      for (const pageDef of loadFixedPages(menuCfg.cervejasFixedPageFile)) {
+        if (pageDef.photo) chapterIds.add(pageDef.photo);
+      }
       for (const ch of menuCfg.chapters) chapterIds.add(ch.photo);
     } else if (menuCfg.useFixedPages) {
       const pages = loadFixedPages(menuCfg.fixedPagesFile);
