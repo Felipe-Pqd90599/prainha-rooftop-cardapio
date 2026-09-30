@@ -52,16 +52,6 @@ const LAYOUT = {
   },
 };
 
-let gastronomiaPdfHooks = null;
-function getGastronomiaPdfHooks() {
-  if (!gastronomiaPdfHooks) {
-    gastronomiaPdfHooks = JSON.parse(
-      fs.readFileSync(path.join(ROOT, 'data/gastronomia-pdf-hooks.json'), 'utf8'),
-    );
-  }
-  return gastronomiaPdfHooks;
-}
-
 const MENUS = [
   {
     id: 'gastronomia',
@@ -77,7 +67,6 @@ const MENUS = [
       'Cozinha aberta todos os dias. Pratos para 2 pessoas trazem o segundo preço indicado. Aponte o QR e veja o cardápio sempre atualizado.',
     useFixedPages: true,
     fixedPagesFile: 'data/gastronomia-pdf-pages.json',
-    cardDescriptionStyle: 'hook-detail',
     chapters: [],
   },
   {
@@ -366,7 +355,7 @@ function collectFixedPageCardIds(menu, pages) {
   return ids;
 }
 
-function renderCompactGrid(items, cols, size, menu, cardDescriptionStyle) {
+function renderCompactGrid(items, cols, size, menu) {
   const sizeClass = size === 'md' ? ' compact-grid--md' : '';
   const rows = items
     .map(
@@ -375,21 +364,7 @@ function renderCompactGrid(items, cols, size, menu, cardDescriptionStyle) {
             <img class="compact-item__thumb" src="img/card-${esc(item.id)}.jpg" alt="" />
             <div class="compact-item__text">
               <h3 class="compact-item__name">${esc(item.name)}</h3>
-              ${
-                cardDescriptionStyle === 'hook-detail'
-                  ? (() => {
-                      const { hook, detail } = splitHookDetail(item, cardDescriptionStyle);
-                      if (hook && detail) {
-                        return `<p class="compact-item__hook">${esc(hook)}</p><p class="compact-item__desc compact-item__desc--detail">${esc(detail)}</p>`;
-                      }
-                      if (hook) return `<p class="compact-item__hook">${esc(hook)}</p>`;
-                      if (detail) return `<p class="compact-item__desc">${esc(detail)}</p>`;
-                      return '';
-                    })()
-                  : item.description
-                    ? `<p class="compact-item__desc">${esc(item.description)}</p>`
-                    : ''
-              }
+              ${item.description ? `<p class="compact-item__desc">${esc(item.description)}</p>` : ''}
               <div class="compact-item__price">${renderPriceHtml(item, menu)}</div>
             </div>
           </article>`,
@@ -412,8 +387,7 @@ function renderComboCallout(menu, itemId) {
         </aside>`;
 }
 
-function renderFixedPageBody(menu, meta, pageDef, starIds, menuCfg = {}) {
-  const cardDescriptionStyle = menuCfg.cardDescriptionStyle;
+function renderFixedPageBody(menu, meta, pageDef, starIds) {
   const html = [];
   let openCols = null;
 
@@ -441,7 +415,7 @@ function renderFixedPageBody(menu, meta, pageDef, starIds, menuCfg = {}) {
 
     if (block.type === 'compact') {
       closeGrid();
-      html.push(renderCompactGrid(items, block.cols || 2, block.size || 'sm', menu, cardDescriptionStyle));
+      html.push(renderCompactGrid(items, block.cols || 2, block.size || 'sm', menu));
       continue;
     }
 
@@ -458,7 +432,7 @@ function renderFixedPageBody(menu, meta, pageDef, starIds, menuCfg = {}) {
       const cardClass = block.tallCards ? 'card--tall' : '';
       for (const item of items) {
         html.push(
-          renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu, cardClass, cardDescriptionStyle),
+          renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu, cardClass),
         );
       }
       closeGrid();
@@ -578,41 +552,6 @@ function paginate(blocks, options = {}) {
   return pages;
 }
 
-/** Modelo 2 (gancho + detalhe): copy revisada em data/gastronomia-pdf-hooks.json. */
-function splitHookDetail(item, cardDescriptionStyle) {
-  if (cardDescriptionStyle === 'hook-detail') {
-    const curated = getGastronomiaPdfHooks()[item.id];
-    if (curated) {
-      return {
-        hook: String(curated.hook || '').trim(),
-        detail: String(curated.detail || '').trim(),
-      };
-    }
-  }
-  if (item.descriptionShort) {
-    return {
-      hook: String(item.descriptionShort).trim(),
-      detail: String(item.descriptionDetail || item.description || '').trim(),
-    };
-  }
-  const raw = String(item.description || '').trim();
-  return { hook: '', detail: raw };
-}
-
-function renderCardDescription(item, cardDescriptionStyle) {
-  const { hook, detail } = splitHookDetail(item, cardDescriptionStyle);
-  if (cardDescriptionStyle === 'hook-detail') {
-    if (!hook && !detail) return '';
-    if (hook && detail) {
-      return `<p class="card__hook">${esc(hook)}</p><p class="card__desc card__desc--detail">${esc(detail)}</p>`;
-    }
-    if (hook) return `<p class="card__hook card__hook--solo">${esc(hook)}</p>`;
-    return `<p class="card__desc">${esc(detail)}</p>`;
-  }
-  if (!detail && !item.description) return '';
-  return `<p class="card__desc">${esc(item.description || detail)}</p>`;
-}
-
 function renderPriceHtml(item, menu) {
   const priceTag = (value, label, alt = false) => {
     const labelHtml = label ? ` <small>${esc(label)}</small>` : '';
@@ -638,7 +577,7 @@ function renderPriceHtml(item, menu) {
   return `<div class="price-tags">${priceTag(item.price, '')}</div>`;
 }
 
-function renderCard(item, badge, menu, cardClass = '', cardDescriptionStyle) {
+function renderCard(item, badge, menu, cardClass = '') {
   return `
           <article class="card${cardClass ? ` ${cardClass}` : ''}">
             <div class="card__media">
@@ -647,7 +586,7 @@ function renderCard(item, badge, menu, cardClass = '', cardDescriptionStyle) {
             </div>
             <div class="card__body">
               <h3 class="card__name">${esc(item.name)}</h3>
-              ${renderCardDescription(item, cardDescriptionStyle)}
+              ${item.description ? `<p class="card__desc">${esc(item.description)}</p>` : ''}
               <div class="card__price">${renderPriceHtml(item, menu)}</div>
             </div>
           </article>`;
@@ -969,7 +908,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
       const { cat } = chapterContent(data, pageDef.cat);
       const body =
         renderFixedChapterHeader(pageDef, data, chapterMeta) +
-        renderFixedPageBody(data, data.meta, pageDef, starIds, menuCfg);
+        renderFixedPageBody(data, data.meta, pageDef, starIds);
       return `
     <section class="sheet">
       ${pageHeader(pageDisplayTitle(pageDef, cat))}
@@ -1425,62 +1364,22 @@ function css(menuCfg) {
     .grid--3 .card__desc { font-size: 6.8pt; line-height: 1.3; -webkit-line-clamp: 2; }
     .grid--4 .card__desc { font-size: 6.2pt; line-height: 1.24; -webkit-line-clamp: 1; }
 
-    /* Gastronomia — modelo 2: gancho + detalhe (copy em gastronomia-pdf-hooks.json) */
-    .menu-gastronomia .card__hook {
-      flex: 0 0 auto;
-      margin-top: 0.7mm;
-      font-family: Oswald, sans-serif;
-      font-size: 6.8pt;
-      font-weight: 500;
-      line-height: 1.12;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+    /* Gastronomia — descrição integral do cardápio, cor de destaque */
+    .menu-gastronomia .card__desc,
+    .menu-gastronomia .feature__desc,
+    .menu-gastronomia .compact-item__desc,
+    .menu-gastronomia .combo-callout__desc {
       color: var(--accent-dark);
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      -webkit-line-clamp: 1;
+      font-weight: 400;
     }
-    .menu-gastronomia .grid--3 .card__hook { font-size: 7pt; }
-    .menu-gastronomia .grid--4 .card__hook { font-size: 6.4pt; }
-    .menu-gastronomia .card__desc--detail {
-      margin-top: 0.5mm;
-      font-size: 6pt;
-      line-height: 1.3;
-      color: var(--ink-soft);
-      -webkit-line-clamp: 2;
+    .menu-gastronomia .card__desc,
+    .menu-gastronomia .compact-item__desc {
+      display: block;
+      overflow: visible;
+      -webkit-line-clamp: unset;
+      -webkit-box-orient: unset;
     }
-    .menu-gastronomia .grid--3 .card__desc--detail { font-size: 6.4pt; }
-    .menu-gastronomia .grid--4 .card__desc--detail { font-size: 5.8pt; }
-    .menu-gastronomia .grid--4 .card__desc:not(.card__desc--detail) { -webkit-line-clamp: 2; }
-    .menu-gastronomia .grid--4 .card { height: 52mm; }
-    .menu-gastronomia .grid--4 .card__media { height: 28mm; }
-    .menu-gastronomia .grid--3 .card { height: 65mm; }
-    .menu-gastronomia .grid--3 .card__desc { -webkit-line-clamp: 2; }
-    .menu-gastronomia .compact-item__hook {
-      margin-top: 0.35mm;
-      font-family: Oswald, sans-serif;
-      font-size: 6.2pt;
-      font-weight: 500;
-      line-height: 1.12;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--accent-dark);
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .menu-gastronomia .compact-item__desc--detail {
-      margin-top: 0.25mm;
-      font-size: 5.8pt;
-      line-height: 1.28;
-      color: var(--ink-soft);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+    .menu-gastronomia .sheet__body--dense .compact-item__desc { display: block; }
     .menu-drinks .card--tall { height: 74mm; }
     .menu-drinks .card--tall .card__media { height: 48mm; }
     .menu-drinks .card--tall .card__name { font-size: 8.8pt; line-height: 1.16; }
