@@ -44,7 +44,15 @@
       "cat": "petiscos",
       "photo": "mista-prainha",
       "lead": "Para acompanhar a cerveja gelada",
-      "blocks": [{ "type": "grid", "cols": 4, "ids": "cat:all" }]
+      "blocks": [
+        {
+          "type": "grid",
+          "cols": 4,
+          "ids": "cat:all",
+          "exclude": ["camarao-alho-oleo"]
+        },
+        { "type": "portion-panel", "id": "camarao-alho-oleo" }
+      ]
     },
     {
       "cat": "cuscuz-tapiocas-lanches",

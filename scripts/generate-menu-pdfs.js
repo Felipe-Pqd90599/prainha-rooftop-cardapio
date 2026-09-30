@@ -344,7 +344,7 @@ function collectFixedPageCardIds(menu, pages) {
   const ids = new Set();
   for (const page of pages) {
     for (const block of page.blocks) {
-      if (block.type === 'combo') {
+      if (block.type === 'combo' || block.type === 'portion-panel') {
         ids.add(block.id);
         continue;
       }
@@ -387,6 +387,32 @@ function renderComboCallout(menu, itemId) {
         </aside>`;
 }
 
+function renderPortionPanel(menu, itemId) {
+  const item = findItem(menu, itemId);
+  if (!item?.portionOptions?.length) return '';
+  const rows = item.portionOptions
+    .map(
+      (opt) => `
+            <tr class="portion-panel__row${opt.badge ? ' portion-panel__row--highlight' : ''}">
+              <th scope="row">${esc(opt.label)}</th>
+              <td>${esc(money(opt.price))}</td>
+              ${opt.badge ? `<td class="portion-panel__badge">${esc(opt.badge)}</td>` : '<td></td>'}
+            </tr>`,
+    )
+    .join('');
+  return `
+        <article class="portion-panel">
+          <img class="portion-panel__photo" src="img/card-${esc(item.id)}.jpg" alt="" />
+          <div class="portion-panel__body">
+            <h3 class="portion-panel__name">${esc(item.name)}</h3>
+            ${item.description ? `<p class="portion-panel__desc">${esc(item.description)}</p>` : ''}
+            <table class="portion-panel__prices" aria-label="Porções e preços">
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+        </article>`;
+}
+
 function renderFixedPageBody(menu, meta, pageDef, starIds) {
   const html = [];
   let openCols = null;
@@ -407,6 +433,11 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
     if (block.type === 'combo') {
       closeGrid();
       html.push(renderComboCallout(menu, block.id));
+      continue;
+    }
+    if (block.type === 'portion-panel') {
+      closeGrid();
+      html.push(renderPortionPanel(menu, block.id));
       continue;
     }
 
@@ -577,17 +608,9 @@ function renderPriceHtml(item, menu) {
   return `<div class="price-tags">${priceTag(item.price, '')}</div>`;
 }
 
-function cardExtraClasses(item, cardClass = '') {
-  const extra = [];
-  if (cardClass) extra.push(cardClass);
-  if (item.portionOptions?.length) extra.push('card--portion-prices');
-  return extra.join(' ');
-}
-
 function renderCard(item, badge, menu, cardClass = '') {
-  const classes = cardExtraClasses(item, cardClass);
   return `
-          <article class="card${classes ? ` ${classes}` : ''}">
+          <article class="card${cardClass ? ` ${cardClass}` : ''}">
             <div class="card__media">
               <img src="img/card-${esc(item.id)}.jpg" alt="" />
               ${badge ? `<span class="card__badge">${esc(badge)}</span>` : ''}
@@ -1388,31 +1411,6 @@ function css(menuCfg) {
       -webkit-box-orient: unset;
     }
     .menu-gastronomia .sheet__body--dense .compact-item__desc { display: block; }
-    /* Petisco com porções (300g / 500g / 1kg): mais altura e preços compactos */
-    .menu-gastronomia .grid--4 .card.card--portion-prices {
-      height: 57mm;
-    }
-    .menu-gastronomia .grid--4 .card.card--portion-prices .card__media {
-      height: 27mm;
-    }
-    .menu-gastronomia .grid--4 .card.card--portion-prices .card__desc {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      -webkit-line-clamp: 2;
-      font-size: 5.9pt;
-      line-height: 1.22;
-    }
-    .menu-gastronomia .grid--4 .card.card--portion-prices .price-tags {
-      gap: 0.5mm;
-    }
-    .menu-gastronomia .grid--4 .card.card--portion-prices .price-tag {
-      font-size: 6pt;
-      padding: 0.4mm 0.85mm;
-    }
-    .menu-gastronomia .grid--4 .card.card--portion-prices .price-tag small {
-      font-size: 4.8pt;
-    }
     .menu-drinks .card--tall { height: 74mm; }
     .menu-drinks .card--tall .card__media { height: 48mm; }
     .menu-drinks .card--tall .card__name { font-size: 8.8pt; line-height: 1.16; }
@@ -1593,6 +1591,103 @@ function css(menuCfg) {
       font-family: Oswald, sans-serif;
       font-size: 13pt;
       color: var(--accent-dark);
+    }
+
+    .portion-panel {
+      margin-top: 4mm;
+      display: grid;
+      grid-template-columns: 38mm 1fr;
+      gap: 4mm;
+      align-items: stretch;
+      min-height: 32mm;
+      padding: 3mm;
+      background: var(--paper);
+      border: 0.25mm solid var(--line);
+      border-radius: 2.4mm;
+      box-shadow: 0 0.5mm 1.4mm rgba(18, 55, 66, 0.05);
+    }
+    .sheet__body--fixed > .portion-panel { margin-top: 4.5mm; }
+    .portion-panel__photo {
+      width: 100%;
+      height: 100%;
+      min-height: 26mm;
+      object-fit: cover;
+      border-radius: 2mm;
+      display: block;
+    }
+    .portion-panel__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding-right: 2mm;
+    }
+    .portion-panel__name {
+      font-family: Oswald, sans-serif;
+      font-weight: 500;
+      font-size: 10.5pt;
+      line-height: 1.12;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .menu-gastronomia .portion-panel__desc {
+      margin-top: 1.2mm;
+      font-size: 7.2pt;
+      line-height: 1.35;
+      color: var(--accent-dark);
+      font-weight: 400;
+    }
+    .portion-panel__prices {
+      margin-top: 2.5mm;
+      width: 100%;
+      max-width: 118mm;
+      border-collapse: collapse;
+      font-size: 7.4pt;
+    }
+    .portion-panel__prices th,
+    .portion-panel__prices td {
+      padding: 1.1mm 2mm;
+      text-align: left;
+      vertical-align: middle;
+      border-bottom: 0.15mm solid var(--line);
+    }
+    .portion-panel__prices tr:last-child th,
+    .portion-panel__prices tr:last-child td {
+      border-bottom: none;
+    }
+    .portion-panel__prices th {
+      font-family: Oswald, sans-serif;
+      font-weight: 500;
+      font-size: 8.2pt;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+      width: 16mm;
+    }
+    .portion-panel__prices td:first-of-type {
+      font-family: Oswald, sans-serif;
+      font-weight: 500;
+      font-size: 9pt;
+      color: var(--accent-dark);
+      width: 22mm;
+    }
+    .portion-panel__badge {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 6pt;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      white-space: nowrap;
+    }
+    .portion-panel__row--highlight th,
+    .portion-panel__row--highlight td:first-of-type {
+      color: var(--accent);
+    }
+    .portion-panel__row--highlight .portion-panel__badge {
+      padding: 0.5mm 1.4mm;
+      border-radius: 3mm;
+      background: var(--accent-soft);
     }
 
     /* ---------- página final ---------- */
