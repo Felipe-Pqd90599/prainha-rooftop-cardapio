@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.90-online",
+    "version": "1.1.91-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -181,7 +181,7 @@
           "name": "Brasileirinho de Camarão",
           "price": 37,
           "priceSecondary": 71,
-          "description": "Queijo, vinagrete e orégano",
+          "description": "Camarão salteado, feijão preto, arroz, salada e farofa da casa",
           "image": "brasileirinho-camarao.jpg"
         },
         {
@@ -366,7 +366,7 @@
         {
           "id": "camarao-alho-oleo",
           "name": "Camarão Alho e Óleo",
-          "description": "Camarão salteado com fritas (batata ou macaxeira) — escolha o tamanho",
+          "description": "Camarão salteado no alho e óleo com fritas (batata ou macaxeira)",
           "image": "camarao-alho-oleo.jpg",
           "portionOptions": [
             {
@@ -685,6 +685,7 @@
           "id": "salada-camarao",
           "name": "Salada com Filé de Camarão",
           "price": 35,
+          "description": "Salada verde com filé de camarão",
           "image": "salada-camarao.jpg"
         },
         {
@@ -750,7 +751,6 @@
             "petit-brownie",
             "cartola",
             "ice-cream-frutas",
-            "beijinho",
             "romeu-julieta",
             "frutas-chocolate"
           ]
@@ -770,42 +770,42 @@
           "id": "acai-tradicional",
           "name": "Açaí Tradicional 350ml",
           "price": 22,
+          "description": "Açaí batido na consistência tradicional com banana e granola",
           "image": "acai-tradicional.jpg"
         },
         {
           "id": "petit-brownie",
           "name": "Petit Brownie",
           "price": 29,
+          "description": "Brownie quente com sorvete de creme e calda de chocolate",
           "image": "petit-brownie.jpg"
         },
         {
           "id": "cartola",
           "name": "Cartola",
           "price": 24,
+          "description": "Banana, queijo coalho e canela na chapa",
           "image": "cartola.jpg"
         },
         {
           "id": "ice-cream-frutas",
           "name": "Ice Cream com Frutas na Taça",
           "price": 26,
+          "description": "Sorvete de creme com frutas da estação servido na taça",
           "image": "ice-cream-frutas.jpg"
-        },
-        {
-          "id": "beijinho",
-          "name": "Beijinho",
-          "price": 24,
-          "image": "beijinho.jpg"
         },
         {
           "id": "romeu-julieta",
           "name": "Romeu e Julieta",
           "price": 26,
+          "description": "Queijo coalho e goiabada na chapa",
           "image": "romeu-julieta.jpg"
         },
         {
           "id": "frutas-chocolate",
           "name": "Frutas com Chocolate",
           "price": 26,
+          "description": "Frutas frescas com chocolate derretido",
           "image": "frutas-chocolate.jpg"
         },
         {
