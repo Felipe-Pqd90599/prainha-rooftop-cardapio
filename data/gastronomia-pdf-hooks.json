@@ -1,0 +1,458 @@
+{
+  "acai-tradicional": {
+    "hook": "Açaí 350ml",
+    "detail": "Tradicional"
+  },
+  "agua-coco": {
+    "hook": "Coco verde",
+    "detail": "Gelado"
+  },
+  "agua-com-gas": {
+    "hook": "Água mineral",
+    "detail": "Com gás"
+  },
+  "agua-sem-gas": {
+    "hook": "Água mineral",
+    "detail": "Sem gás"
+  },
+  "agua-tonica": {
+    "hook": "Tônica ou Citrus",
+    "detail": "Schweppes"
+  },
+  "american-smash-duplo": {
+    "hook": "2 smash bovinos",
+    "detail": "Bacon, cheddar, alface e molho da casa"
+  },
+  "arretado": {
+    "hook": "Creme de macaxeira",
+    "detail": "Bacon e carne desfiada"
+  },
+  "arroz-ind": {
+    "hook": "Porção de arroz",
+    "detail": "Individual"
+  },
+  "arroz-tropical": {
+    "hook": "Arroz refogado",
+    "detail": "Açafrão, brócolis, tomate, coalho e ervilha"
+  },
+  "baiao-dois": {
+    "hook": "Cremoso ou tradicional",
+    "detail": "Feijão, arroz, bacon, carne de sol e coalho"
+  },
+  "beijinho": {
+    "hook": "Doce de coco",
+    "detail": ""
+  },
+  "blend-tradicional": {
+    "hook": "1 smash bovino",
+    "detail": "Muçarela, cebola empanada, alface e molho da casa"
+  },
+  "brasileirinho-calabresa": {
+    "hook": "Calabresa acebolada",
+    "detail": "Feijão, arroz, salada e farofa da casa"
+  },
+  "brasileirinho-camarao": {
+    "hook": "Na brasa",
+    "detail": "Queijo, vinagrete e orégano"
+  },
+  "brasileirinho-carne": {
+    "hook": "Filé acebolado",
+    "detail": "Feijão, arroz, salada e farofa da casa"
+  },
+  "brasileirinho-frango": {
+    "hook": "Frango em cubos",
+    "detail": "Feijão, arroz, salada e farofa da casa"
+  },
+  "brasileirinho-peixe": {
+    "hook": "Peixe frito",
+    "detail": "Feijão, arroz, salada e farofa da casa"
+  },
+  "bruschetta-sertao": {
+    "hook": "Carne de sol",
+    "detail": "Creme de queijo, coalho, manjericão e manteiga do sertão · 4 unid"
+  },
+  "bruschetta-terra": {
+    "hook": "Doce e salgada",
+    "detail": "Banana, muçarela, manjericão e melaço · 4 unid"
+  },
+  "bruschetta-tradicional": {
+    "hook": "Clássica",
+    "detail": "Tomate, queijo, manjericão e azeite · 4 unid"
+  },
+  "burger-potiguar": {
+    "hook": "Filé de camarão",
+    "detail": "Muçarela, cebola empanada, alface e molho da casa"
+  },
+  "cafe-coado-m": {
+    "hook": "Café coado M",
+    "detail": ""
+  },
+  "cafe-leite-m": {
+    "hook": "Café com leite M",
+    "detail": ""
+  },
+  "cajuina-litro": {
+    "hook": "Cajuína",
+    "detail": "Garrafa litro"
+  },
+  "calabresa-130g": {
+    "hook": "Adicional calabresa",
+    "detail": "130g"
+  },
+  "calabresa-mucarela": {
+    "hook": "Calabresa e muçarela",
+    "detail": ""
+  },
+  "caldeirinho-mar": {
+    "hook": "Caldo do mar",
+    "detail": "Camarão, peixes e legumes"
+  },
+  "caldo-feijao": {
+    "hook": "Caldo de feijão",
+    "detail": ""
+  },
+  "camarao-130g": {
+    "hook": "Adicional camarão",
+    "detail": "130g"
+  },
+  "camarao-alho-oleo": {
+    "hook": "Camarão salteado",
+    "detail": "Com fritas — batata ou macaxeira"
+  },
+  "camarao-caicoense": {
+    "hook": "Arroz cremoso",
+    "detail": "Carne de sol, filé de camarão e batata palha"
+  },
+  "camarao-entrada": {
+    "hook": "Caldo de camarão",
+    "detail": ""
+  },
+  "camarao-grega": {
+    "hook": "Arroz à grega",
+    "detail": "Camarão empanado, muçarela maçaricada e batata palha"
+  },
+  "camarao-prainha": {
+    "hook": "Arroz cremoso",
+    "detail": "Coalho, muçarela maçaricada, camarão empanado e manjericão"
+  },
+  "cappuccino-chantilly-m": {
+    "hook": "Cappuccino M",
+    "detail": "Com chantilly"
+  },
+  "carne-130g": {
+    "hook": "Adicional carne",
+    "detail": "130g"
+  },
+  "carne-ao-molho": {
+    "hook": "Tirinhas ao madeira",
+    "detail": "Com fritas (batata ou macaxeira)"
+  },
+  "carne-sol-coalho": {
+    "hook": "Carne de sol e coalho",
+    "detail": ""
+  },
+  "carne-sol-fritas": {
+    "hook": "Carne de sol em cubos",
+    "detail": "Com fritas (batata ou macaxeira)"
+  },
+  "cartola": {
+    "hook": "Doce clássico",
+    "detail": "Banana, queijo e canela"
+  },
+  "ceviche-camarao": {
+    "hook": "Camarão no limão",
+    "detail": "Cebola roxa e coentro · torradinhas"
+  },
+  "cheeseburger": {
+    "hook": "Muçarela empanada",
+    "detail": "Ovo, cebola caramelizada, salada e molho da casa"
+  },
+  "chicken-burger": {
+    "hook": "Frango desfiado",
+    "detail": "Muçarela, cebola empanada, alface e molho da casa"
+  },
+  "coco-leite-coco": {
+    "hook": "Coco e leite de coco",
+    "detail": ""
+  },
+  "combo-fritas-acai": {
+    "hook": "Combo burger",
+    "detail": "150g de fritas + açaí 400ml (fruta, leite condensado e granola)"
+  },
+  "combo-fritas-refri": {
+    "hook": "Combo burger",
+    "detail": "150g de fritas + refri lata"
+  },
+  "creme-frango-cubos": {
+    "hook": "Creme de frango",
+    "detail": "Em cubos"
+  },
+  "crepioca-queijo": {
+    "hook": "Recheio de queijo",
+    "detail": ""
+  },
+  "cuscuz-calabresa-mucarela": {
+    "hook": "Calabresa e muçarela",
+    "detail": ""
+  },
+  "cuscuz-carne-sol-coalho": {
+    "hook": "Carne de sol e coalho",
+    "detail": ""
+  },
+  "cuscuz-coco-leite-coco": {
+    "hook": "Coco e leite de coco",
+    "detail": ""
+  },
+  "cuscuz-creme-frango-cubos": {
+    "hook": "Creme de frango",
+    "detail": "Em cubos"
+  },
+  "cuscuz-files-camarao-queijo": {
+    "hook": "Filés de camarão",
+    "detail": "Molho de queijo"
+  },
+  "cuscuz-filezinhos-carne-molho": {
+    "hook": "Filezinhos de carne",
+    "detail": "Ao molho"
+  },
+  "cuscuz-ovos-mucarela": {
+    "hook": "Ovos e muçarela",
+    "detail": ""
+  },
+  "dadinho-queijo": {
+    "hook": "Cubinhos empanados",
+    "detail": "Acompanha molhos da casa"
+  },
+  "do-sertao": {
+    "hook": "Feijão verde",
+    "detail": "Coalho em cubinhos"
+  },
+  "embalagem": {
+    "hook": "Embalagem",
+    "detail": "Para viagem"
+  },
+  "empanados-mar": {
+    "hook": "Peixe e camarão",
+    "detail": "Empanados, salada e fritas (batata ou macaxeira)"
+  },
+  "energetico-monster": {
+    "hook": "Monster",
+    "detail": "Consultar sabores"
+  },
+  "energetico-redbull": {
+    "hook": "Red Bull",
+    "detail": "Consultar sabores"
+  },
+  "ensopado-peixe": {
+    "hook": "Peixe ao creme",
+    "detail": "Legumes, pirão e arroz refogado"
+  },
+  "escondidinho-camarao": {
+    "hook": "Camarão ao creme",
+    "detail": "Purê e queijo gratinado"
+  },
+  "escondidinho-carne-sol": {
+    "hook": "Carne de sol",
+    "detail": "Purê e queijo gratinado"
+  },
+  "feijao-ind": {
+    "hook": "Porção de feijão",
+    "detail": "Individual"
+  },
+  "file-camarao-kids": {
+    "hook": "Filé ao molho",
+    "detail": "Arroz e batata frita"
+  },
+  "file-carne-kids": {
+    "hook": "Filezinho ao molho",
+    "detail": "Arroz e batata frita"
+  },
+  "file-frango-kids": {
+    "hook": "Filezinho ao molho",
+    "detail": "Arroz e batata frita"
+  },
+  "files-camarao-queijo": {
+    "hook": "Filés de camarão",
+    "detail": "Molho de queijo"
+  },
+  "filezinhos-carne-molho": {
+    "hook": "Filezinhos de carne",
+    "detail": "Ao molho"
+  },
+  "frango-130g": {
+    "hook": "Adicional frango",
+    "detail": "130g"
+  },
+  "fritas-nordestina": {
+    "hook": "Carne de sol",
+    "detail": "Creme de queijo sobre fritas"
+  },
+  "fritas-potiguar": {
+    "hook": "Camarão ao creme",
+    "detail": "Sobre fritas (batata ou macaxeira)"
+  },
+  "fritas-sertaneja": {
+    "hook": "Cheddar e bacon",
+    "detail": "Sobre fritas (batata ou macaxeira)"
+  },
+  "fritas-tradicional": {
+    "hook": "Porção de fritas",
+    "detail": "Batata ou macaxeira"
+  },
+  "frutas-chocolate": {
+    "hook": "Frutas frescas",
+    "detail": "Com chocolate"
+  },
+  "ginga-tapioca": {
+    "hook": "Ginga crocante",
+    "detail": "Servida com tapioca"
+  },
+  "h2o": {
+    "hook": "H2O",
+    "detail": "Limoneto ou limão"
+  },
+  "ice-cream-frutas": {
+    "hook": "Sorvete na taça",
+    "detail": "Com frutas"
+  },
+  "leite": {
+    "hook": "Leite",
+    "detail": ""
+  },
+  "linguica-prainha": {
+    "hook": "Linguiça defumada",
+    "detail": "Vinagrete e farofa"
+  },
+  "mista-familia": {
+    "hook": "Para 4 pessoas",
+    "detail": "Carne, camarão alho e óleo e calabresa · arroz, feijão e farofa"
+  },
+  "mista-prainha": {
+    "hook": "Mistão",
+    "detail": "Carne, calabresa, camarão e fritas (batata ou macaxeira)"
+  },
+  "misto": {
+    "hook": "Clássico",
+    "detail": "Pão de forma, presunto e queijo"
+  },
+  "mix-sertanejo": {
+    "hook": "Carne de sol e coalho",
+    "detail": "Com fritas (batata ou macaxeira)"
+  },
+  "nordestino-na-area": {
+    "hook": "Burger nordestino",
+    "detail": "Carne desfiada, coalho, ovo, alface e molho da casa"
+  },
+  "omelete-kids": {
+    "hook": "Omelete",
+    "detail": "Queijo, vinagrete e orégano"
+  },
+  "ovo-unid": {
+    "hook": "Ovo",
+    "detail": "Unidade"
+  },
+  "ovos-mucarela": {
+    "hook": "Ovos e muçarela",
+    "detail": ""
+  },
+  "parmegiana-camarao": {
+    "hook": "Camarão empanado",
+    "detail": "Molho de tomate e queijo gratinado · macarrão, arroz ao molho ou branco"
+  },
+  "parmegiana-carne": {
+    "hook": "Filé empanado",
+    "detail": "Molho de tomate e queijo gratinado · macarrão, arroz ao molho ou branco"
+  },
+  "parmegiana-frango": {
+    "hook": "Frango empanado",
+    "detail": "Molho de tomate e queijo gratinado · macarrão, arroz ao molho ou branco"
+  },
+  "pastel-camarao": {
+    "hook": "Camarão e catupiry",
+    "detail": "Pastel frito · 4 unid"
+  },
+  "pastel-diversos": {
+    "hook": "Pastéis variados",
+    "detail": "Carne, frango, queijo ou calabresa · 4 unid"
+  },
+  "peixe-entrada": {
+    "hook": "Caldo de peixe",
+    "detail": ""
+  },
+  "peixe-posta": {
+    "hook": "Peixe posta",
+    "detail": "Unidade"
+  },
+  "penne-camarao": {
+    "hook": "Massa ao molho branco",
+    "detail": "Salsinha e filé de camarão"
+  },
+  "penne-fettuccine-carne": {
+    "hook": "Massa ao molho branco",
+    "detail": "Filé ao molho madeira com barbecue"
+  },
+  "penne-pomodoro": {
+    "hook": "Penne vegetariano",
+    "detail": "Molho pomodoro"
+  },
+  "petit-brownie": {
+    "hook": "Brownie quente",
+    "detail": "Com sorvete"
+  },
+  "queijo-coalho-melaco": {
+    "hook": "Coalho grelhado",
+    "detail": "Tiras com melaço"
+  },
+  "refri-lata": {
+    "hook": "Refrigerante lata",
+    "detail": "Diversos sabores"
+  },
+  "refri-litro": {
+    "hook": "Refrigerante litro",
+    "detail": "Diversos sabores"
+  },
+  "romeu-julieta": {
+    "hook": "Queijo e goiabada",
+    "detail": ""
+  },
+  "salada-camarao": {
+    "hook": "Salada verde",
+    "detail": "Com filé de camarão"
+  },
+  "salada-coalho": {
+    "hook": "Salada verde",
+    "detail": "Cubos de coalho grelhado"
+  },
+  "salada-frango": {
+    "hook": "Salada verde",
+    "detail": "Cubos de frango grelhado"
+  },
+  "sertanejo-prainha": {
+    "hook": "Prato completo",
+    "detail": "Feijão, arroz, carne de sol, coalho, salada, fritas e farofa"
+  },
+  "soda-italiana": {
+    "hook": "Refresco gelado",
+    "detail": "Água com gás, limão, groselha e gelo"
+  },
+  "sopa": {
+    "hook": "Sopa do dia",
+    "detail": "Consultar sabor"
+  },
+  "suco-especial": {
+    "hook": "Dois sabores",
+    "detail": "No mesmo copo"
+  },
+  "suco-tradicional": {
+    "hook": "Suco natural",
+    "detail": "Um sabor"
+  },
+  "taca-camarao-empanado": {
+    "hook": "Camarão empanado",
+    "detail": "Na taça, molho da casa e salsinha"
+  },
+  "torrada-queijo": {
+    "hook": "Muçarela gratinada",
+    "detail": "Pão de forma"
+  }
+}
