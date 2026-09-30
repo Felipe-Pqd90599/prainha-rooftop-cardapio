@@ -67,6 +67,7 @@ const MENUS = [
       'Cozinha aberta todos os dias. Pratos para 2 pessoas trazem o segundo preço indicado. Aponte o QR e veja o cardápio sempre atualizado.',
     useFixedPages: true,
     fixedPagesFile: 'data/gastronomia-pdf-pages.json',
+    cardDescriptionStyle: 'hook-detail',
     chapters: [],
   },
   {
@@ -355,7 +356,7 @@ function collectFixedPageCardIds(menu, pages) {
   return ids;
 }
 
-function renderCompactGrid(items, cols, size, menu) {
+function renderCompactGrid(items, cols, size, menu, cardDescriptionStyle) {
   const sizeClass = size === 'md' ? ' compact-grid--md' : '';
   const rows = items
     .map(
@@ -364,7 +365,13 @@ function renderCompactGrid(items, cols, size, menu) {
             <img class="compact-item__thumb" src="img/card-${esc(item.id)}.jpg" alt="" />
             <div class="compact-item__text">
               <h3 class="compact-item__name">${esc(item.name)}</h3>
-              ${item.description ? `<p class="compact-item__desc">${esc(item.description)}</p>` : ''}
+              ${
+                cardDescriptionStyle === 'hook-detail' && (item.description || item.descriptionShort)
+                  ? `<p class="compact-item__hook">${esc(splitHookDetail(item).hook)}</p>`
+                  : item.description
+                    ? `<p class="compact-item__desc">${esc(item.description)}</p>`
+                    : ''
+              }
               <div class="compact-item__price">${renderPriceHtml(item, menu)}</div>
             </div>
           </article>`,
@@ -387,7 +394,8 @@ function renderComboCallout(menu, itemId) {
         </aside>`;
 }
 
-function renderFixedPageBody(menu, meta, pageDef, starIds) {
+function renderFixedPageBody(menu, meta, pageDef, starIds, menuCfg = {}) {
+  const cardDescriptionStyle = menuCfg.cardDescriptionStyle;
   const html = [];
   let openCols = null;
 
@@ -415,7 +423,7 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
 
     if (block.type === 'compact') {
       closeGrid();
-      html.push(renderCompactGrid(items, block.cols || 2, block.size || 'sm', menu));
+      html.push(renderCompactGrid(items, block.cols || 2, block.size || 'sm', menu, cardDescriptionStyle));
       continue;
     }
 
@@ -431,7 +439,9 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
       openCols = cols;
       const cardClass = block.tallCards ? 'card--tall' : '';
       for (const item of items) {
-        html.push(renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu, cardClass));
+        html.push(
+          renderCard(item, starIds.has(item.id) ? 'Mais pedido' : '', menu, cardClass, cardDescriptionStyle),
+        );
       }
       closeGrid();
     }
@@ -550,6 +560,44 @@ function paginate(blocks, options = {}) {
   return pages;
 }
 
+/** Modelo 2 (gancho + detalhe): gancho curto + complemento em até 2 linhas no PDF gastronomia. */
+function splitHookDetail(item) {
+  if (item.descriptionShort) {
+    return { hook: String(item.descriptionShort).trim(), detail: String(item.description || '').trim() };
+  }
+  const raw = String(item.description || '').trim();
+  if (!raw) return { hook: '', detail: '' };
+  if (raw.includes('|')) {
+    const [head, ...tail] = raw.split('|');
+    return { hook: head.trim(), detail: tail.join('|').trim() };
+  }
+  const acompanha = raw.match(/^(.+?)\s+acompanha\s+(.+)$/i);
+  if (acompanha) {
+    return { hook: acompanha[1].trim(), detail: `Acompanha ${acompanha[2].trim()}` };
+  }
+  const comma = raw.indexOf(',');
+  if (comma > 0 && comma < 55) {
+    return { hook: raw.slice(0, comma).trim(), detail: raw.slice(comma + 1).trim() };
+  }
+  const words = raw.split(/\s+/);
+  if (words.length > 6) {
+    return { hook: words.slice(0, 5).join(' '), detail: words.slice(5).join(' ') };
+  }
+  return { hook: raw, detail: '' };
+}
+
+function renderCardDescription(item, cardDescriptionStyle) {
+  if (!item.description && !item.descriptionShort) return '';
+  if (cardDescriptionStyle === 'hook-detail') {
+    const { hook, detail } = splitHookDetail(item);
+    if (!hook && !detail) return '';
+    return `${hook ? `<p class="card__hook">${esc(hook)}</p>` : ''}${
+      detail ? `<p class="card__desc">${esc(detail)}</p>` : ''
+    }`;
+  }
+  return item.description ? `<p class="card__desc">${esc(item.description)}</p>` : '';
+}
+
 function renderPriceHtml(item, menu) {
   const priceTag = (value, label, alt = false) => {
     const labelHtml = label ? ` <small>${esc(label)}</small>` : '';
@@ -575,7 +623,7 @@ function renderPriceHtml(item, menu) {
   return `<div class="price-tags">${priceTag(item.price, '')}</div>`;
 }
 
-function renderCard(item, badge, menu, cardClass = '') {
+function renderCard(item, badge, menu, cardClass = '', cardDescriptionStyle) {
   return `
           <article class="card${cardClass ? ` ${cardClass}` : ''}">
             <div class="card__media">
@@ -584,7 +632,7 @@ function renderCard(item, badge, menu, cardClass = '') {
             </div>
             <div class="card__body">
               <h3 class="card__name">${esc(item.name)}</h3>
-              ${item.description ? `<p class="card__desc">${esc(item.description)}</p>` : ''}
+              ${renderCardDescription(item, cardDescriptionStyle)}
               <div class="card__price">${renderPriceHtml(item, menu)}</div>
             </div>
           </article>`;
@@ -906,7 +954,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
       const { cat } = chapterContent(data, pageDef.cat);
       const body =
         renderFixedChapterHeader(pageDef, data, chapterMeta) +
-        renderFixedPageBody(data, data.meta, pageDef, starIds);
+        renderFixedPageBody(data, data.meta, pageDef, starIds, menuCfg);
       return `
     <section class="sheet">
       ${pageHeader(pageDisplayTitle(pageDef, cat))}
@@ -943,7 +991,7 @@ function buildFixedMenuHtml(menuCfg, data, info, qr) {
     <link rel="stylesheet" href="fontes/fontes.css" />
     <style>${css(menuCfg)}</style>
   </head>
-  <body>${cover}${toc}${content}${closing}
+  <body class="menu-gastronomia">${cover}${toc}${content}${closing}
   </body>
 </html>`;
 
@@ -1361,6 +1409,39 @@ function css(menuCfg) {
     }
     .grid--3 .card__desc { font-size: 6.8pt; line-height: 1.3; -webkit-line-clamp: 2; }
     .grid--4 .card__desc { font-size: 6.2pt; line-height: 1.24; -webkit-line-clamp: 1; }
+
+    /* Gastronomia — modelo 2: gancho + detalhe */
+    .menu-gastronomia .card__hook {
+      flex: 0 0 auto;
+      margin-top: 0.8mm;
+      font-size: 6.4pt;
+      font-weight: 600;
+      line-height: 1.16;
+      color: var(--ink);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 1;
+    }
+    .menu-gastronomia .grid--3 .card__hook { font-size: 6.6pt; }
+    .menu-gastronomia .grid--4 .card__hook { font-size: 6.2pt; }
+    .menu-gastronomia .grid--3 .card__desc { font-size: 6.5pt; line-height: 1.28; -webkit-line-clamp: 2; }
+    .menu-gastronomia .grid--4 .card__desc { font-size: 5.9pt; line-height: 1.28; -webkit-line-clamp: 2; }
+    .menu-gastronomia .grid--4 .card { height: 52mm; }
+    .menu-gastronomia .grid--4 .card__media { height: 28mm; }
+    .menu-gastronomia .grid--3 .card { height: 65mm; }
+    .menu-gastronomia .compact-item__hook {
+      margin-top: 0.4mm;
+      font-size: 6pt;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .menu-gastronomia .sheet__body--dense .compact-item__desc { display: none; }
     .menu-drinks .card--tall { height: 74mm; }
     .menu-drinks .card--tall .card__media { height: 48mm; }
     .menu-drinks .card--tall .card__name { font-size: 8.8pt; line-height: 1.16; }
