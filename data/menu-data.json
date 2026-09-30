@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.86-online",
+    "version": "1.1.87-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -339,7 +339,10 @@
         }
       ],
       "comboUpgrade": true,
-      "comboItemIds": ["combo-fritas-refri", "combo-fritas-acai"]
+      "comboItemIds": [
+        "combo-fritas-refri",
+        "combo-fritas-acai"
+      ]
     },
     {
       "id": "petiscos",
@@ -755,7 +758,11 @@
         {
           "id": "cafes",
           "name": "Cafés",
-          "itemIds": ["cappuccino-chantilly-m", "cafe-coado-m", "cafe-leite-m"]
+          "itemIds": [
+            "cappuccino-chantilly-m",
+            "cafe-coado-m",
+            "cafe-leite-m"
+          ]
         }
       ],
       "items": [
