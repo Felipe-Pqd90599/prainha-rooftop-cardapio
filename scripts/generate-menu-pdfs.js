@@ -577,9 +577,17 @@ function renderPriceHtml(item, menu) {
   return `<div class="price-tags">${priceTag(item.price, '')}</div>`;
 }
 
+function cardExtraClasses(item, cardClass = '') {
+  const extra = [];
+  if (cardClass) extra.push(cardClass);
+  if (item.portionOptions?.length) extra.push('card--portion-prices');
+  return extra.join(' ');
+}
+
 function renderCard(item, badge, menu, cardClass = '') {
+  const classes = cardExtraClasses(item, cardClass);
   return `
-          <article class="card${cardClass ? ` ${cardClass}` : ''}">
+          <article class="card${classes ? ` ${classes}` : ''}">
             <div class="card__media">
               <img src="img/card-${esc(item.id)}.jpg" alt="" />
               ${badge ? `<span class="card__badge">${esc(badge)}</span>` : ''}
@@ -1380,6 +1388,31 @@ function css(menuCfg) {
       -webkit-box-orient: unset;
     }
     .menu-gastronomia .sheet__body--dense .compact-item__desc { display: block; }
+    /* Petisco com porções (300g / 500g / 1kg): mais altura e preços compactos */
+    .menu-gastronomia .grid--4 .card.card--portion-prices {
+      height: 57mm;
+    }
+    .menu-gastronomia .grid--4 .card.card--portion-prices .card__media {
+      height: 27mm;
+    }
+    .menu-gastronomia .grid--4 .card.card--portion-prices .card__desc {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      font-size: 5.9pt;
+      line-height: 1.22;
+    }
+    .menu-gastronomia .grid--4 .card.card--portion-prices .price-tags {
+      gap: 0.5mm;
+    }
+    .menu-gastronomia .grid--4 .card.card--portion-prices .price-tag {
+      font-size: 6pt;
+      padding: 0.4mm 0.85mm;
+    }
+    .menu-gastronomia .grid--4 .card.card--portion-prices .price-tag small {
+      font-size: 4.8pt;
+    }
     .menu-drinks .card--tall { height: 74mm; }
     .menu-drinks .card--tall .card__media { height: 48mm; }
     .menu-drinks .card--tall .card__name { font-size: 8.8pt; line-height: 1.16; }

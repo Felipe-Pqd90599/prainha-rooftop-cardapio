@@ -165,7 +165,7 @@
         {
           "type": "compact",
           "cols": 2,
-          "ids": ["cartola", "beijinho", "romeu-julieta", "frutas-chocolate"]
+          "ids": ["cartola", "romeu-julieta", "frutas-chocolate"]
         },
         { "type": "group", "name": "Cafés" },
         {
