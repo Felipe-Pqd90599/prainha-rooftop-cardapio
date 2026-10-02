@@ -11,6 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const Jimp = require('jimp');
 const puppeteer = require('puppeteer-core');
+const QRCode = require('qrcode');
 
 const ROOT = path.resolve(__dirname, '..');
 const FOTOS = path.join(ROOT, 'assets/fotos');
@@ -196,47 +197,67 @@ function wifiQrPayload(wifi) {
   return `WIFI:T:WPA;S:${ssid};P:${escapeWifiField(wifi.password)};;`;
 }
 
-async function ensureQrImage(name, data, { force = false } = {}) {
-  const dest = path.join(QRDIR, name);
-  if (!force && fs.existsSync(dest)) return fs.existsSync(dest);
+function menuQrUrl(info) {
+  const raw = String(info.site?.githubPages || '').trim();
+  if (!raw) return raw;
   try {
-    await download(
-      `https://api.qrserver.com/v1/create-qr-code/?size=520x520&margin=8&format=png&data=${encodeURIComponent(data)}`,
-      dest,
-    );
-    return true;
-  } catch (err) {
-    console.warn(`qr ${name}: falhou —`, err.message);
-    return fs.existsSync(dest);
+    const u = new URL(raw);
+    u.hostname = u.hostname.toLowerCase();
+    return u.toString();
+  } catch {
+    return raw;
   }
 }
 
-/** QR do WhatsApp, cardápio online e Wi-Fi (gerados iguais, 520×520 PNG). */
+/** Mapa nome do arquivo → payload (regenera tudo se qualquer dado mudar). */
+function qrSourceMap(info) {
+  const map = {
+    'whatsapp.png': `https://wa.me/${info.contact.whatsapp}`,
+    'cardapio.png': menuQrUrl(info),
+  };
+  const wifiPayload = wifiQrPayload(info.wifi);
+  if (wifiPayload) map['wifi.png'] = wifiPayload;
+  return map;
+}
+
+async function ensureQrImage(name, data) {
+  const dest = path.join(QRDIR, name);
+  try {
+    await QRCode.toFile(dest, data, {
+      type: 'png',
+      width: 600,
+      margin: 2,
+      errorCorrectionLevel: 'H',
+      color: { dark: '#000000', light: '#FFFFFF' },
+    });
+    return true;
+  } catch (err) {
+    console.warn(`qr ${name}: falhou —`, err.message);
+    return false;
+  }
+}
+
+/** QR do WhatsApp, cardápio online e Wi-Fi (PNG 600×600, ECC alto). */
 async function ensureQr(info) {
   fs.mkdirSync(QRDIR, { recursive: true });
-  const targets = [
-    ['whatsapp.png', `https://wa.me/${info.contact.whatsapp}`],
-    ['cardapio.png', info.site.githubPages],
-  ];
+  const sources = qrSourceMap(info);
+  const stampPath = path.join(QRDIR, 'sources.json');
+  const stamp = `${JSON.stringify(sources, null, 2)}\n`;
+  const missing = Object.keys(sources).some((name) => !fs.existsSync(path.join(QRDIR, name)));
+  const stale = missing || !fs.existsSync(stampPath) || fs.readFileSync(stampPath, 'utf8') !== stamp;
+
   const ok = {};
-  for (const [name, data] of targets) {
-    ok[name] = await ensureQrImage(name, data);
-  }
-
-  const wifiPayload = wifiQrPayload(info.wifi);
-  if (wifiPayload) {
-    const stampPath = path.join(QRDIR, 'wifi.payload.txt');
-    const stale =
-      !fs.existsSync(stampPath) ||
-      fs.readFileSync(stampPath, 'utf8') !== wifiPayload ||
-      !fs.existsSync(path.join(QRDIR, 'wifi.png'));
-    if (stale) {
-      const saved = await ensureQrImage('wifi.png', wifiPayload, { force: true });
-      if (saved) fs.writeFileSync(stampPath, wifiPayload);
+  if (stale) {
+    for (const [name, data] of Object.entries(sources)) {
+      ok[name] = await ensureQrImage(name, data);
     }
-    ok['wifi.png'] = fs.existsSync(path.join(QRDIR, 'wifi.png'));
+    if (Object.values(ok).every(Boolean)) fs.writeFileSync(stampPath, stamp);
+    else console.warn('qr: alguns códigos não foram gerados — confira rede e assets/qr/');
+  } else {
+    for (const name of Object.keys(sources)) {
+      ok[name] = fs.existsSync(path.join(QRDIR, name));
+    }
   }
-
   return ok;
 }
 
@@ -276,16 +297,13 @@ async function prepareImages(cardIds, chapterIds, qr, menu) {
 
   fs.copyFileSync(path.join(FOTOS, 'capa-prainha-rooftop.jpg'), path.join(imgDir, 'capa.jpg'));
 
-  const qrPx = 520;
   for (const name of Object.keys(qr)) {
     if (!qr[name]) continue;
     const src = path.join(QRDIR, name);
     const dest = path.join(imgDir, name);
+    if (!fs.existsSync(src)) continue;
     if (!shouldRefresh(src, dest)) continue;
-    const image = await Jimp.read(src);
-    image.cover(qrPx, qrPx);
-    if (name.endsWith('.png')) await image.writeAsync(dest);
-    else await image.quality(92).writeAsync(dest);
+    fs.copyFileSync(src, dest);
   }
   console.log(`imagens: ${cardIds.length} cards + ${chapterIds.length} capítulos`);
 }
@@ -1230,13 +1248,13 @@ function css(menuCfg) {
 
     .qr { display: flex; align-items: center; gap: 3mm; }
     .qr img {
-      width: 22mm;
-      height: 22mm;
+      width: 24mm;
+      height: 24mm;
       border: 0.2mm solid var(--line);
       background: #fff;
-      padding: 1mm;
+      padding: 1.2mm;
       border-radius: 1.2mm;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       display: block;
       flex-shrink: 0;
@@ -1606,7 +1624,7 @@ function css(menuCfg) {
     .closing__tagline { margin-top: 7mm; font-size: 10.5pt; font-weight: 300; line-height: 1.6; color: #4C6670; max-width: 130mm; }
     .closing__qrs { margin-top: 10mm; display: flex; flex-direction: column; gap: 7mm; }
     .closing__qr-group { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 7mm 9mm; }
-    .closing__qr-group .qr img { width: 20mm; height: 20mm; }
+    .closing__qr-group .qr img { width: 23mm; height: 23mm; }
     .closing__contact {
       font-family: Oswald, sans-serif;
       font-size: 11pt;

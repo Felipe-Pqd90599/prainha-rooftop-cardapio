@@ -25,6 +25,7 @@
   "devDependencies": {
     "jimp": "^0.22.12",
     "pdf-to-png-converter": "^4.2.0",
-    "puppeteer-core": "^21.11.0"
+    "puppeteer-core": "^21.11.0",
+    "qrcode": "^1.5.4"
   }
 }

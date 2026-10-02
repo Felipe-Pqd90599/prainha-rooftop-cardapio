@@ -6,19 +6,19 @@ Cardápio online + PDF com **fonte única de dados** em `data/menu-data.json`.
 
 | | |
 |---|---|
-| **Site principal (escuro)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/ |
-| **Site 21st (claro)** | https://Felipe-Pqd90599.github.io/prainha-rooftop-cardapio/21st/ |
+| **Site principal (escuro)** | https://felipe-pqd90599.github.io/prainha-rooftop-cardapio/ |
+| **Site 21st (claro)** | https://felipe-pqd90599.github.io/prainha-rooftop-cardapio/21st/ |
 | **Repositório** | https://github.com/Felipe-Pqd90599/prainha-rooftop-cardapio |
 | **Instagram** | [@prainharooftop](https://instagram.com/prainharooftop) |
 
 ## Status do cardápio
 
-_Métricas atualizadas automaticamente em 2026-10-02 20:19._
+_Métricas atualizadas automaticamente em 2026-10-02 20:50._
 
 - **167** itens em **18** categorias
 - **167** fotos em `assets/fotos/` (completo)
-- PDFs do site: Gastronomia `online/cardapio-prainha-rooftop-gastronomia.pdf` (6.86 MB) · Drinks `online/cardapio-prainha-rooftop-drinks.pdf` (3.44 MB)
-- Versão dos dados: `1.1.94-online`
+- PDFs do site: Gastronomia `online/cardapio-prainha-rooftop-gastronomia.pdf` (6.88 MB) · Drinks `online/cardapio-prainha-rooftop-drinks.pdf` (3.45 MB)
+- Versão dos dados: `1.1.95-online`
 
 ## Estrutura
 
