@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.93-online",
+    "version": "1.1.94-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -208,7 +208,7 @@
           "name": "Mistão Família (4 pessoas)",
           "price": 159,
           "image": "mista-familia.jpg",
-          "description": "Carne, camarão alho e óleo e calabresa acebolada. Acompanha arroz, feijão e farofa da casa"
+          "description": "Carne, camarão alho e óleo e calabresa acebolada. Acompanha arroz, feijão, fritas (batata ou macaxeira) e farofa da casa"
         },
         {
           "id": "sertanejo-prainha",
@@ -618,12 +618,14 @@
           "id": "camarao-entrada",
           "name": "Camarão",
           "price": 26,
+          "description": "Caldo cremoso de camarão",
           "image": "camarao-entrada.jpg"
         },
         {
           "id": "peixe-entrada",
           "name": "Peixe",
           "price": 24,
+          "description": "Caldo de peixe com legumes",
           "image": "peixe-entrada.jpg"
         },
         {
@@ -651,6 +653,7 @@
           "id": "caldo-feijao",
           "name": "Caldo de Feijão",
           "price": 13,
+          "description": "Caldo de feijão caseiro",
           "image": "caldo-feijao.jpg"
         },
         {
@@ -699,6 +702,7 @@
           "id": "penne-pomodoro",
           "name": "Penne ao Molho Pomodoro",
           "price": 34,
+          "description": "Penne ao molho pomodoro com manjericão",
           "image": "penne-pomodoro.jpg"
         },
         {
@@ -812,18 +816,21 @@
           "id": "cappuccino-chantilly-m",
           "name": "Cappuccino com Chantilly M",
           "price": 12,
+          "description": "Cappuccino cremoso com chantilly",
           "image": "cappuccino-chantilly-m.jpg"
         },
         {
           "id": "cafe-coado-m",
           "name": "Café Coado M",
           "price": 5,
+          "description": "Café coado na hora",
           "image": "cafe-coado-m.jpg"
         },
         {
           "id": "cafe-leite-m",
           "name": "Café com Leite M",
           "price": 7,
+          "description": "Café com leite",
           "image": "cafe-leite-m.jpg"
         }
       ]
@@ -842,6 +849,7 @@
           "name": "Suco Tradicional",
           "price": 12,
           "priceSecondary": 24,
+          "description": "Suco natural de um sabor — copo ou jarra",
           "image": "suco-tradicional.jpg"
         },
         {
@@ -877,18 +885,21 @@
           "id": "cajuina-litro",
           "name": "Cajuína Litro",
           "price": 15,
+          "description": "Cajuína gelada — garrafa litro",
           "image": "cajuina-litro.jpg"
         },
         {
           "id": "agua-sem-gas",
           "name": "Água sem Gás",
           "price": 5,
+          "description": "Água mineral sem gás",
           "image": "agua-sem-gas.jpg"
         },
         {
           "id": "agua-com-gas",
           "name": "Água com Gás",
           "price": 7,
+          "description": "Água mineral com gás",
           "image": "agua-com-gas.jpg"
         },
         {
@@ -902,6 +913,7 @@
           "id": "agua-tonica",
           "name": "Água Tônica ou Schweppes Citrus",
           "price": 8,
+          "description": "Água tônica ou Schweppes Citrus",
           "image": "agua-tonica.jpg"
         },
         {
@@ -922,6 +934,7 @@
           "id": "h2o",
           "name": "H2O",
           "price": 9,
+          "description": "H2O limoneto ou limão",
           "image": "h2o.jpg"
         }
       ]
@@ -1399,60 +1412,70 @@
           "id": "feijao-ind",
           "name": "Feijão Porção Ind",
           "price": 10,
+          "description": "Porção individual de feijão",
           "image": "feijao-ind.jpg"
         },
         {
           "id": "arroz-ind",
           "name": "Arroz Porção Ind",
           "price": 8,
+          "description": "Porção individual de arroz",
           "image": "arroz-ind.jpg"
         },
         {
           "id": "ovo-unid",
           "name": "Ovo Unid",
           "price": 3,
+          "description": "Ovo avulso",
           "image": "ovo-unid.jpg"
         },
         {
           "id": "leite",
           "name": "Leite",
           "price": 4,
+          "description": "Leite",
           "image": "leite.jpg"
         },
         {
           "id": "carne-130g",
           "name": "Carne 130g",
           "price": 15,
+          "description": "Porção extra de carne — 130g",
           "image": "carne-130g.jpg"
         },
         {
           "id": "frango-130g",
           "name": "Frango 130g",
           "price": 12,
+          "description": "Porção extra de frango — 130g",
           "image": "frango-130g.jpg"
         },
         {
           "id": "calabresa-130g",
           "name": "Calabresa 130g",
           "price": 12,
+          "description": "Porção extra de calabresa — 130g",
           "image": "calabresa-130g.jpg"
         },
         {
           "id": "peixe-posta",
           "name": "Peixe Posta Unid",
           "price": 15,
+          "description": "Posta de peixe avulsa",
           "image": "peixe-posta.jpg"
         },
         {
           "id": "camarao-130g",
           "name": "Camarão 130g",
           "price": 22,
+          "description": "Porção extra de camarão — 130g",
           "image": "camarao-130g.jpg"
         },
         {
           "id": "embalagem",
           "name": "Embalagem Unid",
           "price": 3,
+          "description": "Embalagem para viagem",
           "image": "embalagem.jpg"
         }
       ]

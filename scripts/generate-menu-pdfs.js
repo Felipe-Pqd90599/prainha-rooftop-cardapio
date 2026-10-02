@@ -1372,14 +1372,27 @@ function css(menuCfg) {
       color: var(--accent-dark);
       font-weight: 400;
     }
-    .menu-gastronomia .card__desc,
-    .menu-gastronomia .compact-item__desc {
+    .menu-gastronomia .card__desc {
       display: block;
       overflow: visible;
       -webkit-line-clamp: unset;
       -webkit-box-orient: unset;
     }
-    .menu-gastronomia .sheet__body--dense .compact-item__desc { display: block; }
+    .menu-gastronomia .grid--3 .card__desc {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 3;
+    }
+    .menu-gastronomia .compact-item__desc {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+    }
+    .menu-gastronomia .sheet__body--dense .compact-item__desc {
+      display: -webkit-box;
+    }
     .menu-drinks .card--tall { height: 74mm; }
     .menu-drinks .card--tall .card__media { height: 48mm; }
     .menu-drinks .card--tall .card__name { font-size: 8.8pt; line-height: 1.16; }
