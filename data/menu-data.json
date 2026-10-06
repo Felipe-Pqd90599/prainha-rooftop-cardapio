@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.96-online",
+    "version": "1.1.97-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -521,6 +521,13 @@
           "description": "Coco ralado e leite de coco"
         },
         {
+          "id": "tapioca-frutas-chocolate",
+          "name": "Tapioca de Frutas com Chocolate",
+          "price": 24,
+          "description": "Morango, calda de chocolate e leite condensado",
+          "image": "tapioca-frutas-chocolate.jpg"
+        },
+        {
           "id": "cuscuz-carne-sol-coalho",
           "name": "Cuscuz de Carne de Sol com Coalho",
           "price": 26,
@@ -582,7 +589,8 @@
             "creme-frango-cubos",
             "calabresa-mucarela",
             "ovos-mucarela",
-            "coco-leite-coco"
+            "coco-leite-coco",
+            "tapioca-frutas-chocolate"
           ]
         },
         {
