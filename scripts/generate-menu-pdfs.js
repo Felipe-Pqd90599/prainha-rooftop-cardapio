@@ -267,6 +267,26 @@ function cardPhotoFile(menu, itemId) {
   return item?.image || `${itemId}.jpg`;
 }
 
+function loadPdfCardFraming() {
+  const file = path.join(ROOT, 'data/pdf-card-framing.json');
+  if (!fs.existsSync(file)) return { card: {}, cap: {} };
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  return { card: raw.card || {}, cap: raw.cap || {} };
+}
+
+/** object-fit: cover com ponto focal (0–1). */
+function coverFocus(img, w, h, focusX = 0.5, focusY = 0.5) {
+  const iw = img.bitmap.width;
+  const ih = img.bitmap.height;
+  const scale = Math.max(w / iw, h / ih);
+  const nw = Math.round(iw * scale);
+  const nh = Math.round(ih * scale);
+  img.resize(nw, nh);
+  const x = Math.max(0, Math.min(Math.round(focusX * nw - w / 2), nw - w));
+  const y = Math.max(0, Math.min(Math.round(focusY * nh - h / 2), nh - h));
+  return img.crop(x, y, w, h);
+}
+
 async function prepareImages(cardIds, chapterIds, qr, menu) {
   const imgDir = path.join(BUILD, 'img');
   fs.mkdirSync(imgDir, { recursive: true });
@@ -277,12 +297,18 @@ async function prepareImages(cardIds, chapterIds, qr, menu) {
     return fs.statSync(srcPath).mtimeMs > fs.statSync(destPath).mtimeMs;
   };
 
+  const framing = loadPdfCardFraming();
+
   for (const id of cardIds) {
     const src = path.join(FOTOS, cardPhotoFile(menu, id));
     const dest = path.join(imgDir, `card-${id}.jpg`);
     if (!shouldRefresh(src, dest)) continue;
-    const img = await Jimp.read(src);
-    img.cover(600, 430).quality(74);
+    let img = await Jimp.read(src);
+    const focus = framing.card[id];
+    img = focus
+      ? coverFocus(img, 600, 430, focus.focusX ?? 0.5, focus.focusY ?? 0.5)
+      : img.cover(600, 430);
+    img.quality(74);
     await img.writeAsync(dest);
   }
 
@@ -290,8 +316,12 @@ async function prepareImages(cardIds, chapterIds, qr, menu) {
     const src = path.join(FOTOS, `${id}.jpg`);
     const dest = path.join(imgDir, `cap-${id}.jpg`);
     if (!shouldRefresh(src, dest)) continue;
-    const img = await Jimp.read(src);
-    img.cover(560, 370).quality(78);
+    let img = await Jimp.read(src);
+    const focus = framing.cap[id];
+    img = focus
+      ? coverFocus(img, 560, 370, focus.focusX ?? 0.5, focus.focusY ?? 0.5)
+      : img.cover(560, 370);
+    img.quality(78);
     await img.writeAsync(dest);
   }
 

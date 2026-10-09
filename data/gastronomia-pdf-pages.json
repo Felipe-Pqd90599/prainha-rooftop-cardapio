@@ -56,8 +56,13 @@
         { "type": "group", "name": "Tapiocas" },
         {
           "type": "grid",
-          "cols": 3,
-          "ids": ["carne-sol-coalho", "files-camarao-queijo", "filezinhos-carne-molho"]
+          "cols": 4,
+          "ids": [
+            "carne-sol-coalho",
+            "files-camarao-queijo",
+            "filezinhos-carne-molho",
+            "tapioca-frutas-chocolate"
+          ]
         },
         {
           "type": "compact",
@@ -66,8 +71,7 @@
             "creme-frango-cubos",
             "calabresa-mucarela",
             "ovos-mucarela",
-            "coco-leite-coco",
-            "tapioca-frutas-chocolate"
+            "coco-leite-coco"
           ]
         },
         { "type": "group", "name": "Cuscuz" },
