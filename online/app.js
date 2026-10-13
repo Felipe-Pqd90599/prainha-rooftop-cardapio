@@ -543,7 +543,7 @@ function renderItem(item, meta, options = {}) {
 
   return `
     <article
-      class="item${hasPortions ? ' item--has-portions' : ''}${showCombo ? ' item--has-combo' : ''}${isComboCard ? ' item--combo-card' : ''}"
+      class="item${hasPortions ? ' item--has-portions' : ''}${showCombo ? ' item--has-combo' : ''}${isComboCard ? ' item--combo-card' : ''}${['drinks-autorais', 'drinks-tradicionais'].includes(category?.id) ? ' item--drink-portrait' : ''}"
       data-id="${item.id}"
       role="button"
       tabindex="0"

@@ -17,7 +17,8 @@ async function main() {
   const executablePath = CHROME_PATHS.find((p) => fs.existsSync(p));
   if (!executablePath) throw new Error('Chrome/Edge não encontrado');
 
-  const htmlPath = path.join(ROOT, 'output/pdf-build/gastronomia.html');
+  const htmlName = process.argv[4] || 'gastronomia';
+  const htmlPath = path.join(ROOT, 'output/pdf-build', `${htmlName}.html`);
   const outPath = path.join(ROOT, 'assets/referencias/pages', outName);
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
 

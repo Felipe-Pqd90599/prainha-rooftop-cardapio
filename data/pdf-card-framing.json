@@ -1,6 +1,7 @@
 {
   "card": {
-    "tapioca-frutas-chocolate": { "focusX": 0.48, "focusY": 0.52 }
+    "tapioca-frutas-chocolate": { "focusX": 0.48, "focusY": 0.52 },
+    "whisky-tropical": { "focusX": 0.5, "focusY": 0.58 }
   },
   "cap": {}
 }

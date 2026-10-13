@@ -85,7 +85,15 @@ const MENUS = [
     pdfExtrasFile: 'data/drinks-pdf-extras.json',
     cervejasFixedPageFile: 'data/drinks-pdf-pages.json',
     chapters: [
-      { cat: 'drinks-autorais', cols: 3, photo: 'caipi-prainha', lead: 'Criações da casa, só daqui', star: true, tallCards: true },
+      {
+        cat: 'drinks-autorais',
+        cols: 3,
+        photo: 'caipi-prainha',
+        lead: 'Criações da casa, só daqui',
+        star: true,
+        tallCards: true,
+        dense: true,
+      },
     ],
   },
 ];
@@ -274,6 +282,15 @@ function loadPdfCardFraming() {
   return { card: raw.card || {}, cap: raw.cap || {} };
 }
 
+/** Encaixa a foto inteira em w×h (sem cortar o copo), com fundo desfocado. */
+function containOnCanvas(src, w, h) {
+  const bg = src.clone().cover(w, h).blur(22).brightness(-0.04);
+  const fitted = src.clone().scaleToFit(w, h);
+  const x = Math.round((w - fitted.bitmap.width) / 2);
+  const y = Math.round((h - fitted.bitmap.height) / 2);
+  return bg.composite(fitted, x, y);
+}
+
 /** object-fit: cover com ponto focal (0–1). */
 function coverFocus(img, w, h, focusX = 0.5, focusY = 0.5) {
   const iw = img.bitmap.width;
@@ -287,6 +304,22 @@ function coverFocus(img, w, h, focusX = 0.5, focusY = 0.5) {
   return img.crop(x, y, w, h);
 }
 
+function drinkPortraitCardIds(menu) {
+  const ids = new Set();
+  for (const catId of ['drinks-autorais', 'drinks-tradicionais']) {
+    const cat = menu.categories.find((c) => c.id === catId);
+    for (const item of cat?.items || []) ids.add(item.id);
+  }
+  return ids;
+}
+
+/** Tamanho do JPEG do card: mesma proporção da caixa no PDF, para não cortar o copo. */
+function drinkPortraitSize(id, menu) {
+  const aut = menu.categories.find((c) => c.id === 'drinks-autorais');
+  if ((aut?.items || []).some((i) => i.id === id)) return { w: 600, h: 630 };
+  return { w: 600, h: 780 };
+}
+
 async function prepareImages(cardIds, chapterIds, qr, menu) {
   const imgDir = path.join(BUILD, 'img');
   fs.mkdirSync(imgDir, { recursive: true });
@@ -298,16 +331,26 @@ async function prepareImages(cardIds, chapterIds, qr, menu) {
   };
 
   const framing = loadPdfCardFraming();
+  const portraitIds = drinkPortraitCardIds(menu);
 
   for (const id of cardIds) {
     const src = path.join(FOTOS, cardPhotoFile(menu, id));
     const dest = path.join(imgDir, `card-${id}.jpg`);
+    const portrait = portraitIds.has(id);
+    const size = portrait ? drinkPortraitSize(id, menu) : { w: 600, h: 430 };
+    const w = size.w;
+    const h = size.h;
     if (!shouldRefresh(src, dest)) continue;
     let img = await Jimp.read(src);
     const focus = framing.card[id];
-    img = focus
-      ? coverFocus(img, 600, 430, focus.focusX ?? 0.5, focus.focusY ?? 0.5)
-      : img.cover(600, 430);
+    if (portrait) {
+      // Cover na proporção da caixa do PDF: foto 4:3 em card mais alto corta as laterais, não a base do copo.
+      img = coverFocus(img, w, h, focus?.focusX ?? 0.5, focus?.focusY ?? 0.5);
+    } else if (focus) {
+      img = coverFocus(img, w, h, focus.focusX ?? 0.5, focus.focusY ?? 0.5);
+    } else {
+      img = img.cover(w, h);
+    }
     img.quality(74);
     await img.writeAsync(dest);
   }
@@ -533,7 +576,12 @@ function chapterContent(menu, catId) {
 function buildBlocks(chapters) {
   const blocks = [];
   for (const chapter of chapters) {
-    blocks.push({ type: 'chapter', chapter, height: LAYOUT.chapterH, gapBefore: LAYOUT.gapChapter });
+    blocks.push({
+      type: 'chapter',
+      chapter,
+      height: chapter.dense ? 16 : LAYOUT.chapterH,
+      gapBefore: LAYOUT.gapChapter,
+    });
     if (chapter.items.length === 1 && !chapter.forceGrid) {
       blocks.push({
         type: 'feature',
@@ -555,7 +603,7 @@ function buildBlocks(chapters) {
           chapter,
           cols: chapter.cols,
           items: group.items.slice(i, i + chapter.cols),
-          height: cfg.cardH,
+          height: chapter.tallCards ? 79 : cfg.cardH,
           gapBefore: cfg.rowGap,
         });
       }
@@ -653,6 +701,16 @@ function renderFeature(item, menu) {
 }
 
 function renderChapter(chapter) {
+  if (chapter.dense) {
+    return `
+        <header class="chapter chapter--dense">
+          <div class="chapter__text">
+            <p class="chapter__num">${pad2(chapter.number)} — ${chapter.items.length} itens</p>
+            <h2 class="chapter__title">${esc(chapter.cat.name)}</h2>
+            <p class="chapter__lead">${esc(chapter.lead)}</p>
+          </div>
+        </header>`;
+  }
   return `
         <header class="chapter">
           <img class="chapter__photo" src="img/cap-${esc(chapter.photo)}.jpg" alt="" />
@@ -1441,10 +1499,13 @@ function css(menuCfg) {
     .menu-gastronomia .sheet__body--dense .compact-item__desc {
       display: -webkit-box;
     }
-    .menu-drinks .card--tall { height: 74mm; }
-    .menu-drinks .card--tall .card__media { height: 48mm; }
+    .menu-drinks .card--tall { height: 79mm; }
+    .menu-drinks .card--tall .card__media { height: 62mm; }
+    .menu-drinks .card--tall .card__media img { object-fit: cover; object-position: 50% 50%; }
     .menu-drinks .card--tall .card__name { font-size: 8.8pt; line-height: 1.16; }
-    .menu-drinks .card--tall .card__desc { font-size: 7pt; line-height: 1.32; -webkit-line-clamp: 3; }
+    .menu-drinks .card--tall .card__desc { font-size: 7pt; line-height: 1.32; -webkit-line-clamp: 2; }
+    .menu-drinks .grid--4 .card--tall { height: 76mm; }
+    .menu-drinks .grid--4 .card--tall .card__media { height: 56mm; }
     .card__price {
       flex: 0 0 auto;
       margin-top: auto;
