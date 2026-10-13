@@ -1,4 +1,6 @@
 {
-  "card": {},
+  "card": {
+    "tapioca-frutas-chocolate": { "focusX": 0.48, "focusY": 0.52 }
+  },
   "cap": {}
 }
