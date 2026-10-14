@@ -1,6 +1,34 @@
 {
   "pages": [
     {
+      "cat": "drinks-autorais",
+      "photo": "caipi-prainha",
+      "lead": "Criações da casa, só daqui",
+      "dense": true,
+      "star": true,
+      "blocks": [
+        {
+          "type": "grid",
+          "cols": 3,
+          "tallCards": true,
+          "centerRow": true,
+          "ids": ["prainha-blue", "gim-nevado"]
+        },
+        {
+          "type": "grid",
+          "cols": 3,
+          "tallCards": true,
+          "ids": ["penicillin-prainha", "caipi-prainha", "whisky-tropical"]
+        },
+        {
+          "type": "grid",
+          "cols": 3,
+          "tallCards": true,
+          "ids": ["mojito-abacaxi", "coffee-drink", "bombeirinho"]
+        }
+      ]
+    },
+    {
       "cat": "drinks-tradicionais",
       "photo": "caipifruta",
       "lead": "Os clássicos que nunca falham",

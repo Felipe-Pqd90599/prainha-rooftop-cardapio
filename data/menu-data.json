@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.108-online",
+    "version": "1.1.109-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -965,12 +965,29 @@
           "priceSecondary": 38
         },
         {
-          "id": "coffee-drink",
-          "name": "Coffee Drink",
+          "id": "gim-nevado",
+          "name": "Gim Nevado",
           "price": 30,
-          "description": "Vodka, leite condensado, café, leite de coco, abacaxi, chantilly e gelo",
-          "image": "coffee-drink.jpg",
+          "description": "Curaçau blue, leite condensado, gim nacional, chantilly e gelo",
+          "image": "gim-nevado.jpg",
           "priceSecondary": 36
+        },
+        {
+          "id": "penicillin-prainha",
+          "name": "Penicillin do Prainha",
+          "price": 32,
+          "description": "Whisky, gengibre, mel, limão siciliano e espuma de gengibre",
+          "image": "penicillin-prainha.jpg",
+          "priceSecondary": 38,
+          "priceSecondaryLabel": "Whisky 12 anos"
+        },
+        {
+          "id": "caipi-prainha",
+          "name": "Caipi do Prainha",
+          "price": 29,
+          "description": "Vodka ou cachaça, morango, kiwi, abacaxi, açúcar e gelo",
+          "image": "caipi-prainha.jpg",
+          "priceSecondary": 35
         },
         {
           "id": "whisky-tropical",
@@ -982,37 +999,28 @@
           "priceSecondaryLabel": "Whisky 12 anos"
         },
         {
-          "id": "penicillin-prainha",
-          "name": "Penicillin do Prainha",
-          "price": 32,
-          "description": "Whisky 12 anos, gengibre, mel, limão siciliano e espuma de gengibre",
-          "image": "penicillin-prainha.jpg",
-          "priceSecondary": 38,
-          "priceSecondaryLabel": "Whisky 12 anos"
-        },
-        {
-          "id": "gim-nevado",
-          "name": "Gim Nevado",
-          "price": 30,
-          "description": "Curaçau blue, leite condensado, gim nacional, chantilly e gelo",
-          "image": "gim-nevado.jpg",
-          "priceSecondary": 36
-        },
-        {
-          "id": "caipi-prainha",
-          "name": "Caipi do Prainha",
-          "price": 29,
-          "description": "Vodka ou cachaça, morango, kiwi, abacaxi, açúcar e gelo",
-          "image": "caipi-prainha.jpg",
-          "priceSecondary": 35
-        },
-        {
           "id": "mojito-abacaxi",
           "name": "Mojito de Abacaxi",
           "price": 28,
           "description": "Rum, abacaxi, hortelã, refri de limão, açúcar e gelo",
           "image": "mojito-abacaxi.jpg",
           "priceSecondary": 34
+        },
+        {
+          "id": "coffee-drink",
+          "name": "Coffee Drink",
+          "price": 30,
+          "description": "Vodka, leite condensado, café, leite de coco, abacaxi, chantilly e gelo",
+          "image": "coffee-drink.jpg",
+          "priceSecondary": 36
+        },
+        {
+          "id": "bombeirinho",
+          "name": "Bombeirinho",
+          "price": 20,
+          "description": "Cachaça, limão e groselha",
+          "image": "bombeirinho.jpg",
+          "priceSecondary": 26
         }
       ]
     },

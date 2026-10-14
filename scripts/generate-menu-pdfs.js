@@ -806,6 +806,7 @@ function renderDrinksFixedSheet(pageDef, menu, meta, pageNumber, starIds, chapte
     pageDef.bodyDense ? 'sheet__body--dense-grid' : '',
     pageDef.tightGrid ? 'sheet__body--tight-grid' : '',
     pageDef.cat === 'drinks-tradicionais' ? 'sheet__body--tradicionais' : '',
+    pageDef.cat === 'drinks-autorais' ? 'sheet__body--autorais' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -842,6 +843,7 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
   const autDef = menuCfg.chapters.find((ch) => ch.cat === 'drinks-autorais');
   const autorais = resolveChapter(autDef, 0);
   const fixedPages = loadFixedPages(menuCfg.cervejasFixedPageFile);
+  const autoraisInFixed = fixedPages.some((p) => p.cat === 'drinks-autorais');
   const tradicionaisMeta = chapterContent(menu, 'drinks-tradicionais');
   const cervejasMeta = chapterContent(menu, 'cervejas');
   const dosesMeta = chapterContent(menu, 'doses-litros');
@@ -851,13 +853,18 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
   if (autorais.star && autorais.items[0]) starIds.add(autorais.items[0].id);
 
   let pageNum = firstContentPage;
-  const pAut = paginate(buildBlocks([autorais]), { pageBreakBeforeChapter: true });
-  let content = renderFlowContentPages(pAut, menuCfg, menu, starIds, pageNum);
-  pageNum += pAut.length;
+  let content = '';
+  let pAutLen = 0;
+  if (!autoraisInFixed) {
+    const pAut = paginate(buildBlocks([autorais]), { pageBreakBeforeChapter: true });
+    content = renderFlowContentPages(pAut, menuCfg, menu, starIds, pageNum);
+    pAutLen = pAut.length;
+    pageNum += pAutLen;
+  }
 
   const catChapterNum = new Map();
   const fixedStartByCat = new Map();
-  const nextFixedChapter = { value: 2 };
+  const nextFixedChapter = { value: autoraisInFixed ? 1 : 2 };
   for (const pageDef of fixedPages) {
     if (!fixedStartByCat.has(pageDef.cat)) fixedStartByCat.set(pageDef.cat, pageNum);
     const chapterNumber = assignDrinksFixedChapterNumber(pageDef, catChapterNum, nextFixedChapter);
@@ -913,25 +920,25 @@ function buildDrinksMenuHtml(menuCfg, data, info, qr) {
     {
       cat: tradicionaisMeta.cat,
       items: tradicionaisMeta.items,
-      startPage: fixedStartByCat.get('drinks-tradicionais') || firstContentPage + pAut.length,
+      startPage: fixedStartByCat.get('drinks-tradicionais') || firstContentPage + pAutLen,
       number: catChapterNum.get('drinks-tradicionais') || 2,
     },
     {
       cat: cervejasMeta.cat,
       items: cervejasMeta.items,
-      startPage: fixedStartByCat.get('cervejas') || firstContentPage + pAut.length,
+      startPage: fixedStartByCat.get('cervejas') || firstContentPage + pAutLen,
       number: catChapterNum.get('cervejas') || 3,
     },
     {
       cat: dosesMeta.cat,
       items: [...dosesMeta.items, ...comboItems],
-      startPage: fixedStartByCat.get('doses-litros') || firstContentPage + pAut.length,
+      startPage: fixedStartByCat.get('doses-litros') || firstContentPage + pAutLen,
       number: catChapterNum.get('doses-litros') || 4,
     },
     {
       cat: vinhosMeta.cat,
       items: vinhosMeta.items,
-      startPage: fixedStartByCat.get('doses-litros') || firstContentPage + pAut.length,
+      startPage: fixedStartByCat.get('doses-litros') || firstContentPage + pAutLen,
       number: (catChapterNum.get('doses-litros') || 4) + 1,
     },
   ];
@@ -1634,15 +1641,23 @@ function css(menuCfg) {
     .menu-drinks .grid--center-row {
       display: flex;
       justify-content: center;
-      gap: ${g4.gap}mm;
     }
-    .menu-drinks .grid--center-row .card {
+    .menu-drinks .grid--4.grid--center-row { gap: ${g4.gap}mm; }
+    .menu-drinks .grid--4.grid--center-row .card {
       width: calc((100% - ${g4.gap * 3}mm) / 4);
       flex: 0 0 calc((100% - ${g4.gap * 3}mm) / 4);
+    }
+    .menu-drinks .grid--3.grid--center-row { gap: ${g3.gap}mm; }
+    .menu-drinks .grid--3.grid--center-row .card {
+      width: calc((100% - ${g3.gap * 2}mm) / 3);
+      flex: 0 0 calc((100% - ${g3.gap * 2}mm) / 3);
     }
     .menu-drinks .sheet__body--tradicionais > .grid--center-row + .grid--4 {
       margin-top: ${g4.rowGap}mm;
     }
+    .sheet__body--autorais > .chapter { margin-top: 2mm; }
+    .sheet__body--autorais > .grid--3 { margin-top: 3mm; gap: 3mm 5mm; }
+    .sheet__body--autorais > .grid--center-row + .grid--3 { margin-top: 3mm; }
     .sheet__body--dense-grid > .group { height: 9mm; margin-top: 3mm; font-size: 8.5pt; }
     .sheet__body--dense-grid > .grid--4 { margin-top: 3mm; }
     .compact-item {
