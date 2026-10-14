@@ -13,12 +13,12 @@ Cardápio online + PDF com **fonte única de dados** em `data/menu-data.json`.
 
 ## Status do cardápio
 
-_Métricas atualizadas automaticamente em 2026-10-13 23:46._
+_Métricas atualizadas automaticamente em 2026-10-14 01:08._
 
 - **168** itens em **18** categorias
 - **168** fotos em `assets/fotos/` (completo)
-- PDFs do site: Gastronomia `online/cardapio-prainha-rooftop-gastronomia.pdf` (6.92 MB) · Drinks `online/cardapio-prainha-rooftop-drinks.pdf` (3.70 MB)
-- Versão dos dados: `1.1.103-online`
+- PDFs do site: Gastronomia `online/cardapio-prainha-rooftop-gastronomia.pdf` (6.92 MB) · Drinks `online/cardapio-prainha-rooftop-drinks.pdf` (3.48 MB)
+- Versão dos dados: `1.1.105-online`
 
 ## Estrutura
 

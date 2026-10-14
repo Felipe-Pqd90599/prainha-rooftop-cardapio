@@ -4,6 +4,7 @@
       "cat": "drinks-tradicionais",
       "photo": "caipifruta",
       "lead": "Os clássicos que nunca falham",
+      "dense": true,
       "bodyDense": true,
       "tightGrid": true,
       "blocks": [

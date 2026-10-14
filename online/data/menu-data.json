@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.103-online",
+    "version": "1.1.105-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -951,55 +951,66 @@
       "id": "drinks-autorais",
       "name": "Drinks Autorais",
       "order": 13,
+      "portionLabels": {
+        "primary": "Nacional",
+        "secondary": "Importado"
+      },
       "items": [
         {
           "id": "prainha-blue",
           "name": "Prainha Blue",
           "price": 32,
           "description": "Vodka, curaçau blue, limão, refri de limão e gelo",
-          "image": "prainha-blue.jpg"
+          "image": "prainha-blue.jpg",
+          "priceSecondary": 38
         },
         {
           "id": "coffee-drink",
           "name": "Coffee Drink",
           "price": 30,
           "description": "Vodka, leite condensado, café, leite de coco, abacaxi, chantilly e gelo",
-          "image": "coffee-drink.jpg"
+          "image": "coffee-drink.jpg",
+          "priceSecondary": 36
         },
         {
           "id": "whisky-tropical",
           "name": "Whisky Tropical",
           "price": 32,
           "description": "Whisky, suco de limão siciliano, maracujá, tônica, espuma de gengibre e gelo",
-          "image": "whisky-tropical.jpg"
+          "image": "whisky-tropical.jpg",
+          "priceSecondary": 38
         },
         {
           "id": "penicillin-prainha",
           "name": "Penicillin do Prainha",
           "price": 32,
           "description": "Whisky 12 anos, gengibre, mel, limão siciliano e espuma de gengibre",
-          "image": "penicillin-prainha.jpg"
+          "image": "penicillin-prainha.jpg",
+          "priceSecondary": 38
         },
         {
           "id": "gim-nevado",
           "name": "Gim Nevado",
           "price": 30,
           "description": "Curaçau blue, leite condensado, gim nacional, chantilly e gelo",
-          "image": "gim-nevado.jpg"
+          "image": "gim-nevado.jpg",
+          "priceSecondary": 36
         },
         {
           "id": "caipi-prainha",
           "name": "Caipi do Prainha",
           "price": 29,
           "description": "Vodka ou cachaça, morango, kiwi, abacaxi, açúcar e gelo",
-          "image": "caipi-prainha.jpg"
+          "image": "caipi-prainha.jpg",
+          "priceSecondary": 35
         },
         {
           "id": "mojito-abacaxi",
           "name": "Mojito de Abacaxi",
           "price": 28,
           "description": "Rum, abacaxi, hortelã, refri de limão, açúcar e gelo",
-          "image": "mojito-abacaxi.jpg"
+          "image": "mojito-abacaxi.jpg",
+          "priceSecondary": 34
         }
       ]
     },
@@ -1007,83 +1018,98 @@
       "id": "drinks-tradicionais",
       "name": "Drinks Tradicionais",
       "order": 14,
+      "portionLabels": {
+        "primary": "Nacional",
+        "secondary": "Importado"
+      },
       "items": [
         {
           "id": "moscow-mule",
           "name": "Moscow Mule",
           "price": 26,
           "description": "Vodka, suco de limão, xarope de açúcar, água com gás, espuma e gelo",
-          "image": "moscow-mule.jpg"
+          "image": "moscow-mule.jpg",
+          "priceSecondary": 32
         },
         {
           "id": "caipirinha",
           "name": "Caipirinha",
           "price": 12,
           "description": "Cachaça, limão, açúcar e gelo",
-          "image": "caipirinha.jpg"
+          "image": "caipirinha.jpg",
+          "priceSecondary": 18
         },
         {
           "id": "caipiroska",
           "name": "Caipiroska",
           "price": 15,
           "description": "Vodka, limão, açúcar e gelo",
-          "image": "caipiroska.jpg"
+          "image": "caipiroska.jpg",
+          "priceSecondary": 21
         },
         {
           "id": "caipifruta",
           "name": "Caipifruta",
           "price": 20,
           "description": "Vodka ou cachaça, 1 fruta, açúcar e gelo",
-          "image": "caipifruta.jpg"
+          "image": "caipifruta.jpg",
+          "priceSecondary": 26
         },
         {
           "id": "gim-tradicional",
           "name": "Gim Tradicional",
           "price": 26,
           "description": "Gim nacional, limão siciliano, tônica, especiarias e gelo",
-          "image": "gim-tradicional.jpg"
+          "image": "gim-tradicional.jpg",
+          "priceSecondary": 32
         },
         {
           "id": "gim-frutado",
           "name": "Gim Frutado",
           "price": 30,
           "description": "Gim nacional, 1 fruta, tônica, especiarias e gelo",
-          "image": "gim-frutado.jpg"
+          "image": "gim-frutado.jpg",
+          "priceSecondary": 36
         },
         {
           "id": "pina-colada",
           "name": "Piña Colada",
           "price": 29,
           "description": "Rum, abacaxi, leite condensado, creme de leite, leite de coco e gelo",
-          "image": "pina-colada.jpg"
+          "image": "pina-colada.jpg",
+          "priceSecondary": 35
         },
         {
           "id": "espanhola",
           "name": "Espanhola",
           "price": 30,
           "description": "Vinho, vodka, fruta, leite condensado e gelo",
-          "image": "espanhola.jpg"
+          "image": "espanhola.jpg",
+          "priceSecondary": 36
         },
         {
           "id": "mojito",
           "name": "Mojito",
           "price": 26,
           "description": "Rum, limão, hortelã, água com gás, açúcar e gelo",
-          "image": "mojito.jpg"
+          "image": "mojito.jpg",
+          "priceSecondary": 32
         },
         {
           "id": "cozumel",
           "name": "Cozumel",
           "price": 20,
-          "description": "Cerveja, suco de limão, limão, sal e gelo",
-          "image": "cozumel.jpg"
+          "description": "Cerveja (Corona, Heineken ou Amstel Ultra), suco de limão, limão, sal e gelo",
+          "image": "cozumel.jpg",
+          "priceSecondary": 26
         },
         {
           "id": "sex-on-the-beach",
           "name": "Sex on the Beach",
           "price": 30,
           "description": "Vodka, grenadine, licor de pêssego, suco de laranja e gelo",
-          "image": "sex-on-the-beach.jpg"
+          "image": "sex-on-the-beach.jpg",
+          "priceSecondary": 36
         }
       ]
     },

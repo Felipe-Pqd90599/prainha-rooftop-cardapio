@@ -316,8 +316,8 @@ function drinkPortraitCardIds(menu) {
 /** Tamanho do JPEG do card: mesma proporção da caixa no PDF, para não cortar o copo. */
 function drinkPortraitSize(id, menu) {
   const aut = menu.categories.find((c) => c.id === 'drinks-autorais');
-  if ((aut?.items || []).some((i) => i.id === id)) return { w: 600, h: 630 };
-  return { w: 600, h: 780 };
+  if ((aut?.items || []).some((i) => i.id === id)) return { w: 600, h: 470 };
+  return { w: 600, h: 585 };
 }
 
 async function prepareImages(cardIds, chapterIds, qr, menu) {
@@ -603,7 +603,7 @@ function buildBlocks(chapters) {
           chapter,
           cols: chapter.cols,
           items: group.items.slice(i, i + chapter.cols),
-          height: chapter.tallCards ? 79 : cfg.cardH,
+          height: chapter.tallCards ? (chapter.cols === 4 ? 70 : 79) : cfg.cardH,
           gapBefore: cfg.rowGap,
         });
       }
@@ -1272,6 +1272,7 @@ function css(menuCfg) {
       right: ${LAYOUT.padX}mm;
       top: ${LAYOUT.headerH}mm;
       bottom: ${LAYOUT.footerH}mm;
+      overflow: hidden;
     }
 
     /* ---------- capa ---------- */
@@ -1500,12 +1501,28 @@ function css(menuCfg) {
       display: -webkit-box;
     }
     .menu-drinks .card--tall { height: 79mm; }
-    .menu-drinks .card--tall .card__media { height: 62mm; }
+    .menu-drinks .card--tall .card__media { height: 46mm; }
     .menu-drinks .card--tall .card__media img { object-fit: cover; object-position: 50% 50%; }
-    .menu-drinks .card--tall .card__name { font-size: 8.8pt; line-height: 1.16; }
-    .menu-drinks .card--tall .card__desc { font-size: 7pt; line-height: 1.32; -webkit-line-clamp: 2; }
-    .menu-drinks .grid--4 .card--tall { height: 76mm; }
-    .menu-drinks .grid--4 .card--tall .card__media { height: 56mm; }
+    .menu-drinks .card--tall .card__body { overflow: visible; }
+    .menu-drinks .card--tall .card__name { font-size: 8.6pt; line-height: 1.16; }
+    .menu-drinks .card--tall .card__desc,
+    .menu-drinks .grid--3 .card--tall .card__desc,
+    .menu-drinks .grid--4 .card--tall .card__desc {
+      display: block;
+      overflow: visible;
+      -webkit-line-clamp: unset;
+      -webkit-box-orient: unset;
+      flex: 0 0 auto;
+      min-height: auto;
+      font-size: 6.5pt;
+      line-height: 1.28;
+    }
+    .menu-drinks .card--tall .price-tags { gap: 0.8mm; }
+    .menu-drinks .grid--4 .card--tall { height: 70mm; }
+    .menu-drinks .grid--4 .card--tall .card__media { height: 42mm; }
+    .menu-drinks .grid--4 .card--tall .card__name { font-size: 7.4pt; }
+    .menu-drinks .grid--4 .card--tall .card__desc { font-size: 6pt; }
+    .menu-drinks .grid--4 .card--tall .price-tag { font-size: 6.3pt; padding: 0.4mm 1mm; }
     .card__price {
       flex: 0 0 auto;
       margin-top: auto;
@@ -1603,9 +1620,9 @@ function css(menuCfg) {
     .sheet__body--tight-grid .grid--3 .card:not(.card--tall) .card__name { font-size: 8.2pt; -webkit-line-clamp: 2; }
     .sheet__body--tight-grid .grid--3 .card:not(.card--tall) .card__desc { font-size: 6.5pt; -webkit-line-clamp: 2; }
 
-    .sheet__body--tradicionais > .chapter { margin-top: ${LAYOUT.gapChapter}mm; }
-    .sheet__body--tradicionais > .grid--3 { margin-top: 5mm; }
-    .sheet__body--tradicionais > .grid--4 { margin-top: 4mm; }
+    .sheet__body--tradicionais > .chapter { margin-top: 2mm; }
+    .sheet__body--tradicionais > .grid--3 { margin-top: 3mm; }
+    .sheet__body--tradicionais > .grid--4 { margin-top: 2.5mm; }
     .sheet__body--dense-grid > .group { height: 9mm; margin-top: 3mm; font-size: 8.5pt; }
     .sheet__body--dense-grid > .grid--4 { margin-top: 3mm; }
     .compact-item {
