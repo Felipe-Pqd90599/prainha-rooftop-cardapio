@@ -517,7 +517,9 @@ function renderFixedPageBody(menu, meta, pageDef, starIds) {
       }
       const cols = block.cols || 3;
       closeGrid();
-      html.push(`<div class="grid grid--${cols}">`);
+      html.push(
+        `<div class="grid grid--${cols}${block.centerRow ? ' grid--center-row' : ''}">`,
+      );
       openCols = cols;
       const cardClass = block.tallCards ? 'card--tall' : '';
       for (const item of items) {
@@ -1527,7 +1529,8 @@ function css(menuCfg) {
     .menu-drinks .grid--4 .card--tall .card__media { height: 56mm; }
     .menu-drinks .grid--4 .card--tall .card__name { font-size: 7.3pt; }
     .menu-drinks .grid--4 .card--tall .card__desc { font-size: 5.8pt; }
-    .menu-drinks .grid--4 .card--tall .price-tag { font-size: 6.2pt; padding: 0.4mm 1mm; }
+    .menu-drinks .grid--4 .card--tall .price-tag { font-size: 5.8pt; padding: 0.35mm 0.8mm; white-space: nowrap; }
+    .menu-drinks .grid--4 .card--tall .price-tag small { font-size: 4.8pt; }
     .card__price {
       flex: 0 0 auto;
       margin-top: auto;
@@ -1628,6 +1631,18 @@ function css(menuCfg) {
     .sheet__body--tradicionais > .chapter { margin-top: 2mm; }
     .sheet__body--tradicionais > .grid--3 { margin-top: 3mm; }
     .sheet__body--tradicionais > .grid--4 { margin-top: 2.5mm; }
+    .menu-drinks .grid--center-row {
+      display: flex;
+      justify-content: center;
+      gap: ${g4.gap}mm;
+    }
+    .menu-drinks .grid--center-row .card {
+      width: calc((100% - ${g4.gap * 3}mm) / 4);
+      flex: 0 0 calc((100% - ${g4.gap * 3}mm) / 4);
+    }
+    .menu-drinks .sheet__body--tradicionais > .grid--center-row + .grid--4 {
+      margin-top: ${g4.rowGap}mm;
+    }
     .sheet__body--dense-grid > .group { height: 9mm; margin-top: 3mm; font-size: 8.5pt; }
     .sheet__body--dense-grid > .grid--4 { margin-top: 3mm; }
     .compact-item {

@@ -12,10 +12,18 @@
           "type": "grid",
           "cols": 4,
           "tallCards": true,
+          "centerRow": true,
           "ids": [
             "pina-colada",
             "sex-on-the-beach",
-            "moscow-mule",
+            "moscow-mule"
+          ]
+        },
+        {
+          "type": "grid",
+          "cols": 4,
+          "tallCards": true,
+          "ids": [
             "caipirinha",
             "caipiroska",
             "caipifruta",

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.107-online",
+    "version": "1.1.108-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -978,7 +978,8 @@
           "price": 32,
           "description": "Whisky, suco de limão siciliano, maracujá, tônica, espuma de gengibre e gelo",
           "image": "whisky-tropical.jpg",
-          "priceSecondary": 38
+          "priceSecondary": 38,
+          "priceSecondaryLabel": "Whisky 12 anos"
         },
         {
           "id": "penicillin-prainha",
@@ -986,7 +987,8 @@
           "price": 32,
           "description": "Whisky 12 anos, gengibre, mel, limão siciliano e espuma de gengibre",
           "image": "penicillin-prainha.jpg",
-          "priceSecondary": 38
+          "priceSecondary": 38,
+          "priceSecondaryLabel": "Whisky 12 anos"
         },
         {
           "id": "gim-nevado",
@@ -1037,7 +1039,9 @@
           "price": 12,
           "description": "Cachaça, limão, açúcar e gelo",
           "image": "caipirinha.jpg",
-          "priceSecondary": 18
+          "priceSecondary": 18,
+          "priceLabel": "Cachaça branca",
+          "priceSecondaryLabel": "Cachaça ouro"
         },
         {
           "id": "caipiroska",
