@@ -316,8 +316,8 @@ function drinkPortraitCardIds(menu) {
 /** Tamanho do JPEG do card: mesma proporção da caixa no PDF, para não cortar o copo. */
 function drinkPortraitSize(id, menu) {
   const aut = menu.categories.find((c) => c.id === 'drinks-autorais');
-  if ((aut?.items || []).some((i) => i.id === id)) return { w: 600, h: 470 };
-  return { w: 600, h: 585 };
+  if ((aut?.items || []).some((i) => i.id === id)) return { w: 600, h: 512 };
+  return { w: 600, h: 612 };
 }
 
 async function prepareImages(cardIds, chapterIds, qr, menu) {
@@ -1501,10 +1501,10 @@ function css(menuCfg) {
       display: -webkit-box;
     }
     .menu-drinks .card--tall { height: 79mm; }
-    .menu-drinks .card--tall .card__media { height: 46mm; }
+    .menu-drinks .card--tall .card__media { height: 50mm; }
     .menu-drinks .card--tall .card__media img { object-fit: cover; object-position: 50% 50%; }
-    .menu-drinks .card--tall .card__body { overflow: visible; }
-    .menu-drinks .card--tall .card__name { font-size: 8.6pt; line-height: 1.16; }
+    .menu-drinks .card--tall .card__body { overflow: hidden; padding: 1.8mm 2.5mm 1.6mm; }
+    .menu-drinks .card--tall .card__name { font-size: 8.2pt; line-height: 1.12; }
     .menu-drinks .card--tall .card__desc,
     .menu-drinks .grid--3 .card--tall .card__desc,
     .menu-drinks .grid--4 .card--tall .card__desc {
@@ -1514,14 +1514,16 @@ function css(menuCfg) {
       -webkit-box-orient: unset;
       flex: 0 0 auto;
       min-height: auto;
-      font-size: 6.5pt;
-      line-height: 1.28;
+      font-size: 6.2pt;
+      line-height: 1.25;
+      margin-top: 0.6mm;
     }
+    .menu-drinks .card--tall .card__price { padding-top: 0.8mm; }
     .menu-drinks .card--tall .price-tags { gap: 0.8mm; }
     .menu-drinks .grid--4 .card--tall { height: 70mm; }
-    .menu-drinks .grid--4 .card--tall .card__media { height: 42mm; }
+    .menu-drinks .grid--4 .card--tall .card__media { height: 44mm; }
     .menu-drinks .grid--4 .card--tall .card__name { font-size: 7.4pt; }
-    .menu-drinks .grid--4 .card--tall .card__desc { font-size: 6pt; }
+    .menu-drinks .grid--4 .card--tall .card__desc { font-size: 5.9pt; }
     .menu-drinks .grid--4 .card--tall .price-tag { font-size: 6.3pt; padding: 0.4mm 1mm; }
     .card__price {
       flex: 0 0 auto;
