@@ -316,8 +316,8 @@ function drinkPortraitCardIds(menu) {
 /** Tamanho do JPEG do card: mesma proporção da caixa no PDF, para não cortar o copo. */
 function drinkPortraitSize(id, menu) {
   const aut = menu.categories.find((c) => c.id === 'drinks-autorais');
-  if ((aut?.items || []).some((i) => i.id === id)) return { w: 600, h: 512 };
-  return { w: 600, h: 612 };
+  if ((aut?.items || []).some((i) => i.id === id)) return { w: 600, h: 630 };
+  return { w: 600, h: 780 };
 }
 
 async function prepareImages(cardIds, chapterIds, qr, menu) {
@@ -603,8 +603,8 @@ function buildBlocks(chapters) {
           chapter,
           cols: chapter.cols,
           items: group.items.slice(i, i + chapter.cols),
-          height: chapter.tallCards ? (chapter.cols === 4 ? 70 : 79) : cfg.cardH,
-          gapBefore: cfg.rowGap,
+          height: chapter.tallCards ? (chapter.cols === 4 ? 76 : 80) : cfg.cardH,
+          gapBefore: chapter.tallCards ? 3 : cfg.rowGap,
         });
       }
     }
@@ -1500,11 +1500,14 @@ function css(menuCfg) {
     .menu-gastronomia .sheet__body--dense .compact-item__desc {
       display: -webkit-box;
     }
-    .menu-drinks .card--tall { height: 79mm; }
-    .menu-drinks .card--tall .card__media { height: 50mm; }
+    .menu-drinks .sheet__body--flow > .grid--3 { margin-top: 2mm; }
+    .menu-drinks .sheet__body--flow .grid--3 { gap: 3mm 5mm; }
+    .menu-drinks .chapter--dense { min-height: 10mm; padding-bottom: 1.2mm; margin-bottom: 0; }
+    .menu-drinks .card--tall { height: 80mm; }
+    .menu-drinks .card--tall .card__media { height: 62mm; }
     .menu-drinks .card--tall .card__media img { object-fit: cover; object-position: 50% 50%; }
-    .menu-drinks .card--tall .card__body { overflow: hidden; padding: 1.8mm 2.5mm 1.6mm; }
-    .menu-drinks .card--tall .card__name { font-size: 8.2pt; line-height: 1.12; }
+    .menu-drinks .card--tall .card__body { overflow: hidden; padding: 1.6mm 2.4mm 1.4mm; }
+    .menu-drinks .card--tall .card__name { font-size: 8pt; line-height: 1.12; }
     .menu-drinks .card--tall .card__desc,
     .menu-drinks .grid--3 .card--tall .card__desc,
     .menu-drinks .grid--4 .card--tall .card__desc {
@@ -1514,17 +1517,17 @@ function css(menuCfg) {
       -webkit-box-orient: unset;
       flex: 0 0 auto;
       min-height: auto;
-      font-size: 6.2pt;
-      line-height: 1.25;
-      margin-top: 0.6mm;
+      font-size: 6pt;
+      line-height: 1.22;
+      margin-top: 0.5mm;
     }
-    .menu-drinks .card--tall .card__price { padding-top: 0.8mm; }
-    .menu-drinks .card--tall .price-tags { gap: 0.8mm; }
-    .menu-drinks .grid--4 .card--tall { height: 70mm; }
-    .menu-drinks .grid--4 .card--tall .card__media { height: 44mm; }
-    .menu-drinks .grid--4 .card--tall .card__name { font-size: 7.4pt; }
-    .menu-drinks .grid--4 .card--tall .card__desc { font-size: 5.9pt; }
-    .menu-drinks .grid--4 .card--tall .price-tag { font-size: 6.3pt; padding: 0.4mm 1mm; }
+    .menu-drinks .card--tall .card__price { padding-top: 0.6mm; }
+    .menu-drinks .card--tall .price-tags { gap: 0.7mm; }
+    .menu-drinks .grid--4 .card--tall { height: 76mm; }
+    .menu-drinks .grid--4 .card--tall .card__media { height: 56mm; }
+    .menu-drinks .grid--4 .card--tall .card__name { font-size: 7.3pt; }
+    .menu-drinks .grid--4 .card--tall .card__desc { font-size: 5.8pt; }
+    .menu-drinks .grid--4 .card--tall .price-tag { font-size: 6.2pt; padding: 0.4mm 1mm; }
     .card__price {
       flex: 0 0 auto;
       margin-top: auto;

@@ -47,6 +47,14 @@ function stampCacheBusters() {
       /logo-prainha-rooftop\.png(?:\?v=[^"]*)?/g,
       `logo-prainha-rooftop.png?v=${v}`,
     );
+    html = html.replace(
+      /(\.\.\/)?cardapio-prainha-rooftop-gastronomia\.pdf(?:\?v=[^"]*)?/g,
+      (m, p) => `${p || ''}cardapio-prainha-rooftop-gastronomia.pdf?v=${v}`,
+    );
+    html = html.replace(
+      /(\.\.\/)?cardapio-prainha-rooftop-drinks\.pdf(?:\?v=[^"]*)?/g,
+      (m, p) => `${p || ''}cardapio-prainha-rooftop-drinks.pdf?v=${v}`,
+    );
     fs.writeFileSync(indexPath, html);
     console.log('cache-bust', rel, 'v=', menu.meta?.version);
   }
