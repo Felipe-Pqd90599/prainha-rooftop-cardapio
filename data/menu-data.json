@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "1.1.109-online",
+    "version": "1.1.110-online",
     "source": "cardapio-2025-atualizado.pdf",
     "currency": "BRL",
     "priceLabelDefault": "Executivo",
@@ -966,9 +966,9 @@
         },
         {
           "id": "gim-nevado",
-          "name": "Gim Nevado",
+          "name": "Gin Nevado",
           "price": 30,
-          "description": "Curaçau blue, leite condensado, gim nacional, chantilly e gelo",
+          "description": "Gin, curaçau blue, leite condensado, chantilly e gelo",
           "image": "gim-nevado.jpg",
           "priceSecondary": 36
         },
@@ -982,12 +982,14 @@
           "priceSecondaryLabel": "Whisky 12 anos"
         },
         {
-          "id": "caipi-prainha",
-          "name": "Caipi do Prainha",
-          "price": 29,
-          "description": "Vodka ou cachaça, morango, kiwi, abacaxi, açúcar e gelo",
-          "image": "caipi-prainha.jpg",
-          "priceSecondary": 35
+          "id": "bombeirinho",
+          "name": "Bombeirinho",
+          "price": 28,
+          "description": "Cachaça, limão e groselha",
+          "image": "bombeirinho.jpg",
+          "priceSecondary": 34,
+          "priceLabel": "Cachaça branca",
+          "priceSecondaryLabel": "Cachaça ouro"
         },
         {
           "id": "whisky-tropical",
@@ -997,6 +999,14 @@
           "image": "whisky-tropical.jpg",
           "priceSecondary": 38,
           "priceSecondaryLabel": "Whisky 12 anos"
+        },
+        {
+          "id": "caipi-prainha",
+          "name": "Caipi do Prainha",
+          "price": 29,
+          "description": "Vodka ou cachaça, morango, kiwi, abacaxi, açúcar e gelo",
+          "image": "caipi-prainha.jpg",
+          "priceSecondary": 35
         },
         {
           "id": "mojito-abacaxi",
@@ -1013,14 +1023,6 @@
           "description": "Vodka, leite condensado, café, leite de coco, abacaxi, chantilly e gelo",
           "image": "coffee-drink.jpg",
           "priceSecondary": 36
-        },
-        {
-          "id": "bombeirinho",
-          "name": "Bombeirinho",
-          "price": 20,
-          "description": "Cachaça, limão e groselha",
-          "image": "bombeirinho.jpg",
-          "priceSecondary": 26
         }
       ]
     },
@@ -1069,17 +1071,17 @@
         },
         {
           "id": "gim-tradicional",
-          "name": "Gim Tradicional",
+          "name": "Gin Tradicional",
           "price": 26,
-          "description": "Gim nacional, limão siciliano, tônica, especiarias e gelo",
+          "description": "Gin nacional, limão siciliano, tônica, especiarias e gelo",
           "image": "gim-tradicional.jpg",
           "priceSecondary": 32
         },
         {
           "id": "gim-frutado",
-          "name": "Gim Frutado",
+          "name": "Gin Frutado",
           "price": 30,
-          "description": "Gim nacional, 1 fruta, tônica, especiarias e gelo",
+          "description": "Gin nacional, 1 fruta, tônica, especiarias e gelo",
           "image": "gim-frutado.jpg",
           "priceSecondary": 36
         },
@@ -1381,7 +1383,7 @@
         },
         {
           "id": "gim-nacional",
-          "name": "Gim Nacional",
+          "name": "Gin Nacional",
           "description": "Rock's",
           "price": 10,
           "priceSecondary": 120,
@@ -1390,7 +1392,7 @@
         },
         {
           "id": "gim-importado",
-          "name": "Gim Importado",
+          "name": "Gin Importado",
           "description": "Tanqueray",
           "price": 15,
           "priceSecondary": 250,
