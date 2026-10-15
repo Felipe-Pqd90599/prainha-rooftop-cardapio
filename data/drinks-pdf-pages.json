@@ -18,13 +18,13 @@
           "type": "grid",
           "cols": 3,
           "tallCards": true,
-          "ids": ["penicillin-prainha", "caipi-prainha", "whisky-tropical"]
+          "ids": ["penicillin-prainha", "bombeirinho", "whisky-tropical"]
         },
         {
           "type": "grid",
           "cols": 3,
           "tallCards": true,
-          "ids": ["mojito-abacaxi", "coffee-drink", "bombeirinho"]
+          "ids": ["caipi-prainha", "mojito-abacaxi", "coffee-drink"]
         }
       ]
     },
